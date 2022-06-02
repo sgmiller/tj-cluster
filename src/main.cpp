@@ -26,6 +26,8 @@
 
 #include <CCDLibrary.h>
 #include "main.h"
+#include "instruments.h"
+
 
 uint8_t speed;
 uint32_t heartbeat = 0;
@@ -34,14 +36,13 @@ uint32_t lastMillis = 0; // ms
 uint16_t writeInterval = 200; // ms
 uint16_t heartbeatInterval = 500; // ms
 uint8_t msgCount = 4;
-uint8_t engineSpeed[4] = { 0xE4, 0x02, 0x84, 0x00 };
-uint8_t vehicleSpeed[4] = { 0x24, 0x02, 0x00, 0x00 };
-uint8_t airbagOk[3] = { 0x50, 0x00, 0x00 };
-uint8_t fuel[3] = { 0x25, 0x00, 0x00};
 uint8_t counter = 0;
 IntervalTimer writeTimer;
 IntervalTimer heartbeatTimer;
 bool ccdReceived, ccdTransmitted, canReceived, canTransmitted;
+
+Instrument* instruments[1]={&fuel};
+int instrumentCount = 1;
 
 void CCDMessageReceived(uint8_t* message, uint8_t messageLength)
 {
@@ -95,8 +96,6 @@ void CCDHandleError(CCD_Operations op, CCD_Errors err)
 void setup()
 {
     Serial.begin(9600);
-
-
     pinMode(CCD_TX_LED_PIN, OUTPUT);
     pinMode(CCD_RX_LED_PIN, OUTPUT);
     pinMode(CAN_TX_LED_PIN, OUTPUT);
@@ -130,26 +129,17 @@ void handleHeartbeat() {
     Serial.print("Transmit allowed: ");
     Serial.println(digitalRead(IDLE_PIN)==0);
     if ((heartbeat%20)==0) {
-        fuel[1]=fuel[1]+10;
-        CCD.write(fuel, sizeof(fuel)); // send message to the CCD-bus
+        fuel.SetPercentage(heartbeat%10 * 10,1,254);
     }
 }
 
-void clusterWrite() {    
-    ccdTransmitted=true;
+void clusterWrite() {  
     CCD.write(airbagOk, sizeof(airbagOk));
     delay(50);
-    if (heartbeat%2==0) {
-        engineSpeed[1]=((heartbeat*250)%6000)/32;
+    for  (uint8_t i=0; i<instrumentCount; i++) {
+        if (instruments[i]->MaybeWrite(CCD)) {
+            delay(50);
+            ccdTransmitted=true;
+        }
     }
-    vehicleSpeed[2]=speed*1.55;
-    Serial.println(counter);
-    CCD.write(engineSpeed, sizeof(engineSpeed)); // send message to the CCD-bus
-    delay(50);
-    if (counter == 1) CCD.write(vehicleSpeed, sizeof(vehicleSpeed)); // send message to the CCD-bus
-
-    counter++;
-
-    if (counter == msgCount) counter = 0; // reset counter
 }
-
