@@ -20,7 +20,7 @@ class Instrument
 };
 
 static uint8_t engineSpeed[4] = { 0xE4, 0x02, 0x84 };
-//static uint8_t vehicleSpeed[4] = { 0x24, 0x02, 0x00 };
+static uint8_t vehicleSpeed[4] = { 0x24, 0x02, 0x00, 0x00 };
 static uint8_t airbagOk[3] = { 0x50, 0x00, 0x00 };
 static uint8_t messageFuel[3] = { 0x25, 0x00, 0x00 };
 

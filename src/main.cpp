@@ -27,6 +27,7 @@
 #include <CCDLibrary.h>
 #include "main.h"
 #include "instruments.h"
+#include <FreqMeasureMulti.h>
 
 
 uint8_t speed;
@@ -39,10 +40,103 @@ uint8_t msgCount = 4;
 uint8_t counter = 0;
 IntervalTimer writeTimer;
 IntervalTimer heartbeatTimer;
-bool ccdReceived, ccdTransmitted, canReceived, canTransmitted;
+bool ccdReceived, ccdTransmitted, canReceived, canTransmitted, speedoOn;
+FreqMeasureMulti speedoMeasure;
+
+#define REVS_PER_MILE 2737
+#define PULSES_PER_REV 8
+
+#define POT 15
+#define SPEEDO_SENSOR_OUT 18
+#define SPEEDO_SENSOR_IN 22
+#define SPEEDOMETER_RATIO 1.59
 
 Instrument* instruments[1]={&fuel};
 int instrumentCount = 1;
+IntervalTimer outPWM;
+uint8_t speedoSignal;
+double speedoSum;
+int speedoCount;
+
+
+void loop()
+{
+    speed=50;//
+     //Serial.print("Transmit allowed: ");
+    if (speedoMeasure.available()>0) {
+        // average several reading together
+        speedoSum = speedoSum + speedoMeasure.read();
+        speedoCount = speedoCount + 1;
+        if (speedoCount > 4) {
+            float frequency = speedoMeasure.countToFrequency(speedoSum / speedoCount);
+            Serial.print("Measured hz:");
+            Serial.println(frequency);
+            speedoSum = 0;
+            speedoCount = 0;
+            //freq= (simulatedSpeed/3600.0)*REVS_PER_MILE*3
+        
+            int spv=frequency*3600/(3*REVS_PER_MILE);
+            Serial.print("SPV:");
+            Serial.println(spv);
+            vehicleSpeed[2]=constrain(spv*SPEEDOMETER_RATIO, 0, 200);
+        }
+    }
+    int pot = analogRead(POT);
+//        Serial.println(pot);
+   int simulatedSpeed=(pot/1024.0)*100;
+    float speedoSensorFreq = (simulatedSpeed/3600.0)*REVS_PER_MILE*3; //hz
+    analogWrite(SPEEDO_SENSOR_OUT, 128);
+    analogWriteFrequency(SPEEDO_SENSOR_OUT, speedoSensorFreq);
+    // DAS BLINKENLIGHTS!
+    digitalWrite(CCD_TX_LED_PIN, ccdTransmitted);
+    digitalWrite(CCD_RX_LED_PIN, ccdReceived);
+/*    if (CCDSERIAL.available()>0) {
+        Serial.print("Out of the blue! ");
+        Serial.println(CCDSERIAL.read());
+    }*/
+}
+
+void handleHeartbeat() {
+     /*   int pot = analogRead(POT);
+//        Serial.println(pot);
+  //  int simulatedSpeed=(pot/1024.0)*100;
+    Serial.print("SIMSPD:");
+    Serial.println(simulatedSpeed);
+    float speedoSensorFreq = (simulatedSpeed/3600.0)*REVS_PER_MILE*3; //hz
+    Serial.print("SSF:");
+    Serial.println(speedoSensorFreq*2); //rising, falling
+    analogWrite(SPEEDO_SENSOR_OUT, 128);
+    analogWriteFrequency(SPEEDO_SENSOR_OUT, speedoSensorFreq);*/
+    //outPWM.update(1000000/speedoSensorFreq);
+
+    heartbeat++;
+    //Heartbeat LED
+    
+    digitalWrite(LED_BUILTIN, heartbeat%2);
+    Serial.println("Heartbeat\n");
+    ccdTransmitted=false;
+    ccdReceived=false;
+    if ((heartbeat%20)==0) {
+        fuel.SetPercentage(heartbeat%10 * 10,1,254);
+    }
+}
+
+void clusterWrite() {  
+    // Write the airbag every time
+    CCD.write(airbagOk, sizeof(airbagOk));
+    delay(50);
+    // Same with RPM/MAP
+    CCD.write(vehicleSpeed, sizeof(vehicleSpeed));
+    delay(50);
+/*
+    // Now write just those instruments that have changed
+    for  (uint8_t i=0; i<instrumentCount; i++) {
+        if (instruments[i]->MaybeWrite(CCD)) {
+            delay(50);
+            ccdTransmitted=true;
+        }
+    }*/
+}
 
 void CCDMessageReceived(uint8_t* message, uint8_t messageLength)
 {
@@ -93,53 +187,28 @@ void CCDHandleError(CCD_Operations op, CCD_Errors err)
     }
 }
 
+void speedoPWM() {
+    speedoSignal = (speedoSignal + 1) % 2;
+    digitalWrite(SPEEDO_SENSOR_OUT, speedoSignal);
+}
+
 void setup()
 {
+    // Register instruments
     Serial.begin(9600);
     pinMode(CCD_TX_LED_PIN, OUTPUT);
     pinMode(CCD_RX_LED_PIN, OUTPUT);
     pinMode(CAN_TX_LED_PIN, OUTPUT);
     pinMode(CAN_RX_LED_PIN, OUTPUT);
-   
+    pinMode(SPEEDO_SENSOR_OUT, OUTPUT);
+    pinMode(SPEEDO_SENSOR_IN, INPUT);
+    pinMode(POT, INPUT);
     CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
     CCD.begin(); // CDP68HC68S1
     writeTimer.begin(clusterWrite, writeInterval*1000);
     heartbeatTimer.begin(handleHeartbeat, heartbeatInterval*1000);
+    //outPWM.begin(speedoPWM, 100000);
+    speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
 }
 
-void loop()
-{
-    speed = (speed + 5) % 100;
-    delay(2000);
-}
-
-void handleHeartbeat() {
-    heartbeat++;
-    //Heartbeat LED
-    
-    digitalWrite(LED_BUILTIN, heartbeat%2);
-
-    // DAS BLINKENLIGHTS!
-    digitalWrite(CCD_TX_LED_PIN, ccdTransmitted);
-    digitalWrite(CCD_RX_LED_PIN, ccdReceived);
-    Serial.println("Heartbeat\n");
-    ccdTransmitted=false;
-    ccdReceived=false;
-    Serial.print("Transmit allowed: ");
-    Serial.println(digitalRead(IDLE_PIN)==0);
-    if ((heartbeat%20)==0) {
-        fuel.SetPercentage(heartbeat%10 * 10,1,254);
-    }
-}
-
-void clusterWrite() {  
-    CCD.write(airbagOk, sizeof(airbagOk));
-    delay(50);
-    for  (uint8_t i=0; i<instrumentCount; i++) {
-        if (instruments[i]->MaybeWrite(CCD)) {
-            delay(50);
-            ccdTransmitted=true;
-        }
-    }
-}

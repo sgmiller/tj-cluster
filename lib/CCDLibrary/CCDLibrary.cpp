@@ -109,7 +109,7 @@ void CCDLibrary::begin(float baudrate, bool dedicatedTransceiver, uint8_t busIdl
 
 void CCDLibrary::serialInit()
 {
-   CCDSERIAL.begin(CLOCK_SPEED/128,SERIAL_8N1);
+   CCDSERIAL.begin(CLOCK_SPEED/128);
 }
 
 void serialEvent() {
@@ -180,7 +180,7 @@ void CCDLibrary::timer1Handler()
 
 void CCDLibrary::busIdleChange() {
     Serial.println("bus idle change");
-    if (digitalRead(IDLE_PIN)) {
+    if (digitalRead(IDLE_PIN) == 1) {
         _busIdle = false; // clear flag
         _transmitAllowed = false; // clear flag, interrupt controlled message transmission is not affected by this flag
     } else {
@@ -193,7 +193,6 @@ void CCDLibrary::busIdleChange() {
 
 uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
 {
-    uint8_t rest[16];
     // Return values:
     //   0: ok
     //   1: zero buffer length
@@ -215,31 +214,10 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
     uint32_t timeoutStart = millis();
 
     transmitting = true;
-    // First, win the bus
-    while (!timeout && false) {
-        Serial.println("Attempting to win bus\n");
-        while (!_busIdle && !timeout)
-        {
-            if ((uint32_t)(millis() - timeoutStart) >= 1000) timeout = true;
-        }
-        // Present the ID byte to the bus
-        CCDSERIAL.write(buffer[0]);
-        while (!CCDSERIAL.available()) {}
-        Serial.println("Received something");
-        uint8_t receivedByte = CCDSERIAL.read();
-        if (receivedByte == buffer[0]) {
-            Serial.println("Bus won\n");
-            break;
-        } else if (!shouldIgnore(receivedByte)) {
-            Serial.println("Collision\n");
-            // Collision, but we're interested in this message
-            _serialRxBuffer[0]=receivedByte;
-            _serialRxBufferPos=1;
-            receiveRemaining();
-            processMessage();
-        } // else wait for the bus to return to idle after ignoring the colliding message
-        Serial.println("Received byte but not ours\n");
-
+    // CDP68HC68S1 handles arbitration, just wait for idle
+    while (!_busIdle && !timeout)
+    {
+        if ((uint32_t)(millis() - timeoutStart) >= 1000) timeout = true;
     }
 
     if (timeout) return 2;
@@ -249,21 +227,8 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
         Serial.print(",");
     }
     Serial.println();
-    // Write the rest of the message sans id byte
     CCDSERIAL.write(buffer, bufferLength);
     return 0;
-}
-
-void CCDLibrary::receiveRemaining() {
-    while (!_busIdle) {
-        if (CCDSERIAL.available()) {
-            uint8_t rb = CCDSERIAL.read();
-            if (rb >= 0) {
-                _serialRxBuffer[_serialRxBufferPos] = rb;
-                _serialRxBufferPos++;
-            }
-        }
-    }
 }
 
 bool CCDLibrary::shouldIgnore(uint8_t idByte) {

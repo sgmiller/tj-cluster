@@ -33,7 +33,7 @@
 #elif defined (__IMXRT1062__)
     #define RX_P 7
     #define TX_P 8
-    #define IDLE_PIN 6
+    #define IDLE_PIN 5
     #define CTRL_PIN 9
     #define CLOCK_PIN 21
     #define CLOCK_SPEED 1000000
