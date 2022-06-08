@@ -198,8 +198,6 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
     //   1: zero buffer length
     //   2: timeout
     //   3: data collision
-    Serial.println("Attempting write\n");
-
     if (bufferLength == 0) return 1;
 
     if (_calculateTxChecksum && (bufferLength > 1)) // calculate message checksum if needed, minimum message length is 2 bytes

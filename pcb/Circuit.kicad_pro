@@ -55,7 +55,14 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "courtyards_overlap|122838801|130302000|308d50c3-cf99-449c-aa6c-cb459e179b84|e8e05818-5a38-4a4c-bcd5-5463b45efe04",
+        "courtyards_overlap|53332136|128505936|308d50c3-cf99-449c-aa6c-cb459e179b84|cc1b928e-9ef1-41da-883d-c7ca579a4541",
+        "items_not_allowed|126288800|130302000|e8e05818-5a38-4a4c-bcd5-5463b45efe04|00000000-0000-0000-0000-000000000000",
+        "items_not_allowed|56286400|130251200|cc1b928e-9ef1-41da-883d-c7ca579a4541|00000000-0000-0000-0000-000000000000",
+        "items_not_allowed|91186000|130535000|308d50c3-cf99-449c-aa6c-cb459e179b84|00000000-0000-0000-0000-000000000000",
+        "silk_overlap|116137430|89793747|0d8343d5-768b-495f-a305-11b661c06313|59fc71f6-de28-4d17-bc5f-b3f7c810dbd4"
+      ],
       "meta": {
         "version": 2
       },
@@ -85,7 +92,7 @@
         "padstack": "error",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_over_copper": "warning",
+        "silk_over_copper": "ignore",
         "silk_overlap": "warning",
         "skew_out_of_range": "error",
         "through_hole_pad_without_hole": "error",
@@ -377,8 +384,7 @@
         "microvia_drill": 0.3302,
         "name": "+12V",
         "nets": [
-          "+12V",
-          "Net-(R9-Pad2)"
+          "+12V"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
@@ -398,6 +404,7 @@
         "microvia_drill": 0.3302,
         "name": "+5V",
         "nets": [
+          "+5V",
           "3v3",
           "Net-(D4-Pad1)"
         ],
@@ -481,9 +488,7 @@
         "microvia_diameter": 0.6858,
         "microvia_drill": 0.3302,
         "name": "GND",
-        "nets": [
-          "GND"
-        ],
+        "nets": [],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.3,
