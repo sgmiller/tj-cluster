@@ -47,6 +47,7 @@ FreqMeasureMulti speedoMeasure;
 #define SPEEDO_SENSOR_IN 22
 #define SPEEDOMETER_RATIO 1.59
 #define DISABLE_AIRBAG_LAMP true
+#define INSTRUMENT_COUNT 8
 
 
 BatteryAndOil battOil;
@@ -57,8 +58,8 @@ Instrument fuel(messageFuel, 3);
 Speedometer speedo;
 Instrument rpm(messageEngineSpeed, 4);
 FeatureStatus featureStatus;
-Instrument* instruments[8]={&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil};
-int instrumentCount = 2;
+
+Instrument* instruments[INSTRUMENT_COUNT]={&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil};
 IntervalTimer outPWM;
 uint8_t speedoSignal;
 double speedoSum;
@@ -113,7 +114,7 @@ void clusterWrite() {
     delay(50);
 
     // Now write just those instruments that have changed
-    for  (uint8_t i=0; i<instrumentCount; i++) {
+    for  (uint8_t i=0; i<INSTRUMENT_COUNT; i++) {
         if (instruments[i]->MaybeWrite(CCD)) {
             ccdTransmitted=true;
         }
