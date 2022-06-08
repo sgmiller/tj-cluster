@@ -3,6 +3,9 @@
 #include <Arduino.h>
 #include <CCDLibrary.h>
 
+#define REVS_PER_MILE 2737
+#define PULSES_PER_REV 8
+
 static uint8_t messageEngineSpeed[4] = { 0xE4, 0x02, 0x84 };
 static uint8_t messageVehicleSpeed[4] = { 0x24, 0x02, 0x00, 0x00 };
 static uint8_t messageAirbagOk[3] = { 0x50, 0x00, 0x00 };
@@ -69,6 +72,13 @@ class FeatureStatus : public Instrument {
 
         void SetUpShift(bool on);
         void SetCruiseEnabled(bool enabled);
+};
+
+class Speedometer : public Instrument {
+    public:
+        int mph;
+        Speedometer() : Instrument(messageVehicleSpeed, 4) {}
+        void SetSpeedSensorFrequency(int pulseHz);
 };
  
 #endif

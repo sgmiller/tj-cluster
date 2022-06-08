@@ -5,3 +5,4 @@
 
 void clusterWrite();
 void handleHeartbeat();
+void measureSpeed();

@@ -99,3 +99,9 @@ void FeatureStatus::SetUpShift(bool enabled) {
     upshift=enabled;
     SetByte(2, lampBool(enabled));
 }
+
+void Speedometer::SetSpeedSensorFrequency(int pulseHz) {
+    int spv=pulseHz*3600/(8*REVS_PER_MILE);
+    mph=spv;
+    SetByte(1, mph);
+}

@@ -42,9 +42,6 @@ IntervalTimer heartbeatTimer;
 bool ccdReceived, ccdTransmitted, canReceived, canTransmitted, speedoOn;
 FreqMeasureMulti speedoMeasure;
 
-#define REVS_PER_MILE 2737
-#define PULSES_PER_REV 8
-
 #define POT 15
 #define SPEEDO_SENSOR_OUT 18
 #define SPEEDO_SENSOR_IN 22
@@ -57,10 +54,10 @@ SingleLamp skimLamp(messageSkim, 3);
 SingleLamp checkGaugesLamp(messageCheckGauges, 4);
 SingleLamp checkEngineLamp(messageCheckEngine, 4);
 Instrument fuel(messageFuel, 3);
-Instrument speed(messageVehicleSpeed, 5);
+Speedometer speedo;
 Instrument rpm(messageEngineSpeed, 4);
 FeatureStatus featureStatus;
-Instrument* instruments[8]={&fuel, &speed, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil};
+Instrument* instruments[8]={&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil};
 int instrumentCount = 2;
 IntervalTimer outPWM;
 uint8_t speedoSignal;
@@ -73,7 +70,7 @@ int loopCount;
 void loop()
 {
     loopCount++;     
-   
+    measureSpeed();
     clusterWrite();
     // DAS BLINKENLIGHTS!
     digitalWrite(CCD_TX_LED_PIN, ccdTransmitted);
@@ -87,6 +84,19 @@ void loop()
     canReceived=false;
 }
 
+void measureSpeed() {
+     if (speedoMeasure.available()>0) {
+        // average several reading together
+        speedoSum = speedoSum + speedoMeasure.read();
+        speedoCount = speedoCount + 1;
+        if (speedoCount > 4) {
+            float frequency = speedoMeasure.countToFrequency(speedoSum / speedoCount);
+            speedoSum = 0;
+            speedoCount = 0;
+            speedo.SetSpeedSensorFrequency(frequency);
+        }
+     }
+}
 void handleHeartbeat() {
     heartbeat++;
     //Heartbeat LED    
