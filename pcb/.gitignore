@@ -1,6 +1,0 @@
-*.zip
-**/*.zip
-*.gbr*
-*.drl
-fp-*
-sym-lib-table
