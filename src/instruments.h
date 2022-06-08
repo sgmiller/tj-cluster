@@ -3,12 +3,17 @@
 #include <Arduino.h>
 #include <CCDLibrary.h>
 
-static uint8_t engineSpeed[4] = { 0xE4, 0x02, 0x84 };
-static uint8_t vehicleSpeed[4] = { 0x24, 0x02, 0x00, 0x00 };
-static uint8_t airbagOk[3] = { 0x50, 0x00, 0x00 };
+static uint8_t messageEngineSpeed[4] = { 0xE4, 0x02, 0x84 };
+static uint8_t messageVehicleSpeed[4] = { 0x24, 0x02, 0x00, 0x00 };
+static uint8_t messageAirbagOk[3] = { 0x50, 0x00, 0x00 };
+static uint8_t messageAirbagBad[3] = { 0x51, 0x00, 0x00 };
 static uint8_t messageFuel[3] = { 0x25, 0x00, 0x00 };
-static uint8_t messageBatteryCharge[5] = { 0xd4, 0x1f, 0x1f, 0x00, 0x00 };
 static uint8_t messageBattOil[5] = { 0x0c, 0x1f, 0x1f, 0x1f, 0x00 };
+static uint8_t messageCheckGauges[4] = { 0xec, 0x00, 0x00, 0x00 };
+static uint8_t messageCheckEngine[4] = { 0xf5, 0x00, 0x00, 0x00 };
+static uint8_t messageSkim[3] = { 0x0b, 0x00, 0x00 };
+static uint8_t messageFeatureStatus[4] = { 0xa4, 0x00, 0x00, 0x00 };
+
 
 class Instrument
 {
@@ -18,7 +23,8 @@ class Instrument
         void SetPercentage(int bpos, float pct, int min, int max);
         void SetByte(int bpos, uint8_t val);
         uint8_t GetByte(int bpos);
-        
+        // Forces a write even if values haven't changed
+        void Refresh();
 
     protected:
         uint8_t _message[5];
@@ -39,5 +45,30 @@ class BatteryAndOil : public Instrument {
 
 };
 
+class Fuel : public Instrument {
+    public:
+        float fuelPercent;
+        
+        Fuel() : Instrument(messageFuel, 3) {}
+        void SetFuelPercentage(float pct);
+};
+
+class SingleLamp : public Instrument {
+    public:
+        bool on;
+
+        SingleLamp(uint8_t *baseMessage, int messageLen) : Instrument(baseMessage, messageLen) {}
+        void SetLamp(bool on);
+};
+
+class FeatureStatus : public Instrument {
+    public:
+        bool upshift;
+        bool cruiseEnabled;
+        FeatureStatus() : Instrument(messageFeatureStatus, 4) {}
+
+        void SetUpShift(bool on);
+        void SetCruiseEnabled(bool enabled);
+};
  
 #endif

@@ -33,11 +33,11 @@
 uint32_t heartbeat = 0;
 uint32_t currentMillis = 0; // ms
 uint32_t lastMillis = 0; // ms
-uint16_t writeInterval = 200; // ms
+uint16_t refreshInterval = 1000; // ms
 uint16_t heartbeatInterval = 500; // ms
 uint8_t msgCount = 4;
 uint8_t counter = 0;
-IntervalTimer writeTimer;
+IntervalTimer refreshTimer;
 IntervalTimer heartbeatTimer;
 bool ccdReceived, ccdTransmitted, canReceived, canTransmitted, speedoOn;
 FreqMeasureMulti speedoMeasure;
@@ -49,103 +49,64 @@ FreqMeasureMulti speedoMeasure;
 #define SPEEDO_SENSOR_OUT 18
 #define SPEEDO_SENSOR_IN 22
 #define SPEEDOMETER_RATIO 1.59
+#define DISABLE_AIRBAG_LAMP true
 
 
-Instrument fuel(messageFuel, 3);
-Instrument battery(messageBatteryCharge, 5);
-Instrument speed(vehicleSpeed, 5);
-Instrument rpm(engineSpeed, 4);
 BatteryAndOil battOil;
-Instrument* instruments[2]={&fuel, &battery};
+SingleLamp skimLamp(messageSkim, 3);
+SingleLamp checkGaugesLamp(messageCheckGauges, 4);
+SingleLamp checkEngineLamp(messageCheckEngine, 4);
+Instrument fuel(messageFuel, 3);
+Instrument speed(messageVehicleSpeed, 5);
+Instrument rpm(messageEngineSpeed, 4);
+FeatureStatus featureStatus;
+Instrument* instruments[8]={&fuel, &speed, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil};
 int instrumentCount = 2;
 IntervalTimer outPWM;
 uint8_t speedoSignal;
 double speedoSum;
+bool airbagOk = DISABLE_AIRBAG_LAMP;
 int speedoCount;
 int loopCount;
 
 
 void loop()
 {
-    loopCount++;     //Serial.print("Transmit allowed: ");
-    if (speedoMeasure.available()>0) {
-        // average several reading together
-        speedoSum = speedoSum + speedoMeasure.read();
-        speedoCount = speedoCount + 1;
-        if (speedoCount > 4) {
-            float frequency = speedoMeasure.countToFrequency(speedoSum / speedoCount);
-            /*Serial.print("Measured hz:");
-            Serial.println(frequency);*/
-            speedoSum = 0;
-            speedoCount = 0;
-            //freq= (simulatedSpeed/3600.0)*REVS_PER_MILE*3
-        
-            int spv=frequency*3600/(3*REVS_PER_MILE);
-            /*
-            Serial.print("SPV:");
-            Serial.println(spv);*/
-            vehicleSpeed[2]=constrain(spv*SPEEDOMETER_RATIO, 0, 200);
-        }
-    }
-    int pot = analogRead(POT);
-//        Serial.println(pot);
-
-   /*int simulatedSpeed=(pot/1024.0)*100;
-    float speedoSensorFreq = (simulatedSpeed/3600.0)*REVS_PER_MILE*3; //hz
-    analogWrite(SPEEDO_SENSOR_OUT, 128);
-    analogWriteFrequency(SPEEDO_SENSOR_OUT, speedoSensorFreq);
+    loopCount++;     
+   
+    clusterWrite();
     // DAS BLINKENLIGHTS!
     digitalWrite(CCD_TX_LED_PIN, ccdTransmitted);
-    digitalWrite(CCD_RX_LED_PIN, ccdReceived);*/
-    int val = 127;
-/*    if (CCDSERIAL.available()>0) {
-        Serial.print("Out of the blue! ");
-        Serial.println(CCDSERIAL.read());
-    }*/
+    digitalWrite(CCD_RX_LED_PIN, ccdReceived);
+    ccdTransmitted=false;
+    ccdReceived=false;
 
-        int i = loopCount%10;
-        int j = 1<<(loopCount%10);
-        int volts = loopCount;
-        battOil.SetBatteryVoltage((loopCount/10.0)+9);
-        battOil.SetOilPressure((loopCount*5)%80);
-        battOil.SetOilTemperature(100 + (loopCount*5)%240);
-        Serial.print("OilPressure:"); Serial.println(battOil.oilPressure);
-        Serial.print("BattVoltage:"); Serial.println(battOil.batteryVoltage);
-        Serial.print("OilTemperat:"); Serial.println(battOil.oilTemperature);
-        Serial.print(battOil.GetByte(1)); Serial.print(",");
-        Serial.print(battOil.GetByte(2)); Serial.print(",");
-        Serial.print(battOil.GetByte(3)); Serial.println();
-        battOil.MaybeWrite(CCD);
-        delay(1000);
+    digitalWrite(CAN_TX_LED_PIN, ccdTransmitted);
+    digitalWrite(CAN_RX_LED_PIN, ccdReceived);
+    canTransmitted=false;
+    canReceived=false;
 }
 
 void handleHeartbeat() {
     heartbeat++;
-    //Heartbeat LED
-    
+    //Heartbeat LED    
     digitalWrite(LED_BUILTIN, heartbeat%2);
-//    Serial.println("Heartbeat\n");
-    ccdTransmitted=false;
-    ccdReceived=false;
-    /*if ((heartbeat%20)==0) {
-        fuel.SetPercentage(heartbeat%10 * 10,1,254);
-    }*/
-    
 }
 
 void clusterWrite() {  
-    // Write the airbag every time
-    //CCD.write(airbagOk, sizeof(airbagOk));
-    //delay(200);
-    // Same with RPM/MAP
-    //CCD.write(vehicleSpeed, sizeof(vehicleSpeed));
-    //delay(50);
+    if (DISABLE_AIRBAG_LAMP || airbagOk) {
+        // Write the airbag every time
+        CCD.write(messageAirbagOk, sizeof(messageAirbagOk));
+    } else {
+        CCD.write(messageAirbagBad, sizeof(messageAirbagBad));
+    }
+    delay(50);
 
     // Now write just those instruments that have changed
     for  (uint8_t i=0; i<instrumentCount; i++) {
-        /*if (instruments[i]->MaybeWrite(CCD)) {
+        if (instruments[i]->MaybeWrite(CCD)) {
             ccdTransmitted=true;
-        }*/
+        }
     }
 }
 
@@ -203,6 +164,10 @@ void speedoPWM() {
     digitalWrite(SPEEDO_SENSOR_OUT, speedoSignal);
 }
 
+void clusterRefresh() {
+    rpm.Refresh();
+}
+
 void setup()
 {
     // Register instruments
@@ -217,7 +182,7 @@ void setup()
     CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
     CCD.begin(); // CDP68HC68S1
-    writeTimer.begin(clusterWrite, writeInterval*1000);
+    refreshTimer.begin(clusterRefresh, refreshInterval*1000);
     heartbeatTimer.begin(handleHeartbeat, heartbeatInterval*1000);
     //outPWM.begin(speedoPWM, 100000);
     speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);

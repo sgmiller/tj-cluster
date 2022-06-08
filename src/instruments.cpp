@@ -36,6 +36,9 @@ void Instrument::SetByte(int bpos, uint8_t val) {
     _message[bpos] = val;
 }
 
+void Instrument::Refresh() {
+    _needsUpdate = true;
+}
 
 void BatteryAndOil::SetBatteryVoltage(float volts) {
     batteryVoltage = volts;
@@ -73,4 +76,26 @@ void BatteryAndOil::SetOilTemperature(int tempF) {
     int newTemp = round(constrain(hex, 0, 255));
 
      SetByte(3, newTemp);
+}
+
+void Fuel::SetFuelPercentage(float pct) {
+    fuelPercent = pct;
+    SetByte(1,round(constrain(254 * (fuelPercent / 100), 0, 254)));
+}
+
+uint8_t lampBool(bool b) {
+    if (b) {
+        return 255;
+    }
+    return 0;
+}
+
+void FeatureStatus::SetCruiseEnabled(bool enabled) {
+    cruiseEnabled=enabled;
+    SetByte(3, lampBool(enabled));
+}
+
+void FeatureStatus::SetUpShift(bool enabled) {
+    upshift=enabled;
+    SetByte(2, lampBool(enabled));
 }
