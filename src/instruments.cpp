@@ -90,6 +90,10 @@ uint8_t lampBool(bool b) {
     return 0;
 }
 
+void SingleLamp::SetLamp(bool on) {
+    SetByte(1, lampBool(on));
+}
+
 void FeatureStatus::SetCruiseEnabled(bool enabled) {
     cruiseEnabled=enabled;
     SetByte(3, lampBool(enabled));

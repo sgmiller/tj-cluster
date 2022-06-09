@@ -28,12 +28,15 @@
 #include "main.h"
 #include "instruments.h"
 #include <FreqMeasureMulti.h>
+#include <Watchdog.h>
 
 
+WDT_T4<WDT1> wdt;
 uint32_t heartbeat = 0;
 uint32_t currentMillis = 0; // ms
 uint32_t lastMillis = 0; // ms
 uint16_t refreshInterval = 1000; // ms
+uint16_t writeInterval = 200; //ms
 uint16_t heartbeatInterval = 500; // ms
 uint8_t msgCount = 4;
 uint8_t counter = 0;
@@ -61,19 +64,22 @@ FeatureStatus featureStatus;
 
 Instrument* instruments[INSTRUMENT_COUNT]={&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil};
 IntervalTimer outPWM;
+IntervalTimer writeTimer;
 uint8_t speedoSignal;
 double speedoSum;
 bool airbagOk = DISABLE_AIRBAG_LAMP;
 int speedoCount;
 int loopCount;
+int breathDir = 4;
+int breathPWM;
 
 
 void loop()
 {
     loopCount++;     
     measureSpeed();
-    clusterWrite();
-    // DAS BLINKENLIGHTS!
+
+    // DAS BLINKENLIGHTS! .. but seriously, blink I/O indicator pins
     digitalWrite(CCD_TX_LED_PIN, ccdTransmitted);
     digitalWrite(CCD_RX_LED_PIN, ccdReceived);
     ccdTransmitted=false;
@@ -83,6 +89,21 @@ void loop()
     digitalWrite(CAN_RX_LED_PIN, ccdReceived);
     canTransmitted=false;
     canReceived=false;
+
+    // Liveness indicator.  "Breathing" being controlled in the main
+    // loop provides a decent indicator that things are still working.
+    if (loopCount%40000 == 0) {
+        breathPWM = breathPWM + breathDir;
+        if (breathPWM < 0) {
+            breathDir = 4;
+            breathPWM = 0;
+        } else if (breathPWM > 255) {
+            breathDir = -4;
+            breathPWM = 255;
+        }
+        analogWrite(LED_BUILTIN, breathPWM);
+    }
+    wdt.feed();
 }
 
 void measureSpeed() {
@@ -98,10 +119,10 @@ void measureSpeed() {
         }
      }
 }
+
 void handleHeartbeat() {
     heartbeat++;
     //Heartbeat LED    
-    digitalWrite(LED_BUILTIN, heartbeat%2);
 }
 
 void clusterWrite() {  
@@ -179,10 +200,28 @@ void clusterRefresh() {
     rpm.Refresh();
 }
 
+void watchdogReset() {
+    Serial.println("Resetting in 5s...");
+}
+
 void setup()
 {
+    WDT_timings_t config;
+    config.trigger = 5; /* in seconds, 0->128 */
+    config.timeout = 10; /* in seconds, 0->128 */
+    config.callback = watchdogReset;
+    wdt.begin(config);
+
+    // Did we reset due to watchdog?  Alert on this
+    // Save copy of Reset Status Register
+    int lastResetCause = SRC_SRSR;
+    // Clear all Reset Status Register bits
+    SRC_SRSR = (uint32_t)0x1FF;
+    if (lastResetCause == SRC_SRSR_WDOG_RST_B) {
+        skimLamp.SetLamp(true);    
+    }
+
     // Register instruments
-    Serial.begin(9600);
     pinMode(CCD_TX_LED_PIN, OUTPUT);
     pinMode(CCD_RX_LED_PIN, OUTPUT);
     pinMode(CAN_TX_LED_PIN, OUTPUT);
@@ -193,9 +232,11 @@ void setup()
     CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
     CCD.begin(); // CDP68HC68S1
+    writeTimer.begin(clusterWrite, writeInterval*1000);
     refreshTimer.begin(clusterRefresh, refreshInterval*1000);
     heartbeatTimer.begin(handleHeartbeat, heartbeatInterval*1000);
     //outPWM.begin(speedoPWM, 100000);
     speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
+    Serial.println("Setup complete");
 }
 
