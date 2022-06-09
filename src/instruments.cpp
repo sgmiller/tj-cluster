@@ -1,4 +1,7 @@
 #include "instruments.h"
+#include "main.h"
+
+InstrumentWriter *writer;
 
 Instrument::Instrument(uint8_t *baseMessage, int messageLen) {
     for (int i=0; i<messageLen; i++) {
@@ -13,15 +16,14 @@ uint8_t Instrument::GetByte(int bpos) {
 
 bool Instrument::MaybeWrite(CCDLibrary ccd) {
     if (_needsUpdate) {
+        watchdogFeed();
         ccd.write(_message, _messageLen);
         // May need to delay even if something went wrong
-        delay(50);
         _needsUpdate=false;
         return true;
     }
     return false;
 }
-
 
 void Instrument::SetPercentage(int bpos, float pct, int min, int max) {
     uint8_t nextByte = constrain((max-min)*pct, min, max);
@@ -31,19 +33,60 @@ void Instrument::SetPercentage(int bpos, float pct, int min, int max) {
 
 void Instrument::SetByte(int bpos, uint8_t val) {
     if (_message[bpos] != val) {
-        _needsUpdate = true;
+        _message[bpos] = val;
+        Refresh();
     }
-    _message[bpos] = val;
 }
 
 void Instrument::Refresh() {
     _needsUpdate = true;
+    _writer->Wake();
+}
+
+void Instrument::Quiesce() {
+    _needsUpdate=false;
+}
+
+void writeLoop() {
+    writer->Loop();
+}
+
+InstrumentWriter::InstrumentWriter(Instrument** instruments, int instrumentCount) {
+    _instruments = instruments;
+    _instrumentCount = instrumentCount;
+    _writeDelay.begin(writeLoop, POST_WRITE_DELAY);
+}
+
+void InstrumentWriter::Loop() {
+    if (_writing) {
+        return;
+    }
+
+    int start = _currentInstrument;
+    do {
+        if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
+            // Delay after this, but only as long as necessary
+            _writing++;
+            _writeDelay.begin(writeLoop, POST_WRITE_DELAY);
+            _currentInstrument++;
+            break;
+        }
+    } while (_currentInstrument != start);
+    _writing=false;
+    _writeDelay.update(INTERWRITE_DELAY);
+}
+
+void InstrumentWriter::Wake() {
+    if (!_writing) {
+        _writeDelay.end();
+        Loop();
+    }
 }
 
 void BatteryAndOil::SetBatteryVoltage(float volts) {
     batteryVoltage = volts;
     if (volts > 20) {
-        volts == 20;
+        volts = 20;
     }
     SetByte(1, round(constrain(volts * 8,0,255)));
 }

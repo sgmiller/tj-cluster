@@ -25,10 +25,11 @@
  */
 
 #include <CCDLibrary.h>
+#include <FreqMeasureMulti.h>
+#include <FreqCount.h>
+#include <Watchdog.h>
 #include "main.h"
 #include "instruments.h"
-#include <FreqMeasureMulti.h>
-#include <Watchdog.h>
 
 
 WDT_T4<WDT1> wdt;
@@ -50,7 +51,8 @@ FreqMeasureMulti speedoMeasure;
 #define SPEEDO_SENSOR_IN 22
 #define SPEEDOMETER_RATIO 1.59
 #define DISABLE_AIRBAG_LAMP true
-#define INSTRUMENT_COUNT 8
+#define INSTRUMENT_COUNT 9
+#define SPEED_SENSOR_SAMPLES 4
 
 
 BatteryAndOil battOil;
@@ -61,23 +63,25 @@ Instrument fuel(messageFuel, 3);
 Speedometer speedo;
 Instrument rpm(messageEngineSpeed, 4);
 FeatureStatus featureStatus;
+Instrument incrementOdometer(messageIncrementOdometer, 4);
 
-Instrument* instruments[INSTRUMENT_COUNT]={&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil};
+Instrument* instruments[INSTRUMENT_COUNT]={&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &incrementOdometer};
 IntervalTimer outPWM;
 IntervalTimer writeTimer;
 uint8_t speedoSignal;
-double speedoSum;
+double speedoFreqSum;
+int speedoFreqCount;
 bool airbagOk = DISABLE_AIRBAG_LAMP;
-int speedoCount;
 int loopCount;
 int breathDir = 4;
 int breathPWM;
-
+float speedSensorFrequency;
+int speedSensorPulses;
 
 void loop()
 {
     loopCount++;     
-    measureSpeed();
+    handleSpeedSensor();
 
     // DAS BLINKENLIGHTS! .. but seriously, blink I/O indicator pins
     digitalWrite(CCD_TX_LED_PIN, ccdTransmitted);
@@ -103,21 +107,31 @@ void loop()
         }
         analogWrite(LED_BUILTIN, breathPWM);
     }
+}
+
+void watchdogFeed() {
     wdt.feed();
 }
 
-void measureSpeed() {
+void handleSpeedSensor() {
      if (speedoMeasure.available()>0) {
         // average several reading together
-        speedoSum = speedoSum + speedoMeasure.read();
-        speedoCount = speedoCount + 1;
-        if (speedoCount > 4) {
-            float frequency = speedoMeasure.countToFrequency(speedoSum / speedoCount);
-            speedoSum = 0;
-            speedoCount = 0;
-            speedo.SetSpeedSensorFrequency(frequency);
+        int pulses = speedoMeasure.read();
+        speedSensorPulses += pulses;
+        speedoFreqSum = speedoFreqSum + pulses;
+        speedoFreqCount = speedoFreqCount + 1;
+        if (speedoFreqCount > SPEED_SENSOR_SAMPLES) {
+            speedSensorFrequency = speedoMeasure.countToFrequency(speedoFreqSum / speedoFreqCount);
+            speedoFreqSum = 0;
+            speedoFreqCount = 0;
+            speedo.SetSpeedSensorFrequency(speedSensorFrequency);
         }
-     }
+        if (speedSensorPulses >= PULSES_PER_UPDATE) {
+            // send an odometer increment
+            speedSensorPulses = speedSensorPulses - PULSES_PER_UPDATE;
+            incrementOdometer.Refresh();
+        }
+    }     
 }
 
 void handleHeartbeat() {
@@ -212,12 +226,16 @@ void setup()
     config.callback = watchdogReset;
     wdt.begin(config);
 
+    // Don't increment the odometer on start
+    incrementOdometer.Quiesce();
+    
     // Did we reset due to watchdog?  Alert on this
     // Save copy of Reset Status Register
     int lastResetCause = SRC_SRSR;
     // Clear all Reset Status Register bits
     SRC_SRSR = (uint32_t)0x1FF;
     if (lastResetCause == SRC_SRSR_WDOG_RST_B) {
+        // Yes.  Alert via the SKIM light
         skimLamp.SetLamp(true);    
     }
 

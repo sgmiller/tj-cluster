@@ -1,0 +1,12 @@
+(fp_lib_table
+  (lib (name ".pretty")(type "KiCad")(uri "/home/scott/src/CAN-CCD_bus/board/.pretty")(options "")(descr ""))
+  (lib (name "CDP68HC68S1")(type "KiCad")(uri "/home/scott/src/CAN-CCD_bus/board/CDP68HC68S1.pretty")(options "")(descr ""))
+  (lib (name "mx150")(type "KiCad")(uri "/home/scott/src/CAN-CCD_bus/board/mx150.pretty")(options "")(descr ""))
+  (lib (name "keystone_1067")(type "KiCad")(uri "/home/scott/src/CAN-CCD_bus/board/keystone_1067.pretty")(options "")(descr ""))
+  (lib (name "3d")(type "KiCad")(uri "/home/scott/src/CAN-CCD_bus/board/lib/3d")(options "")(descr ""))
+  (lib (name "w_battery_holders")(type "KiCad")(uri "/home/scott/src/CAN-CCD_bus/board/w_battery_holders.pretty")(options "")(descr ""))
+  (lib (name "MCP2561")(type "KiCad")(uri "/home/scott/Eugenia/Parts/MCP2561")(options "")(descr ""))
+  (lib (name "DTM13")(type "KiCad")(uri "/home/scott/Eugenia/Parts/DTM13")(options "")(descr ""))
+  (lib (name "BH32T-C-G")(type "KiCad")(uri "/home/scott/Eugenia/Parts/BH32T-C-G")(options "")(descr ""))
+  (lib (name "TSW-101")(type "KiCad")(uri "/home/scott/Eugenia/Parts/TSW-101")(options "")(descr ""))
+)
