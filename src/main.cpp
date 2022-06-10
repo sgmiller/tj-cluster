@@ -48,7 +48,7 @@ FreqMeasureMulti speedoMeasure;
 #define SPEEDO_SENSOR_IN 22
 #define SPEEDOMETER_RATIO 1.59
 #define DISABLE_AIRBAG_LAMP true
-#define INSTRUMENT_COUNT 9
+#define INSTRUMENT_COUNT 11
 #define SPEED_SENSOR_SAMPLES 4
 #define ACTIVITY_ON_MS 50
 
@@ -62,15 +62,15 @@ Speedometer speedo;
 Instrument rpm(messageEngineSpeed, 4);
 FeatureStatus featureStatus;
 Instrument incrementOdometer(messageIncrementOdometer, 4);
-
-Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &incrementOdometer};
+Instrument airbagOk(messageAirbagOk, 3);
+Instrument airbagBad(messageAirbagOk, 3);
+Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &incrementOdometer, &airbagOk, &airbagBad};
 InstrumentWriter _writer(instruments, INSTRUMENT_COUNT);
 IntervalTimer outPWM;
 IntervalTimer writeTimer;
 uint8_t speedoSignal;
 double speedoFreqSum;
 int speedoFreqCount;
-bool airbagOk = DISABLE_AIRBAG_LAMP;
 int loopCount;
 int breathDir = 4;
 int breathPWM;
@@ -175,6 +175,9 @@ void speedoPWM() {
 
 void clusterRefresh() {
     rpm.Refresh();
+    if (DISABLE_AIRBAG_LAMP) {
+        airbagOk.Refresh();
+    }
 }
 
 void watchdogReset() {
