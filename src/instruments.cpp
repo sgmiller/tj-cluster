@@ -71,25 +71,20 @@ void InstrumentWriter::Begin(InstrumentWriter* self, void (*funct)(),void (*acti
 }
 
 void InstrumentWriter::Loop() {
-    if (_writing) {
-        Serial.println("Skipping loop");
-        return;
-    }
-    Serial.println("Big loop");
-
     int start = _currentInstrument;
     do {
         if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
             // Delay after this, but only as long as necessary
-            _writing++;
+            _writing=true;
             _writeDelay.begin(_writeCallback, POST_WRITE_DELAY);
             _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
             _activity();
-            break;
+            return;
         } else {
             _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
         }
     } while (_currentInstrument != start);
+    //Only stop "writing" when all instruments have been written
     _writing=false;
     _writeDelay.update(INTERWRITE_DELAY);
 }

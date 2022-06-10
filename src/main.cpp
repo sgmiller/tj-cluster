@@ -50,7 +50,7 @@ FreqMeasureMulti speedoMeasure;
 #define DISABLE_AIRBAG_LAMP true
 #define INSTRUMENT_COUNT 11
 #define SPEED_SENSOR_SAMPLES 4
-#define ACTIVITY_ON_MS 50
+#define ACTIVITY_ON_MS 25
 
 
 BatteryAndOil battOil;
@@ -63,7 +63,7 @@ Instrument rpm(messageEngineSpeed, 4);
 FeatureStatus featureStatus;
 Instrument incrementOdometer(messageIncrementOdometer, 4);
 Instrument airbagOk(messageAirbagOk, 3);
-Instrument airbagBad(messageAirbagOk, 3);
+Instrument airbagBad(messageAirbagBad, 3);
 Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &incrementOdometer, &airbagOk, &airbagBad};
 InstrumentWriter _writer(instruments, INSTRUMENT_COUNT);
 IntervalTimer outPWM;
@@ -200,7 +200,9 @@ void setup()
     config.timeout = 10; /* in seconds, 0->128 */
     config.callback = watchdogReset;
     //wdt.begin(config);
-
+    
+    //Give the cluster time to boot
+    delay(3000);
 
     Serial.begin(9600);
     // Don't increment the odometer on start
