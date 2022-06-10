@@ -1,13 +1,12 @@
 #include "instruments.h"
 #include "main.h"
 
-InstrumentWriter *writer;
-
 Instrument::Instrument(uint8_t *baseMessage, int messageLen) {
     for (int i=0; i<messageLen; i++) {
         _message[i]=baseMessage[i];
     }
     _messageLen = messageLen;
+    _writer = NULL;
 }
 
 uint8_t Instrument::GetByte(int bpos) {
@@ -40,36 +39,55 @@ void Instrument::SetByte(int bpos, uint8_t val) {
 
 void Instrument::Refresh() {
     _needsUpdate = true;
-    _writer->Wake();
+    if (_writer != NULL) {
+        _writer->Wake();
+    }
 }
 
 void Instrument::Quiesce() {
     _needsUpdate=false;
 }
 
-void writeLoop() {
-    writer->Loop();
+void Instrument::setWriter(InstrumentWriter* writer) {
+    _writer=writer;
 }
 
 InstrumentWriter::InstrumentWriter(Instrument** instruments, int instrumentCount) {
     _instruments = instruments;
     _instrumentCount = instrumentCount;
-    _writeDelay.begin(writeLoop, POST_WRITE_DELAY);
+}
+
+void InstrumentWriter::Begin(InstrumentWriter* self, void (*funct)(),void (*activity)()) {
+    
+    _activity = activity;
+    _writeCallback = funct;
+    Serial.println("Distributing writer");
+    Serial.println(self == NULL);
+    for (int i=0; i<_instrumentCount; i++) {
+        _instruments[i]->setWriter(self);
+    }
+    Serial.println("Starting writeloop");
+    _writeDelay.begin(funct, POST_WRITE_DELAY);
 }
 
 void InstrumentWriter::Loop() {
     if (_writing) {
+        Serial.println("Skipping loop");
         return;
     }
+    Serial.println("Big loop");
 
     int start = _currentInstrument;
     do {
         if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
             // Delay after this, but only as long as necessary
             _writing++;
-            _writeDelay.begin(writeLoop, POST_WRITE_DELAY);
-            _currentInstrument++;
+            _writeDelay.begin(_writeCallback, POST_WRITE_DELAY);
+            _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
+            _activity();
             break;
+        } else {
+            _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
         }
     } while (_currentInstrument != start);
     _writing=false;
@@ -77,6 +95,7 @@ void InstrumentWriter::Loop() {
 }
 
 void InstrumentWriter::Wake() {
+    Serial.println("Wake");
     if (!_writing) {
         _writeDelay.end();
         Loop();

@@ -33,17 +33,14 @@
 
 
 WDT_T4<WDT1> wdt;
-uint32_t heartbeat = 0;
 uint32_t currentMillis = 0; // ms
 uint32_t lastMillis = 0; // ms
 uint16_t refreshInterval = 1000; // ms
 uint16_t writeInterval = 200; //ms
-uint16_t heartbeatInterval = 500; // ms
 uint8_t msgCount = 4;
 uint8_t counter = 0;
 IntervalTimer refreshTimer;
-IntervalTimer heartbeatTimer;
-bool ccdReceived, ccdTransmitted, canReceived, canTransmitted, speedoOn;
+bool activity, speedoOn;
 FreqMeasureMulti speedoMeasure;
 
 #define POT 15
@@ -53,6 +50,7 @@ FreqMeasureMulti speedoMeasure;
 #define DISABLE_AIRBAG_LAMP true
 #define INSTRUMENT_COUNT 9
 #define SPEED_SENSOR_SAMPLES 4
+#define ACTIVITY_ON_MS 50
 
 
 BatteryAndOil battOil;
@@ -65,7 +63,8 @@ Instrument rpm(messageEngineSpeed, 4);
 FeatureStatus featureStatus;
 Instrument incrementOdometer(messageIncrementOdometer, 4);
 
-Instrument* instruments[INSTRUMENT_COUNT]={&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &incrementOdometer};
+Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &incrementOdometer};
+InstrumentWriter _writer(instruments, INSTRUMENT_COUNT);
 IntervalTimer outPWM;
 IntervalTimer writeTimer;
 uint8_t speedoSignal;
@@ -77,35 +76,21 @@ int breathDir = 4;
 int breathPWM;
 float speedSensorFrequency;
 int speedSensorPulses;
+uint32_t lastActivity;
 
 void loop()
 {
     loopCount++;     
-    handleSpeedSensor();
+    //handleSpeedSensor();
 
     // DAS BLINKENLIGHTS! .. but seriously, blink I/O indicator pins
-    digitalWrite(CCD_TX_LED_PIN, ccdTransmitted);
-    digitalWrite(CCD_RX_LED_PIN, ccdReceived);
-    ccdTransmitted=false;
-    ccdReceived=false;
-
-    digitalWrite(CAN_TX_LED_PIN, ccdTransmitted);
-    digitalWrite(CAN_RX_LED_PIN, ccdReceived);
-    canTransmitted=false;
-    canReceived=false;
-
-    // Liveness indicator.  "Breathing" being controlled in the main
-    // loop provides a decent indicator that things are still working.
-    if (loopCount%40000 == 0) {
-        breathPWM = breathPWM + breathDir;
-        if (breathPWM < 0) {
-            breathDir = 4;
-            breathPWM = 0;
-        } else if (breathPWM > 255) {
-            breathDir = -4;
-            breathPWM = 255;
-        }
-        analogWrite(LED_BUILTIN, breathPWM);
+    if (activity) {
+        digitalWrite(LED_BUILTIN, HIGH);
+        activity=false;
+        lastActivity=millis();
+    } else if ((millis() - lastActivity) >= ACTIVITY_ON_MS) {
+        activity=false;
+        digitalWrite(LED_BUILTIN, LOW);
     }
 }
 
@@ -134,31 +119,9 @@ void handleSpeedSensor() {
     }     
 }
 
-void handleHeartbeat() {
-    heartbeat++;
-    //Heartbeat LED    
-}
-
-void clusterWrite() {  
-    if (DISABLE_AIRBAG_LAMP || airbagOk) {
-        // Write the airbag every time
-        CCD.write(messageAirbagOk, sizeof(messageAirbagOk));
-    } else {
-        CCD.write(messageAirbagBad, sizeof(messageAirbagBad));
-    }
-    delay(50);
-
-    // Now write just those instruments that have changed
-    for  (uint8_t i=0; i<INSTRUMENT_COUNT; i++) {
-        if (instruments[i]->MaybeWrite(CCD)) {
-            ccdTransmitted=true;
-        }
-    }
-}
-
 void CCDMessageReceived(uint8_t* message, uint8_t messageLength)
 {
-    ccdReceived=true;
+    activity=true;
     for (uint8_t i = 0; i < messageLength; i++)
     {
         if (message[i] < 16) Serial.print("0"); // print leading zero
@@ -218,16 +181,28 @@ void watchdogReset() {
     Serial.println("Resetting in 5s...");
 }
 
+void writeLoop() {
+     Serial.println("loop");
+    _writer.Loop();
+}
+
+void activityCallback() {
+    activity=true;
+}
+
 void setup()
 {
     WDT_timings_t config;
     config.trigger = 5; /* in seconds, 0->128 */
     config.timeout = 10; /* in seconds, 0->128 */
     config.callback = watchdogReset;
-    wdt.begin(config);
+    //wdt.begin(config);
 
+
+    Serial.begin(9600);
     // Don't increment the odometer on start
     incrementOdometer.Quiesce();
+    _writer.Begin(&_writer, writeLoop, activityCallback);
     
     // Did we reset due to watchdog?  Alert on this
     // Save copy of Reset Status Register
@@ -250,11 +225,11 @@ void setup()
     CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
     CCD.begin(); // CDP68HC68S1
-    writeTimer.begin(clusterWrite, writeInterval*1000);
+    //writeTimer.begin(clusterWrite, writeInterval*1000);
     refreshTimer.begin(clusterRefresh, refreshInterval*1000);
-    heartbeatTimer.begin(handleHeartbeat, heartbeatInterval*1000);
     //outPWM.begin(speedoPWM, 100000);
     speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
     Serial.println("Setup complete");
+    lastActivity=millis();
 }
 

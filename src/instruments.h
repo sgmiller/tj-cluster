@@ -35,6 +35,7 @@ class Instrument
         void Refresh();
         // Unset the need to update
         void Quiesce();
+        void setWriter(InstrumentWriter* writer);
 
     protected:
         InstrumentWriter* _writer;
@@ -48,12 +49,15 @@ class InstrumentWriter {
         InstrumentWriter(Instrument** instruments, int instrumentCount);
         void Loop();  
         void Wake();  
+        void Begin(InstrumentWriter* writer, void (*funct)(), void (*activity)());
     private:
         IntervalTimer _writeDelay;
         int _instrumentCount;
         Instrument** _instruments;
         int _currentInstrument;
         bool _writing;
+        void (*_writeCallback)();
+        void (*_activity)();
 };
 
 class BatteryAndOil : public Instrument {
