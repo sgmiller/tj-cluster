@@ -3005,7 +3005,7 @@
     (uuid 133bb99a-82f3-4f77-a20b-451874ac44f4)
     (property "Reference" "U4" (id 0) (at 133.35 71.3572 0))
     (property "Value" "Teensy4.0" (id 1) (at 133.35 73.8941 0))
-    (property "Footprint" "Teensy 4.0:Teensy40_NoSMT" (id 2) (at 123.19 106.68 0)
+    (property "Footprint" "MCUs:Teensy40_NoSMT" (id 2) (at 123.19 106.68 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (id 3) (at 123.19 106.68 0)
@@ -3255,7 +3255,7 @@
     (property "Value" "25pF" (id 1) (at 213.5759 64.5735 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TSW-101:C_Disc_D6.5mm_W4mm_P6.4mm" (id 2) (at 215.9 62.865 0)
+    (property "Footprint" "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm" (id 2) (at 215.9 62.865 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 215.9 62.865 0)
@@ -3605,7 +3605,7 @@
     (property "Value" "CDP68HC68S1" (id 1) (at 244.0432 41.8338 0)
       (effects (font (size 1.524 1.524)))
     )
-    (property "Footprint" "CDP68HC68S1:CDP68HC68S1" (id 2) (at 244.0432 41.8338 0)
+    (property "Footprint" "Transceivers:CDP68HC68S1" (id 2) (at 244.0432 41.8338 0)
       (effects (font (size 1.524 1.524)) hide)
     )
     (property "Datasheet" "" (id 3) (at 244.0432 41.8338 0)
@@ -3736,7 +3736,7 @@
     (uuid 9f4e2139-37ca-433c-9edc-8c5645d1e349)
     (property "Reference" "J3" (id 0) (at 207.01 68.0552 0))
     (property "Value" "TSW-101-07-T-D" (id 1) (at 207.01 70.5921 0))
-    (property "Footprint" "TSW-101:SAMTEC_TSW-101-07-T-D" (id 2) (at 207.01 74.295 0)
+    (property "Footprint" "Jumpers:SAMTEC_TSW-101-07-T-D" (id 2) (at 207.01 74.295 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
     )
     (property "Datasheet" "" (id 3) (at 207.01 74.295 0)
@@ -3995,7 +3995,7 @@
     (uuid df89e018-68cd-4312-b4c8-9dfbda41ae85)
     (property "Reference" "J2" (id 0) (at 200.66 41.3852 0))
     (property "Value" "TSW-101-07-T-D" (id 1) (at 200.66 43.9221 0))
-    (property "Footprint" "TSW-101:SAMTEC_TSW-101-07-T-D" (id 2) (at 200.66 47.625 0)
+    (property "Footprint" "Jumpers:SAMTEC_TSW-101-07-T-D" (id 2) (at 200.66 47.625 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
     )
     (property "Datasheet" "" (id 3) (at 200.66 47.625 0)
@@ -4040,7 +4040,7 @@
     (property "Value" "25pF" (id 1) (at 225.2091 57.5885 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "TSW-101:C_Disc_D6.5mm_W4mm_P6.4mm" (id 2) (at 222.885 55.88 0)
+    (property "Footprint" "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm" (id 2) (at 222.885 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 222.885 55.88 0)
@@ -4078,7 +4078,7 @@
     (property "Value" "25pF" (id 1) (at 220.5609 64.5735 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TSW-101:C_Disc_D6.5mm_W4mm_P6.4mm" (id 2) (at 222.885 62.865 0)
+    (property "Footprint" "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm" (id 2) (at 222.885 62.865 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 222.885 62.865 0)
@@ -4331,13 +4331,13 @@
       (reference "C4") (unit 1) (value "0.1uF") (footprint "Capacitor_THT:C_Disc_D7.0mm_W2.5mm_P5.00mm")
     )
     (path "/e2fe818b-e894-4111-8113-28ecb3a892a1"
-      (reference "C5") (unit 1) (value "25pF") (footprint "TSW-101:C_Disc_D6.5mm_W4mm_P6.4mm")
+      (reference "C5") (unit 1) (value "25pF") (footprint "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm")
     )
     (path "/474365b3-872f-4e9f-9366-b68e0228856f"
-      (reference "C6") (unit 1) (value "25pF") (footprint "TSW-101:C_Disc_D6.5mm_W4mm_P6.4mm")
+      (reference "C6") (unit 1) (value "25pF") (footprint "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm")
     )
     (path "/eb52f81a-44f2-4243-9ec4-d29bfe98c78d"
-      (reference "C7") (unit 1) (value "25pF") (footprint "TSW-101:C_Disc_D6.5mm_W4mm_P6.4mm")
+      (reference "C7") (unit 1) (value "25pF") (footprint "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm")
     )
     (path "/5fa393d1-bc57-4048-a1c8-accb336b4802"
       (reference "C8") (unit 1) (value "0.1uf") (footprint "Capacitor_THT:C_Disc_D7.0mm_W2.5mm_P5.00mm")
@@ -4400,10 +4400,10 @@
       (reference "J1") (unit 1) (value "DTM13-12PA-R008") (footprint "DTM13:TE_DTM13-12PA-R008")
     )
     (path "/df89e018-68cd-4312-b4c8-9dfbda41ae85"
-      (reference "J2") (unit 1) (value "TSW-101-07-T-D") (footprint "TSW-101:SAMTEC_TSW-101-07-T-D")
+      (reference "J2") (unit 1) (value "TSW-101-07-T-D") (footprint "Jumpers:SAMTEC_TSW-101-07-T-D")
     )
     (path "/9f4e2139-37ca-433c-9edc-8c5645d1e349"
-      (reference "J3") (unit 1) (value "TSW-101-07-T-D") (footprint "TSW-101:SAMTEC_TSW-101-07-T-D")
+      (reference "J3") (unit 1) (value "TSW-101-07-T-D") (footprint "Jumpers:SAMTEC_TSW-101-07-T-D")
     )
     (path "/0a29b72f-42cd-45ef-bfa3-6665ab368e8c"
       (reference "L1") (unit 1) (value "47uH") (footprint "Inductor_THT:L_Radial_D8.7mm_P5.00mm_Fastron_07HCP")
@@ -4448,13 +4448,13 @@
       (reference "U1") (unit 1) (value "MCP1700-1802E_TO92") (footprint "Package_TO_SOT_THT:TO-92_Inline")
     )
     (path "/86884b69-c7b8-4118-8464-b297ee7a9704"
-      (reference "U2") (unit 1) (value "CDP68HC68S1") (footprint "CDP68HC68S1:CDP68HC68S1")
+      (reference "U2") (unit 1) (value "CDP68HC68S1") (footprint "Transceivers:CDP68HC68S1")
     )
     (path "/aaae18a7-7010-4c06-bdc3-efc8889ebd9e"
       (reference "U3") (unit 1) (value "LM2672N-5.0") (footprint "Package_DIP:DIP-8_W7.62mm")
     )
     (path "/133bb99a-82f3-4f77-a20b-451874ac44f4"
-      (reference "U4") (unit 1) (value "Teensy4.0") (footprint "Teensy 4.0:Teensy40_NoSMT")
+      (reference "U4") (unit 1) (value "Teensy4.0") (footprint "MCUs:Teensy40_NoSMT")
     )
     (path "/6ad50543-c10b-4e35-a9e8-1415ca733261"
       (reference "U5") (unit 1) (value "MCP2562-H-P") (footprint "Package_DIP:DIP-8_W7.62mm")
