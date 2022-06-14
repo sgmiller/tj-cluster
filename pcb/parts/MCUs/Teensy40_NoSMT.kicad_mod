@@ -66,7 +66,7 @@
   (pad "31" thru_hole circle (at -11.43 -7.62) (size 1.404 1.404) (drill 1.1) (layers *.Cu *.Mask) (tstamp cae8e649-f63b-491a-9b7c-018251c9fc14))
   (pad "32" thru_hole circle (at -13.97 -7.62) (size 1.404 1.404) (drill 1.1) (layers *.Cu *.Mask) (tstamp c37914b0-96bd-4f88-8c17-c97db58ca4b0))
   (pad "33" thru_hole circle (at -16.51 -7.62) (size 1.404 1.404) (drill 1.1) (layers *.Cu *.Mask) (tstamp 442e1fb4-7040-4e7d-a7dc-10f7727bdd5f))
-  (model "${KICAD_USER_DIR}/teensy.pretty/Teensy_4.0_Assembly.STEP"
+  (model "${KIPRJMOD}/parts/MCUs/Teensy_4.0_Assembly.STEP"
     (offset (xyz 33 9.5 -11))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 0))
