@@ -1,12 +1,14 @@
 #include "instruments.h"
 #include "main.h"
 
-Instrument::Instrument(uint8_t *baseMessage, int messageLen) {
+Instrument::Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_t max) {
     for (int i=0; i<messageLen; i++) {
         _message[i]=baseMessage[i];
     }
     _messageLen = messageLen;
     _writer = NULL;
+    _min = min;
+    _max = max;
 }
 
 uint8_t Instrument::GetByte(int bpos) {
@@ -15,6 +17,7 @@ uint8_t Instrument::GetByte(int bpos) {
 
 bool Instrument::MaybeWrite(CCDLibrary ccd) {
     if (_needsUpdate) {
+        _writer->_writing=true;
         watchdogFeed();
         ccd.write(_message, _messageLen);
         // May need to delay even if something went wrong
@@ -31,8 +34,9 @@ void Instrument::SetPercentage(int bpos, float pct, int min, int max) {
 }
 
 void Instrument::SetByte(int bpos, uint8_t val) {
-    if (_message[bpos] != val) {
-        _message[bpos] = val;
+    uint8_t newVal = constrain(val, _min, _max);
+    if (_message[bpos] != newVal) {
+        _message[bpos] = newVal;
         Refresh();
     }
 }
@@ -71,26 +75,20 @@ void InstrumentWriter::Begin(InstrumentWriter* self, void (*funct)(),void (*acti
 }
 
 void InstrumentWriter::Loop() {
-    int start = _currentInstrument;
-    do {
-        if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
-            // Delay after this, but only as long as necessary
-            _writing=true;
-            _writeDelay.begin(_writeCallback, POST_WRITE_DELAY);
-            _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
-            _activity();
-            return;
-        } else {
-            _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
-        }
-    } while (_currentInstrument != start);
+    if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
+        // Delay after this, but only as long as necessary
+        _writeDelay.begin(_writeCallback, POST_WRITE_DELAY);
+        _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
+        _activity();
+        return;
+    } 
+    _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
     //Only stop "writing" when all instruments have been written
     _writing=false;
-    _writeDelay.update(INTERWRITE_DELAY);
+    _writeDelay.begin(_writeCallback, INTERWRITE_DELAY);
 }
 
 void InstrumentWriter::Wake() {
-    Serial.println("Wake");
     if (!_writing) {
         _writeDelay.end();
         Loop();
@@ -108,7 +106,8 @@ void BatteryAndOil::SetBatteryVoltage(float volts) {
 void BatteryAndOil::SetOilPressure(int psi) {
     oilPressure = psi;
     // Odd
-    // Seem to be three regimes here
+    // Seem to be three regimes here.  Don't count on this being
+    // true for your cluster.
     if (psi <= 40) {
         SetByte(2, psi*2);
     } else if (psi <= 60) {
@@ -163,6 +162,22 @@ void FeatureStatus::SetUpShift(bool enabled) {
 
 void Speedometer::SetSpeedSensorFrequency(int pulseHz) {
     int spv=pulseHz*3600/(8*REVS_PER_MILE);
-    mph=spv;
-    SetByte(1, mph);
+    SetMPH(spv);
+}
+
+void Speedometer::SetMPH(int newMph) {
+    mph=newMph;
+    SetKPH(round(newMph * 1.609344));
+    SetByte(2, newMph);
+}
+
+void Speedometer::SetKPH(int newKPH) {
+    kph = newKPH;
+    mph = round(kph * 0.62137119);
+    SetByte(2, kph);
+}
+
+void Tachometer::SetRPM(int newRPM) {
+    rpm = newRPM;
+    SetByte(1, rpm/32);
 }

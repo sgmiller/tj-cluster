@@ -51,27 +51,32 @@ FreqMeasureMulti speedoMeasure;
 #define INSTRUMENT_COUNT 11
 #define SPEED_SENSOR_SAMPLES 4
 #define ACTIVITY_ON_MS 25
+#define SELF_TEST_STAGE_COUNT 6
+#define SELF_TEST_STAGE_DURATION 3000
 
 
 BatteryAndOil battOil;
 SingleLamp skimLamp(messageSkim, 3);
 SingleLamp checkGaugesLamp(messageCheckGauges, 4);
 SingleLamp checkEngineLamp(messageCheckEngine, 4);
-Instrument fuel(messageFuel, 3);
+Instrument fuel(messageFuel, 3, 1, 254);
 Speedometer speedo;
-Instrument rpm(messageEngineSpeed, 4);
+Tachometer tach;
 FeatureStatus featureStatus;
-Instrument incrementOdometer(messageIncrementOdometer, 4);
-Instrument airbagOk(messageAirbagOk, 3);
-Instrument airbagBad(messageAirbagBad, 3);
-Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &rpm, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &incrementOdometer, &airbagOk, &airbagBad};
+Instrument incrementOdometer(messageIncrementOdometer, 4, 0, 255);
+Instrument airbagOk(messageAirbagOk, 3, 0, 255);
+Instrument airbagBad(messageAirbagBad, 3, 0, 255);
+Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &tach, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &incrementOdometer, &airbagOk, &airbagBad};
 InstrumentWriter _writer(instruments, INSTRUMENT_COUNT);
 IntervalTimer outPWM;
 IntervalTimer writeTimer;
+IntervalTimer selfTestTimer;
 uint8_t speedoSignal;
 double speedoFreqSum;
 int speedoFreqCount;
+int selfTestPhaseStart;
 int loopCount;
+int selfTestStage;
 int breathDir = 4;
 int breathPWM;
 float speedSensorFrequency;
@@ -91,6 +96,46 @@ void loop()
     } else if ((millis() - lastActivity) >= ACTIVITY_ON_MS) {
         activity=false;
         digitalWrite(LED_BUILTIN, LOW);
+    }
+
+    float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
+    if (selfTestStage == 3) {
+        speedo.SetKPH(160 * t);
+    } else if (selfTestStage == 4) {
+        tach.SetRPM(6000 * t);
+    } else if (selfTestStage == 5) {
+        int t = millis() - selfTestPhaseStart;
+        fuel.SetPercentage(1, 0.5, 1, 254);
+    }
+}
+
+void resetGauges() {
+    speedo.SetMPH(0);
+    tach.SetRPM(0);
+    battOil.SetBatteryVoltage(0);
+    battOil.SetOilPressure(0);
+    battOil.SetOilTemperature(0);
+    fuel.SetPercentage(1, 0.0, 1, 254);
+    featureStatus.SetCruiseEnabled(false);
+    featureStatus.SetUpShift(false);
+}
+
+void selfTest() {
+    selfTestPhaseStart = millis();
+    resetGauges();
+    Serial.print("Self test stage ");
+    selfTestStage++;
+    Serial.println(selfTestStage);
+    switch (selfTestStage) {
+    case 1:
+        featureStatus.SetCruiseEnabled(true);
+        break;
+    case 2:
+        featureStatus.SetUpShift(true);
+        break;
+    case SELF_TEST_STAGE_COUNT+1:
+        selfTestStage = 0;
+        break;
     }
 }
 
@@ -174,7 +219,7 @@ void speedoPWM() {
 }
 
 void clusterRefresh() {
-    rpm.Refresh();
+    tach.Refresh();
     if (DISABLE_AIRBAG_LAMP) {
         airbagOk.Refresh();
     }
@@ -185,7 +230,6 @@ void watchdogReset() {
 }
 
 void writeLoop() {
-     Serial.println("loop");
     _writer.Loop();
 }
 
@@ -234,7 +278,8 @@ void setup()
     refreshTimer.begin(clusterRefresh, refreshInterval*1000);
     //outPWM.begin(speedoPWM, 100000);
     speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
-    Serial.println("Setup complete");
     lastActivity=millis();
+    selfTestTimer.begin(selfTest, (500+SELF_TEST_STAGE_DURATION)*1000);
+    Serial.println("Setup complete");
 }
 

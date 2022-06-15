@@ -8,6 +8,7 @@
 #define PULSES_PER_UPDATE 800
 #define POST_WRITE_DELAY 50*1000 // 50ms
 #define INTERWRITE_DELAY 200*1000 // 200ms
+#define EOM_DELAY 1280 // 1.28 ms
 
 static uint8_t messageEngineSpeed[4] = { 0xE4, 0x02, 0x84 };
 static uint8_t messageAirbagOk[3] = { 0x50, 0x00, 0x00 };
@@ -26,7 +27,7 @@ class InstrumentWriter;
 class Instrument
 {
     public:
-        Instrument(uint8_t *baseMessage, int messageLen);
+        Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_t max);
         bool MaybeWrite(CCDLibrary ccd);
         void SetPercentage(int bpos, float pct, int min, int max);
         void SetByte(int bpos, uint8_t val);
@@ -38,6 +39,7 @@ class Instrument
         void setWriter(InstrumentWriter* writer);
 
     protected:
+        uint8_t _min,_max;
         InstrumentWriter* _writer;
         uint8_t _message[5];
         int _messageLen;
@@ -66,7 +68,7 @@ class BatteryAndOil : public Instrument {
         int oilPressure;
         int oilTemperature;
 
-        BatteryAndOil() : Instrument(messageBattOil, 5) {}
+        BatteryAndOil() : Instrument(messageBattOil, 5, 0, 255) {}
         void SetBatteryVoltage(float volts);
         void SetOilPressure(int psi);
         void SetOilTemperature(int degreesF);
@@ -77,7 +79,7 @@ class Fuel : public Instrument {
     public:
         float fuelPercent;
         
-        Fuel() : Instrument(messageFuel, 3) {}
+        Fuel() : Instrument(messageFuel, 3,1,255) {}
         void SetFuelPercentage(float pct);
 };
 
@@ -85,7 +87,7 @@ class SingleLamp : public Instrument {
     public:
         bool on;
 
-        SingleLamp(uint8_t *baseMessage, int messageLen) : Instrument(baseMessage, messageLen) {}
+        SingleLamp(uint8_t *baseMessage, int messageLen) : Instrument(baseMessage, messageLen,0,255) {}
         void SetLamp(bool on);
 };
 
@@ -93,7 +95,7 @@ class FeatureStatus : public Instrument {
     public:
         bool upshift;
         bool cruiseEnabled;
-        FeatureStatus() : Instrument(messageFeatureStatus, 4) {}
+        FeatureStatus() : Instrument(messageFeatureStatus, 4, 0, 255) {}
 
         void SetUpShift(bool on);
         void SetCruiseEnabled(bool enabled);
@@ -102,8 +104,18 @@ class FeatureStatus : public Instrument {
 class Speedometer : public Instrument {
     public:
         int mph;
-        Speedometer() : Instrument(messageVehicleSpeed, 4) {}
+        int kph;
+        Speedometer() : Instrument(messageVehicleSpeed, 4, 0, 160) {}
         void SetSpeedSensorFrequency(int pulseHz);
+        void SetMPH(int mph);
+        void SetKPH(int kph);
+};
+
+class Tachometer : public Instrument {
+    public:
+        int rpm;
+        Tachometer() : Instrument(messageEngineSpeed, 4, 0, 255) {}
+        void SetRPM(int rpm);
 };
  
 #endif
