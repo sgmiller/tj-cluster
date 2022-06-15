@@ -72,11 +72,12 @@ IntervalTimer outPWM;
 IntervalTimer writeTimer;
 IntervalTimer selfTestTimer;
 uint8_t speedoSignal;
+bool selfTestMode = true;
 double speedoFreqSum;
 int speedoFreqCount;
 int selfTestPhaseStart;
 int loopCount;
-int selfTestStage;
+int selfTestStage=0;
 int breathDir = 4;
 int breathPWM;
 float speedSensorFrequency;
@@ -103,9 +104,6 @@ void loop()
         speedo.SetKPH(160 * t);
     } else if (selfTestStage == 4) {
         tach.SetRPM(6000 * t);
-    } else if (selfTestStage == 5) {
-        int t = millis() - selfTestPhaseStart;
-        fuel.SetPercentage(1, 0.5, 1, 254);
     }
 }
 
@@ -115,7 +113,9 @@ void resetGauges() {
     battOil.SetBatteryVoltage(0);
     battOil.SetOilPressure(0);
     battOil.SetOilTemperature(0);
-    fuel.SetPercentage(1, 0.0, 1, 254);
+    if (!selfTestMode) {
+        fuel.SetPercentage(1, 0.0, 1, 254);
+    }
     featureStatus.SetCruiseEnabled(false);
     featureStatus.SetUpShift(false);
 }
@@ -123,8 +123,10 @@ void resetGauges() {
 void selfTest() {
     selfTestPhaseStart = millis();
     resetGauges();
-    Serial.print("Self test stage ");
     selfTestStage++;
+    Serial.println(selfTestStage);
+    //featureStatus.SetByte(1,selfTestStage);
+    Serial.print("Self test stage ");
     Serial.println(selfTestStage);
     switch (selfTestStage) {
     case 1:
@@ -132,6 +134,9 @@ void selfTest() {
         break;
     case 2:
         featureStatus.SetUpShift(true);
+        break;
+    case 5:
+        fuel.SetPercentage(1, 0.5, 1, 254);
         break;
     case SELF_TEST_STAGE_COUNT+1:
         selfTestStage = 0;
@@ -279,7 +284,7 @@ void setup()
     //outPWM.begin(speedoPWM, 100000);
     speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
     lastActivity=millis();
-    selfTestTimer.begin(selfTest, (500+SELF_TEST_STAGE_DURATION)*1000);
+    selfTestTimer.begin(selfTest, (1000+SELF_TEST_STAGE_DURATION)*1000);
     Serial.println("Setup complete");
 }
 

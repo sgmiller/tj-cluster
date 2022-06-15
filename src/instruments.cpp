@@ -15,9 +15,12 @@ uint8_t Instrument::GetByte(int bpos) {
     return _message[bpos];
 }
 
+bool Instrument::NeedsUpdate() {
+    return _needsUpdate;
+}
+
 bool Instrument::MaybeWrite(CCDLibrary ccd) {
     if (_needsUpdate) {
-        _writer->_writing=true;
         watchdogFeed();
         ccd.write(_message, _messageLen);
         // May need to delay even if something went wrong
@@ -29,6 +32,8 @@ bool Instrument::MaybeWrite(CCDLibrary ccd) {
 
 void Instrument::SetPercentage(int bpos, float pct, int min, int max) {
     uint8_t nextByte = constrain((max-min)*pct, min, max);
+    Serial.print("Setting pct to ");
+    Serial.println(nextByte);
     _needsUpdate = nextByte != _message[bpos];
     _message[bpos]=nextByte;
 }
@@ -75,12 +80,15 @@ void InstrumentWriter::Begin(InstrumentWriter* self, void (*funct)(),void (*acti
 }
 
 void InstrumentWriter::Loop() {
-    if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
-        // Delay after this, but only as long as necessary
-        _writeDelay.begin(_writeCallback, POST_WRITE_DELAY);
-        _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
-        _activity();
-        return;
+    if (_instruments[_currentInstrument]->NeedsUpdate()) {
+        _writing=true;
+        if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
+            // Delay after this, but only as long as necessary
+            _writeDelay.begin(_writeCallback, POST_WRITE_DELAY);
+            _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
+            _activity();
+            return;
+        }
     } 
     _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
     //Only stop "writing" when all instruments have been written
@@ -136,7 +144,7 @@ void BatteryAndOil::SetOilTemperature(int tempF) {
 
 void Fuel::SetFuelPercentage(float pct) {
     fuelPercent = pct;
-    SetByte(1,round(constrain(254 * (fuelPercent / 100), 0, 254)));
+    SetByte(1,round(constrain(254 * fuelPercent, 0, 254)));
 }
 
 uint8_t lampBool(bool b) {
@@ -152,12 +160,20 @@ void SingleLamp::SetLamp(bool on) {
 
 void FeatureStatus::SetCruiseEnabled(bool enabled) {
     cruiseEnabled=enabled;
-    SetByte(3, lampBool(enabled));
+    if (enabled) {
+        SetByte(2, GetByte(2) | CRUISE_ENABLED);
+    } else {
+        SetByte(2, GetByte(2) & !CRUISE_ENABLED);
+    }
 }
 
 void FeatureStatus::SetUpShift(bool enabled) {
     upshift=enabled;
-    SetByte(2, lampBool(enabled));
+    if (enabled) {
+        SetByte(1, GetByte(2) | UPSHIFT);
+    } else {
+        SetByte(1, GetByte(2) & !UPSHIFT);
+    }
 }
 
 void Speedometer::SetSpeedSensorFrequency(int pulseHz) {
