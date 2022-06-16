@@ -56,11 +56,14 @@
         }
       ],
       "drc_exclusions": [
+        "clearance|121412000|107053000|bcbd2b3b-a4d7-4a41-b5d9-55e02dfa9703|2aeb4952-f42a-41b9-9ae1-76352f7d87d8",
+        "clearance|122157000|107053000|992527ff-6b35-4cf7-bac4-d0c4fa389255|bcbd2b3b-a4d7-4a41-b5d9-55e02dfa9703",
         "courtyards_overlap|122838801|130302000|308d50c3-cf99-449c-aa6c-cb459e179b84|e8e05818-5a38-4a4c-bcd5-5463b45efe04",
         "courtyards_overlap|53332136|128505936|308d50c3-cf99-449c-aa6c-cb459e179b84|cc1b928e-9ef1-41da-883d-c7ca579a4541",
         "items_not_allowed|126288800|130302000|e8e05818-5a38-4a4c-bcd5-5463b45efe04|00000000-0000-0000-0000-000000000000",
         "items_not_allowed|56286400|130251200|cc1b928e-9ef1-41da-883d-c7ca579a4541|00000000-0000-0000-0000-000000000000",
         "items_not_allowed|91186000|130535000|308d50c3-cf99-449c-aa6c-cb459e179b84|00000000-0000-0000-0000-000000000000",
+        "silk_overlap|101634857|75869714|48452747-4e66-415a-b139-ad5678031873|4806ef95-1c8d-41dd-ab6e-a388a23fed4f",
         "silk_overlap|116137430|89793747|0d8343d5-768b-495f-a305-11b661c06313|59fc71f6-de28-4d17-bc5f-b3f7c810dbd4"
       ],
       "meta": {
@@ -405,8 +408,7 @@
         "name": "+5V",
         "nets": [
           "+5V",
-          "3v3",
-          "Net-(D4-Pad1)"
+          "3v3"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
@@ -555,10 +557,6 @@
     [
       "30a59342-dbf1-42d2-913c-7e79095896d9",
       ""
-    ],
-    [
-      "9be6fb6a-5ecd-4a61-a8f3-4e8e17ad9e52",
-      "CAN Bus Transceiver"
     ]
   ],
   "text_variables": {}
