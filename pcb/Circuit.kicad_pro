@@ -413,7 +413,8 @@
           "+5V",
           "3v3",
           "Net-(C1-Pad1)",
-          "Net-(C1-Pad2)"
+          "Net-(C1-Pad2)",
+          "SPEEDO_IN"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
