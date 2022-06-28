@@ -387,7 +387,8 @@
         "microvia_drill": 0.3302,
         "name": "+12V",
         "nets": [
-          "+12V"
+          "+12V",
+          "Net-(OC1-Pad3)"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
