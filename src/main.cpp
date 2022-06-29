@@ -31,11 +31,10 @@
 #include "main.h"
 #include "instruments.h"
 
-
 WDT_T4<WDT1> wdt;
 uint32_t currentMillis = 0; // ms
 uint32_t lastMillis = 0; // ms
-uint16_t refreshInterval = 1000; // ms
+uint16_t refreshInterval = 2000; // ms
 uint16_t writeInterval = 200; //ms
 uint8_t msgCount = 4;
 uint8_t counter = 0;
@@ -43,16 +42,27 @@ IntervalTimer refreshTimer;
 bool activity, speedoOn;
 FreqMeasureMulti speedoMeasure;
 
-#define POT 15
-#define SPEEDO_SENSOR_OUT 18
-#define SPEEDO_SENSOR_IN 22
+#define USING_SPEED_SENSOR false
+#define SELF_TEST_MODE false
+#define SPEEDO_SENSOR_IN 7
 #define SPEEDOMETER_RATIO 1.59
 #define DISABLE_AIRBAG_LAMP true
 #define INSTRUMENT_COUNT 11
 #define SPEED_SENSOR_SAMPLES 4
 #define ACTIVITY_ON_MS 25
-#define SELF_TEST_STAGE_COUNT 6
+#define SELF_TEST_STAGE_COUNT 7
 #define SELF_TEST_STAGE_DURATION 3000
+#define AQY210EH_TURNON_MAX 2 // ms
+#define VBAT_VD_R1 2200.0
+#define VBAT_VD_R2 13000.0
+#define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R1/(VBAT_VD_R1+VBAT_VD_R2)) // Set voltage divider resistor values here
+//#define VBAT_VOLTAGE_DIVIDER_RATIO 10000000.0/1500000.0 // Set voltage divider resistor values here
+#define MCU_VOLTAGE 3.3
+#define PULSES_PER_AXLE_REVOLUTION 8
+#define GEAR_RATIO 3.07
+#define TIRE_DIAMETER 28.86
+#define TIRE_CIRCUMFERENCE 3.14159*TIRE_DIAMETER
+#define PULSES_PER_MILE (5280/TIRE_CIRCUMFERENCE)*PULSES_PER_AXLE_REVOLUTION
 
 
 BatteryAndOil battOil;
@@ -63,10 +73,10 @@ Instrument fuel(messageFuel, 3, 1, 254);
 Speedometer speedo;
 Tachometer tach;
 FeatureStatus featureStatus;
-Instrument incrementOdometer(messageIncrementOdometer, 4, 0, 255);
+Odometer odometer;
 Instrument airbagOk(messageAirbagOk, 3, 0, 255);
 Instrument airbagBad(messageAirbagBad, 3, 0, 255);
-Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &tach, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &incrementOdometer, &airbagOk, &airbagBad};
+Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &tach, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &odometer, &airbagOk, &airbagBad};
 InstrumentWriter _writer(instruments, INSTRUMENT_COUNT);
 IntervalTimer outPWM;
 IntervalTimer writeTimer;
@@ -77,6 +87,7 @@ double speedoFreqSum;
 int speedoFreqCount;
 int selfTestPhaseStart;
 int loopCount;
+int refreshCount;
 int selfTestStage=0;
 int breathDir = 4;
 int breathPWM;
@@ -99,11 +110,15 @@ void loop()
         digitalWrite(LED_BUILTIN, LOW);
     }
 
-    float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
-    if (selfTestStage == 3) {
-        speedo.SetKPH(160 * t);
-    } else if (selfTestStage == 4) {
-        tach.SetRPM(6000 * t);
+    if (SELF_TEST_MODE) {
+        float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
+        if (selfTestStage == 3) {
+            speedo.SetKPH(160 * t);
+        } else if (selfTestStage == 4) {
+            tach.SetRPM(6000 * t);
+        } else if (selfTestStage == 5) {
+            battOil.SetBatteryVoltage(20*t);
+        }
     }
 }
 
@@ -163,8 +178,8 @@ void handleSpeedSensor() {
         }
         if (speedSensorPulses >= PULSES_PER_UPDATE) {
             // send an odometer increment
-            speedSensorPulses = speedSensorPulses - PULSES_PER_UPDATE;
-            incrementOdometer.Refresh();
+            odometer.AddMiles(speedSensorPulses / PULSES_PER_MILE);
+            speedSensorPulses = 0;
         }
     }     
 }
@@ -218,16 +233,31 @@ void CCDHandleError(CCD_Operations op, CCD_Errors err)
     }
 }
 
-void speedoPWM() {
-    speedoSignal = (speedoSignal + 1) % 2;
-    digitalWrite(SPEEDO_SENSOR_OUT, speedoSignal);
+float measureBattery() {
+    digitalWrite(VBAT_MEASURE_CTL, HIGH);
+    // Let relay settle
+    delay(AQY210EH_TURNON_MAX);
+    int battery=analogRead(VBAT_MEASURE_SIG);
+    digitalWrite(VBAT_MEASURE_CTL, LOW);
+    float analogVoltage = battery * (MCU_VOLTAGE/1023.0);
+    float batVoltage = analogVoltage * VBAT_MEASUREMENT_RATIO;
+    return batVoltage;
 }
 
+int odoIncs;
+
 void clusterRefresh() {
+    refreshCount++;
     tach.Refresh();
     if (DISABLE_AIRBAG_LAMP) {
         airbagOk.Refresh();
     }
+
+    battOil.SetBatteryVoltage(measureBattery());
+    odoIncs++;
+    odometer.AddMiles(0.03);
+    Serial.println(odometer.trip);
+
 }
 
 void watchdogReset() {
@@ -254,8 +284,9 @@ void setup()
     delay(3000);
 
     Serial.begin(9600);
-    // Don't increment the odometer on start
-    incrementOdometer.Quiesce();
+
+    // Don't update certain instruments on start
+    battOil.Quiesce();
     _writer.Begin(&_writer, writeLoop, activityCallback);
     
     // Did we reset due to watchdog?  Alert on this
@@ -268,23 +299,22 @@ void setup()
         skimLamp.SetLamp(true);    
     }
 
-    // Register instruments
-    pinMode(CCD_TX_LED_PIN, OUTPUT);
-    pinMode(CCD_RX_LED_PIN, OUTPUT);
-    pinMode(CAN_TX_LED_PIN, OUTPUT);
-    pinMode(CAN_RX_LED_PIN, OUTPUT);
-    pinMode(SPEEDO_SENSOR_OUT, OUTPUT);
-    pinMode(SPEEDO_SENSOR_IN, INPUT);
-    pinMode(POT, INPUT);
+    // Set pins
+    pinMode(VBAT_MEASURE_SIG, INPUT);
+    pinMode(VBAT_MEASURE_CTL, OUTPUT);
     CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
     CCD.begin(); // CDP68HC68S1
     //writeTimer.begin(clusterWrite, writeInterval*1000);
     refreshTimer.begin(clusterRefresh, refreshInterval*1000);
-    //outPWM.begin(speedoPWM, 100000);
-    speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
+
+    if (USING_SPEED_SENSOR) {
+        speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
+        pinMode(SPEEDO_SENSOR_IN, INPUT);
+    }
     lastActivity=millis();
-    selfTestTimer.begin(selfTest, (1000+SELF_TEST_STAGE_DURATION)*1000);
+    if (SELF_TEST_MODE) {
+        selfTestTimer.begin(selfTest, (1000+SELF_TEST_STAGE_DURATION)*1000);
+    }
     Serial.println("Setup complete");
 }
-

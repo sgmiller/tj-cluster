@@ -6,6 +6,7 @@
 #define REVS_PER_MILE 2737
 #define PULSES_PER_REV 8
 #define PULSES_PER_UPDATE 800
+#define ODOMETER_INCREMENT_UNITS_PER_MILE 8000
 #define POST_WRITE_DELAY 50*1000 // 50ms
 #define INTERWRITE_DELAY 200*1000 // 200ms
 #define EOM_DELAY 1280 // 1.28 ms
@@ -120,5 +121,13 @@ class Tachometer : public Instrument {
         Tachometer() : Instrument(messageEngineSpeed, 4, 0, 255) {}
         void SetRPM(int rpm);
 };
- 
+
+class Odometer : public Instrument {
+    public:
+        float trip;
+        Odometer() : Instrument(messageIncrementOdometer, 4, 0, 255) {}
+        void AddFeet(int feet);
+        void AddMiles(float miles);
+};
+
 #endif

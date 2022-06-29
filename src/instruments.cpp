@@ -197,3 +197,18 @@ void Tachometer::SetRPM(int newRPM) {
     rpm = newRPM;
     SetByte(1, rpm/32);
 }
+
+void Odometer::AddFeet(int feet) {
+    AddMiles(feet/5280.0);
+}
+
+void Odometer::AddMiles(float miles) {
+    trip = trip + miles;
+    float val = ODOMETER_INCREMENT_UNITS_PER_MILE*miles;
+    if (val > 255) {
+        Serial.println("Warning: Overflow in odometer addition");
+    }
+    SetByte(2, uint8_t(val));
+    // This may be the same value, so refresh anyway
+    Refresh();
+}

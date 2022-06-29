@@ -1,10 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define CAN_RX_LED_PIN 27
-#define CAN_TX_LED_PIN 26
-#define CCD_RX_LED_PIN 25
-#define CCD_TX_LED_PIN 24
+#include <Arduino.h>
+
+#define VBAT_MEASURE_CTL PIN_A5
+#define VBAT_MEASURE_SIG PIN_A0
 
 void clusterWrite();
 void handleHeartbeat();
