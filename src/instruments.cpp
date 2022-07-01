@@ -21,7 +21,6 @@ bool Instrument::NeedsUpdate() {
 
 bool Instrument::MaybeWrite(CCDLibrary ccd) {
     if (_needsUpdate) {
-        watchdogFeed();
         ccd.write(_message, _messageLen);
         // May need to delay even if something went wrong
         _needsUpdate=false;
@@ -32,8 +31,6 @@ bool Instrument::MaybeWrite(CCDLibrary ccd) {
 
 void Instrument::SetPercentage(int bpos, float pct, int min, int max) {
     uint8_t nextByte = constrain((max-min)*pct, min, max);
-    Serial.print("Setting pct to ");
-    Serial.println(nextByte);
     _needsUpdate = nextByte != _message[bpos];
     _message[bpos]=nextByte;
 }
@@ -48,9 +45,6 @@ void Instrument::SetByte(int bpos, uint8_t val) {
 
 void Instrument::Refresh() {
     _needsUpdate = true;
-    if (_writer != NULL) {
-        _writer->Wake();
-    }
 }
 
 void Instrument::Quiesce() {
@@ -66,41 +60,33 @@ InstrumentWriter::InstrumentWriter(Instrument** instruments, int instrumentCount
     _instrumentCount = instrumentCount;
 }
 
-void InstrumentWriter::Begin(InstrumentWriter* self, void (*funct)(),void (*activity)()) {
-    
-    _activity = activity;
-    _writeCallback = funct;
-    Serial.println("Distributing writer");
+void InstrumentWriter::Setup(InstrumentWriter* self) {
     Serial.println(self == NULL);
     for (int i=0; i<_instrumentCount; i++) {
         _instruments[i]->setWriter(self);
     }
-    Serial.println("Starting writeloop");
-    _writeDelay.begin(funct, POST_WRITE_DELAY);
 }
 
-void InstrumentWriter::Loop() {
-    if (_instruments[_currentInstrument]->NeedsUpdate()) {
-        _writing=true;
-        if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
-            // Delay after this, but only as long as necessary
-            _writeDelay.begin(_writeCallback, POST_WRITE_DELAY);
-            _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
-            _activity();
-            return;
-        }
-    } 
-    _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
-    //Only stop "writing" when all instruments have been written
-    _writing=false;
-    _writeDelay.begin(_writeCallback, INTERWRITE_DELAY);
-}
-
-void InstrumentWriter::Wake() {
-    if (!_writing) {
-        _writeDelay.end();
-        Loop();
+bool InstrumentWriter::Loop() {
+    if (_writing) {
+        return false;
     }
+    _writing=true;
+    int startInstrument = _currentInstrument;
+    do {
+        if (_instruments[_currentInstrument]->NeedsUpdate()) {
+            if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
+                _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
+                _writing=false;
+                // Return, so we delay until next loop
+                return true;
+            }
+        } else { 
+          _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
+        }
+    } while (_currentInstrument != startInstrument);
+    _writing=false;
+    return false;
 }
 
 void BatteryAndOil::SetBatteryVoltage(float volts) {

@@ -220,9 +220,10 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
 
     if (timeout) return 2;
 
+    Serial.print("CCD <- ");
     for (int i=0; i<bufferLength; i++) {
-        Serial.print(buffer[i]);
-        Serial.print(",");
+        Serial.print(buffer[i], HEX);
+        Serial.print(" ");
     }
     Serial.println();
     CCDSERIAL.write(buffer, bufferLength);

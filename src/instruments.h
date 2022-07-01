@@ -7,8 +7,7 @@
 #define PULSES_PER_REV 8
 #define PULSES_PER_UPDATE 800
 #define ODOMETER_INCREMENT_UNITS_PER_MILE 8000
-#define POST_WRITE_DELAY 50*1000 // 50ms
-#define INTERWRITE_DELAY 200*1000 // 200ms
+#define INTERWRITE_DELAY 50 // 50ms
 #define EOM_DELAY 1280 // 1.28 ms
 #define UPSHIFT 144
 #define CRUISE_ENABLED 132
@@ -53,11 +52,9 @@ class Instrument
 class InstrumentWriter {
     public:
         InstrumentWriter(Instrument** instruments, int instrumentCount);
-        void Loop();  
-        void Wake();  
-        void Begin(InstrumentWriter* writer, void (*funct)(), void (*activity)());
+        bool Loop();  
+        void Setup(InstrumentWriter* writer);
     private:
-        IntervalTimer _writeDelay;
         bool _writing;
         int _instrumentCount;
         Instrument** _instruments;

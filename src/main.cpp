@@ -34,14 +34,13 @@
 WDT_T4<WDT1> wdt;
 uint32_t currentMillis = 0; // ms
 uint32_t lastMillis = 0; // ms
-uint16_t refreshInterval = 2000; // ms
 uint16_t writeInterval = 200; //ms
 uint8_t msgCount = 4;
 uint8_t counter = 0;
-IntervalTimer refreshTimer;
 bool activity, speedoOn;
 FreqMeasureMulti speedoMeasure;
 
+#define REFRESH_INTERVAL 2000 // ms
 #define USING_SPEED_SENSOR false
 #define SELF_TEST_MODE false
 #define SPEEDO_SENSOR_IN 7
@@ -50,11 +49,11 @@ FreqMeasureMulti speedoMeasure;
 #define INSTRUMENT_COUNT 11
 #define SPEED_SENSOR_SAMPLES 4
 #define ACTIVITY_ON_MS 25
-#define SELF_TEST_STAGE_COUNT 7
+#define SELF_TEST_STAGE_COUNT 8
 #define SELF_TEST_STAGE_DURATION 3000
-#define AQY210EH_TURNON_MAX 2 // ms
-#define VBAT_VD_R1 2200.0
-#define VBAT_VD_R2 13000.0
+#define VBAT_RELAY_TURN_ON_MAX 2 // ms
+#define VBAT_VD_R1 2200.0 // VBAT voltage divider R1 value (ohms)
+#define VBAT_VD_R2 13000.0 // VBAT voltage divider R2 value (ohms)
 #define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R1/(VBAT_VD_R1+VBAT_VD_R2)) // Set voltage divider resistor values here
 //#define VBAT_VOLTAGE_DIVIDER_RATIO 10000000.0/1500000.0 // Set voltage divider resistor values here
 #define MCU_VOLTAGE 3.3
@@ -78,8 +77,7 @@ Instrument airbagOk(messageAirbagOk, 3, 0, 255);
 Instrument airbagBad(messageAirbagBad, 3, 0, 255);
 Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &tach, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &odometer, &airbagOk, &airbagBad};
 InstrumentWriter _writer(instruments, INSTRUMENT_COUNT);
-IntervalTimer outPWM;
-IntervalTimer writeTimer;
+
 IntervalTimer selfTestTimer;
 uint8_t speedoSignal;
 bool selfTestMode = true;
@@ -89,57 +87,33 @@ int selfTestPhaseStart;
 int loopCount;
 int refreshCount;
 int selfTestStage=0;
-int breathDir = 4;
-int breathPWM;
 float speedSensorFrequency;
 int speedSensorPulses;
-uint32_t lastActivity;
+elapsedMillis lastActivity;
+elapsedMillis lastCCDLoop;
+elapsedMillis lastRefresh;
 
-void loop()
-{
-    loopCount++;     
-    //handleSpeedSensor();
-
-    // DAS BLINKENLIGHTS! .. but seriously, blink I/O indicator pins
-    if (activity) {
-        digitalWrite(LED_BUILTIN, HIGH);
-        activity=false;
-        lastActivity=millis();
-    } else if ((millis() - lastActivity) >= ACTIVITY_ON_MS) {
-        activity=false;
-        digitalWrite(LED_BUILTIN, LOW);
-    }
-
-    if (SELF_TEST_MODE) {
-        float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
-        if (selfTestStage == 3) {
-            speedo.SetKPH(160 * t);
-        } else if (selfTestStage == 4) {
-            tach.SetRPM(6000 * t);
-        } else if (selfTestStage == 5) {
-            battOil.SetBatteryVoltage(20*t);
-        }
-    }
-}
 
 void resetGauges() {
     speedo.SetMPH(0);
     tach.SetRPM(0);
-    battOil.SetBatteryVoltage(0);
-    battOil.SetOilPressure(0);
-    battOil.SetOilTemperature(0);
+    battOil.SetBatteryVoltage(14);
+    battOil.SetOilPressure(20);
+    battOil.SetOilTemperature(155);
     if (!selfTestMode) {
         fuel.SetPercentage(1, 0.0, 1, 254);
     }
     featureStatus.SetCruiseEnabled(false);
     featureStatus.SetUpShift(false);
+    checkEngineLamp.SetLamp(false);
+    checkGaugesLamp.SetLamp(true);
+    fuel.SetPercentage(1, 0.05, 1, 254);
 }
 
 void selfTest() {
     selfTestPhaseStart = millis();
     resetGauges();
     selfTestStage++;
-    Serial.println(selfTestStage);
     //featureStatus.SetByte(1,selfTestStage);
     Serial.print("Self test stage ");
     Serial.println(selfTestStage);
@@ -150,17 +124,28 @@ void selfTest() {
     case 2:
         featureStatus.SetUpShift(true);
         break;
+    case 3:
+        checkEngineLamp.SetLamp(true);
+        break;
+    case 4:
+        checkGaugesLamp.SetLamp(true);
+        break;
     case 5:
+        battOil.SetBatteryVoltage(16);
+        break;
+    case 6:
         fuel.SetPercentage(1, 0.5, 1, 254);
+        break;
+    case 7:
+        battOil.SetOilPressure(40);
+        break;
+    case 8:
+        battOil.SetOilTemperature(210);
         break;
     case SELF_TEST_STAGE_COUNT+1:
         selfTestStage = 0;
         break;
     }
-}
-
-void watchdogFeed() {
-    wdt.feed();
 }
 
 void handleSpeedSensor() {
@@ -234,17 +219,17 @@ void CCDHandleError(CCD_Operations op, CCD_Errors err)
 }
 
 float measureBattery() {
+    // Relay on
     digitalWrite(VBAT_MEASURE_CTL, HIGH);
     // Let relay settle
-    delay(AQY210EH_TURNON_MAX);
+    delay(VBAT_RELAY_TURN_ON_MAX);
     int battery=analogRead(VBAT_MEASURE_SIG);
+    // Relay off
     digitalWrite(VBAT_MEASURE_CTL, LOW);
     float analogVoltage = battery * (MCU_VOLTAGE/1023.0);
     float batVoltage = analogVoltage * VBAT_MEASUREMENT_RATIO;
     return batVoltage;
 }
-
-int odoIncs;
 
 void clusterRefresh() {
     refreshCount++;
@@ -253,41 +238,32 @@ void clusterRefresh() {
         airbagOk.Refresh();
     }
 
-    battOil.SetBatteryVoltage(measureBattery());
-    odoIncs++;
-    odometer.AddMiles(0.03);
-    Serial.println(odometer.trip);
-
+    if (!SELF_TEST_MODE) {
+        battOil.SetBatteryVoltage(measureBattery());
+    }
 }
 
 void watchdogReset() {
     Serial.println("Resetting in 5s...");
 }
 
-void writeLoop() {
-    _writer.Loop();
-}
-
-void activityCallback() {
-    activity=true;
-}
-
 void setup()
 {
+    // Watchdog
     WDT_timings_t config;
     config.trigger = 5; /* in seconds, 0->128 */
     config.timeout = 10; /* in seconds, 0->128 */
     config.callback = watchdogReset;
-    //wdt.begin(config);
+    wdt.begin(config);
     
     //Give the cluster time to boot
     delay(3000);
 
-    Serial.begin(9600);
+    Serial.begin(115200);
 
     // Don't update certain instruments on start
+    battOil.SetOilPressure(12);
     battOil.Quiesce();
-    _writer.Begin(&_writer, writeLoop, activityCallback);
     
     // Did we reset due to watchdog?  Alert on this
     // Save copy of Reset Status Register
@@ -300,13 +276,14 @@ void setup()
     }
 
     // Set pins
-    pinMode(VBAT_MEASURE_SIG, INPUT);
     pinMode(VBAT_MEASURE_CTL, OUTPUT);
+    pinMode(VBAT_MEASURE_SIG, INPUT);
+    // Nothing we're reading moves quickly, so do read averaging
+    analogReadAveraging(8);
+
     CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
     CCD.begin(); // CDP68HC68S1
-    //writeTimer.begin(clusterWrite, writeInterval*1000);
-    refreshTimer.begin(clusterRefresh, refreshInterval*1000);
 
     if (USING_SPEED_SENSOR) {
         speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
@@ -316,5 +293,45 @@ void setup()
     if (SELF_TEST_MODE) {
         selfTestTimer.begin(selfTest, (1000+SELF_TEST_STAGE_DURATION)*1000);
     }
+    
+    // Start the CCD writer
+    _writer.Setup(&_writer);
     Serial.println("Setup complete");
+}
+
+void loop()
+{
+    loopCount++;     
+
+    //handleSpeedSensor();
+
+    if (SELF_TEST_MODE) {
+        float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
+        if (selfTestStage == 3) {
+            speedo.SetKPH(160 * t);
+        } else if (selfTestStage == 4) {
+            tach.SetRPM(6000 * t);
+        } 
+    }
+
+    if (lastRefresh > REFRESH_INTERVAL) {
+        lastRefresh = 0;
+        clusterRefresh();
+    }
+    if (lastCCDLoop > INTERWRITE_DELAY) {
+        lastCCDLoop = 0;
+        bool newActivity = _writer.Loop();
+        activity = activity || newActivity;
+    }
+
+    // DAS BLINKENLIGHTS! .. but seriously, blink the builtin LED on activity
+    if (activity) {
+        // Feed on activity, since there should be some pretty regularly
+        wdt.feed();
+        digitalWrite(LED_BUILTIN, HIGH);
+    } else if (lastActivity >= ACTIVITY_ON_MS) {
+        lastActivity=0;
+        activity=false;
+        digitalWrite(LED_BUILTIN, LOW);
+    }
 }
