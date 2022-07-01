@@ -23,4 +23,5 @@
   (lib (name "Triac_AKL")(type "KiCad")(uri "/home/scott/lib/kicad/Alternate-KiCad-Library/symbols/Triac_AKL.kicad_sym")(options "")(descr ""))
   (lib (name "ECS-100AX-010")(type "Legacy")(uri "/home/scott/Eugenia/Parts/ECS-100AX-010.lib")(options "")(descr ""))
   (lib (name "CDP68HC68S1")(type "Legacy")(uri "/home/scott/src/CAN-CCD_bus/board/CDP68HC68S1.lib")(options "")(descr ""))
+  (lib (name "LM2591HVT-5.0")(type "Legacy")(uri "${KIPRJMOD}/parts/Power_Regulator/LM2591HVT-5.0.lib")(options "")(descr ""))
 )
