@@ -5781,7 +5781,7 @@
   (gr_text "CAN-" (at 101.1428 124.0536) (layer "B.SilkS") (tstamp f2ef50a4-cebc-47b4-a0db-fa4c402de743)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
-  (gr_text "XJ/TJ CAN/CCD Instrument Cluster Adapter v1.0\n© 2022 Scott Miller/N9 Works" (at 127.762 68.58 90) (layer "B.SilkS") (tstamp fd985ed6-c375-4f20-a27c-7483c7432a4f)
+  (gr_text "XJ/TJ CAN/CCD Instrument Cluster Arbiter v1.0\n© 2022 Scott Miller/N9 Works" (at 127.762 68.58 90) (layer "B.SilkS") (tstamp fd985ed6-c375-4f20-a27c-7483c7432a4f)
     (effects (font (size 1 1) (thickness 0.15)) (justify left mirror))
   )
   (gr_text "5V Power Supply" (at 53.848 106.68 90) (layer "F.SilkS") (tstamp 055d7929-6930-49d8-94c8-e03de311cbaa)
