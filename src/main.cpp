@@ -42,7 +42,7 @@ FreqMeasureMulti speedoMeasure;
 
 #define REFRESH_INTERVAL 2000 // ms
 #define USING_SPEED_SENSOR false
-#define SELF_TEST_MODE false
+#define SELF_TEST_MODE true
 #define SPEEDO_SENSOR_IN 7
 #define SPEEDOMETER_RATIO 1.59
 #define DISABLE_AIRBAG_LAMP true
@@ -329,6 +329,7 @@ void loop()
         // Feed on activity, since there should be some pretty regularly
         wdt.feed();
         digitalWrite(LED_BUILTIN, HIGH);
+        activity=false;
     } else if (lastActivity >= ACTIVITY_ON_MS) {
         lastActivity=0;
         activity=false;
