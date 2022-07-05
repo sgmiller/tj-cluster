@@ -31,7 +31,7 @@ class Instrument
     public:
         Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_t max);
         bool NeedsUpdate();
-        bool MaybeWrite(CCDLibrary ccd);
+        bool MaybeWrite(CCDLibrary *ccd);
         void SetPercentage(int bpos, float pct, int min, int max);
         void SetByte(int bpos, uint8_t val);
         uint8_t GetByte(int bpos);

@@ -45,7 +45,7 @@ FreqMeasureMulti speedoMeasure;
 #define SELF_TEST_MODE false
 #define SPEEDO_SENSOR_IN 7
 #define SPEEDOMETER_RATIO 1.59
-#define DISABLE_AIRBAG_LAMP true
+#define DISABLE_AIRBAG_LAMP false
 #define INSTRUMENT_COUNT 11
 #define SPEED_SENSOR_SAMPLES 4
 #define ACTIVITY_ON_MS 25
@@ -62,7 +62,6 @@ FreqMeasureMulti speedoMeasure;
 #define TIRE_DIAMETER 28.86
 #define TIRE_CIRCUMFERENCE 3.14159*TIRE_DIAMETER
 #define PULSES_PER_MILE (5280/TIRE_CIRCUMFERENCE)*PULSES_PER_AXLE_REVOLUTION
-
 
 BatteryAndOil battOil;
 SingleLamp skimLamp(messageSkim, 3);
@@ -95,6 +94,7 @@ elapsedMillis lastRefresh;
 
 
 void resetGauges() {
+    elapsedMillis();
     speedo.SetMPH(0);
     tach.SetRPM(0);
     battOil.SetBatteryVoltage(14);
@@ -281,9 +281,12 @@ void setup()
     // Nothing we're reading moves quickly, so do read averaging
     analogReadAveraging(8);
 
-    CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
-    CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
-    CCD.begin(); // CDP68HC68S1
+    CCD1->onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
+    CCD1->onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
+    CCD1->begin(); // CDP68HC68S1
+    CCD2->onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
+    CCD2->onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
+    CCD2->begin(); // CDP68HC68S1
 
     if (USING_SPEED_SENSOR) {
         speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
@@ -303,8 +306,6 @@ void loop()
 {
     loopCount++;     
 
-    //handleSpeedSensor();
-
     if (SELF_TEST_MODE) {
         float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
         if (selfTestStage == 3) {
@@ -312,12 +313,19 @@ void loop()
         } else if (selfTestStage == 4) {
             tach.SetRPM(6000 * t);
         } 
+    } else {
+        if (USING_SPEED_SENSOR) {
+            // If using a square wave speed sensor, check for pulses
+            handleSpeedSensor();
+        }
+
+        if (lastRefresh > REFRESH_INTERVAL) {
+            lastRefresh = 0;
+            clusterRefresh();
+            CCD2->write(messageAirbagOk, 4);
+        }
     }
 
-    if (lastRefresh > REFRESH_INTERVAL) {
-        lastRefresh = 0;
-        clusterRefresh();
-    }
     if (lastCCDLoop > INTERWRITE_DELAY) {
         lastCCDLoop = 0;
         bool newActivity = _writer.Loop();
@@ -325,13 +333,15 @@ void loop()
     }
 
     // DAS BLINKENLIGHTS! .. but seriously, blink the builtin LED on activity
-    if (activity) {
-        // Feed on activity, since there should be some pretty regularly
-        wdt.feed();
-        digitalWrite(LED_BUILTIN, HIGH);
-    } else if (lastActivity >= ACTIVITY_ON_MS) {
+    if (lastActivity >= ACTIVITY_ON_MS) {
         lastActivity=0;
         activity=false;
         digitalWrite(LED_BUILTIN, LOW);
-    }
+    } else if (activity) {
+        lastActivity=0;
+        // Feed on activity, since there should be some pretty regularly
+        wdt.feed();
+        digitalWrite(LED_BUILTIN, HIGH);
+        activity=false;
+    } 
 }

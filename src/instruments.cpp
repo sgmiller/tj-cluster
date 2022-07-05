@@ -19,9 +19,9 @@ bool Instrument::NeedsUpdate() {
     return _needsUpdate;
 }
 
-bool Instrument::MaybeWrite(CCDLibrary ccd) {
+bool Instrument::MaybeWrite(CCDLibrary *ccd) {
     if (_needsUpdate) {
-        ccd.write(_message, _messageLen);
+        ccd->write(_message, _messageLen);
         // May need to delay even if something went wrong
         _needsUpdate=false;
         return true;
@@ -75,7 +75,7 @@ bool InstrumentWriter::Loop() {
     int startInstrument = _currentInstrument;
     do {
         if (_instruments[_currentInstrument]->NeedsUpdate()) {
-            if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
+            if (_instruments[_currentInstrument]->MaybeWrite(CCD1)) {
                 _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
                 _writing=false;
                 // Return, so we delay until next loop

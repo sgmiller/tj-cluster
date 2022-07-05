@@ -22,11 +22,12 @@
 #include <avr/interrupt.h>
 #include <avr/io.h> 
 
-CCDLibrary CCD;
+CCDLibrary *CCD1 = new CCDLibrary(&CCD1SERIAL);
+CCDLibrary *CCD2 = new CCDLibrary(&CCD2SERIAL);
 
-CCDLibrary::CCDLibrary()
+CCDLibrary::CCDLibrary(HardwareSerial *port)
 {
-    // Empty class constructor.
+    ccdPort = port;
 }
 
 CCDLibrary::~CCDLibrary()
@@ -36,15 +37,15 @@ CCDLibrary::~CCDLibrary()
 
 static void isrCCDActiveByte()
 {
-    CCD.activeByteInterruptHandler();
+    CCD1->activeByteInterruptHandler();
 }
 
 static void globalTransmitDelayHandler() {
-    CCD.transmitDelayHandler();
+    CCD1->transmitDelayHandler();
 }
 
 static void globalBusIdleChange() {
-    CCD.busIdleChange();
+    CCD1->busIdleChange();
 }
 
 void CCDLibrary::begin(float baudrate, bool dedicatedTransceiver, uint8_t busIdleBits, bool verifyRxChecksum, bool calculateTxChecksum)
@@ -109,25 +110,34 @@ void CCDLibrary::begin(float baudrate, bool dedicatedTransceiver, uint8_t busIdl
 
 void CCDLibrary::serialInit()
 {
-   CCDSERIAL.begin(CLOCK_SPEED/128);
+   ccdPort->begin(CLOCK_SPEED/128);
 }
 
 void serialEvent() {
-    if (!CCD.transmitting) {
-        CCD.receiveByte();
+    Serial.println("Serial event");
+    if (!CCD1->transmitting && CCD1SERIAL.available()) {
+        CCD1->receiveByte();
+    }
+    if (!CCD1->transmitting && CCD2SERIAL.available()) {
+        CCD2->receiveByte();
+    }
+    // Swallow debug input
+    while (Serial.available()) {
+        Serial.read();
     }
 }
 
 
 void CCDLibrary::receiveByte()
 {
+    Serial.println("receiveByte");
     // Get error bits from status register.
-    uint8_t lastRxError = CCDSERIAL.getReadError();
+    uint8_t lastRxError = ccdPort->getReadError();
 
     // Save byte in serial receive buffer.
     if (_serialRxBufferPos < 16)
     {
-        _serialRxBuffer[_serialRxBufferPos] = CCDSERIAL.read();
+        _serialRxBuffer[_serialRxBufferPos] = ccdPort->read();
         _serialRxBufferPos++;
     }
     else
@@ -226,7 +236,7 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
         Serial.print(" ");
     }
     Serial.println();
-    CCDSERIAL.write(buffer, bufferLength);
+    ccdPort->write(buffer, bufferLength);
     return 0;
 }
 

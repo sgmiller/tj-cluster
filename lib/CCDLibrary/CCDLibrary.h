@@ -63,7 +63,8 @@
 #define DISABLE_TX_CHECKSUM   0
 #define CDP68HC68S1           1    // CDP68HC68S1 has two dedicated pins to signal CCD-bus condition
 #define CUSTOM_TRANSCEIVER    0
-#define CCDSERIAL Serial2
+#define CCD1SERIAL Serial2
+#define CCD2SERIAL Serial3
 // Set (1), clear (0) and invert (1->0; 0->1) bit in a register or variable easily.
 #define sbi(reg, bit) reg |=  (1 << bit)
 #define cbi(reg, bit) reg &= ~(1 << bit)
@@ -89,8 +90,10 @@ typedef void (*onCCDErrorHandler)(CCD_Operations op, CCD_Errors err);
 
 class CCDLibrary
 {
+    private:
+        HardwareSerial *ccdPort;
     public:
-        CCDLibrary();
+        CCDLibrary(HardwareSerial *port);
         ~CCDLibrary();
         bool transmitting;
         void begin(float baudrate = 7812.5, bool dedicatedTransceiver = 1, uint8_t busIdleBits = 10, bool verifyRxChecksum = 1, bool calculateTxChecksum = 1);
@@ -147,5 +150,6 @@ class CCDLibrary
         void handleErrorsInternal(CCD_Operations _op, CCD_Errors _err);
 };
 
-extern CCDLibrary CCD;
+extern CCDLibrary *CCD1;
+extern CCDLibrary *CCD2;
 #endif
