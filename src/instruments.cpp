@@ -75,7 +75,7 @@ bool InstrumentWriter::Loop() {
     int startInstrument = _currentInstrument;
     do {
         if (_instruments[_currentInstrument]->NeedsUpdate()) {
-            if (_instruments[_currentInstrument]->MaybeWrite(CCD1)) {
+            if (_instruments[_currentInstrument]->MaybeWrite(CCD2)) {
                 _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
                 _writing=false;
                 // Return, so we delay until next loop

@@ -40,12 +40,14 @@ uint8_t counter = 0;
 bool activity, speedoOn;
 FreqMeasureMulti speedoMeasure;
 
+#define CCD1_IDLE PIN_A4
+#define CCD2_IDLE 10
 #define REFRESH_INTERVAL 2000 // ms
 #define USING_SPEED_SENSOR false
-#define SELF_TEST_MODE false
+#define SELF_TEST_MODE true
 #define SPEEDO_SENSOR_IN 7
 #define SPEEDOMETER_RATIO 1.59
-#define DISABLE_AIRBAG_LAMP false
+#define DISABLE_AIRBAG_LAMP true
 #define INSTRUMENT_COUNT 11
 #define SPEED_SENSOR_SAMPLES 4
 #define ACTIVITY_ON_MS 25
@@ -107,7 +109,6 @@ void resetGauges() {
     featureStatus.SetUpShift(false);
     checkEngineLamp.SetLamp(false);
     checkGaugesLamp.SetLamp(true);
-    fuel.SetPercentage(1, 0.05, 1, 254);
 }
 
 void selfTest() {
@@ -247,6 +248,13 @@ void watchdogReset() {
     Serial.println("Resetting in 5s...");
 }
 
+
+void onIdleChange() {
+        Serial.print("CCD1 IDLE: ");
+        Serial.println(digitalRead(CCD1_IDLE));
+    
+}
+
 void setup()
 {
     // Watchdog
@@ -258,6 +266,10 @@ void setup()
     
     //Give the cluster time to boot
     delay(3000);
+
+    pinMode(CCD1_IDLE, INPUT);
+    pinMode(CCD2_IDLE, INPUT);
+      //attachInterrupt(digitalPinToInterrupt(CCD1_IDLE), onIdleChange, CHANGE);  
 
     Serial.begin(115200);
 
@@ -279,7 +291,7 @@ void setup()
     pinMode(VBAT_MEASURE_CTL, OUTPUT);
     pinMode(VBAT_MEASURE_SIG, INPUT);
     // Nothing we're reading moves quickly, so do read averaging
-    analogReadAveraging(8);
+    //analogReadAveraging(8);
 
     CCD1->onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD1->onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
@@ -302,11 +314,24 @@ void setup()
     Serial.println("Setup complete");
 }
 
+uint8_t lastIdle=1;
+
+
 void loop()
 {
     loopCount++;     
 
+/*    CCD1SERIAL.write(0xaf);
+    CCD1SERIAL.flush();
+    delay(10);*/
+//    for (int i=0; i<10; i++) {
+        //Serial.println(analogRead(11));
+  //      delay(100);
+   //     wdt.feed();
+   // }
+    //return;
     if (SELF_TEST_MODE) {
+        Serial.println(digitalRead(11));
         float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
         if (selfTestStage == 3) {
             speedo.SetKPH(160 * t);

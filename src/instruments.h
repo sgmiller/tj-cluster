@@ -7,8 +7,8 @@
 #define PULSES_PER_REV 8
 #define PULSES_PER_UPDATE 800
 #define ODOMETER_INCREMENT_UNITS_PER_MILE 8000
-#define INTERWRITE_DELAY 50 // 50ms
 #define EOM_DELAY 1280 // 1.28 ms
+#define INTERWRITE_DELAY ceil(EOM_DELAY/100) // ms, 10 bit intervals
 #define UPSHIFT 144
 #define CRUISE_ENABLED 132
 
