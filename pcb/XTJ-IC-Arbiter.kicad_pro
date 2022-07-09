@@ -413,8 +413,6 @@
         "name": "+5V",
         "nets": [
           "+5V",
-          "Net-(C1-Pad1)",
-          "Net-(C1-Pad2)",
           "SPEEDO_IN"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",

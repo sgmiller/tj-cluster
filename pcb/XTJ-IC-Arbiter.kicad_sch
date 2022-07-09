@@ -3087,7 +3087,7 @@
   (symbol (lib_id "Device:R") (at 117.475 27.305 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 0035f00a-2bdc-481a-9cf8-88a316d48735)
-    (property "Reference" "R9" (id 0) (at 115.697 28.1397 0)
+    (property "Reference" "R8" (id 0) (at 115.697 28.1397 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "13Kohm" (id 1) (at 115.697 25.6028 0)
@@ -3174,7 +3174,7 @@
   (symbol (lib_id "teensy:Teensy4.0") (at 133.35 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 133bb99a-82f3-4f77-a20b-451874ac44f4)
-    (property "Reference" "U4" (id 0) (at 133.35 71.3572 0))
+    (property "Reference" "U3" (id 0) (at 133.35 71.3572 0))
     (property "Value" "Teensy4.0" (id 1) (at 133.35 73.8941 0))
     (property "Footprint" "MCUs:Teensy40_NoSMT" (id 2) (at 123.19 106.68 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -3257,7 +3257,7 @@
   (symbol (lib_id "ccd_can_bridge-rescue:D_Zener") (at 231.775 33.655 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 1b315b47-8adf-49de-916b-225f0c5df700)
-    (property "Reference" "D2" (id 0) (at 231.775 31.115 0))
+    (property "Reference" "D1" (id 0) (at 231.775 31.115 0))
     (property "Value" "1N4728" (id 1) (at 231.775 36.195 0))
     (property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal" (id 2) (at 231.775 33.655 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -3285,7 +3285,7 @@
   (symbol (lib_id "Diode_TVS_AKL:P6KE6.8CA") (at 56.515 85.09 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 2ab3b6c5-ebf5-4f32-a5df-4660456d0015)
-    (property "Reference" "D11" (id 0) (at 56.515 85.09 0))
+    (property "Reference" "D9" (id 0) (at 56.515 85.09 0))
     (property "Value" "P6KE6.8CA" (id 1) (at 56.515 82.6571 0))
     (property "Footprint" "Diode_THT:D_DO-15_P10.16mm_Horizontal" (id 2) (at 56.515 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -3300,7 +3300,7 @@
   (symbol (lib_id "Device:R") (at 268.605 46.355 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 2b80c39e-d38d-4ece-9925-82aca794e76d)
-    (property "Reference" "R4" (id 0) (at 267.335 49.53 0)
+    (property "Reference" "R6" (id 0) (at 267.335 49.53 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "500ohm" (id 1) (at 270.383 44.6528 0)
@@ -3319,7 +3319,7 @@
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 36.195 142.24 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 342a58bb-762e-460e-8b04-bedc5a7e60d5)
-    (property "Reference" "H2" (id 0) (at 38.735 140.1353 0)
+    (property "Reference" "H1" (id 0) (at 38.735 140.1353 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MountingHole_Pad" (id 1) (at 38.735 142.6722 0)
@@ -3406,7 +3406,7 @@
   (symbol (lib_id "Diode_TVS_AKL:P6KE6.8CA") (at 56.515 88.9 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 45e99006-6e04-451d-8269-dbcae39deede)
-    (property "Reference" "D?" (id 0) (at 56.515 88.9 0))
+    (property "Reference" "D5" (id 0) (at 56.515 88.9 0))
     (property "Value" "P6KE6.8CA" (id 1) (at 56.515 86.4671 0))
     (property "Footprint" "Diode_THT:D_DO-15_P10.16mm_Horizontal" (id 2) (at 56.515 88.9 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -3421,7 +3421,7 @@
   (symbol (lib_id "Device:R") (at 120.65 27.305 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 46dfe61e-445b-4001-a194-0b00b8952b1c)
-    (property "Reference" "R8" (id 0) (at 119.38 24.13 0)
+    (property "Reference" "R7" (id 0) (at 119.38 24.13 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "2.2Kohm" (id 1) (at 122.428 29.0072 0)
@@ -3440,7 +3440,7 @@
   (symbol (lib_id "Device:C_Small") (at 215.9 62.865 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 474365b3-872f-4e9f-9366-b68e0228856f)
-    (property "Reference" "C6" (id 0) (at 213.5759 62.0366 0)
+    (property "Reference" "C3" (id 0) (at 213.5759 62.0366 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "25pF" (id 1) (at 213.5759 64.5735 0)
@@ -3475,7 +3475,7 @@
   (symbol (lib_id "Device:R_Small") (at 203.2 56.515 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 49ffc3f4-e717-41ef-9e7e-5cb511ac70a0)
-    (property "Reference" "R6" (id 0) (at 201.7014 55.6803 0)
+    (property "Reference" "R3" (id 0) (at 201.7014 55.6803 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "120ohm" (id 1) (at 201.7014 58.2172 0)
@@ -3542,7 +3542,7 @@
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 50.8 140.97 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 5605d84e-7467-4425-ad08-9d4dac8e5fed)
-    (property "Reference" "H1" (id 0) (at 53.34 138.8653 0)
+    (property "Reference" "H2" (id 0) (at 53.34 138.8653 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MountingHole_Pad" (id 1) (at 53.34 141.4022 0)
@@ -3595,7 +3595,7 @@
   (symbol (lib_id "Regulator_Linear:MCP1700-1802E_TO92") (at 36.195 49.53 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 6a81473d-ddc9-4e6f-9bc4-a40b66b5f0a0)
-    (property "Reference" "U1" (id 0) (at 36.195 43.9252 0))
+    (property "Reference" "U5" (id 0) (at 36.195 43.9252 0))
     (property "Value" "MCP1700-1802E_TO92" (id 1) (at 36.195 55.88 0))
     (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline" (id 2) (at 36.195 44.45 0)
       (effects (font (size 1.27 1.27) italic) hide)
@@ -3611,7 +3611,7 @@
   (symbol (lib_id "Interface_CAN_LIN:MCP2562-H-P") (at 42.545 36.195 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 6ad50543-c10b-4e35-a9e8-1415ca733261)
-    (property "Reference" "U5" (id 0) (at 44.5644 24.8752 0)
+    (property "Reference" "U4" (id 0) (at 44.5644 24.8752 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "MCP2562-H-P" (id 1) (at 44.5644 27.4121 0)
@@ -3636,7 +3636,7 @@
   (symbol (lib_id "Device:C_Small") (at 150.495 48.895 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 6ec53222-c8d7-45e1-8924-67616dcd4cc2)
-    (property "Reference" "C1" (id 0) (at 150.5013 43.6331 90))
+    (property "Reference" "C9" (id 0) (at 150.5013 43.6331 90))
     (property "Value" "10nF" (id 1) (at 150.5013 46.17 90))
     (property "Footprint" "Capacitor_THT:C_Radial_D5.0mm_H11.0mm_P2.00mm" (id 2) (at 150.495 48.895 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -3669,7 +3669,7 @@
   (symbol (lib_id "ccd_can_bridge-rescue:D_Zener") (at 153.035 57.785 270) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 74b00c88-6d92-42af-b416-c0ddf48604b8)
-    (property "Reference" "D4" (id 0) (at 155.575 57.785 0))
+    (property "Reference" "D13" (id 0) (at 155.575 57.785 0))
     (property "Value" "550mV" (id 1) (at 150.495 60.96 0))
     (property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal" (id 2) (at 153.035 57.785 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -3682,7 +3682,7 @@
   (symbol (lib_id "DTM13-12PA-R008:DTM13-12PA-R008") (at 23.495 97.155 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 78d427f5-c931-4a19-8f01-93e4033948a0)
-    (property "Reference" "J1" (id 0) (at 23.495 78.266 0))
+    (property "Reference" "J3" (id 0) (at 23.495 78.266 0))
     (property "Value" "DTM13-12PA-R008" (id 1) (at 23.495 80.8029 0))
     (property "Footprint" "DTM13:TE_DTM13-12PA-R008" (id 2) (at 23.495 97.155 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
@@ -3713,7 +3713,7 @@
   (symbol (lib_id "ccd_can_bridge-rescue:C") (at 186.69 55.88 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 804eea12-a6fe-4bad-82ea-13fafde4e6a5)
-    (property "Reference" "C4" (id 0) (at 187.325 53.34 0)
+    (property "Reference" "C6" (id 0) (at 187.325 53.34 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (id 1) (at 185.42 54.61 90)
@@ -3806,7 +3806,7 @@
   (symbol (lib_id "Device:R_Small") (at 64.77 36.195 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 8d1ac031-3e67-4e7b-8e5c-6b675b8f2a5b)
-    (property "Reference" "R1" (id 0) (at 63.2714 35.3603 0)
+    (property "Reference" "R11" (id 0) (at 63.2714 35.3603 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "120ohm" (id 1) (at 63.2714 37.8972 0)
@@ -3825,7 +3825,7 @@
   (symbol (lib_id "Device:R_Small") (at 74.295 102.235 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 9059ed6c-2e82-45a6-9f0b-5434ea9444db)
-    (property "Reference" "R12" (id 0) (at 76.835 100.965 0)
+    (property "Reference" "R9" (id 0) (at 76.835 100.965 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "8Kohm" (id 1) (at 75.7936 103.9372 0)
@@ -3844,7 +3844,7 @@
   (symbol (lib_id "ccd_can_bridge-rescue:CP") (at 166.37 57.785 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 94102ff7-de7c-415b-a1d0-291d8e746d24)
-    (property "Reference" "C10" (id 0) (at 167.005 55.245 0)
+    (property "Reference" "C11" (id 0) (at 167.005 55.245 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "68uF" (id 1) (at 167.005 63.5 0)
@@ -3895,7 +3895,7 @@
   (symbol (lib_id "Device:D_Zener") (at 60.325 114.935 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 9766a1a8-9318-402f-bd1f-f88dc752ea83)
-    (property "Reference" "D7" (id 0) (at 62.357 114.1003 90)
+    (property "Reference" "D4" (id 0) (at 62.357 114.1003 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "3.3v" (id 1) (at 62.357 116.6372 90)
@@ -3929,7 +3929,7 @@
   (symbol (lib_id "TSW-101-07-T-D:TSW-101-07-T-D") (at 207.01 74.295 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 9f4e2139-37ca-433c-9edc-8c5645d1e349)
-    (property "Reference" "J3" (id 0) (at 207.01 68.0552 0))
+    (property "Reference" "J2" (id 0) (at 207.01 68.0552 0))
     (property "Value" "TSW-101-07-T-D" (id 1) (at 207.01 70.5921 0))
     (property "Footprint" "Jumpers:SAMTEC_TSW-101-07-T-D" (id 2) (at 207.01 74.295 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
@@ -3971,7 +3971,7 @@
   (symbol (lib_id "Device:D_Zener") (at 63.5 114.935 270) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid a88821d4-1b58-4ca0-a6ce-b579863459ab)
-    (property "Reference" "D8" (id 0) (at 65.532 114.1003 90)
+    (property "Reference" "D7" (id 0) (at 65.532 114.1003 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "3.3v" (id 1) (at 65.532 116.6372 90)
@@ -4009,7 +4009,7 @@
   (symbol (lib_id "Regulator_Switching:LM2672N-5.0") (at 135.255 48.895 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid aaae18a7-7010-4c06-bdc3-efc8889ebd9e)
-    (property "Reference" "U3" (id 0) (at 135.255 37.5752 0))
+    (property "Reference" "U1" (id 0) (at 135.255 37.5752 0))
     (property "Value" "LM2672N-5.0" (id 1) (at 135.255 40.1121 0))
     (property "Footprint" "Package_DIP:DIP-8_W7.62mm" (id 2) (at 136.525 57.785 0)
       (effects (font (size 1.27 1.27) italic) (justify left) hide)
@@ -4030,7 +4030,7 @@
   (symbol (lib_id "Diode_TVS_AKL:P6KE6.8CA") (at 56.515 92.075 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid abe968f0-c744-4fd4-9f79-c5a3447e5e1e)
-    (property "Reference" "D?" (id 0) (at 56.515 92.075 0))
+    (property "Reference" "D12" (id 0) (at 56.515 92.075 0))
     (property "Value" "P6KE6.8CA" (id 1) (at 56.515 89.6421 0))
     (property "Footprint" "Diode_THT:D_DO-15_P10.16mm_Horizontal" (id 2) (at 56.515 92.075 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -4045,7 +4045,7 @@
   (symbol (lib_id "ccd_can_bridge-rescue:C") (at 274.32 50.165 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid ac270c6a-2006-41aa-8cc2-735e97fd3793)
-    (property "Reference" "C3" (id 0) (at 274.955 47.625 0)
+    (property "Reference" "C7" (id 0) (at 274.955 47.625 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (id 1) (at 273.05 48.895 90)
@@ -4096,7 +4096,7 @@
   (symbol (lib_id "ccd_can_bridge-rescue:D_Zener") (at 231.775 26.035 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid b2502fd8-e8a8-4cf0-b718-c349a466c0fa)
-    (property "Reference" "D1" (id 0) (at 231.775 23.495 0))
+    (property "Reference" "D2" (id 0) (at 231.775 23.495 0))
     (property "Value" "1N4728" (id 1) (at 231.775 28.575 0))
     (property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal" (id 2) (at 231.775 26.035 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -4161,7 +4161,7 @@
   (symbol (lib_id "Device:D_Zener") (at 64.135 81.28 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid c0f8cffd-ad74-45cb-9e4f-707755f867c5)
-    (property "Reference" "D9" (id 0) (at 66.167 80.4453 90)
+    (property "Reference" "D8" (id 0) (at 66.167 80.4453 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "3.3v" (id 1) (at 66.167 82.9822 90)
@@ -4215,7 +4215,7 @@
   (symbol (lib_id "Device:R_Small") (at 70.485 104.775 270) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid cac66376-f581-4dc6-bfeb-72131bd14457)
-    (property "Reference" "R11" (id 0) (at 70.485 100.3386 90))
+    (property "Reference" "R10" (id 0) (at 70.485 100.3386 90))
     (property "Value" "10Kohm" (id 1) (at 70.485 102.8755 90))
     (property "Footprint" "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" (id 2) (at 70.485 104.775 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -4230,7 +4230,7 @@
   (symbol (lib_id "ccd_can_bridge-rescue:CP") (at 109.22 52.07 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid cb7c1e3e-a32d-43a8-bf93-cbb15668bf6c)
-    (property "Reference" "C9" (id 0) (at 109.855 49.53 0)
+    (property "Reference" "C10" (id 0) (at 109.855 49.53 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100uF" (id 1) (at 109.855 59.055 0)
@@ -4247,7 +4247,7 @@
   (symbol (lib_id "ccd_can_bridge-rescue:C") (at 48.895 53.34 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid d1675de1-96a6-4e2f-926f-dc005f79a17e)
-    (property "Reference" "C2" (id 0) (at 49.53 50.8 0)
+    (property "Reference" "C12" (id 0) (at 49.53 50.8 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (id 1) (at 47.625 52.07 90)
@@ -4264,7 +4264,7 @@
   (symbol (lib_id "Diode_TVS_AKL:P6KE6.8A") (at 56.515 97.155 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid d66b921d-b05c-468c-8aee-04ff2798513a)
-    (property "Reference" "D5" (id 0) (at 56.515 97.155 0))
+    (property "Reference" "D11" (id 0) (at 56.515 97.155 0))
     (property "Value" "P6KE6.8A" (id 1) (at 56.515 95.25 0))
     (property "Footprint" "Diode_THT:D_DO-15_P10.16mm_Horizontal" (id 2) (at 56.515 97.155 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -4279,7 +4279,7 @@
   (symbol (lib_id "TSW-101-07-T-D:TSW-101-07-T-D") (at 200.66 47.625 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid df89e018-68cd-4312-b4c8-9dfbda41ae85)
-    (property "Reference" "J2" (id 0) (at 200.66 41.3852 0))
+    (property "Reference" "J1" (id 0) (at 200.66 41.3852 0))
     (property "Value" "TSW-101-07-T-D" (id 1) (at 200.66 43.9221 0))
     (property "Footprint" "Jumpers:SAMTEC_TSW-101-07-T-D" (id 2) (at 200.66 47.625 0)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
@@ -4322,7 +4322,7 @@
   (symbol (lib_id "Device:R_Small") (at 207.01 62.865 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid e3c089fa-6cdc-41d7-adbe-48abbb6eace1)
-    (property "Reference" "R7" (id 0) (at 205.5114 62.0303 0)
+    (property "Reference" "R4" (id 0) (at 205.5114 62.0303 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "13K" (id 1) (at 205.5114 64.5672 0)
@@ -4341,7 +4341,7 @@
   (symbol (lib_id "Device:C_Small") (at 222.885 62.865 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid eb52f81a-44f2-4243-9ec4-d29bfe98c78d)
-    (property "Reference" "C7" (id 0) (at 220.5609 62.0366 0)
+    (property "Reference" "C2" (id 0) (at 220.5609 62.0366 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "25pF" (id 1) (at 220.5609 64.5735 0)
@@ -4392,7 +4392,7 @@
   (symbol (lib_id "Device:R_Small") (at 208.915 33.655 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid f254b8a8-f4d2-40a8-a8e5-eae411b66b0a)
-    (property "Reference" "R10" (id 0) (at 208.915 29.2186 90))
+    (property "Reference" "R1" (id 0) (at 208.915 29.2186 90))
     (property "Value" "10ohm" (id 1) (at 208.915 31.7555 90))
     (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" (id 2) (at 208.915 33.655 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -4407,7 +4407,7 @@
   (symbol (lib_id "Device:C_Small") (at 218.44 23.495 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid f47f0eb3-3cf7-4f49-944e-082f208869f2)
-    (property "Reference" "C13" (id 0) (at 216.1159 22.6539 0)
+    (property "Reference" "C1" (id 0) (at 216.1159 22.6539 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "3.3nF" (id 1) (at 216.1159 25.1908 0)
@@ -4442,7 +4442,7 @@
   (symbol (lib_id "Device:C_Small") (at 211.455 36.195 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid f9ff434f-6fda-4e8a-b02b-cc2fe6dec8ab)
-    (property "Reference" "C12" (id 0) (at 213.7791 35.3666 0)
+    (property "Reference" "C4" (id 0) (at 213.7791 35.3666 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "3.3nF" (id 1) (at 213.7791 37.9035 0)
@@ -4569,74 +4569,80 @@
     (path "/81db4a36-441d-4cc9-819c-1c7e03499ebc"
       (reference "#PWR0107") (unit 1) (value "+5V") (footprint "")
     )
-    (path "/6ec53222-c8d7-45e1-8924-67616dcd4cc2"
-      (reference "C1") (unit 1) (value "10nF") (footprint "Capacitor_THT:C_Radial_D5.0mm_H11.0mm_P2.00mm")
+    (path "/f47f0eb3-3cf7-4f49-944e-082f208869f2"
+      (reference "C1") (unit 1) (value "3.3nF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
     )
-    (path "/d1675de1-96a6-4e2f-926f-dc005f79a17e"
-      (reference "C2") (unit 1) (value "0.1uF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
+    (path "/eb52f81a-44f2-4243-9ec4-d29bfe98c78d"
+      (reference "C2") (unit 1) (value "25pF") (footprint "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm")
     )
-    (path "/ac270c6a-2006-41aa-8cc2-735e97fd3793"
-      (reference "C3") (unit 1) (value "0.1uF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
+    (path "/474365b3-872f-4e9f-9366-b68e0228856f"
+      (reference "C3") (unit 1) (value "25pF") (footprint "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm")
     )
-    (path "/804eea12-a6fe-4bad-82ea-13fafde4e6a5"
-      (reference "C4") (unit 1) (value "0.1uF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
+    (path "/f9ff434f-6fda-4e8a-b02b-cc2fe6dec8ab"
+      (reference "C4") (unit 1) (value "3.3nF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
     )
     (path "/e2fe818b-e894-4111-8113-28ecb3a892a1"
       (reference "C5") (unit 1) (value "25pF") (footprint "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm")
     )
-    (path "/474365b3-872f-4e9f-9366-b68e0228856f"
-      (reference "C6") (unit 1) (value "25pF") (footprint "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm")
+    (path "/804eea12-a6fe-4bad-82ea-13fafde4e6a5"
+      (reference "C6") (unit 1) (value "0.1uF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
     )
-    (path "/eb52f81a-44f2-4243-9ec4-d29bfe98c78d"
-      (reference "C7") (unit 1) (value "25pF") (footprint "Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm")
+    (path "/ac270c6a-2006-41aa-8cc2-735e97fd3793"
+      (reference "C7") (unit 1) (value "0.1uF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
     )
     (path "/5fa393d1-bc57-4048-a1c8-accb336b4802"
       (reference "C8") (unit 1) (value "0.1uf") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
     )
+    (path "/6ec53222-c8d7-45e1-8924-67616dcd4cc2"
+      (reference "C9") (unit 1) (value "10nF") (footprint "Capacitor_THT:C_Radial_D5.0mm_H11.0mm_P2.00mm")
+    )
     (path "/cb7c1e3e-a32d-43a8-bf93-cbb15668bf6c"
-      (reference "C9") (unit 1) (value "100uF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm")
+      (reference "C10") (unit 1) (value "100uF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm")
     )
     (path "/94102ff7-de7c-415b-a1d0-291d8e746d24"
-      (reference "C10") (unit 1) (value "68uF") (footprint "Capacitor_THT:C_Radial_D6.3mm_H7.0mm_P2.50mm")
+      (reference "C11") (unit 1) (value "68uF") (footprint "Capacitor_THT:C_Radial_D6.3mm_H7.0mm_P2.50mm")
     )
-    (path "/f9ff434f-6fda-4e8a-b02b-cc2fe6dec8ab"
-      (reference "C12") (unit 1) (value "3.3nF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
-    )
-    (path "/f47f0eb3-3cf7-4f49-944e-082f208869f2"
-      (reference "C13") (unit 1) (value "3.3nF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
-    )
-    (path "/b2502fd8-e8a8-4cf0-b718-c349a466c0fa"
-      (reference "D1") (unit 1) (value "1N4728") (footprint "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal")
+    (path "/d1675de1-96a6-4e2f-926f-dc005f79a17e"
+      (reference "C12") (unit 1) (value "0.1uF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
     )
     (path "/1b315b47-8adf-49de-916b-225f0c5df700"
+      (reference "D1") (unit 1) (value "1N4728") (footprint "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal")
+    )
+    (path "/b2502fd8-e8a8-4cf0-b718-c349a466c0fa"
       (reference "D2") (unit 1) (value "1N4728") (footprint "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal")
     )
     (path "/c9e7bce7-50cd-418b-ab12-64a1618f8b45"
       (reference "D3") (unit 1) (value "P6KE39CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
     )
-    (path "/74b00c88-6d92-42af-b416-c0ddf48604b8"
-      (reference "D4") (unit 1) (value "550mV") (footprint "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal")
+    (path "/9766a1a8-9318-402f-bd1f-f88dc752ea83"
+      (reference "D4") (unit 1) (value "3.3v") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
-    (path "/d66b921d-b05c-468c-8aee-04ff2798513a"
-      (reference "D5") (unit 1) (value "P6KE6.8A") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
+    (path "/45e99006-6e04-451d-8269-dbcae39deede"
+      (reference "D5") (unit 1) (value "P6KE6.8CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
     )
     (path "/b15af445-76fe-4573-80e4-82f83e98f498"
       (reference "D6") (unit 1) (value "3.3v") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
-    (path "/9766a1a8-9318-402f-bd1f-f88dc752ea83"
+    (path "/a88821d4-1b58-4ca0-a6ce-b579863459ab"
       (reference "D7") (unit 1) (value "3.3v") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
-    (path "/a88821d4-1b58-4ca0-a6ce-b579863459ab"
+    (path "/c0f8cffd-ad74-45cb-9e4f-707755f867c5"
       (reference "D8") (unit 1) (value "3.3v") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
-    (path "/c0f8cffd-ad74-45cb-9e4f-707755f867c5"
-      (reference "D9") (unit 1) (value "3.3v") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
+    (path "/2ab3b6c5-ebf5-4f32-a5df-4660456d0015"
+      (reference "D9") (unit 1) (value "P6KE6.8CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
     )
     (path "/a8c7e134-c0fa-4f2c-8f29-811b438d9105"
       (reference "D10") (unit 1) (value "3.3v") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
     )
-    (path "/2ab3b6c5-ebf5-4f32-a5df-4660456d0015"
-      (reference "D11") (unit 1) (value "P6KE6.8CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
+    (path "/d66b921d-b05c-468c-8aee-04ff2798513a"
+      (reference "D11") (unit 1) (value "P6KE6.8A") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
+    )
+    (path "/abe968f0-c744-4fd4-9f79-c5a3447e5e1e"
+      (reference "D12") (unit 1) (value "P6KE6.8CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
+    )
+    (path "/74b00c88-6d92-42af-b416-c0ddf48604b8"
+      (reference "D13") (unit 1) (value "550mV") (footprint "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal")
     )
     (path "/3c74157b-92ab-41f7-84f8-26ba51cf2237"
       (reference "D14") (unit 1) (value "P6KE6.8A") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
@@ -4647,26 +4653,20 @@
     (path "/98d023c8-c9f4-43f1-9c09-419f978586ac"
       (reference "D16") (unit 1) (value "P6KE6.8CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
     )
-    (path "/45e99006-6e04-451d-8269-dbcae39deede"
-      (reference "D?") (unit 1) (value "P6KE6.8CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
-    )
-    (path "/abe968f0-c744-4fd4-9f79-c5a3447e5e1e"
-      (reference "D?") (unit 1) (value "P6KE6.8CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
-    )
-    (path "/5605d84e-7467-4425-ad08-9d4dac8e5fed"
+    (path "/342a58bb-762e-460e-8b04-bedc5a7e60d5"
       (reference "H1") (unit 1) (value "MountingHole_Pad") (footprint "MountingHole:MountingHole_3.2mm_M3")
     )
-    (path "/342a58bb-762e-460e-8b04-bedc5a7e60d5"
+    (path "/5605d84e-7467-4425-ad08-9d4dac8e5fed"
       (reference "H2") (unit 1) (value "MountingHole_Pad") (footprint "MountingHole:MountingHole_3.2mm_M3")
     )
-    (path "/78d427f5-c931-4a19-8f01-93e4033948a0"
-      (reference "J1") (unit 1) (value "DTM13-12PA-R008") (footprint "DTM13:TE_DTM13-12PA-R008")
-    )
     (path "/df89e018-68cd-4312-b4c8-9dfbda41ae85"
-      (reference "J2") (unit 1) (value "TSW-101-07-T-D") (footprint "Jumpers:SAMTEC_TSW-101-07-T-D")
+      (reference "J1") (unit 1) (value "TSW-101-07-T-D") (footprint "Jumpers:SAMTEC_TSW-101-07-T-D")
     )
     (path "/9f4e2139-37ca-433c-9edc-8c5645d1e349"
-      (reference "J3") (unit 1) (value "TSW-101-07-T-D") (footprint "Jumpers:SAMTEC_TSW-101-07-T-D")
+      (reference "J2") (unit 1) (value "TSW-101-07-T-D") (footprint "Jumpers:SAMTEC_TSW-101-07-T-D")
+    )
+    (path "/78d427f5-c931-4a19-8f01-93e4033948a0"
+      (reference "J3") (unit 1) (value "DTM13-12PA-R008") (footprint "DTM13:TE_DTM13-12PA-R008")
     )
     (path "/0a29b72f-42cd-45ef-bfa3-6665ab368e8c"
       (reference "L1") (unit 1) (value "47uH") (footprint "Inductor_THT:L_Radial_D8.7mm_P5.00mm_Fastron_07HCP")
@@ -4674,53 +4674,53 @@
     (path "/833df833-89c5-4e5b-af01-4462b0038801"
       (reference "OC1") (unit 1) (value "Optocoupler_Generic") (footprint "Package_DIP:DIP-4_W7.62mm")
     )
-    (path "/8d1ac031-3e67-4e7b-8e5c-6b675b8f2a5b"
-      (reference "R1") (unit 1) (value "120ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
+    (path "/f254b8a8-f4d2-40a8-a8e5-eae411b66b0a"
+      (reference "R1") (unit 1) (value "10ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
     )
     (path "/25b7f1c9-dad4-44eb-be73-710d70ca2ff0"
       (reference "R2") (unit 1) (value "10ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
     )
-    (path "/2b80c39e-d38d-4ece-9925-82aca794e76d"
-      (reference "R4") (unit 1) (value "500ohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
+    (path "/49ffc3f4-e717-41ef-9e7e-5cb511ac70a0"
+      (reference "R3") (unit 1) (value "120ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
+    )
+    (path "/e3c089fa-6cdc-41d7-adbe-48abbb6eace1"
+      (reference "R4") (unit 1) (value "13K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
     )
     (path "/06d873f9-980b-4b67-97c6-080c0e123b53"
       (reference "R5") (unit 1) (value "13K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
     )
-    (path "/49ffc3f4-e717-41ef-9e7e-5cb511ac70a0"
-      (reference "R6") (unit 1) (value "120ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
-    )
-    (path "/e3c089fa-6cdc-41d7-adbe-48abbb6eace1"
-      (reference "R7") (unit 1) (value "13K") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
+    (path "/2b80c39e-d38d-4ece-9925-82aca794e76d"
+      (reference "R6") (unit 1) (value "500ohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
     )
     (path "/46dfe61e-445b-4001-a194-0b00b8952b1c"
-      (reference "R8") (unit 1) (value "2.2Kohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
+      (reference "R7") (unit 1) (value "2.2Kohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
     )
     (path "/0035f00a-2bdc-481a-9cf8-88a316d48735"
-      (reference "R9") (unit 1) (value "13Kohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
-    )
-    (path "/f254b8a8-f4d2-40a8-a8e5-eae411b66b0a"
-      (reference "R10") (unit 1) (value "10ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
-    )
-    (path "/cac66376-f581-4dc6-bfeb-72131bd14457"
-      (reference "R11") (unit 1) (value "10Kohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
+      (reference "R8") (unit 1) (value "13Kohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
     )
     (path "/9059ed6c-2e82-45a6-9f0b-5434ea9444db"
-      (reference "R12") (unit 1) (value "8Kohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
+      (reference "R9") (unit 1) (value "8Kohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
     )
-    (path "/6a81473d-ddc9-4e6f-9bc4-a40b66b5f0a0"
-      (reference "U1") (unit 1) (value "MCP1700-1802E_TO92") (footprint "Package_TO_SOT_THT:TO-92_Inline")
+    (path "/cac66376-f581-4dc6-bfeb-72131bd14457"
+      (reference "R10") (unit 1) (value "10Kohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
+    )
+    (path "/8d1ac031-3e67-4e7b-8e5c-6b675b8f2a5b"
+      (reference "R11") (unit 1) (value "120ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
+    )
+    (path "/aaae18a7-7010-4c06-bdc3-efc8889ebd9e"
+      (reference "U1") (unit 1) (value "LM2672N-5.0") (footprint "Package_DIP:DIP-8_W7.62mm")
     )
     (path "/86884b69-c7b8-4118-8464-b297ee7a9704"
       (reference "U2") (unit 1) (value "CDP68HC68S1") (footprint "Transceivers:CDP68HC68S1")
     )
-    (path "/aaae18a7-7010-4c06-bdc3-efc8889ebd9e"
-      (reference "U3") (unit 1) (value "LM2672N-5.0") (footprint "Package_DIP:DIP-8_W7.62mm")
-    )
     (path "/133bb99a-82f3-4f77-a20b-451874ac44f4"
-      (reference "U4") (unit 1) (value "Teensy4.0") (footprint "MCUs:Teensy40_NoSMT")
+      (reference "U3") (unit 1) (value "Teensy4.0") (footprint "MCUs:Teensy40_NoSMT")
     )
     (path "/6ad50543-c10b-4e35-a9e8-1415ca733261"
-      (reference "U5") (unit 1) (value "MCP2562-H-P") (footprint "Package_DIP:DIP-8_W7.62mm")
+      (reference "U4") (unit 1) (value "MCP2562-H-P") (footprint "Package_DIP:DIP-8_W7.62mm")
+    )
+    (path "/6a81473d-ddc9-4e6f-9bc4-a40b66b5f0a0"
+      (reference "U5") (unit 1) (value "MCP1700-1802E_TO92") (footprint "Package_TO_SOT_THT:TO-92_Inline")
     )
   )
 )
