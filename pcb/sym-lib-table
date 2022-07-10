@@ -24,4 +24,5 @@
   (lib (name "ECS-100AX-010")(type "Legacy")(uri "/home/scott/Eugenia/Parts/ECS-100AX-010.lib")(options "")(descr ""))
   (lib (name "CDP68HC68S1")(type "Legacy")(uri "/home/scott/src/CAN-CCD_bus/board/CDP68HC68S1.lib")(options "")(descr ""))
   (lib (name "LM2591HVT-5.0")(type "Legacy")(uri "${KIPRJMOD}/parts/Power_Regulator/LM2591HVT-5.0.lib")(options "")(descr ""))
+  (lib (name "2022-07-09_17-18-49")(type "Legacy")(uri "${KIPRJMOD}/parts/TVS_Arrays/2022-07-09_17-18-49.lib")(options "")(descr ""))
 )
