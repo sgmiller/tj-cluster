@@ -25,6 +25,7 @@
  */
 
 #include <CCDLibrary.h>
+#include <FlexCAN_T4.h>
 #include <FreqMeasureMulti.h>
 #include <FreqCount.h>
 #include <Watchdog.h>
@@ -40,9 +41,17 @@ uint8_t counter = 0;
 bool activity, speedoOn;
 FreqMeasureMulti speedoMeasure;
 
+// CAN bus
+#define CAN1_TX 1
+#define CAN1_RX 0
+#define CAN2_TX 22
+#define CAN2_RX 23 
+#define NUM_CAN_TX_MAILBOXES 1
+#define NUM_CAN_RX_MAILBOXES 2
+
 #define REFRESH_INTERVAL 2000 // ms
 #define USING_SPEED_SENSOR false
-#define SELF_TEST_MODE true
+#define SELF_TEST_MODE false
 #define SPEEDO_SENSOR_IN 7
 #define SPEEDOMETER_RATIO 1.59
 #define DISABLE_AIRBAG_LAMP true
@@ -93,6 +102,8 @@ elapsedMillis lastActivity;
 elapsedMillis lastCCDLoop;
 elapsedMillis lastRefresh;
 
+FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
+FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
 
 void resetGauges() {
     speedo.SetMPH(0);
@@ -247,8 +258,66 @@ void watchdogReset() {
     Serial.println("Resetting in 5s...");
 }
 
-void setup()
-{
+void canSniff(const CAN_message_t &msg) {
+  Serial.print("MB "); Serial.print(msg.mb);
+  Serial.print("  OVERRUN: "); Serial.print(msg.flags.overrun);
+  Serial.print("  LEN: "); Serial.print(msg.len);
+  Serial.print(" EXT: "); Serial.print(msg.flags.extended);
+  Serial.print(" TS: "); Serial.print(msg.timestamp);
+  Serial.print(" ID: "); Serial.print(msg.id, HEX);
+  Serial.print(" Buffer: ");
+  for ( uint8_t i = 0; i < msg.len; i++ ) {
+    Serial.print(msg.buf[i], HEX); Serial.print(" ");
+  } Serial.println();
+}
+
+void onVCUVehicleInputs3(const CAN_message_t &msg) {
+    uint8_t mph = msg.buf[1];
+    speedo.SetMPH(mph);
+
+    // Tell power steering to change
+    CAN_message_t leafEPS;
+    leafEPS.id=0x12345;
+    leafEPS.buf[0]=128;
+    can2.write(MB1, leafEPS);
+}
+
+void onVCUFaultStates(const CAN_message_t &msg) {
+    // Decode fault states, probably don't want to alert on all of them
+    for (int i=0; i<8; i++) {
+        if (msg.buf[i] != 0) {
+            // Oh no!  Set and forget, won't clear without a restart
+            checkEngineLamp.SetLamp(true);
+        }
+    }
+}
+
+void setupCAN() {
+  pinMode(6, OUTPUT); digitalWrite(6, LOW);
+  can1.begin();
+  can2.begin();
+
+  can1.setBaudRate(500000);
+  can2.setBaudRate(500000);
+  can1.mailboxStatus();
+  can2.mailboxStatus();
+
+  can1.setMaxMB(NUM_CAN_TX_MAILBOXES + NUM_CAN_RX_MAILBOXES);
+  for (int i = 0; i<NUM_CAN_RX_MAILBOXES; i++){
+    can1.setMB((FLEXCAN_MAILBOX)i,RX,EXT);
+  }
+  for (int i = NUM_CAN_RX_MAILBOXES; i<(NUM_CAN_TX_MAILBOXES + NUM_CAN_RX_MAILBOXES); i++){
+    can1.setMB((FLEXCAN_MAILBOX)i,TX,EXT);
+  }
+  can1.setMBFilter(REJECT_ALL);
+  can1.enableMBInterrupts();
+  can1.onReceive(MB0,onVCUVehicleInputs3);
+  can1.setMBFilter(MB0,0x2F0A014);
+  can1.onReceive(MB1, onVCUFaultStates);
+  can1.setMBFilter(MB1, 0x2F0A044);
+}
+
+void setup() {
     // Watchdog
     WDT_timings_t config;
     config.trigger = 5; /* in seconds, 0->128 */
@@ -283,7 +352,7 @@ void setup()
 
     CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
-    CCD.begin(); // CDP68HC68S1
+    //CCD.begin(); // CDP68HC68S1
 
     if (USING_SPEED_SENSOR) {
         speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
@@ -294,17 +363,34 @@ void setup()
         selfTestTimer.begin(selfTest, (1000+SELF_TEST_STAGE_DURATION)*1000);
     }
     
+    pinMode(LED_BUILTIN, OUTPUT);
     // Start the CCD writer
-    _writer.Setup(&_writer);
+    //_writer.Setup(&_writer);
+    setupCAN();
     Serial.println("Setup complete");
 }
 
+CAN_message_t msg;
 void loop()
 {
-    loopCount++;     
+  loopCount++;  
+  can1.events();
+  static uint32_t timeout = millis();
+  if ( millis() - timeout > 200 ) {
+    CAN_message_t msg;
+    msg.id = random(0x1,0x7FE);
+    for ( uint8_t i = 0; i < 8; i++ ) msg.buf[i] = i + 1;
+    can2.write(msg);
+    timeout = millis();
+    Serial.print(".");
+    Serial.flush();
+  }
 
+  if (can1.read(msg)) {
+    canSniff(msg);
+  }
     //handleSpeedSensor();
-
+/*
     if (SELF_TEST_MODE) {
         float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
         if (selfTestStage == 3) {
@@ -334,5 +420,10 @@ void loop()
         lastActivity=0;
         activity=false;
         digitalWrite(LED_BUILTIN, LOW);
-    }
+    }*/
+
+    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+    wdt.feed();
+    delay(1000);
 }
+
