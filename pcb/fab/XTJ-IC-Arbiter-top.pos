@@ -1,0 +1,55 @@
+### Module positions - created on Tue 19 Jul 2022 09:19:28 PM CDT ###
+### Printed by Pcbnew version 6.0.6-3a73a75311~116~ubuntu20.04.1
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val                  Package                                                PosX       PosY       Rot  Side
+C1        3.3nF                C_Disc_D3.8mm_W2.6mm_P2.50mm                        68.0720   -73.3860   90.0000  top
+C2        25pF                 C_Disc_D6.5mm_W4mm_P6.4mm                           76.2000   -81.7880    0.0000  top
+C3        25pF                 C_Disc_D6.5mm_W4mm_P6.4mm                           71.1410   -71.1200    0.0000  top
+C4        3.3nF                C_Disc_D3.8mm_W2.6mm_P2.50mm                        71.6280   -84.8360   90.0000  top
+C5        25pF                 C_Disc_D6.5mm_W4mm_P6.4mm                           71.1305   -76.4540    0.0000  top
+C6        0.1uF                C_Disc_D3.8mm_W2.6mm_P2.50mm                       106.1520   -75.6920  180.0000  top
+C7        0.1uF                C_Disc_D3.8mm_W2.6mm_P2.50mm                       118.6380   -74.6760    0.0000  top
+C8        0.1uf                C_Disc_D3.8mm_W2.6mm_P2.50mm                        59.1820  -101.8540  180.0000  top
+C9        10nF                 C_Radial_D5.0mm_H11.0mm_P2.00mm                     72.6440  -101.6000  -90.0000  top
+C10       100uF                CP_Radial_D8.0mm_P3.50mm                            63.1173  -104.6480    0.0000  top
+C11       68uF                 C_Radial_D6.3mm_H7.0mm_P2.50mm                      69.5960   -94.4880  -90.0000  top
+C12       0.1uf                C_Disc_D3.8mm_W2.6mm_P2.50mm                       123.1900  -103.6320   90.0000  top
+C13       0.1uf                C_Disc_D3.8mm_W2.6mm_P2.50mm                       109.2200  -101.1120  -90.0000  top
+C14       0.1uF                C_Disc_D3.8mm_W2.6mm_P2.50mm                       106.1720   -79.2480  180.0000  top
+D1        1N4728               D_DO-41_SOD81_P7.62mm_Horizontal                    60.9600   -79.2480   90.0000  top
+D2        1N4728               D_DO-41_SOD81_P7.62mm_Horizontal                    64.5160   -79.2480   90.0000  top
+D3        P6KE39CA             D_DO-15_P10.16mm_Horizontal                         75.5650  -111.2520  -90.0000  top
+D4        3.3v                 D_DO-35_SOD27_P7.62mm_Horizontal                    96.0120  -107.9500  180.0000  top
+D5        _SA5.0CA             D_DO-15_P10.16mm_Horizontal                         84.3280  -121.4120   90.0000  top
+D6        3.3v                 D_DO-35_SOD27_P7.62mm_Horizontal                    84.5820   -90.1700  180.0000  top
+D7        3.3v                 D_DO-35_SOD27_P7.62mm_Horizontal                    96.0120  -105.2830  180.0000  top
+D8        3.3v                 D_DO-35_SOD27_P7.62mm_Horizontal                    96.0120  -102.6160  180.0000  top
+D9        P6KE6.8CA            D_DO-15_P10.16mm_Horizontal                         88.6460  -111.2520  -90.0000  top
+D10       3.3v                 D_DO-35_SOD27_P7.62mm_Horizontal                   105.4100  -102.1080  -90.0000  top
+D12       P6KE6.8CA            D_DO-15_P10.16mm_Horizontal                         80.0100  -121.4120   90.0000  top
+D13       550mV                D_DO-41_SOD81_P7.62mm_Horizontal                    71.6280  -107.4420  -90.0000  top
+D14       P6KE6.8A             D_DO-15_P10.16mm_Horizontal                        101.6000  -121.4120   90.0000  top
+D15       P6KE6.8CA            D_DO-15_P10.16mm_Horizontal                         92.9640  -111.2520  -90.0000  top
+D16       P6KE6.8CA            D_DO-15_P10.16mm_Horizontal                         97.2820  -111.2520  -90.0000  top
+J3        DTM13-12PA-R008      TE_DTM13-12PA-R008                                  91.1860  -130.5350    0.0000  top
+L1        47uH                 L_Radial_D8.7mm_P5.00mm_Fastron_07HCP               62.2700  -114.4270    0.0000  top
+OC1       Optocoupler_Generic  DIP-4_W7.62mm                                       83.8250   -98.0540  -90.0000  top
+R1        10ohm                R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal    68.5800   -85.8520  180.0000  top
+R2        10ohm                R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal    60.9600   -82.5500    0.0000  top
+R3        120ohm               R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal    84.8360   -69.8500  -90.0000  top
+R4        13K                  R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal    99.2060   -70.4660  -90.0000  top
+R5        13K                  R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal    81.2800   -77.4700   90.0000  top
+R7        2.2Kohm              R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal    84.5820   -92.7100  180.0000  top
+R8        13Kohm               R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal    84.5820   -95.2500  180.0000  top
+R9        20kOhm               R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal   100.5840  -106.9340   90.0000  top
+R10       10kOhm               R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal   102.8700  -101.8540  -90.0000  top
+R11       120ohm               R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal   124.7140  -120.9040   90.0000  top
+SW1       SW_DIP_x03           SW_DIP_SPSTx03_Slide_9.78x9.8mm_W7.62mm_P2.54mm     88.2840   -71.9900    0.0000  top
+SW2       SW_DIP_x02           SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm   112.5220  -115.5700    0.0000  top
+U1        LM2672N-5.0          DIP-8_W7.62mm                                       64.7600   -97.7800  180.0000  top
+U2        CDP68HC68S1          CDP68HC68S1                                        110.7440   -67.7680  180.0000  top
+U3        Teensy4.0            Teensy40_NoSMT                                     106.8070   -90.6780  180.0000  top
+U4        MCP2562-H-P          DIP-8_W7.62mm                                      119.8780  -109.2100  180.0000  top
+U5        TXB0104RGY           SOIC-14_3.9x8.7mm_P1.27mm                          112.2680   -76.9620   90.0000  top
+## End

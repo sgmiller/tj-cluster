@@ -520,7 +520,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "Circuit.dsn",
-      "step": "",
+      "step": "XTJ-IC-Arbiter.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
