@@ -5541,7 +5541,7 @@
   (gr_text "5V Power Supply" (at 56.388 111.252 90) (layer "F.SilkS") (tstamp 055d7929-6930-49d8-94c8-e03de311cbaa)
     (effects (font (size 1 1) (thickness 0.2)))
   )
-  (gr_text "CCD Transmitter" (at 91.694 75.4704) (layer "F.SilkS") (tstamp 2ae80221-a634-4b02-9723-80e42829d907)
+  (gr_text "CCD Transmitter" (at 68.834 75.438) (layer "F.SilkS") (tstamp 2ae80221-a634-4b02-9723-80e42829d907)
     (effects (font (size 1 1) (thickness 0.2)))
   )
   (gr_text "MCU" (at 127.254 92.202 90) (layer "F.SilkS") (tstamp 6a1c75a6-d7da-4520-9374-fd53d8d57da7)
@@ -5553,7 +5553,7 @@
   (gr_text "12V Batt Measure\n" (at 77.597 99.187 90) (layer "F.SilkS") (tstamp dc1849d2-0f0d-4023-a648-b38f2cddf5ff)
     (effects (font (size 0.75 0.75) (thickness 0.1875)))
   )
-  (gr_text "CCD \nTermination" (at 57.404 74.422 90) (layer "F.SilkS") (tstamp ecd2c5a9-c8f2-4710-a6c0-7e51e88a558b)
+  (gr_text "CCD \nTermination" (at 53.467 83.058 90) (layer "F.SilkS") (tstamp ecd2c5a9-c8f2-4710-a6c0-7e51e88a558b)
     (effects (font (size 1 1) (thickness 0.25)))
   )
 
