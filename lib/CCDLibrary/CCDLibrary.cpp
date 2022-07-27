@@ -207,18 +207,8 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
         for (uint8_t i = 0; i < checksumLocation ; i++) checksum += buffer[i];
         buffer[checksumLocation] = checksum; // overwrite checksum in the source array too
     }
-    
-    bool timeout = false;
-    uint32_t timeoutStart = millis();
 
     transmitting = true;
-    // CDP68HC68S1 handles arbitration, just wait for idle
-    while (!_busIdle && !timeout)
-    {
-        if ((uint32_t)(millis() - timeoutStart) >= 1000) timeout = true;
-    }
-
-    if (timeout) return 2;
 
     Serial.print("CCD <- ");
     for (int i=0; i<bufferLength; i++) {
