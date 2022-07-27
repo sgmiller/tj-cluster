@@ -1,7 +1,7 @@
 #include "instruments.h"
 #include "main.h"
 
-Instrument::Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_t max) {
+Instrument::Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_t max, int refreshInterval) {
     for (int i=0; i<messageLen; i++) {
         _message[i]=baseMessage[i];
     }
@@ -9,6 +9,12 @@ Instrument::Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_
     _writer = NULL;
     _min = min;
     _max = max;
+    if (refreshInterval == 0) {
+        _refreshInterval = DEFAULT_REFRESH_INTERVAL;
+    } else {
+        _refreshInterval = refreshInterval;
+    }
+    _sinceLastWrite=300000;
 }
 
 uint8_t Instrument::GetByte(int bpos) {
@@ -20,10 +26,11 @@ bool Instrument::NeedsUpdate() {
 }
 
 bool Instrument::MaybeWrite(CCDLibrary ccd) {
-    if (_needsUpdate) {
+    if (_needsUpdate || (_refreshInterval > -1 && _sinceLastWrite >= _refreshInterval)) {
         ccd.write(_message, _messageLen);
         // May need to delay even if something went wrong
         _needsUpdate=false;
+        _sinceLastWrite=0;
         return true;
     }
     return false;
@@ -61,10 +68,16 @@ InstrumentWriter::InstrumentWriter(Instrument** instruments, int instrumentCount
 }
 
 void InstrumentWriter::Setup(InstrumentWriter* self) {
-    Serial.println(self == NULL);
     for (int i=0; i<_instrumentCount; i++) {
+        Serial.print("Initial write of ");
+        Serial.println(i);
         _instruments[i]->setWriter(self);
+        if (_instruments[i]->MaybeWrite(CCD)) {
+            delay(INTERWRITE_DELAY);    
+            Serial.println("Delay complete");
+        }
     }
+    Serial.println("InstrumentWriter setup complete.");
 }
 
 bool InstrumentWriter::Loop() {
@@ -129,8 +142,8 @@ void BatteryAndOil::SetOilTemperature(int tempF) {
 }
 
 void Fuel::SetFuelPercentage(float pct) {
-    fuelPercent = pct;
-    SetByte(1,round(constrain(254 * fuelPercent, 0, 254)));
+    percent= pct;
+    SetByte(1,round(constrain(254 * percent, 0, 254)));
 }
 
 uint8_t lampBool(bool b) {

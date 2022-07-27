@@ -51,14 +51,14 @@ FreqMeasureMulti speedoMeasure;
 
 #define REFRESH_INTERVAL 2000 // ms
 #define USING_SPEED_SENSOR false
-#define SELF_TEST_MODE false
+#define SELF_TEST_MODE true
 #define SPEEDO_SENSOR_IN 7
 #define SPEEDOMETER_RATIO 1.59
 #define DISABLE_AIRBAG_LAMP true
 #define INSTRUMENT_COUNT 11
 #define SPEED_SENSOR_SAMPLES 4
 #define ACTIVITY_ON_MS 25
-#define SELF_TEST_STAGE_COUNT 8
+#define SELF_TEST_STAGE_COUNT 10
 #define SELF_TEST_STAGE_DURATION 3000
 #define VBAT_RELAY_TURN_ON_MAX 2 // ms
 #define VBAT_VD_R1 2200.0 // VBAT voltage divider R1 value (ohms)
@@ -72,18 +72,18 @@ FreqMeasureMulti speedoMeasure;
 #define TIRE_CIRCUMFERENCE 3.14159*TIRE_DIAMETER
 #define PULSES_PER_MILE (5280/TIRE_CIRCUMFERENCE)*PULSES_PER_AXLE_REVOLUTION
 
-
+// All instruments
 BatteryAndOil battOil;
-SingleLamp skimLamp(messageSkim, 3);
-SingleLamp checkGaugesLamp(messageCheckGauges, 4);
-SingleLamp checkEngineLamp(messageCheckEngine, 4);
-Instrument fuel(messageFuel, 3, 1, 254);
+SingleLamp skimLamp(messageSkim, 3, 10000);
+SingleLamp checkGaugesLamp(messageCheckGauges, 4, 500);
+SingleLamp checkEngineLamp(messageCheckEngine, 4, 500);
+Fuel fuel;
 Speedometer speedo;
 Tachometer tach;
 FeatureStatus featureStatus;
 Odometer odometer;
-Instrument airbagOk(messageAirbagOk, 3, 0, 255);
-Instrument airbagBad(messageAirbagBad, 3, 0, 255);
+Instrument airbagOk(messageAirbagOk, 3, 0, 255, -1);
+Instrument airbagBad(messageAirbagBad, 3, 0, 255, -1);
 Instrument* instruments[INSTRUMENT_COUNT]= {&fuel, &speedo, &tach, &checkEngineLamp, &checkGaugesLamp, &skimLamp, &featureStatus, &battOil, &odometer, &airbagOk, &airbagBad};
 InstrumentWriter _writer(instruments, INSTRUMENT_COUNT);
 
@@ -118,7 +118,6 @@ void resetGauges() {
     featureStatus.SetUpShift(false);
     checkEngineLamp.SetLamp(false);
     checkGaugesLamp.SetLamp(true);
-    fuel.SetPercentage(1, 0.05, 1, 254);
 }
 
 void selfTest() {
@@ -128,34 +127,30 @@ void selfTest() {
     //featureStatus.SetByte(1,selfTestStage);
     Serial.print("Self test stage ");
     Serial.println(selfTestStage);
-    switch (selfTestStage) {
-    case 1:
+
+    if (selfTestStage == 3) {
         featureStatus.SetCruiseEnabled(true);
-        break;
-    case 2:
+    } else if (selfTestStage == 4) {
         featureStatus.SetUpShift(true);
-        break;
-    case 3:
+    } else if (selfTestStage == 5) {
         checkEngineLamp.SetLamp(true);
-        break;
-    case 4:
+    } else if (selfTestStage == 6) {
         checkGaugesLamp.SetLamp(true);
-        break;
-    case 5:
+    } else if (selfTestStage == 7) {
         battOil.SetBatteryVoltage(16);
-        break;
-    case 6:
-        fuel.SetPercentage(1, 0.5, 1, 254);
-        break;
-    case 7:
+    } else if (selfTestStage == 8) {
+        float nv = (fuel.percent + 0.1);
+        if (nv > 1.0) {
+            nv = 0;
+        }
+        fuel.SetFuelPercentage(nv);
+    } else if (selfTestStage == 9) {
         battOil.SetOilPressure(40);
-        break;
-    case 8:
+    } else if (selfTestStage == 10) {
         battOil.SetOilTemperature(210);
-        break;
-    case SELF_TEST_STAGE_COUNT+1:
+    } else if (selfTestStage > 10){
         selfTestStage = 0;
-        break;
+        
     }
 }
 
@@ -318,21 +313,24 @@ void setupCAN() {
 }
 
 void setup() {
+    Serial.begin(115200);
     // Watchdog
     WDT_timings_t config;
     config.trigger = 5; /* in seconds, 0->128 */
     config.timeout = 10; /* in seconds, 0->128 */
     config.callback = watchdogReset;
-    wdt.begin(config);
     
     //Give the cluster time to boot
     delay(3000);
+    Serial.println("Entered setup");
+    wdt.begin(config);
 
-    Serial.begin(115200);
+    Serial.println("A");
 
     // Don't update certain instruments on start
     battOil.SetOilPressure(12);
     battOil.Quiesce();
+    Serial.println("B");
     
     // Did we reset due to watchdog?  Alert on this
     // Save copy of Reset Status Register
@@ -343,16 +341,19 @@ void setup() {
         // Yes.  Alert via the SKIM light
         skimLamp.SetLamp(true);    
     }
+    Serial.println("C");
 
     // Set pins
     pinMode(VBAT_MEASURE_CTL, OUTPUT);
     pinMode(VBAT_MEASURE_SIG, INPUT);
     // Nothing we're reading moves quickly, so do read averaging
     analogReadAveraging(8);
+    Serial.println("D");
 
     CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
-    //CCD.begin(); // CDP68HC68S1
+    CCD.begin(); // CDP68HC68S1
+    Serial.println("E");
 
     if (USING_SPEED_SENSOR) {
         speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
@@ -362,11 +363,13 @@ void setup() {
     if (SELF_TEST_MODE) {
         selfTestTimer.begin(selfTest, (1000+SELF_TEST_STAGE_DURATION)*1000);
     }
+    Serial.println("F");
     
     pinMode(LED_BUILTIN, OUTPUT);
     // Start the CCD writer
-    //_writer.Setup(&_writer);
-    setupCAN();
+    _writer.Setup(&_writer);
+    //setupCAN();
+    Serial.println("G");
     Serial.println("Setup complete");
 }
 
@@ -374,7 +377,7 @@ CAN_message_t msg;
 void loop()
 {
   loopCount++;  
-  can1.events();
+  /*//can1.events();
   static uint32_t timeout = millis();
   if ( millis() - timeout > 200 ) {
     CAN_message_t msg;
@@ -388,16 +391,16 @@ void loop()
 
   if (can1.read(msg)) {
     canSniff(msg);
-  }
+  }*/
     //handleSpeedSensor();
-/*
+
     if (SELF_TEST_MODE) {
         float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
-        if (selfTestStage == 3) {
+        if (selfTestStage == 1) {
             speedo.SetKPH(160 * t);
-        } else if (selfTestStage == 4) {
+        } else if (selfTestStage == 2) {
             tach.SetRPM(6000 * t);
-        } 
+        }
     }
 
     if (lastRefresh > REFRESH_INTERVAL) {
@@ -420,10 +423,8 @@ void loop()
         lastActivity=0;
         activity=false;
         digitalWrite(LED_BUILTIN, LOW);
-    }*/
+    }
 
-    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
     wdt.feed();
-    delay(1000);
 }
 

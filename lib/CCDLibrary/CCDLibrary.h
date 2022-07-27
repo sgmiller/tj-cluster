@@ -63,7 +63,7 @@
 #define DISABLE_TX_CHECKSUM   0
 #define CDP68HC68S1           1    // CDP68HC68S1 has two dedicated pins to signal CCD-bus condition
 #define CUSTOM_TRANSCEIVER    0
-#define CCDSERIAL Serial2
+#define CCDSERIAL Serial4
 // Set (1), clear (0) and invert (1->0; 0->1) bit in a register or variable easily.
 #define sbi(reg, bit) reg |=  (1 << bit)
 #define cbi(reg, bit) reg &= ~(1 << bit)
