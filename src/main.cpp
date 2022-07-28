@@ -117,7 +117,7 @@ void resetGauges() {
     featureStatus.SetCruiseEnabled(false);
     featureStatus.SetUpShift(false);
     checkEngineLamp.SetLamp(false);
-    checkGaugesLamp.SetLamp(true);
+    checkGaugesLamp.SetLamp(false);
 }
 
 void selfTest() {
@@ -133,19 +133,17 @@ void selfTest() {
     } else if (selfTestStage == 4) {
         featureStatus.SetUpShift(true);
     } else if (selfTestStage == 5) {
-        checkEngineLamp.SetLamp(true);
-    } else if (selfTestStage == 6) {
         checkGaugesLamp.SetLamp(true);
+    } else if (selfTestStage == 6) {
+        checkEngineLamp.SetLamp(true);
     } else if (selfTestStage == 7) {
         battOil.SetBatteryVoltage(16);
     } else if (selfTestStage == 8) {
-        float nv = (fuel.percent + 0.1);
-        if (nv > 1.0) {
-            nv = 0;
-        }
-        fuel.SetFuelPercentage(nv);
+        battOil.SetBatteryVoltage(12);
+        fuel.SetFuelPercentage(0.75);
     } else if (selfTestStage == 9) {
-        battOil.SetOilPressure(40);
+        battOil.SetOilPressure(70);
+        fuel.SetFuelPercentage(0.25);
     } else if (selfTestStage == 10) {
         battOil.SetOilTemperature(210);
     } else if (selfTestStage > 10){
@@ -233,7 +231,7 @@ float measureBattery() {
     // Relay off
     digitalWrite(VBAT_MEASURE_CTL, LOW);
     float analogVoltage = battery * (MCU_VOLTAGE/1023.0);
-    float batVoltage = analogVoltage * VBAT_MEASUREMENT_RATIO;
+    float batVoltage = analogVoltage * VBAT_MEASUREMENT_RATIO *2;
     return batVoltage;
 }
 
@@ -325,12 +323,14 @@ void setup() {
     Serial.println("Entered setup");
     wdt.begin(config);
 
-    Serial.println("A");
-
+    
     // Don't update certain instruments on start
-    battOil.SetOilPressure(12);
-    battOil.Quiesce();
-    Serial.println("B");
+    battOil.SetOilPressure(40);
+    battOil.SetBatteryVoltage(14);
+    fuel.Quiesce();
+    skimLamp.Quiesce();
+    airbagBad.Quiesce();
+    airbagOk.Quiesce();
     
     // Did we reset due to watchdog?  Alert on this
     // Save copy of Reset Status Register
@@ -339,21 +339,19 @@ void setup() {
     SRC_SRSR = (uint32_t)0x1FF;
     if (lastResetCause == SRC_SRSR_WDOG_RST_B) {
         // Yes.  Alert via the SKIM light
+        Serial.println("Lighting SKIM");
         skimLamp.SetLamp(true);    
     }
-    Serial.println("C");
 
     // Set pins
     pinMode(VBAT_MEASURE_CTL, OUTPUT);
     pinMode(VBAT_MEASURE_SIG, INPUT);
     // Nothing we're reading moves quickly, so do read averaging
     analogReadAveraging(8);
-    Serial.println("D");
 
     CCD.onMessageReceived(CCDMessageReceived); // subscribe to the message received event and call this function when a CCD-bus message is received
     CCD.onError(CCDHandleError); // subscribe to the error event and call this function when an error occurs
     CCD.begin(); // CDP68HC68S1
-    Serial.println("E");
 
     if (USING_SPEED_SENSOR) {
         speedoOn=speedoMeasure.begin(SPEEDO_SENSOR_IN,FREQMEASUREMULTI_RAISING);
@@ -363,13 +361,11 @@ void setup() {
     if (SELF_TEST_MODE) {
         selfTestTimer.begin(selfTest, (1000+SELF_TEST_STAGE_DURATION)*1000);
     }
-    Serial.println("F");
     
     pinMode(LED_BUILTIN, OUTPUT);
     // Start the CCD writer
     _writer.Setup(&_writer);
     //setupCAN();
-    Serial.println("G");
     Serial.println("Setup complete");
 }
 
@@ -424,6 +420,8 @@ void loop()
         activity=false;
         digitalWrite(LED_BUILTIN, LOW);
     }
+
+    
 
     wdt.feed();
 }
