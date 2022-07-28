@@ -56,6 +56,7 @@ void Instrument::Refresh() {
 
 void Instrument::Quiesce() {
     _needsUpdate=false;
+    _sinceLastWrite = 0;
 }
 
 void Instrument::setWriter(InstrumentWriter* writer) {
@@ -74,10 +75,8 @@ void InstrumentWriter::Setup(InstrumentWriter* self) {
         _instruments[i]->setWriter(self);
         if (_instruments[i]->MaybeWrite(CCD)) {
             delay(INTERWRITE_DELAY);    
-            Serial.println("Delay complete");
         }
     }
-    Serial.println("InstrumentWriter setup complete.");
 }
 
 bool InstrumentWriter::Loop() {
@@ -107,7 +106,10 @@ void BatteryAndOil::SetBatteryVoltage(float volts) {
     if (volts > 20) {
         volts = 20;
     }
-    SetByte(1, round(constrain(volts * 8,0,255)));
+    uint8_t nv = round(constrain(volts * 8,0,255));
+    Serial.print("BV now ");
+    Serial.println(nv);
+    SetByte(1, nv);
 }
 
 void BatteryAndOil::SetOilPressure(int psi) {
@@ -140,6 +142,7 @@ void BatteryAndOil::SetOilTemperature(int tempF) {
 
      SetByte(3, newTemp);
 }
+
 
 void Fuel::SetFuelPercentage(float pct) {
     percent= pct;
