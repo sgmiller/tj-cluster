@@ -14,6 +14,7 @@ Instrument::Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_
     } else {
         _refreshInterval = refreshInterval;
     }
+    // By default, force an initial write
     _sinceLastWrite=300000;
 }
 
@@ -107,8 +108,6 @@ void BatteryAndOil::SetBatteryVoltage(float volts) {
         volts = 20;
     }
     uint8_t nv = round(constrain(volts * 8,0,255));
-    Serial.print("BV now ");
-    Serial.println(nv);
     SetByte(1, nv);
 }
 

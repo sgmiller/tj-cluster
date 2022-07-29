@@ -71,6 +71,7 @@ FreqMeasureMulti speedoMeasure;
 #define TIRE_DIAMETER 28.86
 #define TIRE_CIRCUMFERENCE 3.14159*TIRE_DIAMETER
 #define PULSES_PER_MILE (5280/TIRE_CIRCUMFERENCE)*PULSES_PER_AXLE_REVOLUTION
+#define BATTERY_MEASURE_INTERVAL 200 // ms
 
 // All instruments
 BatteryAndOil battOil;
@@ -101,6 +102,7 @@ int speedSensorPulses;
 elapsedMillis lastActivity;
 elapsedMillis lastCCDLoop;
 elapsedMillis lastRefresh;
+elapsedMillis lastBattMeasure;
 
 FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
@@ -124,7 +126,6 @@ void selfTest() {
     selfTestPhaseStart = millis();
     resetGauges();
     selfTestStage++;
-    //featureStatus.SetByte(1,selfTestStage);
     Serial.print("Self test stage ");
     Serial.println(selfTestStage);
 
@@ -154,17 +155,18 @@ void selfTest() {
 
 void handleSpeedSensor() {
      if (speedoMeasure.available()>0) {
-        // average several reading together
         int pulses = speedoMeasure.read();
         speedSensorPulses += pulses;
         speedoFreqSum = speedoFreqSum + pulses;
         speedoFreqCount = speedoFreqCount + 1;
         if (speedoFreqCount > SPEED_SENSOR_SAMPLES) {
+            // average several readings together
             speedSensorFrequency = speedoMeasure.countToFrequency(speedoFreqSum / speedoFreqCount);
             speedoFreqSum = 0;
             speedoFreqCount = 0;
             speedo.SetSpeedSensorFrequency(speedSensorFrequency);
         }
+        // Either way, actual pulses are accounted for, and can be used to update the odometer
         if (speedSensorPulses >= PULSES_PER_UPDATE) {
             // send an odometer increment
             odometer.AddMiles(speedSensorPulses / PULSES_PER_MILE);
@@ -240,10 +242,6 @@ void clusterRefresh() {
     tach.Refresh();
     if (DISABLE_AIRBAG_LAMP) {
         airbagOk.Refresh();
-    }
-
-    if (!SELF_TEST_MODE) {
-        battOil.SetBatteryVoltage(measureBattery());
     }
 }
 
@@ -373,22 +371,13 @@ CAN_message_t msg;
 void loop()
 {
   loopCount++;  
-  /*//can1.events();
-  static uint32_t timeout = millis();
-  if ( millis() - timeout > 200 ) {
-    CAN_message_t msg;
-    msg.id = random(0x1,0x7FE);
-    for ( uint8_t i = 0; i < 8; i++ ) msg.buf[i] = i + 1;
-    can2.write(msg);
-    timeout = millis();
-    Serial.print(".");
-    Serial.flush();
-  }
 
-  if (can1.read(msg)) {
-    canSniff(msg);
-  }*/
-    //handleSpeedSensor();
+    //This code expects to use a physical speed sensor to measure actual driveshaft
+    //revolutions, and as such keep the odometer up to date.  Tampering with 
+    //the odometer is a federal crime, so if you don't have the speed sensor, 
+    //it's up to you to derive distance from speed or other measurements to update
+    //the odometer.  Good luck.
+    handleSpeedSensor();
 
     if (SELF_TEST_MODE) {
         float t = constrain(float(millis() - selfTestPhaseStart) / SELF_TEST_STAGE_DURATION, 0.0, 1.0);
@@ -408,6 +397,10 @@ void loop()
         bool newActivity = _writer.Loop();
         activity = activity || newActivity;
     }
+    if (!SELF_TEST_MODE && lastBattMeasure > BATTERY_MEASURE_INTERVAL) {
+        battOil.SetBatteryVoltage(measureBattery());
+    }
+
 
     // DAS BLINKENLIGHTS! .. but seriously, blink the builtin LED on activity
     if (activity) {
