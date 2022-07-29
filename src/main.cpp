@@ -72,6 +72,7 @@ FreqMeasureMulti speedoMeasure;
 #define TIRE_CIRCUMFERENCE 3.14159*TIRE_DIAMETER
 #define PULSES_PER_MILE (5280/TIRE_CIRCUMFERENCE)*PULSES_PER_AXLE_REVOLUTION
 #define BATTERY_MEASURE_INTERVAL 200 // ms
+#define AIRBAG_OK_INTERVAL 1000 //ms
 
 // All instruments
 BatteryAndOil battOil;
@@ -103,6 +104,7 @@ elapsedMillis lastActivity;
 elapsedMillis lastCCDLoop;
 elapsedMillis lastRefresh;
 elapsedMillis lastBattMeasure;
+elapsedMillis lastAirbagOkXmt;
 
 FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
 FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
@@ -235,14 +237,6 @@ float measureBattery() {
     float analogVoltage = battery * (MCU_VOLTAGE/1023.0);
     float batVoltage = analogVoltage * VBAT_MEASUREMENT_RATIO *2;
     return batVoltage;
-}
-
-void clusterRefresh() {
-    refreshCount++;
-    tach.Refresh();
-    if (DISABLE_AIRBAG_LAMP) {
-        airbagOk.Refresh();
-    }
 }
 
 void watchdogReset() {
@@ -387,20 +381,17 @@ void loop()
             tach.SetRPM(6000 * t);
         }
     }
-
-    if (lastRefresh > REFRESH_INTERVAL) {
-        lastRefresh = 0;
-        clusterRefresh();
+    if (!SELF_TEST_MODE && lastBattMeasure > BATTERY_MEASURE_INTERVAL) {
+        battOil.SetBatteryVoltage(measureBattery());
+    }
+    if (DISABLE_AIRBAG_LAMP && lastAirbagOkXmt > AIRBAG_OK_INTERVAL) {
+        airbagOk.Refresh();
     }
     if (lastCCDLoop > INTERWRITE_DELAY) {
         lastCCDLoop = 0;
         bool newActivity = _writer.Loop();
         activity = activity || newActivity;
     }
-    if (!SELF_TEST_MODE && lastBattMeasure > BATTERY_MEASURE_INTERVAL) {
-        battOil.SetBatteryVoltage(measureBattery());
-    }
-
 
     // DAS BLINKENLIGHTS! .. but seriously, blink the builtin LED on activity
     if (activity) {
