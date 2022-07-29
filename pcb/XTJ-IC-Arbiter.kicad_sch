@@ -3250,7 +3250,7 @@
     (uuid 1b315b47-8adf-49de-916b-225f0c5df700)
     (property "Reference" "D1" (id 0) (at 231.775 31.115 0))
     (property "Value" "1N4728" (id 1) (at 231.775 36.195 0))
-    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P3.81mm_Vertical_KathodeUp" (id 2) (at 231.775 33.655 0)
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal" (id 2) (at 231.775 33.655 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (id 3) (at 231.775 33.655 0))
@@ -3470,7 +3470,7 @@
     (property "Value" "120ohm" (id 1) (at 205.5114 57.5822 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" (id 2) (at 207.01 55.88 0)
+    (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" (id 2) (at 207.01 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 207.01 55.88 0)
@@ -4013,7 +4013,7 @@
     (uuid b2502fd8-e8a8-4cf0-b718-c349a466c0fa)
     (property "Reference" "D2" (id 0) (at 231.775 23.495 0))
     (property "Value" "1N4728" (id 1) (at 231.775 28.575 0))
-    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P3.81mm_Vertical_KathodeUp" (id 2) (at 231.775 26.035 0)
+    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal" (id 2) (at 231.775 26.035 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (id 3) (at 231.775 26.035 0))
@@ -4472,10 +4472,10 @@
       (reference "C13") (unit 1) (value "0.1uf") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
     )
     (path "/1b315b47-8adf-49de-916b-225f0c5df700"
-      (reference "D1") (unit 1) (value "1N4728") (footprint "Diode_THT:D_DO-41_SOD81_P3.81mm_Vertical_KathodeUp")
+      (reference "D1") (unit 1) (value "1N4728") (footprint "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal")
     )
     (path "/b2502fd8-e8a8-4cf0-b718-c349a466c0fa"
-      (reference "D2") (unit 1) (value "1N4728") (footprint "Diode_THT:D_DO-41_SOD81_P3.81mm_Vertical_KathodeUp")
+      (reference "D2") (unit 1) (value "1N4728") (footprint "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal")
     )
     (path "/c9e7bce7-50cd-418b-ab12-64a1618f8b45"
       (reference "D3") (unit 1) (value "P6KE39CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
@@ -4538,7 +4538,7 @@
       (reference "R2") (unit 1) (value "10ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
     )
     (path "/49ffc3f4-e717-41ef-9e7e-5cb511ac70a0"
-      (reference "R3") (unit 1) (value "120ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical")
+      (reference "R3") (unit 1) (value "120ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
     )
     (path "/46dfe61e-445b-4001-a194-0b00b8952b1c"
       (reference "R7") (unit 1) (value "2.2Kohm") (footprint "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal")
