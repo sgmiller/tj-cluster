@@ -22,10 +22,6 @@ uint8_t Instrument::GetByte(int bpos) {
     return _message[bpos];
 }
 
-bool Instrument::NeedsUpdate() {
-    return _needsUpdate;
-}
-
 bool Instrument::MaybeWrite(CCDLibrary ccd) {
     if (_needsUpdate || (_refreshInterval > -1 && _sinceLastWrite >= _refreshInterval)) {
         ccd.write(_message, _messageLen);
@@ -87,13 +83,11 @@ bool InstrumentWriter::Loop() {
     _writing=true;
     int startInstrument = _currentInstrument;
     do {
-        if (_instruments[_currentInstrument]->NeedsUpdate()) {
-            if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
-                _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
-                _writing=false;
-                // Return, so we delay until next loop
-                return true;
-            }
+        if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
+            _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
+            _writing=false;
+            // Return, so we delay until next loop
+            return true;
         } else { 
           _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
         }
