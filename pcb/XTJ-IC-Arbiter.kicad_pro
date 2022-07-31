@@ -405,6 +405,7 @@
         "name": "+5V",
         "nets": [
           "+5V",
+          "Net-(D13-Pad1)",
           "SPEEDO_IN"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
