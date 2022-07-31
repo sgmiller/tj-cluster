@@ -14,15 +14,12 @@ Instrument::Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_
     } else {
         _refreshInterval = refreshInterval;
     }
+    // By default, force an initial write
     _sinceLastWrite=300000;
 }
 
 uint8_t Instrument::GetByte(int bpos) {
     return _message[bpos];
-}
-
-bool Instrument::NeedsUpdate() {
-    return _needsUpdate;
 }
 
 bool Instrument::MaybeWrite(CCDLibrary ccd) {
@@ -86,13 +83,11 @@ bool InstrumentWriter::Loop() {
     _writing=true;
     int startInstrument = _currentInstrument;
     do {
-        if (_instruments[_currentInstrument]->NeedsUpdate()) {
-            if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
-                _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
-                _writing=false;
-                // Return, so we delay until next loop
-                return true;
-            }
+        if (_instruments[_currentInstrument]->MaybeWrite(CCD)) {
+            _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
+            _writing=false;
+            // Return, so we delay until next loop
+            return true;
         } else { 
           _currentInstrument = (_currentInstrument + 1) % _instrumentCount;
         }
@@ -107,8 +102,6 @@ void BatteryAndOil::SetBatteryVoltage(float volts) {
         volts = 20;
     }
     uint8_t nv = round(constrain(volts * 8,0,255));
-    Serial.print("BV now ");
-    Serial.println(nv);
     SetByte(1, nv);
 }
 
