@@ -20,6 +20,13 @@ to listen to depend on application, but the general theory is that when a
 relevant CAN message is received, a handler function can decode it and decide
 whether to set an Instrument or to transmit a subsequent CAN message or messages.
 
+The code also includes a routine to sample input voltage (e.g. 12V battery
+voltage) every half second.  It does this with the help of an optocoupler
+(solid state relay) between VBAT and a voltage divider in order to not drain
+the battery when the vehicle is off.  The source has constants for the R1/R2
+values of the voltage divider, correct if you are using the matching design,
+but adjust those values if you adjust the resistors.
+
 Finally, the software sets up a Teensy watchdog timer which will reset the Teensy
 if there is no CCD transmit activity.  Watchdog "feeds" could also be added
 to CAN reception if desired.  If no activity occurs in 5 seconds, a warning
