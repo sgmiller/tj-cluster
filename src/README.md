@@ -27,6 +27,17 @@ the battery when the vehicle is off.  The source has constants for the R1/R2
 values of the voltage divider, correct if you are using the matching design,
 but adjust those values if you adjust the resistors.
 
+The board has a speedometer circuit intended to read the speed
+sensor in the stock XJ/TJ transfer case.  The board includes a generic 5V
+output, which should be wired to the speed sensor VSS (which originally
+accepted 8/9V, remains to be seen if there is any catch, but I expect it's a
+simple rotating switch).  The return path should be wired to SPEEDO (and of
+course GND to ground near the sensor).  The code includes constants for the
+expected pulses per mile, which may need to be adjusted if different in your
+application.  This can also simply be ignored and the code changed to use
+outputs from your inverter if it provides reliable driveshaft revolutions or
+something else accurate enough to drive the odometer and speedometer.
+
 Finally, the software sets up a Teensy watchdog timer which will reset the Teensy
 if there is no CCD transmit activity.  Watchdog "feeds" could also be added
 to CAN reception if desired.  If no activity occurs in 5 seconds, a warning
