@@ -1185,9 +1185,9 @@
     (pad "14" thru_hole oval locked (at -7.62 -3.76 180) (size 1.2 2) (drill 0.8) (layers *.Cu *.Mask)
       (net 18 "+5V") (pinfunction "Vdd") (pintype "power_in") (tstamp 76667265-ec0f-4301-add5-e6e115193579))
     (model "${KICAD6_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-14_W7.62mm.step"
-      (offset (xyz 7.5 4 0))
+      (offset (xyz -7.65 -3.85 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 90))
+      (rotate (xyz 0 0 -90))
     )
   )
 
