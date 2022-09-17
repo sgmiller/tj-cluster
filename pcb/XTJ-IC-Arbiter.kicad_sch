@@ -1772,7 +1772,6 @@
     )
   )
 
-
   (junction (at 123.825 31.115) (diameter 0) (color 0 0 0 0)
     (uuid 07bed126-e91a-4919-a4f7-9420d808cb7e)
   )
@@ -1967,11 +1966,12 @@
   (no_connect (at 122.555 48.895) (uuid 4ed089b5-ccbf-4746-a1b7-2a4492143aed))
   (no_connect (at 105.41 113.03) (uuid 507a8be7-5843-44fa-be4f-9bebaa97f1f6))
   (no_connect (at 161.29 107.95) (uuid 5263f538-4813-48fa-9b6a-28c9d8fa3828))
-  (no_connect (at 161.29 110.49) (uuid 5263f538-4813-48fa-9b6a-28c9d8fa3828))
+  (no_connect (at 161.29 110.49) (uuid 5263f538-4813-48fa-9b6a-28c9d8fa3829))
   (no_connect (at 161.29 115.57) (uuid 71479bf7-1677-49f0-b144-4005f8087985))
   (no_connect (at 161.29 113.03) (uuid 71479bf7-1677-49f0-b144-4005f8087986))
   (no_connect (at 161.29 105.41) (uuid 71479bf7-1677-49f0-b144-4005f8087989))
   (no_connect (at 161.29 133.35) (uuid 71479bf7-1677-49f0-b144-4005f808798e))
+  (no_connect (at 105.41 125.73) (uuid 74c41933-9990-432e-a886-5578acb64c69))
   (no_connect (at 259.08 55.245) (uuid 79f618f8-580b-4c6f-9cd9-f2ecc9f4ad1c))
   (no_connect (at 105.41 85.09) (uuid 7e4f5385-9f45-4a6c-9d0c-04d12bb7b2b0))
   (no_connect (at 161.29 100.33) (uuid 8e2d03e9-349b-4846-8b92-4f0843d72e02))
@@ -3138,7 +3138,7 @@
     (in_bom yes) (on_board yes)
     (uuid 0a29b72f-42cd-45ef-bfa3-6665ab368e8c)
     (property "Reference" "L1" (id 0) (at 158.75 55.245 90))
-    (property "Value" "47uH" (id 1) (at 158.75 52.07 90))
+    (property "Value" "68uH" (id 1) (at 158.75 52.07 90))
     (property "Footprint" "Inductor_THT:L_Radial_D8.7mm_P5.00mm_Fastron_07HCP" (id 2) (at 158.75 53.975 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3230,24 +3230,6 @@
     (pin "2" (uuid b5b863ac-a506-4b3e-baa9-6daff41ac83f))
     (pin "3" (uuid ad541cb2-f097-4769-b1c0-c1cca23ca9bd))
     (pin "4" (uuid 946b1da9-be3d-46a5-8490-1a85862f3b88))
-  )
-
-  (symbol (lib_id "power:GND") (at 105.41 125.73 270) (unit 1)
-    (in_bom yes) (on_board yes) (fields_autoplaced)
-    (uuid 142ac714-2a3d-4345-bec7-372c50a274ea)
-    (property "Reference" "#PWR0107" (id 0) (at 99.06 125.73 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (id 1) (at 106.045 126.1638 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "" (id 2) (at 105.41 125.73 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (id 3) (at 105.41 125.73 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid e08592b0-af72-4950-a3ae-a0278eba1cca))
   )
 
   (symbol (lib_id "power:GND") (at 137.795 62.23 0) (unit 1)
@@ -3827,7 +3809,7 @@
     (property "Reference" "C11" (id 0) (at 167.005 55.245 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "68uF" (id 1) (at 167.005 63.5 0)
+    (property "Value" "120uF" (id 1) (at 167.005 63.5 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Capacitor_THT:C_Radial_D6.3mm_H7.0mm_P2.50mm" (id 2) (at 167.3352 61.595 0)
@@ -4461,9 +4443,6 @@
     (path "/941f14d0-b19f-4c68-ad3e-e32ed4f4789b"
       (reference "#PWR0106") (unit 1) (value "GND") (footprint "")
     )
-    (path "/142ac714-2a3d-4345-bec7-372c50a274ea"
-      (reference "#PWR0107") (unit 1) (value "GND") (footprint "")
-    )
     (path "/0ea7c072-d6e1-405c-a884-f01b163ec300"
       (reference "#PWR0108") (unit 1) (value "GND") (footprint "")
     )
@@ -4501,7 +4480,7 @@
       (reference "C10") (unit 1) (value "100uF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm")
     )
     (path "/94102ff7-de7c-415b-a1d0-291d8e746d24"
-      (reference "C11") (unit 1) (value "68uF") (footprint "Capacitor_THT:C_Radial_D6.3mm_H7.0mm_P2.50mm")
+      (reference "C11") (unit 1) (value "120uF") (footprint "Capacitor_THT:C_Radial_D6.3mm_H7.0mm_P2.50mm")
     )
     (path "/cac6c477-5b9f-4115-a36a-335bf8924592"
       (reference "C12") (unit 1) (value "0.1uF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
@@ -4567,7 +4546,7 @@
       (reference "J3") (unit 1) (value "DTM13-12PA-R008") (footprint "DTM13:TE_DTM13-12PA-R008")
     )
     (path "/0a29b72f-42cd-45ef-bfa3-6665ab368e8c"
-      (reference "L1") (unit 1) (value "47uH") (footprint "Inductor_THT:L_Radial_D8.7mm_P5.00mm_Fastron_07HCP")
+      (reference "L1") (unit 1) (value "68uH") (footprint "Inductor_THT:L_Radial_D8.7mm_P5.00mm_Fastron_07HCP")
     )
     (path "/833df833-89c5-4e5b-af01-4462b0038801"
       (reference "OC1") (unit 1) (value "Optocoupler_Generic") (footprint "Package_DIP:DIP-4_W7.62mm")
