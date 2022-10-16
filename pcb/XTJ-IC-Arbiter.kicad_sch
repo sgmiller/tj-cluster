@@ -3243,19 +3243,6 @@
     (pin "1" (uuid 75202499-5082-42ff-975b-7579e39acf53))
   )
 
-  (symbol (lib_id "ccd_can_bridge-rescue:D_Zener") (at 231.775 33.655 0) (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid 1b315b47-8adf-49de-916b-225f0c5df700)
-    (property "Reference" "D1" (id 0) (at 231.775 31.115 0))
-    (property "Value" "1N4728" (id 1) (at 231.775 36.195 0))
-    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal" (id 2) (at 231.775 33.655 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (id 3) (at 231.775 33.655 0))
-    (pin "1" (uuid ec80be29-bc21-46ba-b051-e8295bd16363))
-    (pin "2" (uuid 8840f18c-6884-414e-85d5-1600774dab4d))
-  )
-
   (symbol (lib_id "ccd_can_bridge-rescue:C") (at 32.385 48.895 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 200bea53-c26b-4680-9c37-95b9c615c9f3)
@@ -3337,6 +3324,21 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid bd638bfd-42ee-43dd-bc8e-f3c9deda940a))
+  )
+
+  (symbol (lib_id "Device:D_Zener") (at 231.775 33.655 0) (mirror x) (unit 1)
+    (in_bom yes) (on_board yes) (fields_autoplaced)
+    (uuid 387835e8-b2f1-4152-969d-c1c2488681b2)
+    (property "Reference" "D?" (id 0) (at 231.775 28.6852 0))
+    (property "Value" "3.3v" (id 1) (at 231.775 31.2221 0))
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" (id 2) (at 231.775 33.655 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "TZX3V3B-TR " (id 3) (at 231.775 33.655 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 7db21db4-31ca-4f7d-8339-baee2f6139e3))
+    (pin "2" (uuid 5fb26509-3481-4e72-9113-d8b973bf3c27))
   )
 
   (symbol (lib_id "power:GND") (at 33.655 97.155 90) (unit 1)
@@ -3567,7 +3569,7 @@
   (symbol (lib_id "Device:R") (at 64.135 95.25 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 680ee229-67ea-482b-9141-2aece86951c1)
-    (property "Reference" "R?" (id 0) (at 64.135 90.5342 90))
+    (property "Reference" "R4" (id 0) (at 64.135 90.5342 90))
     (property "Value" "16ohm" (id 1) (at 64.135 93.0711 90))
     (property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal" (id 2) (at 64.135 97.028 90)
       (effects (font (size 1.27 1.27)) hide)
@@ -3910,6 +3912,21 @@
     (pin "2" (uuid d0761bfd-efdc-4148-939b-29d205d2023e))
   )
 
+  (symbol (lib_id "Device:D_Zener") (at 231.775 26.035 0) (mirror x) (unit 1)
+    (in_bom yes) (on_board yes) (fields_autoplaced)
+    (uuid 97d09964-8bc8-4ba6-9cd6-97f7ce92c4a9)
+    (property "Reference" "D?" (id 0) (at 231.775 21.0652 0))
+    (property "Value" "3.3v" (id 1) (at 231.775 23.6021 0))
+    (property "Footprint" "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" (id 2) (at 231.775 26.035 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "TZX3V3B-TR " (id 3) (at 231.775 26.035 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid f7c697ee-1963-4051-84b8-dceacadffcc2))
+    (pin "2" (uuid d0e11f62-f018-4699-9322-aa2eaedcb502))
+  )
+
   (symbol (lib_id "Diode_TVS_AKL:P6KE6.8CA") (at 56.515 109.855 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 98d023c8-c9f4-43f1-9c09-419f978586ac)
@@ -4033,19 +4050,6 @@
     )
     (pin "1" (uuid 0d804912-b08e-4e10-9008-61af06fa2b51))
     (pin "2" (uuid c9e744ef-ceab-4a6b-954d-7d8822e69e28))
-  )
-
-  (symbol (lib_id "ccd_can_bridge-rescue:D_Zener") (at 231.775 26.035 0) (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid b2502fd8-e8a8-4cf0-b718-c349a466c0fa)
-    (property "Reference" "D2" (id 0) (at 231.775 23.495 0))
-    (property "Value" "1N4728" (id 1) (at 231.775 28.575 0))
-    (property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal" (id 2) (at 231.775 26.035 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (id 3) (at 231.775 26.035 0))
-    (pin "1" (uuid 17146942-3ae7-4d0f-82df-d05f19d4625c))
-    (pin "2" (uuid ce82bad6-71aa-4e24-b36b-840272b7c2a8))
   )
 
   (symbol (lib_id "power:GND") (at 176.53 138.43 90) (unit 1)
@@ -4531,12 +4535,6 @@
     (path "/726455f5-61fe-466d-a3d7-18f19905fbb4"
       (reference "C14") (unit 1) (value "0.1uF") (footprint "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm")
     )
-    (path "/1b315b47-8adf-49de-916b-225f0c5df700"
-      (reference "D1") (unit 1) (value "1N4728") (footprint "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal")
-    )
-    (path "/b2502fd8-e8a8-4cf0-b718-c349a466c0fa"
-      (reference "D2") (unit 1) (value "1N4728") (footprint "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal")
-    )
     (path "/c9e7bce7-50cd-418b-ab12-64a1618f8b45"
       (reference "D3") (unit 1) (value "P6KE39CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
     )
@@ -4579,6 +4577,12 @@
     (path "/98d023c8-c9f4-43f1-9c09-419f978586ac"
       (reference "D16") (unit 1) (value "P6KE6.8CA") (footprint "Diode_THT:D_DO-15_P10.16mm_Horizontal")
     )
+    (path "/387835e8-b2f1-4152-969d-c1c2488681b2"
+      (reference "D?") (unit 1) (value "3.3v") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
+    )
+    (path "/97d09964-8bc8-4ba6-9cd6-97f7ce92c4a9"
+      (reference "D?") (unit 1) (value "3.3v") (footprint "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal")
+    )
     (path "/342a58bb-762e-460e-8b04-bedc5a7e60d5"
       (reference "H1") (unit 1) (value "MountingHole_Pad") (footprint "MountingHole:MountingHole_3.2mm_M3")
     )
@@ -4603,6 +4607,9 @@
     (path "/49ffc3f4-e717-41ef-9e7e-5cb511ac70a0"
       (reference "R3") (unit 1) (value "120ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
     )
+    (path "/680ee229-67ea-482b-9141-2aece86951c1"
+      (reference "R4") (unit 1) (value "16ohm") (footprint "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal")
+    )
     (path "/46dfe61e-445b-4001-a194-0b00b8952b1c"
       (reference "R7") (unit 1) (value "2.2Kohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
     )
@@ -4617,9 +4624,6 @@
     )
     (path "/8d1ac031-3e67-4e7b-8e5c-6b675b8f2a5b"
       (reference "R11") (unit 1) (value "120ohm") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
-    )
-    (path "/680ee229-67ea-482b-9141-2aece86951c1"
-      (reference "R?") (unit 1) (value "16ohm") (footprint "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal")
     )
     (path "/002a6115-668d-4685-a0aa-8f6fc9132eb5"
       (reference "SW2") (unit 1) (value "SW_DIP_x02") (footprint "Button_Switch_THT:SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm")
