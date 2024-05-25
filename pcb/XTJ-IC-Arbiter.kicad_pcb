@@ -4576,7 +4576,7 @@
   (gr_text "MCU" (at 124.206 87.503) (layer "F.SilkS") (tstamp 6a1c75a6-d7da-4520-9374-fd53d8d57da7)
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
-  (gr_text "XJ/TJ CAN/CCD Instrument \nCluster Arbiter v2.0\n" (at 62.4586 131.699) (layer "F.SilkS") (tstamp fd985ed6-c375-4f20-a27c-7483c7432a4f)
+  (gr_text "XJ/TJ CAN/CCD \nInstrument Cluster \nArbiter v2.0\n" (at 64.77 129.794) (layer "F.SilkS") (tstamp fd985ed6-c375-4f20-a27c-7483c7432a4f)
     (effects (font (size 0.75 0.75) (thickness 0.13) bold) (justify left))
   )
 
