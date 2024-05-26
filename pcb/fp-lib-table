@@ -1,5 +1,5 @@
 (fp_lib_table
-  (lib (name "Capacitors_THT")(type "KiCad")(uri "${KIPRJMOD}/parts/Capacitors_THT")(options "")(descr ""))
+  (version 7)
   (lib (name "DTM13")(type "KiCad")(uri "${KIPRJMOD}/parts/DTM13")(options "")(descr ""))
   (lib (name "MCUs")(type "KiCad")(uri "${KIPRJMOD}/parts/MCUs")(options "")(descr ""))
   (lib (name "Transceivers")(type "KiCad")(uri "${KIPRJMOD}/parts/Transceivers")(options "")(descr ""))
