@@ -210,7 +210,7 @@
   (pad "11" thru_hole circle (at 6.285 -4.39) (size 1.86 1.86) (drill 1.24) (layers "*.Cu" "*.Mask") (tstamp 4780a265-b9f7-42e2-863f-38b595c2d90a))
   (pad "12" thru_hole circle (at 10.475 -4.39) (size 1.86 1.86) (drill 1.24) (layers "*.Cu" "*.Mask") (tstamp 49a2c8bf-b8f7-48f8-b05d-0008639e16ef))
   (model "${KIPRJMOD}/parts/DTM13/DTM13-12PA-R008.step"
-    (offset (xyz 0.635 -30.48 8.255))
+    (offset (xyz 0 -30.48 8.255))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 0))
   )
