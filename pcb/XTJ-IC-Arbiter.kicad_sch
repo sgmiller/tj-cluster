@@ -1807,7 +1807,6 @@
   (no_connect (at 161.29 105.41) (uuid 71479bf7-1677-49f0-b144-4005f8087989))
   (no_connect (at 161.29 133.35) (uuid 71479bf7-1677-49f0-b144-4005f808798e))
   (no_connect (at 105.41 85.09) (uuid 7e4f5385-9f45-4a6c-9d0c-04d12bb7b2b0))
-  (no_connect (at 33.655 102.235) (uuid 850ffafe-6f3d-4e3d-827e-2f7e5bb9b42d))
   (no_connect (at 161.29 100.33) (uuid 8e2d03e9-349b-4846-8b92-4f0843d72e02))
   (no_connect (at 161.29 97.79) (uuid 8e2d03e9-349b-4846-8b92-4f0843d72e03))
   (no_connect (at 122.555 51.435) (uuid a3fa21bc-79ff-4788-9627-9251852a7456))
@@ -4133,6 +4132,31 @@
       (project "XTJ-IC-Arbiter"
         (path "/30a59342-dbf1-42d2-913c-7e79095896d9"
           (reference "R1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 33.655 102.235 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid dc07574c-653c-4376-9cc1-135ff5e660ec)
+    (property "Reference" "#PWR018" (at 40.005 102.235 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 36.83 102.6688 90)
+      (effects (font (size 1.27 1.27)) (justify right))
+    )
+    (property "Footprint" "" (at 33.655 102.235 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 33.655 102.235 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid b3954ad8-d714-4a5e-b721-6789f892a8aa))
+    (instances
+      (project "XTJ-IC-Arbiter"
+        (path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+          (reference "#PWR018") (unit 1)
         )
       )
     )
