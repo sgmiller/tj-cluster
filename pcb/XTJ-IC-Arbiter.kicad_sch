@@ -2070,6 +2070,11 @@
     (uuid ffa1b78e-423d-4e22-a362-33cc9b7377fd)
   )
 
+  (rectangle (start 192.405 87.63) (end 266.7 139.7)
+    (stroke (width 0) (type default))
+    (fill (type none))
+    (uuid 10aa711e-b6a1-4299-9d60-ac8521ad4387)
+  )
   (rectangle (start 27.94 144.78) (end 86.995 186.055)
     (stroke (width 0) (type default))
     (fill (type none))
@@ -2088,7 +2093,7 @@
     (effects (font (size 1.524 1.524)) (justify left bottom))
     (uuid 689c22fd-eb5f-477c-8c6f-74997457d7c3)
   )
-  (text "ESD Supression" (at 197.485 90.805 0)
+  (text "ESD Supression" (at 193.04 86.36 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 99dc3419-20e9-46af-b1c8-d265f8b506e7)
   )
@@ -2705,7 +2710,7 @@
   (symbol (lib_id "Switch:SW_DIP_x01") (at 243.84 66.675 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 31ef5887-ed2c-4894-9b16-6428763340bd)
-    (property "Reference" "CCD_T1" (at 247.142 65.4629 90)
+    (property "Reference" "SW1" (at 247.142 65.4629 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "SW_DIP_x01" (at 247.142 67.8871 90)
@@ -2722,7 +2727,7 @@
     (instances
       (project "XTJ-IC-Arbiter"
         (path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-          (reference "CCD_T1") (unit 1)
+          (reference "SW1") (unit 1)
         )
       )
     )
@@ -3373,7 +3378,7 @@
   (symbol (lib_id "Switch:SW_DIP_x01") (at 59.055 48.895 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 745b2fdb-90ef-44ab-872b-627d0b015ff9)
-    (property "Reference" "CAN_T1" (at 62.357 47.6829 90)
+    (property "Reference" "SW2" (at 62.357 47.6829 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "SW_DIP_x01" (at 62.357 50.1071 90)
@@ -3390,7 +3395,7 @@
     (instances
       (project "XTJ-IC-Arbiter"
         (path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-          (reference "CAN_T1") (unit 1)
+          (reference "SW2") (unit 1)
         )
       )
     )
