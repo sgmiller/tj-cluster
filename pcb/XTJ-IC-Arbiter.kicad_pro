@@ -563,7 +563,7 @@
       },
       {
         "netclass": "+5V",
-        "pattern": "Net-(D2-K)"
+        "pattern": "/5VO"
       }
     ]
   },
