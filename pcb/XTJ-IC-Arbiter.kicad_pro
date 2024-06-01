@@ -560,6 +560,10 @@
       {
         "netclass": "+5V",
         "pattern": "Net-(D13-K)"
+      },
+      {
+        "netclass": "+5V",
+        "pattern": "Net-(D2-K)"
       }
     ]
   },
