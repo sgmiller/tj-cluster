@@ -6,4 +6,5 @@
   (lib (name "tjcluster")(type "KiCad")(uri "${KIPRJMOD}/parts/tjcluster.kicad_sym")(options "")(descr ""))
   (lib (name "DTM13-12PA-R008")(type "Legacy")(uri "${KIPRJMOD}/parts/DTM13/DTM13-12PA-R008.lib")(options "")(descr ""))
   (lib (name "teensy")(type "Legacy")(uri "${KIPRJMOD}/parts/MCUs/teensy.lib")(options "")(descr ""))
+  (lib (name "G6L-1P_DC5")(type "KiCad")(uri "${KIPRJMOD}/parts/G6L-1P_DC5.kicad_sym")(options "")(descr ""))
 )

@@ -216,13 +216,8 @@ void CCDHandleError(CCD_Operations op, CCD_Errors err)
 }
 
 float measureBattery() {
-    // Relay on
-    digitalWrite(VBAT_MEASURE_CTL, HIGH);
-    // Let relay settle
-    delay(VBAT_RELAY_TURN_ON_MAX);
+    // TODO: Use ADC
     int battery=analogRead(VBAT_MEASURE_SIG);
-    // Relay off
-    digitalWrite(VBAT_MEASURE_CTL, LOW);
     float analogVoltage = battery * (MCU_VOLTAGE/1023.0);
     float batVoltage = analogVoltage * VBAT_MEASUREMENT_RATIO;
     Serial.print("Calculated VBAT=");
