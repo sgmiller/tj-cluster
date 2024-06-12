@@ -4603,6 +4603,12 @@
 		(uuid "022a1699-3f07-4272-bb89-ab06b1b86f34")
 	)
 	(junction
+		(at 78.74 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "07b3c442-7458-40f5-b32d-dfaf0d26303c")
+	)
+	(junction
 		(at 160.02 54.61)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4645,7 +4651,7 @@
 		(uuid "3881310d-5ccd-4389-a617-cd6a9746efd5")
 	)
 	(junction
-		(at 215.9 90.805)
+		(at 216.535 91.44)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3d163359-b61b-42a5-8d4a-1346ae2abbf3")
@@ -4675,7 +4681,7 @@
 		(uuid "5f4cf3cc-2412-428e-a6c2-073bb0de07d8")
 	)
 	(junction
-		(at 215.9 117.475)
+		(at 216.535 118.11)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "623e4286-2eb1-401a-8e4e-de092b0b7c0b")
@@ -5052,7 +5058,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 117.475) (xy 215.9 117.475)
+			(xy 211.455 118.11) (xy 216.535 118.11)
 		)
 		(stroke
 			(width 0)
@@ -5262,16 +5268,6 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 99.695) (xy 219.075 99.695)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2844876a-e51a-44ba-8863-c45159a034af")
-	)
-	(wire
-		(pts
 			(xy 109.22 40.64) (xy 109.22 36.195)
 		)
 		(stroke
@@ -5302,7 +5298,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 107.315) (xy 219.075 107.315)
+			(xy 211.455 107.95) (xy 219.71 107.95)
 		)
 		(stroke
 			(width 0)
@@ -5352,7 +5348,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 112.395) (xy 219.075 112.395)
+			(xy 211.455 113.03) (xy 219.71 113.03)
 		)
 		(stroke
 			(width 0)
@@ -5392,7 +5388,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 102.235) (xy 219.075 102.235)
+			(xy 211.455 102.87) (xy 219.71 102.87)
 		)
 		(stroke
 			(width 0)
@@ -5522,7 +5518,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 98.425) (xy 215.9 117.475)
+			(xy 216.535 99.06) (xy 216.535 118.11)
 		)
 		(stroke
 			(width 0)
@@ -5532,7 +5528,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 90.805) (xy 219.075 90.805)
+			(xy 216.535 91.44) (xy 219.71 91.44)
 		)
 		(stroke
 			(width 0)
@@ -5682,7 +5678,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.185 90.805) (xy 215.9 90.805)
+			(xy 210.82 91.44) (xy 216.535 91.44)
 		)
 		(stroke
 			(width 0)
@@ -5809,6 +5805,16 @@
 			(type default)
 		)
 		(uuid "9d8d8319-e394-4d7e-892a-e3971a2a5dd8")
+	)
+	(wire
+		(pts
+			(xy 212.09 100.33) (xy 219.71 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9daeb3a7-b28e-44c6-9d86-d2c31e80e5be")
 	)
 	(wire
 		(pts
@@ -5942,7 +5948,7 @@
 	)
 	(wire
 		(pts
-			(xy 219.075 90.805) (xy 219.075 94.615)
+			(xy 219.71 91.44) (xy 219.71 95.25)
 		)
 		(stroke
 			(width 0)
@@ -6032,7 +6038,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 104.775) (xy 219.075 104.775)
+			(xy 211.455 105.41) (xy 219.71 105.41)
 		)
 		(stroke
 			(width 0)
@@ -6062,7 +6068,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 109.855) (xy 219.075 109.855)
+			(xy 211.455 110.49) (xy 219.71 110.49)
 		)
 		(stroke
 			(width 0)
@@ -6122,7 +6128,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 117.475) (xy 219.075 117.475)
+			(xy 216.535 118.11) (xy 219.71 118.11)
 		)
 		(stroke
 			(width 0)
@@ -6415,7 +6421,7 @@
 	)
 	(global_label "IO{slash}1"
 		(shape input)
-		(at 210.82 107.315 180)
+		(at 211.455 107.95 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6425,7 +6431,7 @@
 		)
 		(uuid "0301e8ec-38be-430c-80cb-6be528f7ad2d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 203.3595 107.315 0)
+			(at 203.9945 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6501,28 +6507,6 @@
 			)
 		)
 	)
-	(global_label "SPEEDO"
-		(shape input)
-		(at 210.82 99.695 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "144c908f-a39e-4329-8946-3be268551985")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 200.4568 99.695 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "3v3"
 		(shape input)
 		(at 26.67 46.355 180)
@@ -6589,9 +6573,31 @@
 			)
 		)
 	)
+	(global_label "ccd_rec"
+		(shape input)
+		(at 78.74 129.54 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify right)
+		)
+		(uuid "2a95c859-e2d2-4214-94c0-c759b4f0b7b7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 78.74 141.8303 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "ccd+"
 		(shape input)
-		(at 210.82 104.775 180)
+		(at 211.455 105.41 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6601,7 +6607,7 @@
 		)
 		(uuid "2b48adbd-9686-4560-91a3-331cfc03e1ce")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 201.3599 104.775 0)
+			(at 201.9949 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6700,6 +6706,28 @@
 	)
 	(global_label "can_tx"
 		(shape input)
+		(at 68.58 129.54 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify right)
+		)
+		(uuid "3a9c7cd8-eb9e-4db9-9aea-747f2851cc38")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 68.58 140.4515 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "can_tx"
+		(shape input)
 		(at 28.575 38.735 180)
 		(fields_autoplaced yes)
 		(effects
@@ -6766,7 +6794,7 @@
 	)
 	(global_label "3v3"
 		(shape input)
-		(at 210.185 90.805 180)
+		(at 210.82 91.44 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6776,7 +6804,29 @@
 		)
 		(uuid "599c1a5a-9972-454d-99c2-906e722f074a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 203.8132 90.805 0)
+			(at 204.4482 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "can_rx"
+		(shape input)
+		(at 64.77 129.54 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify right)
+		)
+		(uuid "5c7ae2ab-0a08-4ac1-9847-ae1d95bc8f63")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 64.77 140.524 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6832,7 +6882,7 @@
 	)
 	(global_label "IO{slash}3"
 		(shape input)
-		(at 210.82 102.235 180)
+		(at 211.455 102.87 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6842,7 +6892,7 @@
 		)
 		(uuid "7052b813-f18c-4d2c-824e-4ddf1cf03842")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 203.3595 102.235 0)
+			(at 203.9945 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6920,7 +6970,7 @@
 	)
 	(global_label "IO{slash}2"
 		(shape input)
-		(at 210.82 112.395 180)
+		(at 211.455 113.03 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6930,7 +6980,7 @@
 		)
 		(uuid "7cae9943-437c-4334-9a4b-dd7fe352095d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 203.3595 112.395 0)
+			(at 203.9945 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7094,6 +7144,28 @@
 			)
 		)
 	)
+	(global_label "ccd_xmit"
+		(shape input)
+		(at 74.93 129.54 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify right)
+		)
+		(uuid "b0a2196d-cc93-4f55-9d0e-966204c4df8d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 74.93 143.1366 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "SPEEDO_IN"
 		(shape input)
 		(at 34.29 109.855 0)
@@ -7137,31 +7209,9 @@
 			)
 		)
 	)
-	(global_label "can+"
-		(shape input)
-		(at 64.77 111.76 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left)
-		)
-		(uuid "bd551d72-b65d-4889-877b-294ad5e88e6f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 64.77 102.2273 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "ccd-"
 		(shape input)
-		(at 210.82 109.855 180)
+		(at 211.455 110.49 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7171,7 +7221,7 @@
 		)
 		(uuid "bf75c2bf-08a3-4c2b-a2de-84481889a6c5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 201.3599 109.855 0)
+			(at 201.9949 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7292,6 +7342,28 @@
 	)
 	(global_label "3v3"
 		(shape input)
+		(at 85.09 87.63 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "deadb2a5-ad4f-4327-a725-6a66dc10625e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 85.09 81.2582 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "3v3"
+		(shape input)
 		(at 208.915 60.96 180)
 		(fields_autoplaced yes)
 		(effects
@@ -7355,28 +7427,6 @@
 			)
 		)
 	)
-	(global_label "can-"
-		(shape input)
-		(at 68.58 111.76 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left)
-		)
-		(uuid "eee34dbe-66e5-4739-a256-2fc0f9a20fca")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 68.58 102.2273 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "ccd_xmit"
 		(shape input)
 		(at 105.41 143.51 180)
@@ -7390,6 +7440,28 @@
 		(uuid "f0837dc4-341e-4dc5-aee8-4e9779e8321b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 91.8134 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SPEEDO_IN"
+		(shape input)
+		(at 212.09 100.33 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fb6359bb-081b-41e2-b945-b35656695677")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 198.8239 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8115,73 +8187,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 68.58 111.76 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "26738b63-34bc-45aa-9ec4-5e94315bf01e")
-		(property "Reference" "TP3"
-			(at 69.977 113.8498 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 69.977 116.2741 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 63.5 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 63.5 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 68.58 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "54495374-8581-4d40-b943-53b8cfb125cd")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "TP3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Switch:SW_DIP_x01")
 		(at 254.635 66.675 90)
 		(unit 1)
@@ -8669,7 +8674,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "390d539a-569e-40a3-af6f-acb6c5f62837")
 		(property "Reference" "TP5"
 			(at 77.597 113.8498 0)
@@ -9264,6 +9268,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 74.93 129.54 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5582ebd5-4905-432e-a4fb-e3f00d471875")
+		(property "Reference" "TP12"
+			(at 76.327 125.0258 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 76.327 127.4501 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 80.01 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 80.01 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 74.93 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "aa3cda54-1795-4f14-8b75-32e8237ddb72")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "TP12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Mechanical:MountingHole_Pad")
 		(at 26.035 125.095 0)
 		(unit 1)
@@ -9532,73 +9603,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 64.77 111.76 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5deb2a43-d2be-4191-b842-9bdba2d7ae74")
-		(property "Reference" "TP2"
-			(at 66.167 113.8498 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 66.167 116.2741 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 59.69 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 59.69 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 64.77 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d3a80337-e364-41d9-915a-7a1b055c2ffa")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "TP2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 116.205 44.45 0)
 		(unit 1)
@@ -9662,6 +9666,73 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 78.74 129.54 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "65080292-63a0-4149-a937-ea1683997bce")
+		(property "Reference" "TP13"
+			(at 80.137 125.0258 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 80.137 127.4501 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 83.82 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 83.82 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 78.74 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9f197439-193e-4f62-b998-4c3af8388e53")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "TP13")
 					(unit 1)
 				)
 			)
@@ -10696,6 +10767,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 85.09 87.63 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a0031232-6d5f-46fe-8ba8-a5a24466385e")
+		(property "Reference" "TP9"
+			(at 86.487 89.7198 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 86.487 92.1441 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 80.01 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 80.01 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 85.09 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5b4e5dca-ba92-486d-b49e-cca68acd872b")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "TP9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Regulator_Switching:LM2672N-5.0")
 		(at 142.24 41.275 0)
 		(unit 1)
@@ -10915,6 +11053,73 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 68.58 129.54 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "aed48bd7-e5c7-4ac2-b1ad-390491aa72ce")
+		(property "Reference" "TP11"
+			(at 69.977 125.0258 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 69.977 127.4501 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 73.66 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 68.58 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "621521c0-6fe7-41c3-9632-d445576e1a9a")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "TP11")
 					(unit 1)
 				)
 			)
@@ -11320,7 +11525,7 @@
 	)
 	(symbol
 		(lib_id "SP723ABG:SP723ABG")
-		(at 231.775 102.235 0)
+		(at 232.41 102.87 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11329,7 +11534,7 @@
 		(fields_autoplaced yes)
 		(uuid "c0d9a2b6-f726-4a53-b9a6-49f25a9d07ef")
 		(property "Reference" "U5"
-			(at 250.3932 104.8329 0)
+			(at 251.0282 105.4679 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11338,7 +11543,7 @@
 			)
 		)
 		(property "Value" "SP723APP"
-			(at 250.3932 107.2571 0)
+			(at 251.0282 107.8921 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11347,7 +11552,7 @@
 			)
 		)
 		(property "Footprint" "Package_DIP:DIP-8_W7.62mm"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11357,7 +11562,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11366,7 +11571,7 @@
 			)
 		)
 		(property "Description" "\nTVS ARRAY ESD 6 INPUT 30V 8-SOIC\n"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11376,7 +11581,7 @@
 			)
 		)
 		(property "MF" "Littelfuse"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11386,7 +11591,7 @@
 			)
 		)
 		(property "PACKAGE" "SOIC-8"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11396,7 +11601,7 @@
 			)
 		)
 		(property "MPN" "SP723ABG"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11406,7 +11611,7 @@
 			)
 		)
 		(property "Price" "None"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11416,7 +11621,7 @@
 			)
 		)
 		(property "Package" "SOIC-8 Littelfuse"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11426,7 +11631,7 @@
 			)
 		)
 		(property "OC_FARNELL" "1827642"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11436,7 +11641,7 @@
 			)
 		)
 		(property "SnapEDA_Link" "https://www.snapeda.com/parts/SP723ABG/Littelfuse+Inc/view-part/?ref=snap"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11446,7 +11651,7 @@
 			)
 		)
 		(property "MP" "SP723ABG"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11456,7 +11661,7 @@
 			)
 		)
 		(property "SUPPLIER" "LITTELFUSE"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11466,7 +11671,7 @@
 			)
 		)
 		(property "OC_NEWARK" "80K9824"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11476,7 +11681,7 @@
 			)
 		)
 		(property "Availability" "In Stock"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11486,7 +11691,7 @@
 			)
 		)
 		(property "Check_prices" "https://www.snapeda.com/parts/SP723ABG/Littelfuse+Inc/view-part/?ref=eda"
-			(at 231.775 102.235 0)
+			(at 232.41 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11956,7 +12161,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 210.82 117.475 270)
+		(at 211.455 118.11 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11965,7 +12170,7 @@
 		(fields_autoplaced yes)
 		(uuid "e537b49d-d96f-4905-9251-2583c3596de2")
 		(property "Reference" "#PWR011"
-			(at 204.47 117.475 0)
+			(at 205.105 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11974,7 +12179,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 207.6451 117.475 90)
+			(at 208.2801 118.11 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11983,7 +12188,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 210.82 117.475 0)
+			(at 211.455 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11992,7 +12197,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 210.82 117.475 0)
+			(at 211.455 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12001,7 +12206,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 210.82 117.475 0)
+			(at 211.455 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12016,6 +12221,73 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 64.77 129.54 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e840434e-1127-4ace-9f23-e3939d51f60b")
+		(property "Reference" "TP10"
+			(at 66.167 125.0258 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 66.167 127.4501 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 69.85 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 69.85 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 64.77 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "89c0d31a-639a-4cea-8b26-b607f9df486c")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "TP10")
 					(unit 1)
 				)
 			)
@@ -12088,7 +12360,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 215.9 94.615 180)
+		(at 216.535 95.25 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12096,7 +12368,7 @@
 		(dnp no)
 		(uuid "f51dc163-e81f-4f73-a4ef-976af59a4c07")
 		(property "Reference" "C3"
-			(at 215.265 97.155 0)
+			(at 215.9 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12105,7 +12377,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 215.265 92.075 0)
+			(at 215.9 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12114,7 +12386,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
-			(at 214.9348 90.805 0)
+			(at 215.5698 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12123,7 +12395,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 215.9 94.615 0)
+			(at 216.535 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12132,7 +12404,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 215.9 94.615 0)
+			(at 216.535 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12220,6 +12492,71 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 78.74 92.71 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fd6d1ec2-86c5-407e-a57d-f37fe1f4c3d6")
+		(property "Reference" "TP8"
+			(at 75.438 87.9305 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 75.438 90.3548 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 78.74 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 78.74 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 78.74 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "faaf4b27-7e9a-4ec5-b56a-d592c4f06dde")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "TP8")
 					(unit 1)
 				)
 			)

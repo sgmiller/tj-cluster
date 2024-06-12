@@ -59,7 +59,10 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "courtyards_overlap|125915515|126869706|308d50c3-cf99-449c-aa6c-cb459e179b84|e8e05818-5a38-4a4c-bcd5-5463b45efe04",
+        "courtyards_overlap|55913115|126818906|308d50c3-cf99-449c-aa6c-cb459e179b84|cc1b928e-9ef1-41da-883d-c7ca579a4541"
+      ],
       "meta": {
         "version": 2
       },
@@ -97,7 +100,7 @@
         "padstack": "error",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_edge_clearance": "ignore",
+        "silk_edge_clearance": "warning",
         "silk_over_copper": "ignore",
         "silk_overlap": "warning",
         "skew_out_of_range": "error",
@@ -113,6 +116,7 @@
         "unconnected_items": "error",
         "unresolved_variable": "error",
         "via_dangling": "warning",
+        "zone_has_empty_net": "error",
         "zones_intersect": "error"
       },
       "rules": {
@@ -561,52 +565,7 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": [
-      {
-        "netclass": "+12V",
-        "pattern": "+12V"
-      },
-      {
-        "netclass": "+12V",
-        "pattern": "Net-(OC1-Pad3)"
-      },
-      {
-        "netclass": "+5V",
-        "pattern": "+5V"
-      },
-      {
-        "netclass": "+5V",
-        "pattern": "SPEEDO_IN"
-      },
-      {
-        "netclass": "CAN Bus",
-        "pattern": "can+"
-      },
-      {
-        "netclass": "CAN Bus",
-        "pattern": "can-"
-      },
-      {
-        "netclass": "CCD Bus",
-        "pattern": "ccd+"
-      },
-      {
-        "netclass": "CCD Bus",
-        "pattern": "ccd-"
-      },
-      {
-        "netclass": "GND",
-        "pattern": "GND"
-      },
-      {
-        "netclass": "+5V",
-        "pattern": "Net-(D13-K)"
-      },
-      {
-        "netclass": "+5V",
-        "pattern": "/5VO"
-      }
-    ]
+    "netclass_patterns": []
   },
   "pcbnew": {
     "last_paths": {
