@@ -1,34 +1,24 @@
-"Source:","/home/scott/src/tj-cluster/pcb/XTJ-IC-Arbiter.kicad_sch"
-"Date:","Mon 29 Aug 2022 05:52:24 PM CDT"
-"Tool:","Eeschema 6.0.7-f9a2dced07~116~ubuntu20.04.1"
-"Generator:","/usr/share/kicad/plugins/bom_csv_grouped_by_value_with_fp.py"
-"Component Count:","47"
-"Ref","Qnty","Value","Cmp name","Footprint","Description","Vendor"
-"C1, C4, ","2","3.3nF","C_Small","Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm","Unpolarized capacitor, small symbol",""
-"C2, C3, C5, ","3","25pF","C_Small","Capacitor_THT:C_Disc_D6.5mm_W4mm_P6.4mm","Unpolarized capacitor, small symbol",""
-"C6, C7, ","2","0.1uF","C","Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm","",""
-"C8, C12, C13, C14, ","4","0.1uf","C","Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm","",""
-"C9, ","1","10nF","C_Small","Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal","Unpolarized capacitor, small symbol",""
-"C10, ","1","100uF","CP","Capacitor_THT:CP_Radial_D8.0mm_P3.50mm","",""
-"C11, ","1","68uF","CP","Capacitor_THT:C_Radial_D6.3mm_H7.0mm_P2.50mm","",""
-"D1, D2, ","2","1N4728","D_Zener","Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal","",""
-"D3, ","1","P6KE39CA","P6KE39CA","Diode_THT:D_DO-15_P10.16mm_Horizontal","DO-15 Bidirectional TVS Diode, 39V, 600W, Alternate KiCAD Library",""
-"D4, D6, D7, D8, D10, ","5","3.3v","D_Zener","Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal","Zener diode",""
-"D5, D9, D12, D15, D16, ","5","P6KE6.8CA","P6KE6.8CA","Diode_THT:D_DO-15_P10.16mm_Horizontal","DO-15 Bidirectional TVS Diode, 6.8V, 600W, Alternate KiCAD Library",""
-"D13, ","1","550mV","D_Zener","Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal","",""
-"D14, ","1","P6KE6.8A","P6KE6.8A","Diode_THT:D_DO-15_P10.16mm_Horizontal","DO-15 Unidirectional TVS diode, 6.8V, 600W, Alternate KiCAD Library",""
-"H1, H2, ","2","MountingHole_Pad","MountingHole_Pad","MountingHole:MountingHole_3.2mm_M3","Mounting Hole with connection",""
-"J3, ","1","DTM13-12PA-R008","DTM13-12PA-R008","DTM13:TE_DTM13-12PA-R008","",""
-"L1, ","1","47uH","L","Inductor_THT:L_Radial_D8.7mm_P5.00mm_Fastron_07HCP","",""
-"OC1, ","1","Optocoupler_Generic","Optocoupler_Generic","Package_DIP:DIP-4_W7.62mm","Optocoupler, Transistor output, Generic symbol, Alternate KiCAD Library",""
-"R1, R2, ","2","10ohm","R_Small","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal","Resistor, small symbol",""
-"R3, R11, ","2","120ohm","R_Small","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal","Resistor, small symbol",""
-"R7, ","1","2.2Kohm","R","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal","Resistor",""
-"R8, ","1","13Kohm","R","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal","Resistor",""
-"R9, ","1","20kOhm","R_Small","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal","Resistor, small symbol",""
-"R10, ","1","10kOhm","R_Small","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal","Resistor, small symbol",""
-"SW2, ","1","SW_DIP_x02","SW_DIP_x02","Button_Switch_THT:SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm","2x DIP Switch, Single Pole Single Throw (SPST) switch, small symbol",""
-"U1, ","1","LM2672N-5.0","LM2672N-5.0","Package_DIP:DIP-8_W7.62mm","5V, 1A Step-Down Voltage Regulator, DIP-8",""
-"U2, ","1","CDP68HC68S1","CDP68HC68S1","Transceivers:CDP68HC68S1","",""
-"U3, ","1","Teensy4.0","Teensy4.0","MCUs:Teensy40_NoSMT","",""
-"U4, ","1","MCP2562-H-P","MCP2562-H-P","Package_DIP:DIP-8_W7.62mm","High-Speed CAN Transceiver, 1Mbps, 5V supply, Vio pin, -40C to +150C, DIP-8",""
+"Id";"Designator";"Footprint";"Quantity";"Designation";"Supplier and ref";
+1;"J3";"TE_DTM13-12PA-R008";1;"DTM13-12PA-R008";;;
+2;"C13,C12,C1,C8,C2,C14";"C_Disc_D3.8mm_W2.6mm_P2.50mm";6;"0.1uf";;;
+3;"D3";"D_DO-35_SOD27_P7.62mm_Horizontal";1;"SA15CA";;;
+4;"SW1,SW2";"SW_DIP_SPSTx01_Slide_6.7x4.1mm_W7.62mm_P2.54mm_LowProfile";2;"SW_DIP_x01";;;
+5;"C11";"C_Radial_D6.3mm_H7.0mm_P2.50mm";1;"68uF";;;
+6;"D2,D1";"D_DO-35_SOD27_P7.62mm_Horizontal";2;"D_Schottky";;;
+7;"L1";"L_Radial_D8.7mm_P5.00mm_Fastron_07HCP";1;"47uH";;;
+8;"OC1";"DIP-4_W7.62mm";1;"AQY210EH";;;
+9;"R8,R1,R2";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";3;"13kOhm";;;
+10;"U2";"DIP-14_W7.62mm";1;"~";;;
+11;"D13";"D_DO-41_SOD81_P7.62mm_Horizontal";1;"550mV";;;
+12;"U5";"DIP-8_W7.62mm";1;"SP723ABG";;;
+13;"C10";"CP_Radial_D8.0mm_P3.50mm";1;"100uF";;;
+14;"R5";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";1;"20kOhm";;;
+15;"U4";"DIP-8_W7.62mm";1;"MCP2562-H-P";;;
+16;"R7";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";1;"2.2Kohm";;;
+17;"R3,R11";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";2;"120ohm";;;
+18;"U3";"Teensy40_NoSMT";1;"Teensy4.0";;;
+19;"C9";"C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal";1;"10nF";;;
+20;"R6";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";1;"2kOhm";;;
+21;"H1,H2";"MountingHole_3.2mm_M3";2;"MountingHole_Pad";;;
+22;"R4";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";1;"10kOhm";;;
+23;"U1";"DIP-8_W7.62mm";1;"LM2672N-5.0";;;
