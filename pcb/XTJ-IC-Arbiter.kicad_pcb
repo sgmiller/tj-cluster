@@ -16759,10 +16759,23 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "SPEEDO_IN\n"
-		(at 124.25 103.75 0)
+	(gr_text "CCD TERM\n   ON"
+		(at 72 110 0)
 		(layer "F.SilkS")
-		(uuid "5ce849c0-6367-4d3e-83d0-b21d9075e55b")
+		(uuid "363f7b88-a40b-4c04-8bc7-98f516999e28")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "SPEEDO_IN"
+		(at 115.5 123.75 0)
+		(layer "F.SilkS")
+		(uuid "a59665a6-6f9c-4075-92b0-5b34eee5fa36")
 		(effects
 			(font
 				(size 1 1)
