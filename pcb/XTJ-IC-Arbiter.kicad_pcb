@@ -16759,19 +16759,6 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "CCD TERM\n   ON"
-		(at 72 110 0)
-		(layer "F.SilkS")
-		(uuid "363f7b88-a40b-4c04-8bc7-98f516999e28")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.25)
-				(bold yes)
-			)
-			(justify left bottom)
-		)
-	)
 	(gr_text "SPEEDO_IN"
 		(at 115.5 123.75 0)
 		(layer "F.SilkS")
