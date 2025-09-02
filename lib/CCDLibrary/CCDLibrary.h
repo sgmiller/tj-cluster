@@ -31,11 +31,11 @@
     #define RX_PIN  PIND
     #define TX_PIN  PIND
 #elif defined (__IMXRT1062__)
-    #define RX_P 7
-    #define TX_P 8
-    #define IDLE_PIN 5
-    #define CTRL_PIN 9
-    #define CLOCK_PIN 21
+    #define RX_P 19
+    #define TX_P 20
+    #define IDLE_PIN 22
+    #define CTRL_PIN 21
+    #define CLOCK_PIN 12
     #define CLOCK_SPEED 1000000
 #else
     #error "Arduino Mega / ATmega2560 microcontroller is required!"
