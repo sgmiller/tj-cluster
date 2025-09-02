@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SN74HC32N
+D QUADRUPLE 2-INPUT POSITIVE-OR GATES
+K
+F http://www.ti.com/lit/gpn/sn74hc32
+$ENDCMP
+#
+#End Doc Library

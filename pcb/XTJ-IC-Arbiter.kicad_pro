@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 0.6,
-          "width": 1.95
+          "drill": 1.1,
+          "height": 1.6,
+          "width": 1.6
         },
         "silk_line_width": 0.12,
         "silk_text_italic": false,
@@ -59,7 +59,32 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "courtyards_overlap|127849428|125947657|308d50c3-cf99-449c-aa6c-cb459e179b84|e8e05818-5a38-4a4c-bcd5-5463b45efe04",
+          ""
+        ],
+        [
+          "courtyards_overlap|57823358|125990378|308d50c3-cf99-449c-aa6c-cb459e179b84|cc1b928e-9ef1-41da-883d-c7ca579a4541",
+          ""
+        ],
+        [
+          "courtyards_overlap|73155000|122817000|308d50c3-cf99-449c-aa6c-cb459e179b84|33ad4700-ed20-4ac6-8abe-9b286425c7f6",
+          ""
+        ],
+        [
+          "courtyards_overlap|77125000|122817000|2f99d664-7e77-4ef9-8a78-56cd87a3d0ae|308d50c3-cf99-449c-aa6c-cb459e179b84",
+          ""
+        ],
+        [
+          "silk_edge_clearance|133244000|134522000|20717ac0-32c0-452f-80a1-eaacce61617a|fd9db01e-c124-4a09-bd02-0c793a29d351",
+          ""
+        ],
+        [
+          "silk_edge_clearance|52874000|134522000|20717ac0-32c0-452f-80a1-eaacce61617a|5f572499-4cfb-4422-b71a-0c4a29f22a38",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -607,7 +632,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
-    "bom_export_filename": "",
+    "bom_export_filename": "XTJ-IC-Arbiter.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -764,6 +789,36 @@
           "group_by": false,
           "label": "Description",
           "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Height",
+          "name": "Height",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer_Name",
+          "name": "Manufacturer_Name",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer_Part_Number",
+          "name": "Manufacturer_Part_Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Mouser Part Number",
+          "name": "Mouser Part Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Mouser Price/Stock",
+          "name": "Mouser Price/Stock",
           "show": false
         }
       ],

@@ -8,4 +8,5 @@
   (lib (name "teensy")(type "Legacy")(uri "${KIPRJMOD}/parts/MCUs/teensy.lib")(options "")(descr ""))
   (lib (name "G6L-1P_DC5")(type "KiCad")(uri "${KIPRJMOD}/parts/G6L-1P_DC5.kicad_sym")(options "")(descr ""))
   (lib (name "CDP68HC68S1")(type "Legacy")(uri "${KIPRJMOD}/parts/CDP68HC68S1.lib")(options "")(descr ""))
+  (lib (name "SN74HC32N")(type "KiCad")(uri "${KIPRJMOD}/parts/SN74HC32N/KiCad/SN74HC32N.kicad_sym")(options "")(descr ""))
 )
