@@ -514,7 +514,6 @@
         "bus_width": 12,
         "clearance": 0.3048,
         "diff_pair_gap": 0.25,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
         "microvia_diameter": 0.6858,
@@ -532,7 +531,6 @@
         "bus_width": 12,
         "clearance": 0.3048,
         "diff_pair_gap": 0.25,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
         "microvia_diameter": 0.6858,
@@ -550,7 +548,6 @@
         "bus_width": 12,
         "clearance": 0.1524,
         "diff_pair_gap": 0.12975,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.1524,
         "line_style": 0,
         "microvia_diameter": 0.3,
@@ -568,7 +565,6 @@
         "bus_width": 12,
         "clearance": 0.1524,
         "diff_pair_gap": 0.12975,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.1524,
         "line_style": 0,
         "microvia_diameter": 0.3,
@@ -586,7 +582,6 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.25,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
         "microvia_diameter": 0.6858,
@@ -606,7 +601,16 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "+5V",
+        "pattern": "Net-(U1-CB)"
+      },
+      {
+        "netclass": "+5V",
+        "pattern": "Net-(D13-K)"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {

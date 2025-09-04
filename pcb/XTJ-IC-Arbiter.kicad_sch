@@ -11408,7 +11408,7 @@
 			)
 		)
 		(property "Value" "550mV"
-			(at 249.555 146.685 0)
+			(at 249.174 143.764 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11868,7 +11868,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "68uF"
+		(property "Value" "150uF"
 			(at 266.065 149.225 0)
 			(effects
 				(font
@@ -11895,7 +11895,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Polarized capacitor"
+		(property "Description" "UPM1V151MPD6"
 			(at 265.43 143.51 0)
 			(effects
 				(font
