@@ -61,11 +61,19 @@
       ],
       "drc_exclusions": [
         [
-          "courtyards_overlap|127849428|125947657|308d50c3-cf99-449c-aa6c-cb459e179b84|e8e05818-5a38-4a4c-bcd5-5463b45efe04",
+          "courtyards_overlap|105573358|118990378|308d50c3-cf99-449c-aa6c-cb459e179b84|cc1b928e-9ef1-41da-883d-c7ca579a4541",
           ""
         ],
         [
-          "courtyards_overlap|57823358|125990378|308d50c3-cf99-449c-aa6c-cb459e179b84|cc1b928e-9ef1-41da-883d-c7ca579a4541",
+          "courtyards_overlap|175599428|118947657|308d50c3-cf99-449c-aa6c-cb459e179b84|e8e05818-5a38-4a4c-bcd5-5463b45efe04",
+          ""
+        ],
+        [
+          "silk_edge_clearance|100624000|127522000|20717ac0-32c0-452f-80a1-eaacce61617a|139e3212-7dc7-43b7-bcc8-0f7f51451440",
+          ""
+        ],
+        [
+          "silk_edge_clearance|180994000|127522000|20717ac0-32c0-452f-80a1-eaacce61617a|2a850afa-4298-4ee1-bd45-9728f435d8ca",
           ""
         ]
       ],
@@ -438,7 +446,7 @@
       "different_unit_net": "error",
       "duplicate_reference": "error",
       "duplicate_sheet_names": "error",
-      "endpoint_off_grid": "warning",
+      "endpoint_off_grid": "ignore",
       "extra_units": "error",
       "footprint_filter": "ignore",
       "footprint_link_issues": "warning",
