@@ -31,7 +31,7 @@ class InstrumentWriter;
 class Instrument
 {
 public:
-    Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_t max, int refreshInterval);
+    Instrument(uint8_t *baseMessage, int messageLen, uint8_t min, uint8_t max, uint refreshInterval);
     bool NeedsUpdate();
     bool MaybeWrite(CCDLibrary ccd);
     void SetPercentage(int bpos, float pct, int min, int max);
@@ -48,7 +48,7 @@ protected:
     InstrumentWriter *_writer;
     uint8_t _message[5];
     elapsedMillis _sinceLastWrite;
-    int _refreshInterval;
+    uint _refreshInterval;
     int _messageLen;
     bool _needsUpdate;
 };
@@ -96,7 +96,7 @@ class SingleLamp : public Instrument
 public:
     bool on;
 
-    SingleLamp(uint8_t *baseMessage, int messageLen, int refreshInterval) : Instrument(baseMessage, messageLen, 0, 255, refreshInterval) {}
+    SingleLamp(uint8_t *baseMessage, int messageLen, uint refreshInterval) : Instrument(baseMessage, messageLen, 0, 255, refreshInterval) {}
     void SetLamp(bool on);
 };
 

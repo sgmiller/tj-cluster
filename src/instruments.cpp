@@ -2,7 +2,7 @@
 #include "main.h"
 
 Instrument::Instrument(uint8_t *baseMessage, int messageLen, uint8_t min,
-                       uint8_t max, int refreshInterval)
+                       uint8_t max, uint refreshInterval)
 {
   for (int i = 0; i < messageLen; i++)
   {
@@ -29,7 +29,7 @@ uint8_t Instrument::GetByte(int bpos) { return _message[bpos]; }
 bool Instrument::MaybeWrite(CCDLibrary ccd)
 {
   if (_needsUpdate ||
-      (_refreshInterval > -1 && _sinceLastWrite >= _refreshInterval))
+      (_refreshInterval > 0 && _sinceLastWrite >= _refreshInterval))
   {
     ccd.write(_message, _messageLen);
     // May need to delay even if something went wrong

@@ -45,10 +45,10 @@ bool activity, speedoOn;
 FreqMeasureMulti speedoMeasure;
 
 // CAN bus
-#define CAN1_TX 1
-#define CAN1_RX 0
-#define CAN2_TX 22
-#define CAN2_RX 23
+#define CAN1_TX 11
+#define CAN1_RX 13
+#define CAN2_TX 31
+#define CAN2_RX 30
 #define NUM_CAN_TX_MAILBOXES 1
 #define NUM_CAN_RX_MAILBOXES 2
 
@@ -63,8 +63,8 @@ FreqMeasureMulti speedoMeasure;
 #define SELF_TEST_STAGE_COUNT 10
 #define SELF_TEST_STAGE_DURATION 3000
 #define VBAT_RELAY_TURN_ON_MAX 2 // ms
-#define VBAT_VD_R1 9000.0 // VBAT voltage divider R1 value (ohms)
-#define VBAT_VD_R2 1800.0 // VBAT voltage divider R2 value (ohms)
+#define VBAT_VD_R1 20000.0 // VBAT voltage divider R1 value (ohms)
+#define VBAT_VD_R2 3700.0 // VBAT voltage divider R2 value (ohms)
 #define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) // Set voltage divider resistor values here
 #define MCU_VOLTAGE 3.3
 #define PULSES_PER_AXLE_REVOLUTION 8
