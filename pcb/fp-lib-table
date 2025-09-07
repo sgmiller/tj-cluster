@@ -5,5 +5,7 @@
   (lib (name "Jumpers")(type "KiCad")(uri "${KIPRJMOD}/parts/Jumpers")(options "")(descr ""))
   (lib (name "Power_Regulator")(type "KiCad")(uri "${KIPRJMOD}/parts/Power_Regulator")(options "")(descr ""))
   (lib (name "parts")(type "KiCad")(uri "${KIPRJMOD}/parts")(options "")(descr ""))
-  (lib (name "KiCad")(type "KiCad")(uri "${KIPRJMOD}/parts/RCEC71H105K1A2H03B/KiCad")(options "")(descr ""))
+  (lib (name "Buffer")(type "KiCad")(uri "${KIPRJMOD}/parts/SN74LV125AN/KiCad")(options "")(descr ""))
+  (lib (name "Inductor")(type "KiCad")(uri "${KIPRJMOD}/parts/RLB0914-470KL/KiCad")(options "")(descr ""))
+  (lib (name "Ceramic Cap")(type "KiCad")(uri "${KIPRJMOD}/parts/FA24X7R1H105KRU06/KiCad")(options "")(descr ""))
 )

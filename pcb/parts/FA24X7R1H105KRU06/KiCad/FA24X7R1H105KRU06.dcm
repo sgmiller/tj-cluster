@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP FA24X7R1H105KRU06
+D MLCC with Dipped Radial Lead, Capacitance=1?F, LxWxT:4.5x5.5x3mm, Lead pitch:5mm
+K
+F https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf
+$ENDCMP
+#
+#End Doc Library

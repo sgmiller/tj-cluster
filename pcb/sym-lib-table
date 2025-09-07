@@ -8,6 +8,5 @@
   (lib (name "teensy")(type "Legacy")(uri "${KIPRJMOD}/parts/MCUs/teensy.lib")(options "")(descr ""))
   (lib (name "G6L-1P_DC5")(type "KiCad")(uri "${KIPRJMOD}/parts/G6L-1P_DC5.kicad_sym")(options "")(descr ""))
   (lib (name "CDP68HC68S1")(type "Legacy")(uri "${KIPRJMOD}/parts/CDP68HC68S1.lib")(options "")(descr ""))
-  (lib (name "SN74HC32N")(type "KiCad")(uri "${KIPRJMOD}/parts/SN74HC32N/KiCad/SN74HC32N.kicad_sym")(options "")(descr ""))
-  (lib (name "RCEC71H105K1A2H03B")(type "KiCad")(uri "${KIPRJMOD}/parts/RCEC71H105K1A2H03B/KiCad/RCEC71H105K1A2H03B.kicad_sym")(options "")(descr ""))
+  (lib (name "SN74LV125AN")(type "KiCad")(uri "${KIPRJMOD}/parts/SN74LV125AN/KiCad/SN74LV125AN.kicad_sym")(options "")(descr ""))
 )

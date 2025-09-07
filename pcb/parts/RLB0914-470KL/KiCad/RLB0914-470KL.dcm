@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP RLB0914-470KL
+D Bourns 47 uH +/-10% Ferrite Leaded Inductor, Max SRF:6MHz, Q:30, 1.5A Idc, 140m Rdc RLB
+K
+F https://www.bourns.com/docs/Product-Datasheets/rlb.pdf
+$ENDCMP
+#
+#End Doc Library

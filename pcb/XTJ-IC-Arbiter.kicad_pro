@@ -61,6 +61,14 @@
       ],
       "drc_exclusions": [
         [
+          "clearance|144575000|85270000|3c1ed31c-2292-4b0c-8b9e-a4a4f4e44246|86378b37-86cc-483e-88ac-5307b5c13ff1",
+          ""
+        ],
+        [
+          "clearance|144575000|86015000|ed077668-67ab-480b-b530-f3af59aa3fbd|3c1ed31c-2292-4b0c-8b9e-a4a4f4e44246",
+          ""
+        ],
+        [
           "courtyards_overlap|105573358|118990378|308d50c3-cf99-449c-aa6c-cb459e179b84|cc1b928e-9ef1-41da-883d-c7ca579a4541",
           ""
         ],
@@ -617,6 +625,18 @@
       {
         "netclass": "+5V",
         "pattern": "+5V"
+      },
+      {
+        "netclass": "CCD Bus",
+        "pattern": "ccd?"
+      },
+      {
+        "netclass": "CAN Bus",
+        "pattern": "can?"
+      },
+      {
+        "netclass": "+5V",
+        "pattern": "/Vsw"
       }
     ]
   },
@@ -793,7 +813,7 @@
           "group_by": false,
           "label": "Description",
           "name": "Description",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
@@ -823,6 +843,12 @@
           "group_by": false,
           "label": "Mouser Price/Stock",
           "name": "Mouser Price/Stock",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description_1",
+          "name": "Description_1",
           "show": false
         }
       ],

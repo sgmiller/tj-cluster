@@ -1,0 +1,26 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#SamacSys ECAD Model FA24X7R1H105KRU06
+#/810324/1213610/2.50/2/2/Capacitor
+DEF FA24X7R1H105KRU06 C 0 30 Y Y 1 F N
+F0 "C" 350 250 50 H V L CNN
+F1 "FA24X7R1H105KRU06" 350 150 50 H V L CNN
+F2 "FA24" 350 50 50 H I L CNN
+F3 "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf" 350 -50 50 H I L CNN
+F4 "MLCC with Dipped Radial Lead, Capacitance=1?F, LxWxT:4.5x5.5x3mm, Lead pitch:5mm" 350 -150 50 H I L CNN "Description"
+F5 "7" 350 -250 50 H I L CNN "Height"
+F6 "810-FA24X7R1H105KRU6" 350 -350 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/TDK/FA24X7R1H105KRU06?qs=UrFqKgNWc7R%252BYgf0N8j59g%3D%3D" 350 -450 50 H I L CNN "Mouser Price/Stock"
+F8 "TDK" 350 -550 50 H I L CNN "Manufacturer_Name"
+F9 "FA24X7R1H105KRU06" 350 -650 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+X ~ 1 0 0 200 R 50 50 0 0 P
+X ~ 2 500 0 200 L 50 50 0 0 P
+P 2 0 1 6 220 100 220 -100 N
+P 2 0 1 6 280 100 280 -100 N
+P 2 0 1 6 200 0 220 0 N
+P 2 0 1 6 280 0 300 0 N
+ENDDRAW
+ENDDEF
+#
+#End Library

@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SN74LV125AN
+D Texas Instruments SN74LV125AN, Quad Bus Buffer, 18.5 ns@ 50 pF 16mA, 2  5.5 V, 14-Pin PDIP
+K
+F http://www.ti.com/lit/gpn/SN74LV125A
+$ENDCMP
+#
+#End Doc Library
