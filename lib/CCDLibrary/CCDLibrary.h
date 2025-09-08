@@ -31,8 +31,8 @@
     #define RX_PIN  PIND
     #define TX_PIN  PIND
 #elif defined (__IMXRT1062__)
-    #define RX_P 19
-    #define TX_P 20
+    #define RX_P 20
+    #define TX_P 19
     #define IDLE_PIN 22
     #define CTRL_PIN 21
     #define CLOCK_PIN 12
