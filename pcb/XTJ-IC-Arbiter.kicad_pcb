@@ -13187,15 +13187,15 @@
 			(uuid "e0fcadf2-d221-41a9-a9ca-5f6c20d42059")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/parts/SN74LV125AN/3D/SN74LV125AN.stp"
+		(model "SN74LV125AN.stp"
 			(offset
-				(xyz 0 0 2.5)
+				(xyz 0 0 2.319999898)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -90 -0 -0)
+				(xyz -90 0 0)
 			)
 		)
 	)
