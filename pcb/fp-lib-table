@@ -8,4 +8,5 @@
   (lib (name "Buffer")(type "KiCad")(uri "${KIPRJMOD}/parts/SN74LV125AN/KiCad")(options "")(descr ""))
   (lib (name "Inductor")(type "KiCad")(uri "${KIPRJMOD}/parts/RLB0914-470KL/KiCad")(options "")(descr ""))
   (lib (name "Ceramic Cap")(type "KiCad")(uri "${KIPRJMOD}/parts/FA24X7R1H105KRU06/KiCad")(options "")(descr ""))
+  (lib (name "DIP Switch")(type "KiCad")(uri "${KIPRJMOD}/parts/KAE01LAGT/KiCad")(options "")(descr ""))
 )
