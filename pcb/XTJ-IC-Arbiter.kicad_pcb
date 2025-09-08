@@ -12789,7 +12789,7 @@
 			)
 		)
 	)
-	(footprint "KiCad:DIP794W53P254L1930H508Q14N"
+	(footprint "Buffer:DIP794W53P254L1930H508Q14N"
 		(layer "F.Cu")
 		(uuid "f41f01d5-e680-426d-ab4c-40977530fff9")
 		(at 158.12 82.83 90)
@@ -12818,7 +12818,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.ti.com/lit/gpn/SN74LV125A"
+		(property "Datasheet" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -12830,7 +12830,7 @@
 				)
 			)
 		)
-		(property "Description" "Texas Instruments SN74LV125AN, Quad Bus Buffer, 18.5 ns@ 50 pF 16mA, 2  5.5 V, 14-Pin PDIP"
+		(property "Description" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -12919,7 +12919,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "ed8ff830-fb94-41da-9562-9f545bb44040")
+			(uuid "16d3807c-08d3-4aa4-a42c-86a0edf6d747")
 		)
 		(fp_line
 			(start -3.3 9.845)
@@ -12929,7 +12929,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "01c7a090-be9a-40c2-a948-633149aed262")
+			(uuid "054efc00-908a-4513-8a5b-4fdcb64e925d")
 		)
 		(fp_line
 			(start 4.945 -10.095)
@@ -12939,7 +12939,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "0021fa48-d1f8-4137-a032-39b672703359")
+			(uuid "f9aac806-f0d3-48e3-a43d-771954a51d47")
 		)
 		(fp_line
 			(start -4.945 -10.095)
@@ -12949,7 +12949,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "d7afbf2a-90bf-448a-b733-38f5dd540863")
+			(uuid "8dbc8167-2798-4f17-bdfd-83998967158b")
 		)
 		(fp_line
 			(start 4.945 10.095)
@@ -12959,7 +12959,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "5533f9e5-1fed-4a20-98d5-8926119d1e92")
+			(uuid "c99969f1-453b-45e4-b646-2bbc748fee49")
 		)
 		(fp_line
 			(start -4.945 10.095)
@@ -12969,7 +12969,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "db73e000-1726-461c-b27b-e31ee1be3025")
+			(uuid "a2ddaeda-1981-4464-8786-b693e8499273")
 		)
 		(fp_line
 			(start 3.3 -9.845)
@@ -12979,7 +12979,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "72f74e25-e42c-43c3-8a08-5e7e2f204f31")
+			(uuid "34244a0b-9cee-4978-8bc8-7fa62528988b")
 		)
 		(fp_line
 			(start -3.3 -9.845)
@@ -12989,7 +12989,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "7134a508-e183-4d8e-805d-181de9530fc9")
+			(uuid "86a7252e-81f1-439c-b69d-79b9c82a9630")
 		)
 		(fp_line
 			(start -3.3 -8.575)
@@ -12999,7 +12999,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "73d062df-1bab-4af9-b6a2-d6512df56ac6")
+			(uuid "be6baec9-75f4-4677-b825-1bdb887f40c0")
 		)
 		(fp_line
 			(start 3.3 9.845)
@@ -13009,7 +13009,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "ac070d7b-5be6-458c-8295-7b7b534ad217")
+			(uuid "2cb36290-66ee-495b-bcf8-1aeaf6b1fc63")
 		)
 		(fp_line
 			(start -3.3 9.845)
@@ -13019,7 +13019,7 @@
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "1bbda1e4-5930-4a4e-9f95-ae90e0c64a44")
+			(uuid "29d19a01-a4c1-4e22-9f9a-ca4057fe549f")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 90)
