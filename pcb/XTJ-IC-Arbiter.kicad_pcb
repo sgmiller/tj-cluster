@@ -1278,7 +1278,7 @@
 		(descr "Diode, DO-15 series, Axial, Horizontal, pin pitch=10.16mm, length*diameter=7.6*3.6mm^2, http://www.diodes.com/_files/packages/DO-15.pdf")
 		(tags "Diode DO-15 series Axial Horizontal pin pitch 10.16mm  length 7.6mm diameter 3.6mm")
 		(property "Reference" "D3"
-			(at 3.98 3.1 90)
+			(at 0.48 3.2 90)
 			(layer "F.SilkS")
 			(uuid "52cedab0-c4f3-4760-a598-513cc66aa71b")
 			(effects
@@ -4910,14 +4910,15 @@
 		(descr "wire loop as test point, loop diameter 2.5mm, hole diameter 1.0mm")
 		(tags "test point wire loop bead")
 		(property "Reference" "TP8"
-			(at 2.8 -0.4 270)
-			(layer "F.SilkS")
+			(at 2.8 -0.4 -90)
+			(layer "B.SilkS")
 			(uuid "d2f6d06a-17eb-4f98-8145-873d541e55f7")
 			(effects
 				(font
 					(size 1 1)
 					(thickness 0.15)
 				)
+				(justify mirror)
 			)
 		)
 		(property "Value" "TestPoint"
@@ -6410,14 +6411,15 @@
 		(descr "wire loop as test point, loop diameter 2.5mm, hole diameter 1.0mm")
 		(tags "test point wire loop bead")
 		(property "Reference" "TP1"
-			(at 0.7 2.5 0)
-			(layer "F.SilkS")
+			(at 0.7 2.5 180)
+			(layer "B.SilkS")
 			(uuid "7f399eb7-5ee2-42ed-943b-2a9eb18e39a1")
 			(effects
 				(font
 					(size 1 1)
 					(thickness 0.15)
 				)
+				(justify mirror)
 			)
 		)
 		(property "Value" "TestPoint"
@@ -6718,14 +6720,15 @@
 		(descr "wire loop as test point, loop diameter 2.5mm, hole diameter 1.0mm")
 		(tags "test point wire loop bead")
 		(property "Reference" "TP6"
-			(at 0 -2.7 0)
-			(layer "F.SilkS")
+			(at 0 -2.7 180)
+			(layer "B.SilkS")
 			(uuid "c8285fae-0359-4416-a72c-4a62ac69b893")
 			(effects
 				(font
 					(size 1 1)
 					(thickness 0.15)
 				)
+				(justify mirror)
 			)
 		)
 		(property "Value" "TestPoint"
@@ -9749,14 +9752,15 @@
 		(descr "wire loop as test point, loop diameter 2.5mm, hole diameter 1.0mm")
 		(tags "test point wire loop bead")
 		(property "Reference" "TP9"
-			(at -0.7 -2.3 270)
-			(layer "F.SilkS")
+			(at -0.7 -2.3 -90)
+			(layer "B.SilkS")
 			(uuid "5bbb4245-8df1-4f46-b2fd-f2dc5d45636e")
 			(effects
 				(font
 					(size 0.75 0.75)
 					(thickness 0.15)
 				)
+				(justify mirror)
 			)
 		)
 		(property "Value" "TestPoint"
@@ -14222,8 +14226,34 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "CCD TX"
+		(at 173.7 87.8 90)
+		(layer "F.SilkS")
+		(uuid "6282a749-c48d-4628-a64b-93bbeeb8b36f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "GND"
+		(at 175.8 116.4 0)
+		(layer "F.SilkS")
+		(uuid "65ed2187-f02e-4c86-aa1c-36097e9aee3c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
 	(gr_text "CCD+"
-		(at 173 91.9 90)
+		(at 170 90.3 0)
 		(layer "F.SilkS")
 		(uuid "9d193a8d-3d1c-444d-bb12-cd2b95fd7680")
 		(effects
@@ -14286,6 +14316,32 @@
 			(justify left bottom)
 		)
 	)
+	(gr_text "CCD RX"
+		(at 179.2 82.9 90)
+		(layer "F.SilkS")
+		(uuid "ed32add3-f292-43a9-863a-a437deaa8508")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "SPD\nIN"
+		(at 129.9 110.3 0)
+		(layer "F.SilkS")
+		(uuid "f65fb234-5d22-4862-9f4a-0a7e5fa19ad3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.25)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(gr_text "XJ/TJ CAN+CCD \nBus Arbiter v3.0\n"
 		(at 162.538192 66.37 0)
 		(layer "F.SilkS")
@@ -14323,8 +14379,8 @@
 			(justify mirror)
 		)
 	)
-	(gr_text "120ohm Termination\nCCD: SW1 \nCAN: SW2"
-		(at 171.25 95.75 0)
+	(gr_text "120ohm Termination\nCCD: J2 \nCAN: J1"
+		(at 165.6 95.9 0)
 		(layer "B.SilkS")
 		(uuid "1dc42f6d-a773-4930-8d2c-8c7c3b3895af")
 		(effects
