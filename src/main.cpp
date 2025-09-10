@@ -44,6 +44,9 @@ WDT_T4<WDT1> wdt;
 bool activity, speedoOn;
 FreqMeasureMulti speedoMeasure;
 
+// Serial port
+#define Stdout Serial
+
 // CAN bus
 #define CAN1_TX 11
 #define CAN1_RX 13
@@ -136,8 +139,8 @@ void selfTest()
   selfTestPhaseStart = millis();
   selfTestStage++;
   resetGauges();
-  Serial.print("Self test stage ");
-  Serial.println(selfTestStage);
+  Stdout.print("Self test stage ");
+  Stdout.println(selfTestStage);
 
   if (selfTestStage == 3)
   {
@@ -218,27 +221,27 @@ void CCDHandleError(CCD_Operations op, CCD_Errors err)
   {
   case CCD_ERR_BUS_IS_BUSY:
   {
-    Serial.println(s + "CCD_ERR_BUS_IS_BUSY");
+    Stdout.println(s + "CCD_ERR_BUS_IS_BUSY");
     break;
   }
   case CCD_ERR_BUS_ERROR:
   {
-    Serial.println(s + "CCD_ERR_BUS_ERROR");
+    Stdout.println(s + "CCD_ERR_BUS_ERROR");
     break;
   }
   case CCD_ERR_ARBITRATION_LOST:
   {
-    Serial.println(s + "CCD_ERR_ARBITRATION_LOST");
+    Stdout.println(s + "CCD_ERR_ARBITRATION_LOST");
     break;
   }
   case CCD_ERR_CHECKSUM:
   {
-    Serial.println(s + "CCD_ERR_CHECKSUM");
+    Stdout.println(s + "CCD_ERR_CHECKSUM");
     break;
   }
   default: // unknown error
   {
-    Serial.println(s + "ERR: " + String(err, HEX));
+    Stdout.println(s + "ERR: " + String(err, HEX));
     break;
   }
   }
@@ -249,34 +252,34 @@ float measureBattery() {
     int battery=analogRead(VBAT_MEASURE_SIG);
     float analogVoltage = battery * (MCU_VOLTAGE/1023.0);
     float batVoltage = analogVoltage * VBAT_MEASUREMENT_RATIO;
-    Serial.print("Calculated VBAT=");
-    Serial.println(batVoltage);
+    Stdout.print("Calculated VBAT=");
+    Stdout.println(batVoltage);
     return batVoltage;
 }
 
-void watchdogReset() { Serial.println("Resetting in 5s..."); }
+void watchdogReset() { Stdout.println("Resetting in 5s..."); }
 
 void canSniff(const CAN_message_t &msg)
 {
-  Serial.print("MB ");
-  Serial.print(msg.mb);
-  Serial.print("  OVERRUN: ");
-  Serial.print(msg.flags.overrun);
-  Serial.print("  LEN: ");
-  Serial.print(msg.len);
-  Serial.print(" EXT: ");
-  Serial.print(msg.flags.extended);
-  Serial.print(" TS: ");
-  Serial.print(msg.timestamp);
-  Serial.print(" ID: ");
-  Serial.print(msg.id, HEX);
-  Serial.print(" Buffer: ");
+  Stdout.print("MB ");
+  Stdout.print(msg.mb);
+  Stdout.print("  OVERRUN: ");
+  Stdout.print(msg.flags.overrun);
+  Stdout.print("  LEN: ");
+  Stdout.print(msg.len);
+  Stdout.print(" EXT: ");
+  Stdout.print(msg.flags.extended);
+  Stdout.print(" TS: ");
+  Stdout.print(msg.timestamp);
+  Stdout.print(" ID: ");
+  Stdout.print(msg.id, HEX);
+  Stdout.print(" Buffer: ");
   for (uint8_t i = 0; i < msg.len; i++)
   {
-    Serial.print(msg.buf[i], HEX);
-    Serial.print(" ");
+    Stdout.print(msg.buf[i], HEX);
+    Stdout.print(" ");
   }
-  Serial.println();
+  Stdout.println();
 }
 
 void onVCUVehicleInputs3(const CAN_message_t &msg)
@@ -337,7 +340,7 @@ void setupCAN()
 
 void setup()
 {
-  Serial.begin(115200);
+  Stdout.begin(115200);
   // Watchdog
   WDT_timings_t config;
   config.trigger = 5;  /* in seconds, 0->128 */
@@ -346,7 +349,7 @@ void setup()
 
   // Give the cluster time to boot
   delay(3000);
-  Serial.println("Entered setup");
+  Stdout.println("Entered setup");
   wdt.begin(config);
 
   // Don't update certain instruments on start
@@ -365,7 +368,7 @@ void setup()
   if (lastResetCause == SRC_SRSR_WDOG_RST_B)
   {
     // Yes.  Alert via the SKIM light
-    Serial.println("Lighting SKIM");
+    Stdout.println("Lighting SKIM");
     skimLamp.SetLamp(true);
   }
 
@@ -394,7 +397,7 @@ void setup()
   // Start the CCD writer
   _writer.Setup(&_writer);
   // setupCAN();
-  Serial.println("Setup complete");
+  Stdout.println("Setup complete");
 }
 
 CAN_message_t msg;
