@@ -1,24 +1,27 @@
-"Id";"Designator";"Footprint";"Quantity";"Designation";"Supplier and ref";
-1;"J3";"TE_DTM13-12PA-R008";1;"DTM13-12PA-R008";;;
-2;"C13,C12,C1,C8,C2,C14";"C_Disc_D3.8mm_W2.6mm_P2.50mm";6;"0.1uf";;;
-3;"D3";"D_DO-35_SOD27_P7.62mm_Horizontal";1;"SA15CA";;;
-4;"SW1,SW2";"SW_DIP_SPSTx01_Slide_6.7x4.1mm_W7.62mm_P2.54mm_LowProfile";2;"SW_DIP_x01";;;
-5;"C11";"C_Radial_D6.3mm_H7.0mm_P2.50mm";1;"68uF";;;
-6;"D2,D1";"D_DO-35_SOD27_P7.62mm_Horizontal";2;"D_Schottky";;;
-7;"L1";"L_Radial_D8.7mm_P5.00mm_Fastron_07HCP";1;"47uH";;;
-8;"OC1";"DIP-4_W7.62mm";1;"AQY210EH";;;
-9;"R8,R1,R2";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";3;"13kOhm";;;
-10;"U2";"DIP-14_W7.62mm";1;"~";;;
-11;"D13";"D_DO-41_SOD81_P7.62mm_Horizontal";1;"550mV";;;
-12;"U5";"DIP-8_W7.62mm";1;"SP723ABG";;;
-13;"C10";"CP_Radial_D8.0mm_P3.50mm";1;"100uF";;;
-14;"R5";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";1;"20kOhm";;;
-15;"U4";"DIP-8_W7.62mm";1;"MCP2562-H-P";;;
-16;"R7";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";1;"2.2Kohm";;;
-17;"R3,R11";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";2;"120ohm";;;
-18;"U3";"Teensy40_NoSMT";1;"Teensy4.0";;;
-19;"C9";"C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal";1;"10nF";;;
-20;"R6";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";1;"2kOhm";;;
-21;"H1,H2";"MountingHole_3.2mm_M3";2;"MountingHole_Pad";;;
-22;"R4";"R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal";1;"10kOhm";;;
-23;"U1";"DIP-8_W7.62mm";1;"LM2672N-5.0";;;
+"Reference","Value","Datasheet","Footprint","Qty","DNP","MPN","Description","Mouser Part Number"
+"U6","MCP1700x-330xxTO","http://ww1.microchip.com/downloads/en/DeviceDoc/20001826D.pdf","Package_TO_SOT_THT:TO-92_Inline","1",""," MCP1700-3302E/TO ","250mA Low Quiscent Current LDO, 3.3V output, TO-92",""
+"U5","SP723APP","","Package_DIP:DIP-8_W7.62mm","1","","SP723APP ","TVS ARRAY ESD 6 INPUT 30V 8-SOIC",""
+"U1","LM2675N-5.0/NOPB","http://www.ti.com/lit/ds/symlink/lm2675.pdf","Package_DIP:DIP-8_W7.62mm","1","","LM2675N-5.0/NOPB","5V, 1A Step-Down Voltage Regulator, DIP-8",""
+"TP2,TP3,TP9,TP12,TP13","TestPoint","~","TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm","5",""," 534-5267 ","Test point",""
+"R8","20k","~","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal","1","","MF1/4DCT52R2002F","MF1/4DCT52R2002F",""
+"R7","3.7k","~","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal","1","","MF1/4DCT52R3741F","MF1/4DCT52R3741F",""
+"R5,R11","60.4ohm","~","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical","2","","MF1/4DCT52R60R4F","MF1/4DCT52R60R4F",""
+"R3","120ohm","~","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical","1","","CFR-25JB-52-120R","CFR-25JB-52-120R",""
+"R1,R2","13kOhm","~","Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical","2","","MF1/4DC1302F","MF1/4DC1302F",""
+"L1","47uH","https://www.mouser.com/datasheet/3/40/1/RLB.pdf","Inductor:RLB0914","1",""," RLB0914-470KL","Inductor",""
+"J3","DTM13-12PA-R008","","DTM13:TE_DTM13-12PA-R008","1","","","",""
+"J1,J2,J4","Conn_01x02_Pin","~","Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical","3","","","Generic connector, single row, 01x02, script generated",""
+"IC1","SN74LV125AN","http://www.ti.com/lit/gpn/SN74LV125A","Buffer:DIP794W53P254L1930H508Q14N","1","","SN74LV125AN","Texas Instruments SN74LV125AN, Quad Bus Buffer, 18.5 ns@ 50 pF 16mA, 2  5.5 V, 14-Pin PDIP","595-SN74LV125AN"
+"H1,H2","MountingHole_Pad","~","MountingHole:MountingHole_3.2mm_M3","2","","","Mounting Hole with connection",""
+"D13","550mV","https://www.mouser.com/datasheet/3/101/1/B61E08B52C4BFA6FA4C69DFCD89205F6FC35A51B4AAA3E1BE1EADD923B1A6376.pdf","Diode_THT:D_DO-41_SOD81_P5.08mm_Vertical_AnodeUp","1","","MBR160RLG","Schottky diode",""
+"D4,D5","D_TVS","https://www.littelfuse.com/assetdocs/tvs-diodes-sa-datasheet?assetguid=93214550-6AFF-4192-8ECD-8094A6F7CC98","Diode_THT:D_DO-41_SOD81_P2.54mm_Vertical_AnodeUp","2","","SA6.0CA","SA6.0CA",""
+"D3","SA26CA","https://www.littelfuse.com/assetdocs/tvs-diodes-sa-datasheet?assetguid=93214550-6AFF-4192-8ECD-8094A6F7CC98","Diode_THT:D_DO-15_P5.08mm_Vertical_KathodeUp","1",""," 576-SA26CA ","Zener diode",""
+"D2","50v","https://www.taiwansemi.com/assets/datasheet/pdf.php?pn=1N4001G","Diode_THT:D_DO-41_SOD81_P5.08mm_Vertical_AnodeUp","1","","1N4001GH","1N4001GH",""
+"D1","3.3v","https://www.vishay.com/doc?85614","Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal","1","","TZX3V3B-TR","TZX3V3B-TR",""
+"C11","150uF","https://industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/ABA0000C1209.pdf","Capacitor_THT:CP_Radial_D8.0mm_P3.50mm","1","","EEU-FC1V151B","EEU-FC1V151B",""
+"C10","100uF","https://industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/ABA0000C1259.pdf","Capacitor_THT:C_Radial_D8.0mm_H11.5mm_P3.50mm","1","","EEU-FR1H101","EEU-FR1H101",""
+"C7","1uF","https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser","Ceramic Cap:FA24","1","","FA24X7R1H105KRU06","FA24X7R1H105KRU06",""
+"C6","4.7nF","~","Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm","1",""," AR151C472K4R ","",""
+"C3,C4,C5,C8,C12,C13,C14","0.1uF","https://www.vishay.com/doc?45171","Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm","7","","K104K10X7RF53L2","K104K10X7RF53L2",""
+"C2,C9","0.01uF","https://www.vishay.com/doc?45171","Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm","2","","K103K10X7RF53L2","K103K10X7RF53L2",""
+"C1","100pF","https://www.vishay.com/docs/45171/kseries.pdf","Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm","1","","K101J15C0GF5TH5","K101J15C0GF5TH5",""

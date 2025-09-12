@@ -22,6 +22,8 @@
 #include <avr/interrupt.h>
 #include <avr/io.h> 
 
+#define Stdout Serial
+
 CCDLibrary CCD;
 
 CCDLibrary::CCDLibrary()
@@ -149,7 +151,7 @@ void CCDLibrary::transmitDelayTimerStart()
 
 void CCDLibrary::transmitDelayHandler()
 {
-    Serial.println("Transmit now allowed");
+    Stdout.println("Transmit now allowed");
     transmitDelayTimer.end();
     _transmitAllowed = true; // set flag
 }
@@ -179,7 +181,7 @@ void CCDLibrary::timer1Handler()
 }
 
 void CCDLibrary::busIdleChange() {
-    Serial.println("bus idle change");
+    Stdout.println("bus idle change");
     if (digitalRead(IDLE_PIN) == 1) {
         _busIdle = false; // clear flag
         _transmitAllowed = false; // clear flag, interrupt controlled message transmission is not affected by this flag
@@ -210,12 +212,12 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
 
     transmitting = true;
 
-    Serial.print("CCD <- ");
+    Stdout.print("CCD <- ");
     for (int i=0; i<bufferLength; i++) {
-        Serial.print(buffer[i], HEX);
-        Serial.print(" ");
+        Stdout.print(buffer[i], HEX);
+        Stdout.print(" ");
     }
-    Serial.println();
+    Stdout.println();
     CCDSERIAL.write(buffer, bufferLength);
     return 0;
 }

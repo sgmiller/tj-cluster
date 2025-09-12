@@ -12,4 +12,5 @@
   (lib (name "KAE01LAGT")(type "KiCad")(uri "${KIPRJMOD}/parts/KAE01LAGT/KiCad/KAE01LAGT.kicad_sym")(options "")(descr ""))
   (lib (name "TINYPICO")(type "Legacy")(uri "${KIPRJMOD}/parts/tinypico-kicad-footprint/TINYPICO.lib")(options "")(descr ""))
   (lib (name "TinyPico")(type "KiCad")(uri "${KIPRJMOD}/parts/TinyPico.kicad_sym")(options "")(descr ""))
+  (lib (name "FA18X7R1H472KNU00")(type "KiCad")(uri "${KIPRJMOD}/parts/FA18X7R1H472KNU00/KiCad/FA18X7R1H472KNU00.kicad_sym")(options "")(descr ""))
 )

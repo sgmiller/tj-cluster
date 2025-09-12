@@ -44,7 +44,7 @@ WDT_T4<WDT1> wdt;
 bool activity, speedoOn;
 FreqMeasureMulti speedoMeasure;
 
-// Serial port
+// Serial port, swap to external pins when not debugging
 #define Stdout Serial
 
 // CAN bus
