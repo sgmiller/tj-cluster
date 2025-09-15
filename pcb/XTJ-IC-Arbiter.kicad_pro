@@ -850,6 +850,12 @@
           "label": "Description_1",
           "name": "Description_1",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Type",
+          "name": "Sim.Type",
+          "show": false
         }
       ],
       "filter_string": "",
