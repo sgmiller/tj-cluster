@@ -61,11 +61,11 @@
       ],
       "drc_exclusions": [
         [
-          "clearance|127775000|100070000|20ff3f11-5d40-4447-a840-9cc5a3f17643|16f20f8a-a4e7-4408-8e64-49dce4dd94c8",
+          "clearance|127230000|94225000|20ff3f11-5d40-4447-a840-9cc5a3f17643|16f20f8a-a4e7-4408-8e64-49dce4dd94c8",
           ""
         ],
         [
-          "clearance|127775000|100815000|db67429e-e9f2-42e9-8d56-b66c70a5912a|20ff3f11-5d40-4447-a840-9cc5a3f17643",
+          "clearance|127975000|94225000|db67429e-e9f2-42e9-8d56-b66c70a5912a|20ff3f11-5d40-4447-a840-9cc5a3f17643",
           ""
         ],
         [
@@ -637,6 +637,14 @@
       {
         "netclass": "+5V",
         "pattern": "/Vsw"
+      },
+      {
+        "netclass": "+5V",
+        "pattern": "/5VO"
+      },
+      {
+        "netclass": "+5V",
+        "pattern": "Net-(J3-Pad5)"
       }
     ]
   },

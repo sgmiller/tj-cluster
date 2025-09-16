@@ -66,8 +66,9 @@ FreqMeasureMulti speedoMeasure;
 #define SELF_TEST_STAGE_COUNT 10
 #define SELF_TEST_STAGE_DURATION 3000
 #define VBAT_RELAY_TURN_ON_MAX 2 // ms
-#define VBAT_VD_R1 20000.0 // VBAT voltage divider R1 value (ohms)
-#define VBAT_VD_R2 3700.0 // VBAT voltage divider R2 value (ohms)
+#define VBAT_VD_R1 960000.0 // VBAT voltage divider R1 value (ohms)
+#define VBAT_VD_R2 11000.0 // VBAT voltage divider R2 value (ohms)
+#define VBAT_C 0.000001 // Farads
 #define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) // Set voltage divider resistor values here
 #define MCU_VOLTAGE 3.3
 #define PULSES_PER_AXLE_REVOLUTION 8
@@ -75,7 +76,7 @@ FreqMeasureMulti speedoMeasure;
 #define TIRE_DIAMETER 28.86
 #define TIRE_CIRCUMFERENCE 3.14159 * TIRE_DIAMETER
 #define PULSES_PER_MILE (5280 / TIRE_CIRCUMFERENCE) * PULSES_PER_AXLE_REVOLUTION
-#define BATTERY_MEASURE_INTERVAL 500 // ms
+#define BATTERY_MEASURE_INTERVAL 2000*(VBAT_VD_R1*VBAT_C) // ms, allowing 2xtime for the capacitor to charge between reads, T=RC
 #define AIRBAG_OK_INTERVAL 1000      // ms
 
 // All instruments
