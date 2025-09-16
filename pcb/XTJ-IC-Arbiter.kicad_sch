@@ -5256,16 +5256,16 @@
 		(uuid "2557a82c-bd92-45f7-95b2-7774f23487f9")
 	)
 	(junction
+		(at 240.03 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2a045c5c-e1dc-4174-8ca6-b0584383edc5")
+	)
+	(junction
 		(at 234.95 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "32dbd2e6-6d11-48b2-b548-ce015ce197d3")
-	)
-	(junction
-		(at 240.03 88.9)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "35889c5f-da22-48ca-8693-6dccb600d1ea")
 	)
 	(junction
 		(at 191.77 63.5)
@@ -5280,10 +5280,10 @@
 		(uuid "3d163359-b61b-42a5-8d4a-1346ae2abbf3")
 	)
 	(junction
-		(at 256.54 109.22)
+		(at 162.56 147.32)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "472eccc0-7fb2-4f09-a99d-581b360242e2")
+		(uuid "473c056f-9149-48dd-8cee-32a5db1ab26c")
 	)
 	(junction
 		(at 132.08 156.21)
@@ -5490,6 +5490,12 @@
 		(uuid "dd36a213-35c8-4c31-a318-d215abfcf9df")
 	)
 	(junction
+		(at 157.48 156.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "df1707b7-1fa9-4588-81c0-e52fde01a1e9")
+	)
+	(junction
 		(at 81.28 156.21)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5506,12 +5512,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "eef8ecc6-9f87-4613-9d5b-364640780f07")
-	)
-	(junction
-		(at 256.54 82.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f192a134-eb00-4ac4-8f10-f730ce2be495")
 	)
 	(junction
 		(at 209.55 50.8)
@@ -5575,13 +5575,13 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 106.68) (xy 256.54 109.22)
+			(xy 240.03 88.9) (xy 241.3 88.9)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "00b9ca22-f344-473f-b933-a70caecc329f")
+		(uuid "00830a88-9c65-4fc4-8b7e-25ed984d5321")
 	)
 	(wire
 		(pts
@@ -5665,7 +5665,7 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 147.32) (xy 166.37 147.32)
+			(xy 140.97 147.32) (xy 162.56 147.32)
 		)
 		(stroke
 			(width 0)
@@ -5945,16 +5945,6 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 82.55) (xy 256.54 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "25932c2b-4d20-48c3-bfe6-585782bafbc8")
-	)
-	(wire
-		(pts
 			(xy 110.49 39.37) (xy 110.49 46.99)
 		)
 		(stroke
@@ -6035,7 +6025,7 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 96.52) (xy 240.03 109.22)
+			(xy 240.03 88.9) (xy 240.03 97.79)
 		)
 		(stroke
 			(width 0)
@@ -6202,6 +6192,16 @@
 			(type default)
 		)
 		(uuid "440bb8d3-c9bb-4a11-8bbe-d9d47f728406")
+	)
+	(wire
+		(pts
+			(xy 240.03 105.41) (xy 240.03 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44c97c4e-db10-4fa5-9cb7-db9530fd515b")
 	)
 	(wire
 		(pts
@@ -6392,6 +6392,16 @@
 			(type default)
 		)
 		(uuid "66670e01-622b-4d90-a2f0-1a27327d8a86")
+	)
+	(wire
+		(pts
+			(xy 157.48 156.21) (xy 162.56 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67e1e505-d68f-4b61-b287-dc207c7f765b")
 	)
 	(wire
 		(pts
@@ -6735,7 +6745,7 @@
 	)
 	(wire
 		(pts
-			(xy 251.46 109.22) (xy 256.54 109.22)
+			(xy 251.46 109.22) (xy 262.89 109.22)
 		)
 		(stroke
 			(width 0)
@@ -6865,16 +6875,6 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 88.9) (xy 240.03 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b0f93e9e-7c09-4c7b-92d3-6d6b9b6366b7")
-	)
-	(wire
-		(pts
 			(xy 66.04 54.61) (xy 66.04 60.96)
 		)
 		(stroke
@@ -6945,13 +6945,23 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 82.55) (xy 262.89 82.55)
+			(xy 251.46 82.55) (xy 262.89 82.55)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "bdc53d94-c670-48f0-8b8a-28490b829bd6")
+	)
+	(wire
+		(pts
+			(xy 162.56 147.32) (xy 166.37 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bec114df-2996-415b-bf85-283d78e6dca8")
 	)
 	(wire
 		(pts
@@ -7075,7 +7085,7 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 88.9) (xy 241.3 88.9)
+			(xy 234.95 88.9) (xy 240.03 88.9)
 		)
 		(stroke
 			(width 0)
@@ -7135,16 +7145,6 @@
 	)
 	(wire
 		(pts
-			(xy 251.46 82.55) (xy 256.54 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e2ffaba1-fb6d-45e8-9204-97d7fe00074c")
-	)
-	(wire
-		(pts
 			(xy 81.28 149.86) (xy 81.28 156.21)
 		)
 		(stroke
@@ -7152,6 +7152,16 @@
 			(type default)
 		)
 		(uuid "e3946cc4-5abd-490b-8c48-808f7f746bcb")
+	)
+	(wire
+		(pts
+			(xy 162.56 147.32) (xy 162.56 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e4212989-079c-49bc-87ff-df2aa858e248")
 	)
 	(wire
 		(pts
@@ -7372,16 +7382,6 @@
 			(type default)
 		)
 		(uuid "fc9a2e03-ad5b-445f-9638-ae6860df1ac4")
-	)
-	(wire
-		(pts
-			(xy 256.54 109.22) (xy 262.89 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fe44c389-fda6-42d8-95a0-2a7308047c03")
 	)
 	(wire
 		(pts
@@ -9161,6 +9161,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 162.56 152.4 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "22a9ec36-b15c-4613-9189-a695a849321e")
+		(property "Reference" "C15"
+			(at 163.195 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1uF"
+			(at 163.195 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Ceramic Cap:FA24"
+			(at 163.5252 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser"
+			(at 162.56 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 162.56 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "FA24X7R1H105KRU06"
+			(at 162.56 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "08cf9d95-7569-4371-9a5b-eea48ed96a14")
+		)
+		(pin "2"
+			(uuid "7099be60-747e-4415-9fd3-c15ee16889ba")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "C15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 199.39 107.95 0)
 		(unit 1)
@@ -10582,6 +10661,84 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 240.03 101.6 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5170b4a6-7a15-4253-8a10-7de6eb4ed503")
+		(property "Reference" "C17"
+			(at 239.395 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 239.395 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
+			(at 239.0648 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/doc?45171"
+			(at 240.03 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 240.03 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "K104K10X7RF53L2"
+			(at 240.03 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "33675ebc-6105-4cda-afcd-7eb26844be2b")
+		)
+		(pin "2"
+			(uuid "c07301b8-9427-4cc4-ae11-d8ba8fd78d4c")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "C17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 33.02 106.68 90)
 		(unit 1)
@@ -11936,7 +12093,7 @@
 				)
 			)
 		)
-		(property "Value" "MCP1700x-330xxTO"
+		(property "Value" "MCP1700-3302E/TO"
 			(at 157.48 134.8048 0)
 			(effects
 				(font
@@ -11954,7 +12111,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/20001826D.pdf"
+		(property "Datasheet" "https://www.mouser.com/datasheet/3/282/1/MCP1700-Data-Sheet-20001826F.pdf"
 			(at 157.48 138.43 0)
 			(effects
 				(font
@@ -13582,85 +13739,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 240.03 92.71 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c61f07b0-8a88-4a7c-b828-f027719aedd6")
-		(property "Reference" "C16"
-			(at 242.951 91.4979 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0.01uF"
-			(at 242.951 93.9221 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
-			(at 240.9952 96.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.vishay.com/doc?45171"
-			(at 240.03 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Capacitor"
-			(at 240.03 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "K103K10X7RF53L2"
-			(at 240.03 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ed5ee8dc-685f-4fe3-a768-5f217061b847")
-		)
-		(pin "2"
-			(uuid "5f08f79b-f38a-40cb-ac5f-23a157f5558a")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "C16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 78.74 80.01 180)
 		(unit 1)
@@ -14656,85 +14734,6 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "C3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 256.54 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "fb03619b-2614-41e4-9518-8ccf95586977")
-		(property "Reference" "C2"
-			(at 259.461 101.6579 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0.01uF"
-			(at 259.461 104.0821 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
-			(at 257.5052 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.vishay.com/doc?45171"
-			(at 256.54 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Capacitor"
-			(at 256.54 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "K103K10X7RF53L2"
-			(at 256.54 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bd0aedc0-f41d-4435-9bab-d4d30d4ecac6")
-		)
-		(pin "2"
-			(uuid "56e478dd-72f0-465e-adbd-97c562c98408")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "C2")
 					(unit 1)
 				)
 			)
