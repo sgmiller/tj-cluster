@@ -66,8 +66,8 @@ FreqMeasureMulti speedoMeasure;
 #define SELF_TEST_STAGE_COUNT 10
 #define SELF_TEST_STAGE_DURATION 3000
 #define VBAT_RELAY_TURN_ON_MAX 2 // ms
-#define VBAT_VD_R1 960000.0 // VBAT voltage divider R1 value (ohms)
-#define VBAT_VD_R2 11000.0 // VBAT voltage divider R2 value (ohms)
+#define VBAT_VD_R1 100000.0 // VBAT voltage divider R1 value (ohms)
+#define VBAT_VD_R2 4700.0 // VBAT voltage divider R2 value (ohms)
 #define VBAT_C 0.000001 // Farads
 #define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) // Set voltage divider resistor values here
 #define MCU_VOLTAGE 3.3
