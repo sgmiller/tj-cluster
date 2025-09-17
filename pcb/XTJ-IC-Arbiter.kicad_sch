@@ -9488,7 +9488,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.mouser.com/catalog/specsheets/Unexpected%20Maker_Datasheet_TinyPICO.pdf"
 			(at 116.84 82.55 0)
 			(effects
 				(font
@@ -9497,7 +9497,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "392-TP-01"
+			(at 110.49 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "https://www.mouser.com/catalog/specsheets/Unexpected%20Maker_Datasheet_TinyPICO.pdf"
 			(at 110.49 82.55 0)
 			(effects
 				(font
@@ -10840,7 +10849,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://datasheets.kyocera-avx.com/AR-Series.pdf"
 			(at 55.88 60.96 0)
 			(effects
 				(font
@@ -12211,7 +12220,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" " SA26CA "
+		(property "MPN" " SA26A "
 			(at 67.31 145.415 90)
 			(effects
 				(font
