@@ -3642,8 +3642,8 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "XA1"
-				(at 7.366 6.35 0)
+			(property "Reference" "XA"
+				(at 7.62 7.62 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3651,7 +3651,7 @@
 				)
 			)
 			(property "Value" "TINYPICO"
-				(at 7.366 3.9257 0)
+				(at 7.62 3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3794,7 +3794,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin power_in line
 					(at 0 -15.24 0)
 					(length 2.54)
 					(name "V3.3"
