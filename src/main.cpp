@@ -35,21 +35,21 @@
 #include "main.h"
 #include "instruments.h"
 #include <CCDLibrary.h>
-#include <FlexCAN_T4.h>
-#include <FreqCount.h>
-#include <FreqMeasureMulti.h>
+#include "FreqCountESP.h"
 #include <Watchdog.h>
+#include <elapsedMillis.h>
+#include <ESP32_CAN.h>
 
-WDT_T4<WDT1> wdt;
+Watchdog wdt(5);
 bool activity, speedoOn;
-FreqMeasureMulti speedoMeasure;
+FreqCountESP speedoMeasure;
 
 // Serial port, swap to external pins when not debugging
 #define Stdout Serial
 
 // CAN bus
-#define CAN1_TX 11
-#define CAN1_RX 13
+#define CAN1_TX 26
+#define CAN1_RX 27
 #define CAN2_TX 31
 #define CAN2_RX 30
 #define NUM_CAN_TX_MAILBOXES 1
@@ -114,8 +114,8 @@ elapsedMillis lastRefresh;
 elapsedMillis lastBattMeasure;
 elapsedMillis lastAirbagOkXmt;
 
-FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_16> can1;
-FlexCAN_T4<CAN2, RX_SIZE_256, TX_SIZE_16> can2;
+ESP32_CAN<RX_SIZE_256, TX_SIZE_16> can1;
+ESP32_CAN<RX_SIZE_256, TX_SIZE_16> can2;
 
 void resetGauges()
 {
@@ -287,12 +287,13 @@ void onVCUVehicleInputs3(const CAN_message_t &msg)
 {
   uint8_t mph = msg.buf[1];
   speedo.SetMPH(mph);
-
+/*
   // Tell power steering to change
   CAN_message_t leafEPS;
   leafEPS.id = 0x12345;
   leafEPS.buf[0] = 128;
   can2.write(MB1, leafEPS);
+*/
 }
 
 void onVCUFaultStates(const CAN_message_t &msg)
@@ -312,31 +313,14 @@ void setupCAN()
 {
   pinMode(6, OUTPUT);
   digitalWrite(6, LOW);
+  can1.setTX(CAN1_TX);
+  can1.setRX(CAN1_RX);
   can1.begin();
-  can2.begin();
 
   can1.setBaudRate(500000);
   can2.setBaudRate(500000);
-  can1.mailboxStatus();
-  can2.mailboxStatus();
 
-  can1.setMaxMB(NUM_CAN_TX_MAILBOXES + NUM_CAN_RX_MAILBOXES);
-  for (int i = 0; i < NUM_CAN_RX_MAILBOXES; i++)
-  {
-    can1.setMB((FLEXCAN_MAILBOX)i, RX, EXT);
-  }
-  for (int i = NUM_CAN_RX_MAILBOXES;
-       i < (NUM_CAN_TX_MAILBOXES + NUM_CAN_RX_MAILBOXES); i++)
-  {
-    can1.setMB((FLEXCAN_MAILBOX)i, TX, EXT);
-  }
-  can1.setMBFilter(REJECT_ALL);
-  can1.enableMBInterrupts();
-  // Sample messages from the AEM VCU
-  can1.onReceive(MB0, onVCUVehicleInputs3);
-  can1.setMBFilter(MB0, 0x2F0A014);
-  can1.onReceive(MB1, onVCUFaultStates);
-  can1.setMBFilter(MB1, 0x2F0A044);
+  can1.onReceive = onVCUVehicleInputs3
 }
 
 void setup()
@@ -374,10 +358,7 @@ void setup()
   }
 
   // Set pins
-  pinMode(VBAT_MEASURE_CTL, OUTPUT);
   pinMode(VBAT_MEASURE_SIG, INPUT);
-  // Nothing we're reading moves quickly, so do read averaging
-  analogReadAveraging(8);
 
   CCD.onError(CCDHandleError); // subscribe to the error event and call this
                                // function when an error occurs

@@ -3,8 +3,7 @@
 
 #include <Arduino.h>
 
-#define VBAT_MEASURE_CTL PIN_A5
-#define VBAT_MEASURE_SIG PIN_A0
+#define VBAT_MEASURE_SIG 15
 
 void clusterWrite();
 void handleHeartbeat();

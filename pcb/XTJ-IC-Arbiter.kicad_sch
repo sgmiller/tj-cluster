@@ -5051,12 +5051,6 @@
 		(uuid "14f716c5-1bc4-4054-9825-a4769159b28c")
 	)
 	(junction
-		(at 240.03 109.22)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "211c0fc7-e9d7-4786-8bcd-57578064de6a")
-	)
-	(junction
 		(at 74.93 156.21)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5069,16 +5063,16 @@
 		(uuid "2267fd01-d95d-42c8-8364-bc92598340ca")
 	)
 	(junction
+		(at 60.96 46.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2447afaa-9352-4278-8439-1ab6741ee096")
+	)
+	(junction
 		(at 110.49 54.61)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2557a82c-bd92-45f7-95b2-7774f23487f9")
-	)
-	(junction
-		(at 240.03 88.9)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2a045c5c-e1dc-4174-8ca6-b0584383edc5")
 	)
 	(junction
 		(at 191.77 63.5)
@@ -5177,22 +5171,10 @@
 		(uuid "8caa35bc-c2da-4c78-9556-0f1d010db581")
 	)
 	(junction
-		(at 257.81 82.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8e69758f-6336-4d7e-89e1-9cf814d51a91")
-	)
-	(junction
 		(at 208.28 26.67)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8e6a3960-6984-4768-bf35-2dfb87b7482f")
-	)
-	(junction
-		(at 68.58 57.15)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "903a648b-1541-4c7a-923d-f9b13994d350")
 	)
 	(junction
 		(at 140.97 63.5)
@@ -5279,16 +5261,22 @@
 		(uuid "b7cc3187-5a79-4a1d-9c8c-7c3a47f59c74")
 	)
 	(junction
+		(at 67.31 57.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "be61a7ac-3b13-464d-90ae-02a07929a73a")
+	)
+	(junction
 		(at 242.57 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c390076f-d096-4b1d-bec8-e2602cd27dc8")
 	)
 	(junction
-		(at 257.81 109.22)
+		(at 63.5 80.01)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c57728a3-9ccf-492b-9752-06d99b915fa0")
+		(uuid "c46c0eb1-d250-4496-9306-1efd8daaaf72")
 	)
 	(junction
 		(at 231.14 109.22)
@@ -5357,12 +5345,6 @@
 		(uuid "f8c26c8a-63ec-4104-8482-c0be71385cec")
 	)
 	(junction
-		(at 62.23 46.99)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f8e19ffe-4bdf-43be-a688-e1f8a37a6ec1")
-	)
-	(junction
 		(at 119.38 147.32)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5412,7 +5394,7 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 88.9) (xy 241.3 88.9)
+			(xy 231.14 88.9) (xy 241.3 88.9)
 		)
 		(stroke
 			(width 0)
@@ -5792,6 +5774,16 @@
 	)
 	(wire
 		(pts
+			(xy 67.31 57.15) (xy 68.58 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27ea4aff-121e-44b4-86a8-5e2c34af56f6")
+	)
+	(wire
+		(pts
 			(xy 27.94 46.99) (xy 34.29 46.99)
 		)
 		(stroke
@@ -5852,16 +5844,6 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 88.9) (xy 240.03 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2f84ebb3-8aa4-427e-a846-22f3bbcd0b87")
-	)
-	(wire
-		(pts
 			(xy 262.89 77.47) (xy 262.89 82.55)
 		)
 		(stroke
@@ -5892,17 +5874,7 @@
 	)
 	(wire
 		(pts
-			(xy 257.81 106.68) (xy 257.81 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3217267c-9964-4c84-b416-2a271425c945")
-	)
-	(wire
-		(pts
-			(xy 59.69 60.96) (xy 68.58 60.96)
+			(xy 59.69 60.96) (xy 67.31 60.96)
 		)
 		(stroke
 			(width 0)
@@ -5952,7 +5924,7 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 57.15) (xy 62.23 53.34)
+			(xy 60.96 53.34) (xy 60.96 57.15)
 		)
 		(stroke
 			(width 0)
@@ -6022,16 +5994,6 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 105.41) (xy 240.03 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "44c97c4e-db10-4fa5-9cb7-db9530fd515b")
-	)
-	(wire
-		(pts
 			(xy 27.94 41.91) (xy 34.29 41.91)
 		)
 		(stroke
@@ -6072,7 +6034,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 57.15) (xy 68.58 57.15)
+			(xy 66.04 57.15) (xy 67.31 57.15)
 		)
 		(stroke
 			(width 0)
@@ -6152,7 +6114,7 @@
 	)
 	(wire
 		(pts
-			(xy 257.81 109.22) (xy 262.89 109.22)
+			(xy 251.46 109.22) (xy 262.89 109.22)
 		)
 		(stroke
 			(width 0)
@@ -6382,7 +6344,7 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 46.99) (xy 62.23 48.26)
+			(xy 60.96 46.99) (xy 60.96 48.26)
 		)
 		(stroke
 			(width 0)
@@ -6422,16 +6384,6 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 46.99) (xy 74.93 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "83d8c19a-3676-42a7-a1ec-c59e356fa892")
-	)
-	(wire
-		(pts
 			(xy 157.48 81.28) (xy 161.29 81.28)
 		)
 		(stroke
@@ -6459,6 +6411,16 @@
 			(type default)
 		)
 		(uuid "86beaf29-41d7-4149-94ec-4f45b016de2d")
+	)
+	(wire
+		(pts
+			(xy 60.96 46.99) (xy 74.93 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "880af50c-3c85-40c7-a490-bdb91651e032")
 	)
 	(wire
 		(pts
@@ -6522,7 +6484,7 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 109.22) (xy 242.57 109.22)
+			(xy 231.14 109.22) (xy 242.57 109.22)
 		)
 		(stroke
 			(width 0)
@@ -6622,7 +6584,7 @@
 	)
 	(wire
 		(pts
-			(xy 257.81 82.55) (xy 262.89 82.55)
+			(xy 251.46 82.55) (xy 262.89 82.55)
 		)
 		(stroke
 			(width 0)
@@ -6639,16 +6601,6 @@
 			(type default)
 		)
 		(uuid "9edfe816-9106-4d0a-9539-b2dd1e3c0772")
-	)
-	(wire
-		(pts
-			(xy 251.46 109.22) (xy 257.81 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a0d16347-9b38-4a9e-8cb4-81282cc89111")
 	)
 	(wire
 		(pts
@@ -6822,7 +6774,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 57.15) (xy 68.58 60.96)
+			(xy 67.31 57.15) (xy 67.31 60.96)
 		)
 		(stroke
 			(width 0)
@@ -6869,26 +6821,6 @@
 			(type default)
 		)
 		(uuid "bcad52e1-d97c-4f3c-b8aa-1d44f7f6a6db")
-	)
-	(wire
-		(pts
-			(xy 251.46 82.55) (xy 257.81 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bdc53d94-c670-48f0-8b8a-28490b829bd6")
-	)
-	(wire
-		(pts
-			(xy 231.14 109.22) (xy 240.03 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "be8991f8-b9b3-44f4-a077-b3ecf9c9ab99")
 	)
 	(wire
 		(pts
@@ -6989,16 +6921,6 @@
 			(type default)
 		)
 		(uuid "cf359e87-45d8-4faf-a44f-d7aea347c4d5")
-	)
-	(wire
-		(pts
-			(xy 231.14 88.9) (xy 240.03 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d0aaf437-af6d-4921-ad36-9d717db47743")
 	)
 	(wire
 		(pts
@@ -7192,7 +7114,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 46.99) (xy 62.23 46.99)
+			(xy 59.69 46.99) (xy 60.96 46.99)
 		)
 		(stroke
 			(width 0)
@@ -7320,16 +7242,6 @@
 		)
 		(uuid "ffa1b78e-423d-4e22-a362-33cc9b7377fd")
 	)
-	(wire
-		(pts
-			(xy 257.81 82.55) (xy 257.81 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ffa7649d-0517-4d07-b4df-9fbc5c5260b8")
-	)
 	(label "Vsw"
 		(at 114.3 147.32 0)
 		(effects
@@ -7386,7 +7298,7 @@
 	)
 	(global_label "can_tx"
 		(shape input)
-		(at 110.49 85.09 180)
+		(at 110.49 82.55 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7396,7 +7308,7 @@
 		)
 		(uuid "08b37731-79c7-4c48-bc9d-5e4d05b88e0e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 99.5785 85.09 0)
+			(at 100.8525 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7562,22 +7474,22 @@
 	)
 	(global_label "ccd_rx"
 		(shape input)
-		(at 69.85 99.06 90)
+		(at 76.2 100.33 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.524 1.524)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "2a95c859-e2d2-4214-94c0-c759b4f0b7b7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 69.85 88.1486 90)
+			(at 76.2 111.2414 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -7693,7 +7605,7 @@
 	)
 	(global_label "ccd_idle"
 		(shape input)
-		(at 107.95 49.53 180)
+		(at 107.95 41.91 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7703,7 +7615,7 @@
 		)
 		(uuid "446c0c9d-e5cf-45aa-8720-31e91d698bfe")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 97.4053 49.53 0)
+			(at 100.1591 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7759,7 +7671,7 @@
 	)
 	(global_label "ccd_ctrl"
 		(shape input)
-		(at 107.95 41.91 180)
+		(at 107.95 49.53 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7769,7 +7681,7 @@
 		)
 		(uuid "5143d3f6-a510-4e43-b33d-ffd09c5870eb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 100.1591 41.91 0)
+			(at 97.4053 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7825,7 +7737,7 @@
 	)
 	(global_label "ctrl"
 		(shape input)
-		(at 107.95 44.45 180)
+		(at 107.95 52.07 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7835,7 +7747,7 @@
 		)
 		(uuid "636387a3-c075-4410-b25d-80b5d63c29b1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 95.6597 44.45 0)
+			(at 100.4494 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7935,22 +7847,22 @@
 	)
 	(global_label "ctrl"
 		(shape input)
-		(at 60.96 99.06 90)
+		(at 85.09 100.33 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.524 1.524)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "76cb0f89-ca17-4c5f-8454-f2b6d3b7fd12")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 60.96 91.5594 90)
+			(at 85.09 107.8306 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -8089,7 +8001,7 @@
 	)
 	(global_label "speedo"
 		(shape input)
-		(at 110.49 82.55 180)
+		(at 110.49 85.09 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8099,7 +8011,7 @@
 		)
 		(uuid "94d2230c-4156-4cf7-ae0e-80bf9542a58f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 100.8525 82.55 0)
+			(at 99.5785 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8155,7 +8067,7 @@
 	)
 	(global_label "idle"
 		(shape input)
-		(at 107.95 52.07 180)
+		(at 107.95 44.45 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8165,7 +8077,7 @@
 		)
 		(uuid "a59e4f5c-fb6e-4218-85c8-2a678fada04e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 100.4494 52.07 0)
+			(at 95.6597 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8177,22 +8089,22 @@
 	)
 	(global_label "idle"
 		(shape input)
-		(at 64.77 99.06 90)
+		(at 81.28 100.33 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.524 1.524)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "a6e95752-8f6d-46db-b4c5-613f1a76e06c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 64.77 91.2691 90)
+			(at 81.28 108.1209 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -8221,22 +8133,22 @@
 	)
 	(global_label "ccd_tx"
 		(shape input)
-		(at 73.66 99.06 90)
+		(at 72.39 100.33 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.524 1.524)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "b0a2196d-cc93-4f55-9d0e-966204c4df8d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.66 88.2211 90)
+			(at 72.39 111.1689 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -8346,6 +8258,28 @@
 					(size 1.524 1.524)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "speedo_in"
+		(shape input)
+		(at 60.96 100.33 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify right)
+		)
+		(uuid "c50cce0e-9f5b-4a60-bfea-0df8be841b65")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 60.96 115.1604 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -8769,7 +8703,7 @@
 	)
 	(symbol
 		(lib_id "Jumper:Jumper_2_Small_Open")
-		(at 64.77 57.15 0)
+		(at 63.5 57.15 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8778,7 +8712,7 @@
 		(fields_autoplaced yes)
 		(uuid "0f4dc543-a419-46ff-994b-cac29ce6a418")
 		(property "Reference" "JP2"
-			(at 64.77 51.8596 0)
+			(at 63.5 51.8596 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8786,7 +8720,7 @@
 			)
 		)
 		(property "Value" "Jumper_2_Small_Open"
-			(at 64.77 54.2839 0)
+			(at 63.5 54.2839 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8795,7 +8729,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 64.77 57.15 0)
+			(at 63.5 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8804,7 +8738,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 64.77 57.15 0)
+			(at 63.5 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8813,7 +8747,7 @@
 			)
 		)
 		(property "Description" "Jumper, 2-pole, small symbol, open"
-			(at 64.77 57.15 0)
+			(at 63.5 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9154,7 +9088,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Ceramic Cap:FA24"
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm"
 			(at 163.5252 148.59 0)
 			(effects
 				(font
@@ -9830,7 +9764,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 64.77 99.06 180)
+		(at 81.28 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9838,17 +9772,16 @@
 		(dnp no)
 		(uuid "3e587767-fa11-4ebb-a708-39d77d6e7a76")
 		(property "Reference" "TP3"
-			(at 66.167 101.1498 0)
+			(at 79.883 98.2402 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 66.167 103.5741 0)
+			(at 79.883 95.8159 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9858,7 +9791,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 59.69 99.06 0)
+			(at 86.36 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9867,7 +9800,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
-			(at 59.69 99.06 0)
+			(at 86.36 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9876,7 +9809,7 @@
 			)
 		)
 		(property "Description" "Test point"
-			(at 64.77 99.06 0)
+			(at 81.28 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9885,7 +9818,7 @@
 			)
 		)
 		(property "MPN" " 534-5267 "
-			(at 64.77 99.06 0)
+			(at 81.28 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9894,7 +9827,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 64.77 99.06 0)
+			(at 81.28 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10128,7 +10061,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small")
-		(at 62.23 50.8 0)
+		(at 60.96 50.8 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10137,7 +10070,7 @@
 		(dnp no)
 		(uuid "47d3e83a-02d5-4e90-801c-f03b1c364e3d")
 		(property "Reference" "R5"
-			(at 60.198 52.07 90)
+			(at 58.928 52.07 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10146,7 +10079,7 @@
 			)
 		)
 		(property "Value" "60.4ohm"
-			(at 61.722 53.848 0)
+			(at 60.452 53.848 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10155,7 +10088,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical"
-			(at 62.23 50.8 0)
+			(at 60.96 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10164,7 +10097,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 62.23 50.8 0)
+			(at 60.96 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10173,7 +10106,7 @@
 			)
 		)
 		(property "Description" "1/4 watt resistor"
-			(at 62.23 50.8 0)
+			(at 60.96 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10182,7 +10115,7 @@
 			)
 		)
 		(property "MPN" "CMF5560R400FHEK"
-			(at 62.23 50.8 90)
+			(at 60.96 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10568,84 +10501,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 240.03 101.6 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5170b4a6-7a15-4253-8a10-7de6eb4ed503")
-		(property "Reference" "C17"
-			(at 239.395 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0.1uF"
-			(at 239.395 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
-			(at 239.0648 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser"
-			(at 240.03 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Capacitor"
-			(at 240.03 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "FA18X7R1H104KNU06 "
-			(at 240.03 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "33675ebc-6105-4cda-afcd-7eb26844be2b")
-		)
-		(pin "2"
-			(uuid "c07301b8-9427-4cc4-ae11-d8ba8fd78d4c")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "C17")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 33.02 106.68 90)
 		(unit 1)
@@ -10790,16 +10645,15 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 73.66 99.06 180)
+		(at 72.39 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "5582ebd5-4905-432e-a4fb-e3f00d471875")
 		(property "Reference" "TP12"
-			(at 72.263 103.5742 0)
+			(at 73.787 95.8158 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10808,16 +10662,17 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 72.263 101.1499 0)
+			(at 69.088 94.742 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 68.58 99.06 0)
+			(at 77.47 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10826,7 +10681,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
-			(at 68.58 99.06 0)
+			(at 77.47 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10835,7 +10690,7 @@
 			)
 		)
 		(property "Description" "Test point"
-			(at 73.66 99.06 0)
+			(at 72.39 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10844,7 +10699,7 @@
 			)
 		)
 		(property "MPN" " 534-5267 "
-			(at 73.66 99.06 0)
+			(at 72.39 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10853,7 +10708,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 73.66 99.06 0)
+			(at 72.39 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11228,7 +11083,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 69.85 99.06 180)
+		(at 76.2 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11237,7 +11092,7 @@
 		(fields_autoplaced yes)
 		(uuid "65080292-63a0-4149-a937-ea1683997bce")
 		(property "Reference" "TP13"
-			(at 68.453 103.5742 0)
+			(at 77.597 95.8158 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11246,16 +11101,17 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 68.453 101.1499 0)
+			(at 77.597 98.2401 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 64.77 99.06 0)
+			(at 81.28 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11264,7 +11120,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
-			(at 64.77 99.06 0)
+			(at 81.28 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11273,7 +11129,7 @@
 			)
 		)
 		(property "Description" "Test point"
-			(at 69.85 99.06 0)
+			(at 76.2 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11282,7 +11138,7 @@
 			)
 		)
 		(property "MPN" " 534-5267 "
-			(at 69.85 99.06 0)
+			(at 76.2 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11291,7 +11147,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 69.85 99.06 0)
+			(at 76.2 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11306,6 +11162,90 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "TP13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 63.5 80.01 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6aa52760-ad52-458b-947e-49f40aa2d09b")
+		(property "Reference" "TP4"
+			(at 60.198 75.2305 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 60.198 77.6548 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 63.5 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
+			(at 63.5 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point"
+			(at 63.5 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" " 534-5267 "
+			(at 63.5 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 63.5 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "50ec8b09-97b4-47c6-b75f-b55b11933fab")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -12490,16 +12430,15 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 77.47 99.06 180)
+		(at 68.58 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "a0031232-6d5f-46fe-8ba8-a5a24466385e")
 		(property "Reference" "TP9"
-			(at 78.867 101.1498 0)
+			(at 67.183 98.2402 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12508,16 +12447,17 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 78.867 103.5741 0)
+			(at 72.898 94.234 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 72.39 99.06 0)
+			(at 73.66 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12526,7 +12466,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
-			(at 72.39 99.06 0)
+			(at 73.66 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12535,7 +12475,7 @@
 			)
 		)
 		(property "Description" "Test point"
-			(at 77.47 99.06 0)
+			(at 68.58 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12544,7 +12484,7 @@
 			)
 		)
 		(property "MPN" " 534-5267 "
-			(at 77.47 99.06 0)
+			(at 68.58 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12553,7 +12493,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 77.47 99.06 0)
+			(at 68.58 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13196,84 +13136,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 257.81 102.87 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "bc0e01dc-b2f2-48f5-8574-832340f8b7f8")
-		(property "Reference" "C2"
-			(at 257.175 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0.1uF"
-			(at 257.175 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
-			(at 256.8448 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser"
-			(at 257.81 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Capacitor"
-			(at 257.81 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "FA18X7R1H104KNU06 "
-			(at 257.81 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8e18e9cf-682a-4a91-a2ca-808a338a75c1")
-		)
-		(pin "2"
-			(uuid "bf2591f5-9322-45a0-9415-f8684d4e260a")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "C2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+5V")
 		(at 34.29 96.52 270)
 		(unit 1)
@@ -13783,7 +13645,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 77.47 99.06 0)
+		(at 68.58 100.33 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13792,7 +13654,7 @@
 		(fields_autoplaced yes)
 		(uuid "ccc25d17-4f9f-4070-9974-dc793a94592f")
 		(property "Reference" "#PWR023"
-			(at 77.47 102.87 0)
+			(at 68.58 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13801,7 +13663,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 77.47 94.9269 0)
+			(at 68.58 104.4631 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13809,7 +13671,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 77.47 99.06 0)
+			(at 68.58 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13818,7 +13680,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 77.47 99.06 0)
+			(at 68.58 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13827,7 +13689,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 77.47 99.06 0)
+			(at 68.58 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14061,7 +13923,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 60.96 99.06 180)
+		(at 85.09 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14070,7 +13932,7 @@
 		(fields_autoplaced yes)
 		(uuid "d7f94b83-e1f2-4553-9601-5f854126aca9")
 		(property "Reference" "TP2"
-			(at 62.357 101.1498 0)
+			(at 83.693 98.2402 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14079,7 +13941,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 62.357 103.5741 0)
+			(at 83.693 95.8159 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14089,7 +13951,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 55.88 99.06 0)
+			(at 90.17 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14098,7 +13960,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
-			(at 55.88 99.06 0)
+			(at 90.17 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14107,7 +13969,7 @@
 			)
 		)
 		(property "Description" "Test point"
-			(at 60.96 99.06 0)
+			(at 85.09 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14116,7 +13978,7 @@
 			)
 		)
 		(property "MPN" " 534-5267 "
-			(at 60.96 99.06 0)
+			(at 85.09 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14125,7 +13987,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 60.96 99.06 0)
+			(at 85.09 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14285,6 +14147,92 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 60.96 100.33 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e11e257b-0024-475c-b9e5-c562619a3ff3")
+		(property "Reference" "TP1"
+			(at 62.357 95.8158 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 62.357 98.2401 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 66.04 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
+			(at 66.04 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point"
+			(at 60.96 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" " 534-5267 "
+			(at 60.96 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 60.96 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "335b1897-ff57-4f8d-8a02-dd275a705954")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -14528,7 +14476,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Ceramic Cap:FA24"
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm"
 			(at 147.6248 156.21 0)
 			(effects
 				(font

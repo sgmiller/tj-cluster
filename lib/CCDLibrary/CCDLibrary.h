@@ -30,7 +30,7 @@
     #define TX_P    PD3 // TX1 - D18
     #define RX_PIN  PIND
     #define TX_PIN  PIND
-#elif defined (__IMXRT1062__)
+#elif defined (_ESP32_ESP32_HAL_BT_H_)
     #define RX_P 20
     #define TX_P 19
     #define IDLE_PIN 22
