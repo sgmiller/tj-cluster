@@ -158,9 +158,24 @@ void CCDLibrary::transmitDelayHandler()
 
 void CCDLibrary::clockGeneratorInit()
 {
-  analogWriteResolution(15);
-  analogWrite(CLOCK_PIN, 16383);
-  analogWriteFrequency(CLOCK_PIN, CLOCK_SPEED);
+      // set LEDC timer
+  ledc_timer.speed_mode       = LEDC_HIGH_SPEED_MODE;
+  ledc_timer.duty_resolution  = LEDC_TIMER_1_BIT;
+  ledc_timer.timer_num        = LEDC_TIMER_0;           
+  ledc_timer.freq_hz          = CLOCK_SPEED;                   
+
+  // set LEDC channel
+  ledc_channel.channel    = CLOCK_PIN;
+  ledc_channel.duty       = 1;
+  ledc_channel.gpio_num   = 0;
+  ledc_channel.speed_mode = LEDC_HIGH_SPEED_MODE;
+  ledc_channel.timer_sel  = LEDC_TIMER_0;
+
+
+  // Set timer configuration
+  ledc_timer_config(&ledc_timer);
+  // Set channel configuration
+  ledc_channel_config(&ledc_channel);
 }
 
 void CCDLibrary::activeByteInterruptHandler()

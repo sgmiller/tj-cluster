@@ -5435,6 +5435,12 @@
 		(uuid "e4c032e7-e205-4038-95f3-18ffc777b7c9")
 	)
 	(junction
+		(at 71.12 80.01)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e7130d18-80b1-4798-a988-51559851ee85")
+	)
+	(junction
 		(at 213.36 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7368,6 +7374,16 @@
 		)
 		(uuid "ffa1b78e-423d-4e22-a362-33cc9b7377fd")
 	)
+	(label "CB"
+		(at 114.3 142.24 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "57b7f1cf-e1b4-4285-ba8f-a2c3f3a5c472")
+	)
 	(label "Vsw"
 		(at 114.3 147.32 0)
 		(effects
@@ -7466,7 +7482,7 @@
 			)
 		)
 	)
-	(global_label "ccd_rx"
+	(global_label "ccd_rx_5v"
 		(shape input)
 		(at 168.91 43.18 180)
 		(fields_autoplaced yes)
@@ -7510,7 +7526,7 @@
 			)
 		)
 	)
-	(global_label "ccd_ctrl"
+	(global_label "ctrl_5v"
 		(shape input)
 		(at 168.91 53.34 180)
 		(fields_autoplaced yes)
@@ -7598,7 +7614,7 @@
 			)
 		)
 	)
-	(global_label "ccd_rx"
+	(global_label "ccd_rx_5v"
 		(shape input)
 		(at 76.2 100.33 270)
 		(fields_autoplaced yes)
@@ -7663,7 +7679,7 @@
 			)
 		)
 	)
-	(global_label "ccd_rec"
+	(global_label "ccd_rx"
 		(shape input)
 		(at 106.68 52.07 180)
 		(fields_autoplaced yes)
@@ -7729,7 +7745,7 @@
 			)
 		)
 	)
-	(global_label "ccd_idle"
+	(global_label "idle_5v"
 		(shape input)
 		(at 107.95 41.91 180)
 		(fields_autoplaced yes)
@@ -7794,7 +7810,7 @@
 			)
 		)
 	)
-	(global_label "ccd_ctrl"
+	(global_label "ctrl_5v"
 		(shape input)
 		(at 140.97 44.45 0)
 		(fields_autoplaced yes)
@@ -7838,7 +7854,7 @@
 			)
 		)
 	)
-	(global_label "ccd_idle"
+	(global_label "idle_5v"
 		(shape input)
 		(at 168.91 50.8 180)
 		(fields_autoplaced yes)
@@ -7926,7 +7942,7 @@
 			)
 		)
 	)
-	(global_label "ccd_rx"
+	(global_label "ccd_rx_5v"
 		(shape input)
 		(at 106.68 49.53 180)
 		(fields_autoplaced yes)
@@ -8475,7 +8491,7 @@
 			)
 		)
 	)
-	(global_label "ccd_rec"
+	(global_label "ccd_rx"
 		(shape input)
 		(at 125.73 95.25 0)
 		(fields_autoplaced yes)
@@ -10921,6 +10937,92 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 71.12 80.01 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "57edc2f6-200e-47a8-a1c3-a5c914d09868")
+		(property "Reference" "TP6"
+			(at 75.819 80.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 75.6341 78.613 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 71.12 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
+			(at 71.12 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point"
+			(at 71.12 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" " 534-5267 "
+			(at 71.12 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 71.12 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ec5aa535-8a43-41cf-9743-075386e2876d")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "TP6")
 					(unit 1)
 				)
 			)

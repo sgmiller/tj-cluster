@@ -31,11 +31,11 @@
     #define RX_PIN  PIND
     #define TX_PIN  PIND
 #elif defined (_ESP32_ESP32_HAL_BT_H_)
-    #define RX_P 20
-    #define TX_P 19
-    #define IDLE_PIN 22
-    #define CTRL_PIN 21
-    #define CLOCK_PIN 12
+    #define RX_P 22
+    #define TX_P 5
+    #define IDLE_PIN 21
+    #define CTRL_PIN 32
+    #define CLOCK_PIN 25
     #define CLOCK_SPEED 1000000
 #else
     #error "Arduino Mega / ATmega2560 microcontroller is required!"

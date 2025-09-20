@@ -42,7 +42,6 @@
 
 Watchdog wdt(5);
 bool activity, speedoOn;
-FreqCountESP speedoMeasure;
 
 // Serial port, swap to external pins when not debugging
 #define Stdout Serial
@@ -57,8 +56,8 @@ FreqCountESP speedoMeasure;
 
 #define SELF_TEST_MODE false
 #define USING_SPEED_SENSOR false
-#define SPEEDO_SENSOR_IN 7
-#define SPEED_SENSOR_SAMPLES 4
+#define SPEEDO_SENSOR_IN 27
+#define SPEED_SENSOR_WINDOW 100 //ms
 #define SPEEDOMETER_RATIO 1.59
 #define DISABLE_AIRBAG_LAMP true
 #define INSTRUMENT_COUNT 11
@@ -185,9 +184,9 @@ void selfTest()
 
 void handleSpeedSensor()
 {
-  if (speedoMeasure.available() > 0)
+  if (FreqCountESP.available() > 0)
   {
-    int pulses = speedoMeasure.read();
+    int pulses = FreqCountESP.read();
     speedSensorPulses += pulses;
     speedoFreqSum = speedoFreqSum + pulses;
     speedoFreqCount = speedoFreqCount + 1;
@@ -326,6 +325,9 @@ void setupCAN()
 void setup()
 {
   Stdout.begin(115200);
+  while (!Stdout);  
+  delay (1000);
+    
   // Watchdog
   WDT_timings_t config;
   config.trigger = 5;  /* in seconds, 0->128 */
@@ -366,8 +368,7 @@ void setup()
 
   if (USING_SPEED_SENSOR)
   {
-    speedoOn = speedoMeasure.begin(SPEEDO_SENSOR_IN, FREQMEASUREMULTI_RAISING);
-    pinMode(SPEEDO_SENSOR_IN, INPUT);
+    FreqCountESP.begin(SPEEDO_SENSOR_IN, SPEED_SENSOR_WINDOW);
   }
   lastActivity = millis();
   if (SELF_TEST_MODE)
