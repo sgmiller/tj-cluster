@@ -7641,7 +7641,7 @@
 			(uuid "d49f0a12-6aad-48d7-a9c9-022d06934278")
 		)
 		(fp_text user "K"
-			(at 0 -2.1 0)
+			(at -2.09 -1 0)
 			(layer "F.SilkS")
 			(uuid "ea5ab5f5-0d64-454a-889f-1674f8314b6b")
 			(effects
@@ -13588,7 +13588,7 @@
 	(footprint "parts:N9Works-Small"
 		(layer "F.Cu")
 		(uuid "d6fa101b-4e8b-41b0-8a92-fbad93a21a94")
-		(at 162.814 118.872)
+		(at 163.974 117.600651)
 		(property "Reference" "G***"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -16309,7 +16309,7 @@
 		)
 	)
 	(gr_text "XJ/TJ CAN+CCD \nBus Arbiter v3.0\n"
-		(at 155.24 122.871349 0)
+		(at 156.4 121.6 0)
 		(layer "F.SilkS")
 		(uuid "fd985ed6-c375-4f20-a27c-7483c7432a4f")
 		(effects
