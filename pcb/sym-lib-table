@@ -14,4 +14,6 @@
   (lib (name "TinyPico")(type "KiCad")(uri "${KIPRJMOD}/parts/TinyPico.kicad_sym")(options "")(descr ""))
   (lib (name "FA18X7R1H472KNU00")(type "KiCad")(uri "${KIPRJMOD}/parts/FA18X7R1H472KNU00/KiCad/FA18X7R1H472KNU00.kicad_sym")(options "")(descr ""))
   (lib (name "BC33725TAR")(type "KiCad")(uri "${KIPRJMOD}/parts/BC33725TAR/KiCad/BC33725TAR.kicad_sym")(options "")(descr ""))
+  (lib (name "ECS-100AX-010")(type "KiCad")(uri "${KIPRJMOD}/parts/ECS-100AX-010/KiCad/ECS-100AX-010.kicad_sym")(options "")(descr ""))
+  (lib (name "EEC-325X4A")(type "Legacy")(uri "${KIPRJMOD}/parts/enclosure/EEC-325X4A.lib")(options "")(descr ""))
 )
