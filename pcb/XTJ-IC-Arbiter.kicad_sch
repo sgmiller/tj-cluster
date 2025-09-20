@@ -8054,7 +8054,7 @@
 	)
 	(global_label "ctrl"
 		(shape input)
-		(at 125.73 90.17 0)
+		(at 125.73 92.71 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8064,7 +8064,7 @@
 		)
 		(uuid "7f38adee-dc8a-4d82-83f1-a19255b361f0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 131.4971 90.17 0)
+			(at 132.2228 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8361,7 +8361,7 @@
 	)
 	(global_label "idle"
 		(shape input)
-		(at 125.73 92.71 0)
+		(at 125.73 90.17 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8371,7 +8371,7 @@
 		)
 		(uuid "c0608b52-802b-45eb-9932-68e172aba343")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 132.2228 92.71 0)
+			(at 131.4971 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
