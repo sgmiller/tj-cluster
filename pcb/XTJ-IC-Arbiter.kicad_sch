@@ -5090,7 +5090,7 @@
 	)
 	(text "Power supply (12v to 5v Buck, 5v to 3.3v LDO)"
 		(exclude_from_sim no)
-		(at 56.896 123.19 0)
+		(at 61.976 122.555 0)
 		(effects
 			(font
 				(size 1.524 1.524)
@@ -5141,13 +5141,13 @@
 		(uuid "0ea1e982-d4f5-4c13-b8c5-4f2bbb7ca5ae")
 	)
 	(junction
-		(at 67.31 137.16)
+		(at 73.66 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "14f716c5-1bc4-4054-9825-a4769159b28c")
 	)
 	(junction
-		(at 74.93 156.21)
+		(at 81.28 156.21)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "21a40737-6e84-4fe5-ba26-b2cd29f83ef2")
@@ -5435,7 +5435,7 @@
 		(uuid "e760eb0c-c4be-4e55-9fb3-ec933449c0bb")
 	)
 	(junction
-		(at 74.93 137.16)
+		(at 81.28 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "eef8ecc6-9f87-4613-9d5b-364640780f07")
@@ -5498,10 +5498,6 @@
 		(at 125.73 85.09)
 		(uuid "71479bf7-1677-49f0-b144-4005f8087986")
 	)
-	(no_connect
-		(at 24.765 131.445)
-		(uuid "ce05a214-324f-4ae5-ac39-02ae7bd8779a")
-	)
 	(wire
 		(pts
 			(xy 231.14 88.9) (xy 237.49 88.9)
@@ -5534,7 +5530,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 156.21) (xy 101.6 156.21)
+			(xy 81.28 156.21) (xy 101.6 156.21)
 		)
 		(stroke
 			(width 0)
@@ -5844,7 +5840,7 @@
 	)
 	(polyline
 		(pts
-			(xy 57.15 164.465) (xy 57.15 124.46)
+			(xy 62.23 163.83) (xy 62.23 123.825)
 		)
 		(stroke
 			(width 0)
@@ -6224,7 +6220,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 149.86) (xy 74.93 156.21)
+			(xy 81.28 149.86) (xy 81.28 156.21)
 		)
 		(stroke
 			(width 0)
@@ -6254,7 +6250,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 156.21) (xy 74.93 156.21)
+			(xy 73.66 156.21) (xy 81.28 156.21)
 		)
 		(stroke
 			(width 0)
@@ -6284,7 +6280,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 137.16) (xy 74.93 137.16)
+			(xy 73.66 137.16) (xy 81.28 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6324,7 +6320,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 149.225) (xy 67.31 156.21)
+			(xy 73.66 149.225) (xy 73.66 156.21)
 		)
 		(stroke
 			(width 0)
@@ -6364,7 +6360,7 @@
 	)
 	(polyline
 		(pts
-			(xy 171.45 164.465) (xy 57.15 164.465)
+			(xy 171.45 163.83) (xy 62.23 163.83)
 		)
 		(stroke
 			(width 0)
@@ -6394,7 +6390,7 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 137.16) (xy 67.31 137.16)
+			(xy 68.58 137.16) (xy 73.66 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6864,7 +6860,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 141.605) (xy 67.31 137.16)
+			(xy 73.66 141.605) (xy 73.66 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6924,7 +6920,7 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 137.16) (xy 62.23 133.35)
+			(xy 68.58 137.16) (xy 68.58 133.35)
 		)
 		(stroke
 			(width 0)
@@ -7134,7 +7130,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 137.16) (xy 74.93 142.24)
+			(xy 81.28 137.16) (xy 81.28 142.24)
 		)
 		(stroke
 			(width 0)
@@ -7204,7 +7200,7 @@
 	)
 	(wire
 		(pts
-			(xy 74.93 137.16) (xy 88.9 137.16)
+			(xy 81.28 137.16) (xy 88.9 137.16)
 		)
 		(stroke
 			(width 0)
@@ -7284,7 +7280,7 @@
 	)
 	(polyline
 		(pts
-			(xy 57.15 124.46) (xy 171.45 124.46)
+			(xy 62.23 123.825) (xy 171.45 123.825)
 		)
 		(stroke
 			(width 0)
@@ -7454,7 +7450,7 @@
 	)
 	(global_label "IO{slash}2"
 		(shape input)
-		(at 125.73 87.63 0)
+		(at 125.73 100.33 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7464,7 +7460,7 @@
 		)
 		(uuid "1a02f059-a505-4068-9343-6be4505b3ac4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 133.2306 87.63 0)
+			(at 133.1905 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7562,7 +7558,7 @@
 			)
 		)
 	)
-	(global_label "ccd_rx_5v"
+	(global_label "ccd_rx"
 		(shape input)
 		(at 76.2 100.33 270)
 		(fields_autoplaced yes)
@@ -7651,7 +7647,7 @@
 	)
 	(global_label "IO{slash}3"
 		(shape input)
-		(at 125.73 100.33 0)
+		(at 125.73 87.63 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7661,7 +7657,7 @@
 		)
 		(uuid "373dd1bb-1433-46b8-82f8-7559ac593c1a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 133.1905 100.33 0)
+			(at 133.2306 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8541,7 +8537,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.koaspeer.com/catimages/Products/MF-MFS-RK/MF-MFS-RK.pdf"
 			(at 242.57 82.55 0)
 			(effects
 				(font
@@ -10192,7 +10188,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.vishay.com/doc?31018"
 			(at 67.31 55.88 0)
 			(effects
 				(font
@@ -11077,7 +11073,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.vishay.com/doc?31018"
 			(at 234.95 45.72 0)
 			(effects
 				(font
@@ -11499,7 +11495,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.vishay.com/doc?31018"
 			(at 234.95 43.18 0)
 			(effects
 				(font
@@ -11735,7 +11731,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.koaspeer.com/catimages/Products/MF-MFS-RK/MF-MFS-RK.pdf"
 			(at 213.36 31.75 0)
 			(effects
 				(font
@@ -11921,7 +11917,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
-		(at 24.13 118.11 0)
+		(at 22.86 114.3 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -11930,7 +11926,7 @@
 		(fields_autoplaced yes)
 		(uuid "7669ddbf-a848-4371-a099-bb53c5600f8f")
 		(property "Reference" "H1"
-			(at 26.67 116.8978 0)
+			(at 25.4 113.0878 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11939,7 +11935,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 26.67 119.3221 0)
+			(at 25.4 115.5121 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11948,7 +11944,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_3mm"
-			(at 24.13 118.11 0)
+			(at 22.86 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11957,7 +11953,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 24.13 118.11 0)
+			(at 22.86 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11966,7 +11962,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
-			(at 24.13 118.11 0)
+			(at 22.86 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12185,7 +12181,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_Zener")
-		(at 67.31 145.415 270)
+		(at 73.66 145.415 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12193,7 +12189,7 @@
 		(dnp no)
 		(uuid "7e1ec601-0c4e-494b-8268-6deb84b5dc12")
 		(property "Reference" "D3"
-			(at 69.342 144.2029 90)
+			(at 75.692 144.2029 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12202,7 +12198,7 @@
 			)
 		)
 		(property "Value" "SA26CA"
-			(at 64.262 141.732 0)
+			(at 70.612 141.732 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12211,7 +12207,7 @@
 			)
 		)
 		(property "Footprint" "Diode_THT:D_DO-15_P10.16mm_Horizontal"
-			(at 67.31 145.415 0)
+			(at 73.66 145.415 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12220,7 +12216,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.littelfuse.com/assetdocs/tvs-diodes-sa-datasheet?assetguid=93214550-6AFF-4192-8ECD-8094A6F7CC98"
-			(at 67.31 145.415 0)
+			(at 73.66 145.415 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12229,7 +12225,7 @@
 			)
 		)
 		(property "Description" "TVS Diode"
-			(at 67.31 145.415 0)
+			(at 73.66 145.415 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12238,7 +12234,7 @@
 			)
 		)
 		(property "MPN" " SA26A "
-			(at 67.31 145.415 90)
+			(at 73.66 145.415 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12247,7 +12243,7 @@
 			)
 		)
 		(property "Mouser Part Number" " 576-SA26CA "
-			(at 67.31 145.415 90)
+			(at 73.66 145.415 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12410,7 +12406,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.vishay.com/doc?31018"
 			(at 60.96 55.88 0)
 			(effects
 				(font
@@ -12694,7 +12690,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
-		(at 24.13 123.19 0)
+		(at 22.86 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -12703,7 +12699,7 @@
 		(fields_autoplaced yes)
 		(uuid "a117518d-05a3-4ceb-b1b3-dc21d5e64966")
 		(property "Reference" "H2"
-			(at 26.67 121.9778 0)
+			(at 25.4 118.1678 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12712,7 +12708,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 26.67 124.4021 0)
+			(at 25.4 120.5921 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12721,7 +12717,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_3mm"
-			(at 24.13 123.19 0)
+			(at 22.86 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12730,7 +12726,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 24.13 123.19 0)
+			(at 22.86 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12739,7 +12735,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
-			(at 24.13 123.19 0)
+			(at 22.86 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12956,7 +12952,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://cdck-file-uploads-global.s3.dualstack.us-west-2.amazonaws.com/digikey/original/3X/9/a/9afb0757f38bce6dab4464e1de7951e5701185da.PDF"
 			(at 187.7568 59.1312 0)
 			(effects
 				(font
@@ -13314,7 +13310,7 @@
 	)
 	(symbol
 		(lib_id "EEC-325X4A:EEC-325X4A")
-		(at 36.83 121.92 0)
+		(at 40.64 129.54 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13323,7 +13319,7 @@
 		(fields_autoplaced yes)
 		(uuid "b678532f-b378-4831-9fb8-ed0c994755c9")
 		(property "Reference" "U3"
-			(at 47.752 120.7078 0)
+			(at 51.562 128.3278 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13332,7 +13328,7 @@
 			)
 		)
 		(property "Value" "EEC-325X4A"
-			(at 47.752 123.1321 0)
+			(at 51.562 130.7521 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13341,7 +13337,7 @@
 			)
 		)
 		(property "Footprint" "enclosure:TE_EEC-325X4A"
-			(at 36.83 121.92 0)
+			(at 40.64 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13351,7 +13347,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 36.83 121.92 0)
+			(at 40.64 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13361,7 +13357,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 36.83 121.92 0)
+			(at 40.64 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13370,7 +13366,7 @@
 			)
 		)
 		(property "PARTREV" "F"
-			(at 36.83 121.92 0)
+			(at 40.64 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13380,7 +13376,7 @@
 			)
 		)
 		(property "STANDARD" "Manufacturer Recommendations"
-			(at 36.83 121.92 0)
+			(at 40.64 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13390,7 +13386,7 @@
 			)
 		)
 		(property "MANUFACTURER" "TE Connectivity"
-			(at 36.83 121.92 0)
+			(at 40.64 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13992,7 +13988,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
-		(at 74.93 146.05 0)
+		(at 81.28 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14000,7 +13996,7 @@
 		(dnp no)
 		(uuid "cb7c1e3e-a32d-43a8-bf93-cbb15668bf6c")
 		(property "Reference" "C10"
-			(at 75.565 143.51 0)
+			(at 81.915 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14009,7 +14005,7 @@
 			)
 		)
 		(property "Value" "100uF"
-			(at 75.565 153.035 0)
+			(at 81.915 153.035 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14018,7 +14014,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_THT:C_Radial_D8.0mm_H11.5mm_P3.50mm"
-			(at 75.8952 149.86 0)
+			(at 82.2452 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14027,7 +14023,7 @@
 			)
 		)
 		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/ABA0000C1259.pdf"
-			(at 74.93 146.05 0)
+			(at 81.28 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14036,7 +14032,7 @@
 			)
 		)
 		(property "Description" "Capacitor"
-			(at 74.93 146.05 0)
+			(at 81.28 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14045,7 +14041,7 @@
 			)
 		)
 		(property "MPN" "EEU-FR1H101"
-			(at 74.93 146.05 0)
+			(at 81.28 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14202,7 +14198,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 62.23 133.35 0)
+		(at 68.58 133.35 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14211,7 +14207,7 @@
 		(fields_autoplaced yes)
 		(uuid "d09e1a25-35ea-4727-83d6-06c6edcfaf03")
 		(property "Reference" "#PWR08"
-			(at 62.23 137.16 0)
+			(at 68.58 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14220,7 +14216,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 62.23 129.2169 0)
+			(at 68.58 129.2169 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14228,7 +14224,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 62.23 133.35 0)
+			(at 68.58 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14237,7 +14233,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 62.23 133.35 0)
+			(at 68.58 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14246,7 +14242,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 62.23 133.35 0)
+			(at 68.58 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14304,7 +14300,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.koaspeer.com/catimages/Products/MF-MFS-RK/MF-MFS-RK.pdf"
 			(at 213.36 52.07 0)
 			(effects
 				(font
