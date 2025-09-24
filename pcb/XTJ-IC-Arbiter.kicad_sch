@@ -5141,13 +5141,13 @@
 		(uuid "0ea1e982-d4f5-4c13-b8c5-4f2bbb7ca5ae")
 	)
 	(junction
-		(at 73.66 137.16)
+		(at 71.12 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "14f716c5-1bc4-4054-9825-a4769159b28c")
 	)
 	(junction
-		(at 81.28 156.21)
+		(at 78.74 156.21)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "21a40737-6e84-4fe5-ba26-b2cd29f83ef2")
@@ -5357,6 +5357,18 @@
 		(uuid "b7cc3187-5a79-4a1d-9c8c-7c3a47f59c74")
 	)
 	(junction
+		(at 85.09 137.16)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b9b5eb9b-735e-49eb-b16b-2c0f1c090952")
+	)
+	(junction
+		(at 85.09 156.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "be98525c-fc6d-4aab-836d-14da18a650b7")
+	)
+	(junction
 		(at 63.5 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5435,7 +5447,7 @@
 		(uuid "e760eb0c-c4be-4e55-9fb3-ec933449c0bb")
 	)
 	(junction
-		(at 81.28 137.16)
+		(at 78.74 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "eef8ecc6-9f87-4613-9d5b-364640780f07")
@@ -5530,7 +5542,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 156.21) (xy 101.6 156.21)
+			(xy 78.74 156.21) (xy 85.09 156.21)
 		)
 		(stroke
 			(width 0)
@@ -5677,6 +5689,16 @@
 			(type default)
 		)
 		(uuid "11887f20-c6d4-4c46-8f3f-447ea5b64d06")
+	)
+	(wire
+		(pts
+			(xy 85.09 149.86) (xy 85.09 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11d230c5-d5ca-4ca9-b131-17df1ccd66b7")
 	)
 	(wire
 		(pts
@@ -5940,6 +5962,16 @@
 	)
 	(wire
 		(pts
+			(xy 85.09 156.21) (xy 101.6 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2dae122f-29a6-45e9-8864-633477288f60")
+	)
+	(wire
+		(pts
 			(xy 63.5 60.96) (xy 67.31 60.96)
 		)
 		(stroke
@@ -6170,6 +6202,16 @@
 	)
 	(wire
 		(pts
+			(xy 85.09 137.16) (xy 85.09 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5599c628-000d-43db-af7c-e65a22d15441")
+	)
+	(wire
+		(pts
 			(xy 31.75 38.1) (xy 31.75 60.96)
 		)
 		(stroke
@@ -6220,7 +6262,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 149.86) (xy 81.28 156.21)
+			(xy 78.74 149.86) (xy 78.74 156.21)
 		)
 		(stroke
 			(width 0)
@@ -6250,7 +6292,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 156.21) (xy 81.28 156.21)
+			(xy 71.12 156.21) (xy 78.74 156.21)
 		)
 		(stroke
 			(width 0)
@@ -6280,7 +6322,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 137.16) (xy 81.28 137.16)
+			(xy 71.12 137.16) (xy 78.74 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6320,7 +6362,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 149.225) (xy 73.66 156.21)
+			(xy 71.12 149.225) (xy 71.12 156.21)
 		)
 		(stroke
 			(width 0)
@@ -6390,7 +6432,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 137.16) (xy 73.66 137.16)
+			(xy 66.04 137.16) (xy 71.12 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6447,6 +6489,16 @@
 			(type default)
 		)
 		(uuid "7f44a9a5-7224-4397-99f6-a897480226fc")
+	)
+	(wire
+		(pts
+			(xy 85.09 137.16) (xy 88.9 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83372fb8-d3da-4b23-a141-d45fc64b00b7")
 	)
 	(wire
 		(pts
@@ -6860,7 +6912,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 141.605) (xy 73.66 137.16)
+			(xy 71.12 141.605) (xy 71.12 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6920,7 +6972,7 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 137.16) (xy 68.58 133.35)
+			(xy 66.04 137.16) (xy 66.04 133.35)
 		)
 		(stroke
 			(width 0)
@@ -7130,7 +7182,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 137.16) (xy 81.28 142.24)
+			(xy 78.74 137.16) (xy 78.74 142.24)
 		)
 		(stroke
 			(width 0)
@@ -7200,7 +7252,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 137.16) (xy 88.9 137.16)
+			(xy 78.74 137.16) (xy 85.09 137.16)
 		)
 		(stroke
 			(width 0)
@@ -9096,7 +9148,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
 			(at 26.9748 50.8 0)
 			(effects
 				(font
@@ -9105,7 +9157,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser"
+		(property "Datasheet" "https://www.vishay.com/doc?45171"
 			(at 27.94 54.61 0)
 			(effects
 				(font
@@ -9123,7 +9175,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "FA18X7R1H104KNU06 "
+		(property "MPN" "K103K10X7RF53L2"
 			(at 27.94 54.61 0)
 			(effects
 				(font
@@ -9175,7 +9227,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm"
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
 			(at 163.5252 148.59 0)
 			(effects
 				(font
@@ -11565,7 +11617,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
 			(at 155.2448 63.5 0)
 			(effects
 				(font
@@ -11574,7 +11626,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser"
+		(property "Datasheet" "https://www.vishay.com/doc?45171"
 			(at 156.21 59.69 0)
 			(effects
 				(font
@@ -11592,7 +11644,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "FA18X7R1H104KNU06 "
+		(property "MPN" "K103K10X7RF53L2"
 			(at 156.21 59.69 0)
 			(effects
 				(font
@@ -11643,7 +11695,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
 			(at 99.3648 100.33 0)
 			(effects
 				(font
@@ -11652,7 +11704,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser"
+		(property "Datasheet" "https://www.vishay.com/doc?45171"
 			(at 100.33 104.14 0)
 			(effects
 				(font
@@ -11670,7 +11722,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "FA18X7R1H104KNU06 "
+		(property "MPN" "K103K10X7RF53L2"
 			(at 100.33 104.14 0)
 			(effects
 				(font
@@ -12181,7 +12233,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_Zener")
-		(at 73.66 145.415 270)
+		(at 71.12 145.415 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12189,7 +12241,7 @@
 		(dnp no)
 		(uuid "7e1ec601-0c4e-494b-8268-6deb84b5dc12")
 		(property "Reference" "D3"
-			(at 75.692 144.2029 90)
+			(at 73.152 144.2029 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12198,7 +12250,7 @@
 			)
 		)
 		(property "Value" "SA26CA"
-			(at 70.612 141.732 0)
+			(at 68.072 141.732 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12207,7 +12259,7 @@
 			)
 		)
 		(property "Footprint" "Diode_THT:D_DO-15_P10.16mm_Horizontal"
-			(at 73.66 145.415 0)
+			(at 71.12 145.415 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12216,7 +12268,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.littelfuse.com/assetdocs/tvs-diodes-sa-datasheet?assetguid=93214550-6AFF-4192-8ECD-8094A6F7CC98"
-			(at 73.66 145.415 0)
+			(at 71.12 145.415 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12225,7 +12277,7 @@
 			)
 		)
 		(property "Description" "TVS Diode"
-			(at 73.66 145.415 0)
+			(at 71.12 145.415 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12234,7 +12286,7 @@
 			)
 		)
 		(property "MPN" " SA26A "
-			(at 73.66 145.415 90)
+			(at 71.12 145.415 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12243,7 +12295,7 @@
 			)
 		)
 		(property "Mouser Part Number" " 576-SA26CA "
-			(at 73.66 145.415 90)
+			(at 71.12 145.415 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13257,7 +13309,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
 			(at 169.2148 55.88 0)
 			(effects
 				(font
@@ -13266,7 +13318,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser"
+		(property "Datasheet" "https://www.vishay.com/doc?45171"
 			(at 170.18 59.69 0)
 			(effects
 				(font
@@ -13284,7 +13336,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "FA18X7R1H104KNU06 "
+		(property "MPN" "K103K10X7RF53L2"
 			(at 170.18 59.69 0)
 			(effects
 				(font
@@ -13346,7 +13398,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=EEC-325X4A-EEC-325X4B&DocType=Customer%20Drawing&DocLang=English&DocFormat=pdf&PartCntxt=EEC-325X4A"
 			(at 40.64 129.54 0)
 			(effects
 				(font
@@ -13399,6 +13451,84 @@
 			(project ""
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 85.09 146.05 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b757c005-4a53-4f78-876e-caca42b58057")
+		(property "Reference" "C8"
+			(at 84.455 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 84.455 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
+			(at 84.1248 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/doc?45171"
+			(at 85.09 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 85.09 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "K103K10X7RF53L2"
+			(at 85.09 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a057ae54-10c8-4e74-af7c-5400fd896338")
+		)
+		(pin "2"
+			(uuid "918f66dc-7771-4d4e-9212-c75e903be2c7")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "C8")
 					(unit 1)
 				)
 			)
@@ -13935,7 +14065,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
 			(at 30.7848 30.48 0)
 			(effects
 				(font
@@ -13944,7 +14074,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser"
+		(property "Datasheet" "https://www.vishay.com/doc?45171"
 			(at 31.75 34.29 0)
 			(effects
 				(font
@@ -13962,7 +14092,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "FA18X7R1H104KNU06 "
+		(property "MPN" "K103K10X7RF53L2"
 			(at 31.75 34.29 0)
 			(effects
 				(font
@@ -13988,7 +14118,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
-		(at 81.28 146.05 0)
+		(at 78.74 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13996,7 +14126,7 @@
 		(dnp no)
 		(uuid "cb7c1e3e-a32d-43a8-bf93-cbb15668bf6c")
 		(property "Reference" "C10"
-			(at 81.915 143.51 0)
+			(at 79.375 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14005,7 +14135,7 @@
 			)
 		)
 		(property "Value" "100uF"
-			(at 81.915 153.035 0)
+			(at 79.375 153.035 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14014,7 +14144,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_THT:C_Radial_D8.0mm_H11.5mm_P3.50mm"
-			(at 82.2452 149.86 0)
+			(at 79.7052 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14023,7 +14153,7 @@
 			)
 		)
 		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/ABA0000C1259.pdf"
-			(at 81.28 146.05 0)
+			(at 78.74 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14032,7 +14162,7 @@
 			)
 		)
 		(property "Description" "Capacitor"
-			(at 81.28 146.05 0)
+			(at 78.74 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14040,8 +14170,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "EEU-FR1H101"
-			(at 81.28 146.05 0)
+		(property "MPN" " EEU-FR1V101 "
+			(at 78.74 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14198,7 +14328,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 68.58 133.35 0)
+		(at 66.04 133.35 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14207,7 +14337,7 @@
 		(fields_autoplaced yes)
 		(uuid "d09e1a25-35ea-4727-83d6-06c6edcfaf03")
 		(property "Reference" "#PWR08"
-			(at 68.58 137.16 0)
+			(at 66.04 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14216,7 +14346,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 68.58 129.2169 0)
+			(at 66.04 129.2169 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14224,7 +14354,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 68.58 133.35 0)
+			(at 66.04 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14233,7 +14363,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 68.58 133.35 0)
+			(at 66.04 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14242,7 +14372,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 68.58 133.35 0)
+			(at 66.04 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14897,7 +15027,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
 			(at 156.5148 101.6 0)
 			(effects
 				(font
@@ -14906,7 +15036,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/lead-mlcc/catalog/leadmlcc_halogenfree_fa_en.pdf?ref_disty=mouser"
+		(property "Datasheet" "https://www.vishay.com/doc?45171"
 			(at 157.48 105.41 0)
 			(effects
 				(font
@@ -14924,7 +15054,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "FA18X7R1H104KNU06 "
+		(property "MPN" "K103K10X7RF53L2"
 			(at 157.48 105.41 0)
 			(effects
 				(font
@@ -14976,7 +15106,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm"
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
 			(at 147.6248 156.21 0)
 			(effects
 				(font
