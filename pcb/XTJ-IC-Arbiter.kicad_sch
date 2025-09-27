@@ -12041,7 +12041,7 @@
 		(dnp no)
 		(uuid "78d427f5-c931-4a19-8f01-93e4033948a0")
 		(property "Reference" "J3"
-			(at 22.86 72.1065 0)
+			(at 22.86 74.422 0)
 			(effects
 				(font
 					(size 1.27 1.27)
