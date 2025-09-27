@@ -325,6 +325,11 @@ void setupCAN()
 void setup()
 {
   Stdout.begin(115200);
+  
+  // Setup unused GPIOs as pulldowns to GND
+  pinMode(19, INPUT_PULLDOWN);
+  pinMode(23, INPUT_PULLDOWN);
+  
   while (!Stdout);  
   delay (1000);
     
