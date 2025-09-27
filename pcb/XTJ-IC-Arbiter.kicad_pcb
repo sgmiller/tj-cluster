@@ -153,6 +153,8 @@
 	(net 38 "ctrl_5v")
 	(net 39 "idle_5v")
 	(net 40 "/CB")
+	(net 41 "unconnected-(XA1-23-Pad11)")
+	(net 42 "unconnected-(XA1-19-Pad12)")
 	(footprint "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
 		(layer "F.Cu")
 		(uuid "02cc706b-cf1a-4bb8-9ca5-1a1aebc107fe")
@@ -11003,9 +11005,9 @@
 			(drill 0.914)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 12 "GND")
+			(net 41 "unconnected-(XA1-23-Pad11)")
 			(pinfunction "23")
-			(pintype "bidirectional")
+			(pintype "bidirectional+no_connect")
 			(uuid "b07d142a-df75-4da2-80ec-2ba0a9899e25")
 		)
 		(pad "12" thru_hole circle
@@ -11014,9 +11016,9 @@
 			(drill 0.914)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 12 "GND")
+			(net 42 "unconnected-(XA1-19-Pad12)")
 			(pinfunction "19")
-			(pintype "bidirectional")
+			(pintype "bidirectional+no_connect")
 			(uuid "b8ae41f7-a7e0-4e1f-b905-f62ca021f897")
 		)
 		(pad "13" thru_hole circle
