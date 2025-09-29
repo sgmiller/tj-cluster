@@ -634,18 +634,6 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "Default",
-        "pattern": "Net-(U1-CB)"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "Net-(D13-K)"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "Net-(D13-A)"
-      },
-      {
         "netclass": "PWR",
         "pattern": "+5V"
       },
@@ -658,16 +646,8 @@
         "pattern": "can?"
       },
       {
-        "netclass": "Default",
-        "pattern": "/Vsw"
-      },
-      {
         "netclass": "PWR",
         "pattern": "/5VO"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "Net-(J3-Pad5)"
       },
       {
         "netclass": "PWR",
