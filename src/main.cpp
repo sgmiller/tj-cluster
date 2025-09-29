@@ -78,6 +78,9 @@ bool activity, speedoOn;
 #define BATTERY_MEASURE_INTERVAL 2000*(VBAT_VD_R1*VBAT_C) // ms, allowing 2xtime for the capacitor to charge between reads, T=RC
 #define AIRBAG_OK_INTERVAL 1000      // ms
 
+// Bluetooth
+#define SERVICE_UUID "3ea24ab1-256b-4baf-ab04-a98f32993856"
+  
 // All instruments
 BatteryAndOil battOil;
 SingleLamp skimLamp(messageSkim, 3, 10000);
@@ -330,6 +333,9 @@ void setup()
   pinMode(19, INPUT_PULLDOWN);
   pinMode(23, INPUT_PULLDOWN);
   
+  // Go slow, save power
+  setCpuFrequencyMhz(20); 
+
   while (!Stdout);  
   delay (1000);
     

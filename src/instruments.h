@@ -12,6 +12,7 @@
 #define UPSHIFT 144
 #define CRUISE_ENABLED 132
 #define DEFAULT_REFRESH_INTERVAL 2000
+#define TRIP_SAVE_INTERVAL 60 // once per minute
 
 // In bus priority order
 static uint8_t messageCheckEngine[4] = {0xf5, 0x00, 0x00, 0x00};
