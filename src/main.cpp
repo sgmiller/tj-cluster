@@ -372,7 +372,8 @@ void setup()
 
   // Set pins
   pinMode(VBAT_MEASURE_SIG, INPUT);
-
+  pinMode(SPEEDO_SENSOR_IN, INPUT_PULLUP);
+  _
   CCD.onError(CCDHandleError); // subscribe to the error event and call this
                                // function when an error occurs
   CCD.begin();                 // CDP68HC68S1
