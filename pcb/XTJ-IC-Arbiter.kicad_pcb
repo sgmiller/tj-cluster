@@ -11353,7 +11353,7 @@
 		(property "Reference" "TP1"
 			(at 0.7 2.5 0)
 			(layer "B.SilkS")
-			(uuid "da27bef4-6c28-44ff-89bd-626424e44855")
+			(uuid "34b8ed34-f3b9-4bb2-b353-8d7dc6c4b216")
 			(effects
 				(font
 					(size 1 1)
@@ -11365,7 +11365,7 @@
 		(property "Value" "TestPoint"
 			(at 0 -2.8 0)
 			(layer "F.Fab")
-			(uuid "01c0ff32-ab5e-4003-8b2d-a82f85b448fc")
+			(uuid "cc13b7c2-6449-43eb-97e7-6aa20e69191d")
 			(effects
 				(font
 					(size 1 1)
@@ -11378,7 +11378,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "921d5ed8-e4d3-41f2-81f4-3921e85182e0")
+			(uuid "c6ba4d52-4f05-4958-a4fe-d32e70a251ae")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11391,7 +11391,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8c1830f6-788e-4927-bc68-9d877d9bf0e2")
+			(uuid "f78cbf84-6ab5-4088-84b2-670dc8eeabf4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13143,7 +13143,7 @@
 	(footprint "parts:N9Works-Small"
 		(layer "F.Cu")
 		(uuid "d6fa101b-4e8b-41b0-8a92-fbad93a21a94")
-		(at 163.574 117.200651)
+		(at 118.99245 121.000266)
 		(property "Reference" "G***"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -16121,7 +16121,7 @@
 		)
 	)
 	(gr_text "XJ/TJ CAN+CCD \nBus Arbiter v3.0\n"
-		(at 156 121.2 0)
+		(at 156.2 121 0)
 		(layer "F.SilkS")
 		(uuid "fd985ed6-c375-4f20-a27c-7483c7432a4f")
 		(effects
@@ -16145,7 +16145,7 @@
 			(justify mirror)
 		)
 	)
-	(gr_text "IO/1"
+	(gr_text "IO/3"
 		(at 142.646164 122.174 0)
 		(layer "B.SilkS")
 		(uuid "11a5bf6c-4205-4041-b5b5-d5db7d8c53f1")
@@ -16169,7 +16169,7 @@
 			(justify mirror)
 		)
 	)
-	(gr_text "IO/3"
+	(gr_text "IO/1"
 		(at 138.684 116.332 0)
 		(layer "B.SilkS")
 		(uuid "3fccd808-09cd-4c51-98ec-b0483134cbf8")
@@ -16209,6 +16209,18 @@
 		(at 151.13 116.332 0)
 		(layer "B.SilkS")
 		(uuid "68ed4596-46bf-4800-8331-6b0496f18d99")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
+	(gr_text "VOUT"
+		(at 138.6 122.2 0)
+		(layer "B.SilkS")
+		(uuid "75a06cd8-f21c-4caf-84e3-092a36313d68")
 		(effects
 			(font
 				(size 1 1)
@@ -16266,6 +16278,18 @@
 			(justify mirror)
 		)
 	)
+	(gr_text "+12V"
+		(at 134.8 126.6 0)
+		(layer "B.SilkS")
+		(uuid "b7507347-7896-40f2-8833-6bccbeade0e4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify mirror)
+		)
+	)
 	(gr_text "CAN-"
 		(at 146.558 116.332 0)
 		(layer "B.SilkS")
@@ -16279,7 +16303,7 @@
 		)
 	)
 	(gr_text "+5V"
-		(at 138.938 122.174 0)
+		(at 139 126.6 0)
 		(layer "B.SilkS")
 		(uuid "f086bd59-fd36-4666-b5c8-0d9b394b1b8f")
 		(effects
