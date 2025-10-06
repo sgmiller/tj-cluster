@@ -9227,7 +9227,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
+		(property "Footprint" "Automotive Cap:FA24"
 			(at 163.5252 148.59 0)
 			(effects
 				(font
@@ -12611,6 +12611,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/ABA0000C1259.pdf"
@@ -15106,7 +15107,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
+		(property "Footprint" "Automotive Cap:FA24"
 			(at 147.6248 156.21 0)
 			(effects
 				(font
