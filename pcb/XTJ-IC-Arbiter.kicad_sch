@@ -1649,6 +1649,143 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:Fuse_Small"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F"
+				(at 0 -1.524 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Fuse_Small"
+				(at 0 1.524 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Fuse, small symbol"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "fuse"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*Fuse*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Fuse_Small_0_1"
+				(rectangle
+					(start -1.27 0.508)
+					(end 1.27 -0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Fuse_Small_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:L"
 			(pin_numbers
 				(hide yes)
@@ -5077,7 +5214,7 @@
 		)
 		(uuid "689c22fd-eb5f-477c-8c6f-74997457d7c3")
 	)
-	(text "ESD Supression"
+	(text "ESD Supression/Power Protection"
 		(exclude_from_sim no)
 		(at 165.608 72.39 0)
 		(effects
@@ -6732,16 +6869,6 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 96.52) (xy 34.29 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a533035b-23eb-49c9-8ecf-8d0217e4b066")
-	)
-	(wire
-		(pts
 			(xy 152.4 86.36) (xy 161.29 86.36)
 		)
 		(stroke
@@ -6972,16 +7099,6 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 137.16) (xy 66.04 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c827b999-359f-4d97-a5f5-6622721bb5c9")
-	)
-	(wire
-		(pts
 			(xy 106.68 49.53) (xy 111.76 49.53)
 		)
 		(stroke
@@ -7079,6 +7196,16 @@
 			(type default)
 		)
 		(uuid "d6d2c120-60e6-4902-aed8-1db7542f2916")
+	)
+	(wire
+		(pts
+			(xy 66.04 133.35) (xy 66.04 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d812fbdb-18a7-4b77-b7bc-8c8327caf9bf")
 	)
 	(wire
 		(pts
@@ -9626,6 +9753,83 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Fuse_Small")
+		(at 35.56 96.52 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3425db70-f513-452b-9a75-a3a0050a9aac")
+		(property "Reference" "F2"
+			(at 35.56 91.9945 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse_Small"
+			(at 35.56 94.4188 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "parts:FUSE_36911000000"
+			(at 35.56 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_398_datasheet.pdf?assetguid=0c774033-e3d5-45bb-95bb-2a8dea134174"
+			(at 35.56 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse, small symbol"
+			(at 35.56 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "39810000000"
+			(at 35.56 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d46e3bd1-dd82-472b-9fc7-861de529ed47")
+		)
+		(pin "1"
+			(uuid "b24b8471-0d61-4a5a-9ca8-0d37904328c3")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "F2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 63.5 80.01 180)
 		(unit 1)
@@ -10138,7 +10342,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 34.29 96.52 270)
+		(at 38.1 96.52 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10147,7 +10351,7 @@
 		(fields_autoplaced yes)
 		(uuid "47d3c4e7-7931-476c-8aae-b13b56caaeab")
 		(property "Reference" "#PWR010"
-			(at 30.48 96.52 0)
+			(at 34.29 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10156,7 +10360,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 37.465 96.52 90)
+			(at 41.275 96.52 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10165,7 +10369,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 34.29 96.52 0)
+			(at 38.1 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10174,7 +10378,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 34.29 96.52 0)
+			(at 38.1 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10183,7 +10387,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 34.29 96.52 0)
+			(at 38.1 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12319,6 +12523,83 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Fuse_Small")
+		(at 35.56 99.06 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "803f0feb-98a9-472f-be01-d90d4972129f")
+		(property "Reference" "F1"
+			(at 35.56 94.5345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse_Small"
+			(at 35.56 96.9588 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "parts:FUSE_36911000000"
+			(at 35.56 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_398_datasheet.pdf?assetguid=0c774033-e3d5-45bb-95bb-2a8dea134174"
+			(at 35.56 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse, small symbol"
+			(at 35.56 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "39805000000 "
+			(at 35.56 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "bfa99b06-9966-4813-a2a4-d7d3735045a5")
+		)
+		(pin "1"
+			(uuid "8b405886-2c01-4ca5-9b6b-56d372193231")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Transistor_BJT:BC337")
 		(at 228.6 96.52 0)
 		(unit 1)
@@ -13603,7 +13884,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 33.02 99.06 270)
+		(at 38.1 99.06 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13612,7 +13893,7 @@
 		(fields_autoplaced yes)
 		(uuid "be349a17-8819-4ef2-b47a-d5bed9894816")
 		(property "Reference" "#PWR012"
-			(at 29.21 99.06 0)
+			(at 34.29 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13621,7 +13902,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 36.195 99.06 90)
+			(at 41.275 99.06 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13630,7 +13911,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 33.02 99.06 0)
+			(at 38.1 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13639,7 +13920,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 33.02 99.06 0)
+			(at 38.1 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13648,7 +13929,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 33.02 99.06 0)
+			(at 38.1 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
