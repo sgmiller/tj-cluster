@@ -5214,7 +5214,7 @@
 		)
 		(uuid "689c22fd-eb5f-477c-8c6f-74997457d7c3")
 	)
-	(text "ESD Supression/Power Protection"
+	(text "ESD Supression"
 		(exclude_from_sim no)
 		(at 165.608 72.39 0)
 		(effects
@@ -5260,7 +5260,7 @@
 		(uuid "0532b202-858d-4d8b-a286-150f316bf011")
 	)
 	(junction
-		(at 262.89 82.55)
+		(at 262.89 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0677cc42-3d0e-4876-86be-e264fe8d2c59")
@@ -5476,7 +5476,7 @@
 		(uuid "af12acbd-4b32-45b6-a827-ad03eabe2bc6")
 	)
 	(junction
-		(at 251.46 82.55)
+		(at 251.46 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b04f2542-9c0c-4413-a6a3-ca3db8c69d4f")
@@ -5570,12 +5570,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e4c032e7-e205-4038-95f3-18ffc777b7c9")
-	)
-	(junction
-		(at 71.12 80.01)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e7130d18-80b1-4798-a988-51559851ee85")
 	)
 	(junction
 		(at 213.36 45.72)
@@ -5746,6 +5740,16 @@
 			(type default)
 		)
 		(uuid "09a4d7fd-6b2e-4697-be79-752ada19da5f")
+	)
+	(wire
+		(pts
+			(xy 78.74 137.16) (xy 78.74 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a19f9e9-8bd7-44f0-8ecd-ee7f1a980a3b")
 	)
 	(wire
 		(pts
@@ -5949,6 +5953,16 @@
 	)
 	(wire
 		(pts
+			(xy 77.47 137.16) (xy 78.74 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a55ed60-d102-4e49-96ed-813752cb494f")
+	)
+	(wire
+		(pts
 			(xy 148.59 148.59) (xy 148.59 138.43)
 		)
 		(stroke
@@ -5969,7 +5983,7 @@
 	)
 	(wire
 		(pts
-			(xy 262.89 82.55) (xy 262.89 99.06)
+			(xy 262.89 78.74) (xy 262.89 99.06)
 		)
 		(stroke
 			(width 0)
@@ -6109,7 +6123,7 @@
 	)
 	(wire
 		(pts
-			(xy 262.89 77.47) (xy 262.89 82.55)
+			(xy 262.89 76.2) (xy 262.89 78.74)
 		)
 		(stroke
 			(width 0)
@@ -6289,6 +6303,16 @@
 	)
 	(wire
 		(pts
+			(xy 38.1 106.68) (xy 33.02 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bf0785a-c886-4873-93e6-b2178e834595")
+	)
+	(wire
+		(pts
 			(xy 168.91 43.18) (xy 172.72 43.18)
 		)
 		(stroke
@@ -6449,7 +6473,7 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 137.16) (xy 78.74 137.16)
+			(xy 71.12 137.16) (xy 72.39 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6486,6 +6510,16 @@
 			(type default)
 		)
 		(uuid "6f3a6e77-3ff7-4d7f-a8fb-c2a58cea97a2")
+	)
+	(wire
+		(pts
+			(xy 38.1 93.98) (xy 33.02 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f8fae80-538a-4651-b4db-46fae46f1c98")
 	)
 	(wire
 		(pts
@@ -6739,6 +6773,16 @@
 	)
 	(wire
 		(pts
+			(xy 78.74 134.62) (xy 78.74 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "979238a3-d0da-438d-912f-d0ee69ecfe7a")
+	)
+	(wire
+		(pts
 			(xy 139.7 49.53) (xy 156.21 49.53)
 		)
 		(stroke
@@ -6799,7 +6843,7 @@
 	)
 	(wire
 		(pts
-			(xy 251.46 82.55) (xy 262.89 82.55)
+			(xy 251.46 78.74) (xy 262.89 78.74)
 		)
 		(stroke
 			(width 0)
@@ -6939,7 +6983,7 @@
 	)
 	(wire
 		(pts
-			(xy 251.46 82.55) (xy 251.46 91.44)
+			(xy 251.46 78.74) (xy 251.46 91.44)
 		)
 		(stroke
 			(width 0)
@@ -7309,16 +7353,6 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 137.16) (xy 78.74 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e88660db-e8a7-4898-a98f-d35dd4b07562")
-	)
-	(wire
-		(pts
 			(xy 209.55 50.8) (xy 209.55 53.34)
 		)
 		(stroke
@@ -7479,7 +7513,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 82.55) (xy 251.46 82.55)
+			(xy 246.38 78.74) (xy 251.46 78.74)
 		)
 		(stroke
 			(width 0)
@@ -7673,7 +7707,7 @@
 	)
 	(global_label "12v_meter"
 		(shape input)
-		(at 262.89 77.47 180)
+		(at 262.89 76.2 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7683,7 +7717,7 @@
 		)
 		(uuid "22dd13a9-cd17-4416-8650-bb8840d68164")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 246.7816 77.47 0)
+			(at 246.7816 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8396,6 +8430,28 @@
 			)
 		)
 	)
+	(global_label "12v_lim"
+		(shape input)
+		(at 238.76 78.74 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "af79ea2a-e6a5-49fd-bf17-31f9cde0d257")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 228.4573 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "ccd_tx"
 		(shape input)
 		(at 72.39 100.33 270)
@@ -8614,6 +8670,50 @@
 			)
 		)
 	)
+	(global_label "12v_lim"
+		(shape input)
+		(at 71.12 80.01 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "df45e768-b81e-426e-ba98-55136ae09cd7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 71.12 69.7073 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "12v_lim"
+		(shape input)
+		(at 78.74 134.62 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e2604d4e-7e0d-4370-80f7-74c3f706ccd6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 78.74 124.3173 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "ccd_rx"
 		(shape input)
 		(at 125.73 95.25 0)
@@ -8681,7 +8781,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 242.57 82.55 270)
+		(at 242.57 78.74 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8690,7 +8790,7 @@
 		(dnp no)
 		(uuid "0035f00a-2bdc-481a-9cf8-88a316d48735")
 		(property "Reference" "R8"
-			(at 243.4047 80.772 0)
+			(at 243.4047 76.962 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8699,7 +8799,7 @@
 			)
 		)
 		(property "Value" "100kOhm"
-			(at 240.8678 80.772 0)
+			(at 240.8678 76.962 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8708,7 +8808,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 242.57 84.328 90)
+			(at 242.57 80.518 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8717,7 +8817,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.koaspeer.com/catimages/Products/MF-MFS-RK/MF-MFS-RK.pdf"
-			(at 242.57 82.55 0)
+			(at 242.57 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8726,7 +8826,7 @@
 			)
 		)
 		(property "Description" "1/4 watt resistor"
-			(at 242.57 82.55 0)
+			(at 242.57 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8735,7 +8835,7 @@
 			)
 		)
 		(property "MPN" " MFR-25FBF52-100K "
-			(at 242.57 82.55 0)
+			(at 242.57 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9776,6 +9876,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "parts:FUSE_36911000000"
@@ -10046,7 +10147,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 33.02 93.98 90)
+		(at 38.1 93.98 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10054,7 +10155,7 @@
 		(dnp no)
 		(uuid "3b6a897b-10c9-46c4-9fa9-508adcd44048")
 		(property "Reference" "#PWR0103"
-			(at 39.37 93.98 0)
+			(at 44.45 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10063,7 +10164,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 36.195 94.4138 90)
+			(at 41.275 94.4138 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10072,7 +10173,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 33.02 93.98 0)
+			(at 38.1 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10081,7 +10182,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 33.02 93.98 0)
+			(at 38.1 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10090,7 +10191,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 33.02 93.98 0)
+			(at 38.1 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10850,7 +10951,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 33.02 106.68 90)
+		(at 38.1 106.68 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10858,7 +10959,7 @@
 		(dnp no)
 		(uuid "518648e5-4c77-424a-b965-aef22f525c53")
 		(property "Reference" "#PWR0104"
-			(at 39.37 106.68 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10867,7 +10968,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 36.195 107.1138 90)
+			(at 41.275 107.1138 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10876,7 +10977,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 33.02 106.68 0)
+			(at 38.1 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10885,7 +10986,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 33.02 106.68 0)
+			(at 38.1 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10894,7 +10995,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 33.02 106.68 0)
+			(at 38.1 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11144,7 +11245,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 71.12 80.01 270)
+		(at 71.12 80.01 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11153,16 +11254,16 @@
 		(fields_autoplaced yes)
 		(uuid "57edc2f6-200e-47a8-a1c3-a5c914d09868")
 		(property "Reference" "TP6"
-			(at 75.819 80.01 90)
+			(at 72.517 83.312 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 75.6341 78.613 0)
+			(at 72.517 84.5241 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11172,7 +11273,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 71.12 85.09 0)
+			(at 66.04 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11181,7 +11282,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
-			(at 71.12 85.09 0)
+			(at 66.04 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11223,71 +11324,6 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "TP6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 71.12 80.01 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5d38d821-5ad5-429a-a077-0db14c0ef8f2")
-		(property "Reference" "#PWR018"
-			(at 71.12 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 71.12 75.8769 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 71.12 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 71.12 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 71.12 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4667b51b-feff-43a8-a19d-86709a445621")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -12546,6 +12582,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "parts:FUSE_36911000000"
@@ -12854,6 +12891,83 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 74.93 137.16 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "900cfc50-3266-4ffc-85ee-582f1f1d8856")
+		(property "Reference" "R9"
+			(at 74.93 132.4833 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Value" "60.4ohm"
+			(at 74.93 134.7032 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+			(at 74.93 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/doc?31018"
+			(at 74.93 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1/4 watt resistor"
+			(at 74.93 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CMF5560R400FHEK"
+			(at 74.93 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "1c9bcc1e-982c-48e1-88ef-965064455383")
+		)
+		(pin "1"
+			(uuid "b4b32792-d36f-4946-a338-8dbdf9211c3a")
+		)
+		(instances
+			(project ""
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -13359,73 +13473,6 @@
 			(project ""
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "U2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 238.76 82.55 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ae98e23c-3c0a-469b-b883-1cec234618e4")
-		(property "Reference" "#PWR03"
-			(at 242.57 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 239.268 80.518 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 238.76 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 238.76 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 238.76 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1edb6f55-5cd9-44e4-9adb-0be1dcaf9260")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -14543,6 +14590,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+12V")
+		(at 74.93 87.63 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cd1acc0c-8c72-4ca7-bd37-c14b6c78ac12")
+		(property "Reference" "#PWR03"
+			(at 71.12 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 78.105 87.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 74.93 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 74.93 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 74.93 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4b215ff5-d508-4637-99fb-239e8a895505")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 125.73 63.5 0)
 		(unit 1)
@@ -14921,7 +15035,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 71.12 80.01 180)
+		(at 74.93 87.63 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14930,7 +15044,7 @@
 		(fields_autoplaced yes)
 		(uuid "df95b182-b6f1-4f7c-8b1c-e8631bbf6ef8")
 		(property "Reference" "#FLG01"
-			(at 71.12 81.915 0)
+			(at 74.93 89.535 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14939,7 +15053,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 71.12 84.1431 0)
+			(at 74.93 91.7631 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14947,7 +15061,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 71.12 80.01 0)
+			(at 74.93 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14956,7 +15070,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 71.12 80.01 0)
+			(at 74.93 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14965,7 +15079,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 71.12 80.01 0)
+			(at 74.93 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)

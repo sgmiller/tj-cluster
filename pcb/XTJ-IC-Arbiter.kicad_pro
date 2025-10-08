@@ -704,6 +704,14 @@
       {
         "netclass": "PWR",
         "pattern": "Net-(F*"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "Net-(C10*"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "12v_lim"
       }
     ]
   },
