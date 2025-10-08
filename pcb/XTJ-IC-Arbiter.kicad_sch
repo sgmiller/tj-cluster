@@ -5488,6 +5488,12 @@
 		(uuid "b1de7108-bc79-415f-82cb-c3976f717176")
 	)
 	(junction
+		(at 74.93 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b3d8ad7d-e047-424b-a242-ccc6a7106acb")
+	)
+	(junction
 		(at 118.11 109.22)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5950,16 +5956,6 @@
 			(type default)
 		)
 		(uuid "19527bd3-9dbb-4c9d-813c-8d54de994afd")
-	)
-	(wire
-		(pts
-			(xy 77.47 137.16) (xy 78.74 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1a55ed60-d102-4e49-96ed-813752cb494f")
 	)
 	(wire
 		(pts
@@ -6473,7 +6469,7 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 137.16) (xy 72.39 137.16)
+			(xy 71.12 137.16) (xy 78.74 137.16)
 		)
 		(stroke
 			(width 0)
@@ -6770,16 +6766,6 @@
 			(type default)
 		)
 		(uuid "95cd3400-1606-424f-bf2f-620a1f4dc89a")
-	)
-	(wire
-		(pts
-			(xy 78.74 134.62) (xy 78.74 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "979238a3-d0da-438d-912f-d0ee69ecfe7a")
 	)
 	(wire
 		(pts
@@ -8430,28 +8416,6 @@
 			)
 		)
 	)
-	(global_label "12v_lim"
-		(shape input)
-		(at 238.76 78.74 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "af79ea2a-e6a5-49fd-bf17-31f9cde0d257")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 228.4573 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "ccd_tx"
 		(shape input)
 		(at 72.39 100.33 270)
@@ -8666,50 +8630,6 @@
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "12v_lim"
-		(shape input)
-		(at 71.12 80.01 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "df45e768-b81e-426e-ba98-55136ae09cd7")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 71.12 69.7073 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "12v_lim"
-		(shape input)
-		(at 78.74 134.62 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "e2604d4e-7e0d-4370-80f7-74c3f706ccd6")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 78.74 124.3173 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -9870,7 +9790,7 @@
 				)
 			)
 		)
-		(property "Value" "Fuse_Small"
+		(property "Value" "1a"
 			(at 35.56 94.4188 0)
 			(effects
 				(font
@@ -9888,7 +9808,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_398_datasheet.pdf?assetguid=0c774033-e3d5-45bb-95bb-2a8dea134174"
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_392_datasheet?assetguid=3d41d6b7-af0b-41bc-bce0-d5b1432b6058"
 			(at 35.56 96.52 0)
 			(effects
 				(font
@@ -9906,7 +9826,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "39810000000"
+		(property "MPN" "39211000440"
 			(at 35.56 96.52 0)
 			(effects
 				(font
@@ -11245,7 +11165,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 71.12 80.01 180)
+		(at 74.93 87.63 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11254,16 +11174,15 @@
 		(fields_autoplaced yes)
 		(uuid "57edc2f6-200e-47a8-a1c3-a5c914d09868")
 		(property "Reference" "TP6"
-			(at 72.517 83.312 0)
+			(at 71.628 85.2749 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 72.517 84.5241 0)
+			(at 70.4159 89.027 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11273,7 +11192,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 66.04 80.01 0)
+			(at 74.93 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11282,7 +11201,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/201/1/5265-5269.PDF"
-			(at 66.04 80.01 0)
+			(at 74.93 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11291,7 +11210,7 @@
 			)
 		)
 		(property "Description" "Test point"
-			(at 71.12 80.01 0)
+			(at 74.93 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11300,7 +11219,7 @@
 			)
 		)
 		(property "MPN" " 534-5267 "
-			(at 71.12 80.01 0)
+			(at 74.93 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11309,7 +11228,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 71.12 80.01 0)
+			(at 74.93 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12576,7 +12495,7 @@
 				)
 			)
 		)
-		(property "Value" "Fuse_Small"
+		(property "Value" "0.5a"
 			(at 35.56 96.9588 0)
 			(effects
 				(font
@@ -12594,7 +12513,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_398_datasheet.pdf?assetguid=0c774033-e3d5-45bb-95bb-2a8dea134174"
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_392_datasheet?assetguid=3d41d6b7-af0b-41bc-bce0-d5b1432b6058"
 			(at 35.56 99.06 0)
 			(effects
 				(font
@@ -12612,7 +12531,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "39805000000 "
+		(property "MPN" "39905000000"
 			(at 35.56 99.06 0)
 			(effects
 				(font
@@ -12891,83 +12810,6 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small")
-		(at 74.93 137.16 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "900cfc50-3266-4ffc-85ee-582f1f1d8856")
-		(property "Reference" "R9"
-			(at 74.93 132.4833 90)
-			(effects
-				(font
-					(size 1.016 1.016)
-				)
-			)
-		)
-		(property "Value" "60.4ohm"
-			(at 74.93 134.7032 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 74.93 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.vishay.com/doc?31018"
-			(at 74.93 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "1/4 watt resistor"
-			(at 74.93 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "CMF5560R400FHEK"
-			(at 74.93 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "1c9bcc1e-982c-48e1-88ef-965064455383")
-		)
-		(pin "1"
-			(uuid "b4b32792-d36f-4946-a338-8dbdf9211c3a")
-		)
-		(instances
-			(project ""
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -15312,6 +15154,73 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 238.76 78.74 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e8206eed-9cca-4236-976b-dd802ca92893")
+		(property "Reference" "#PWR018"
+			(at 242.57 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 235.585 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 238.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7006c758-c3ac-43a5-a5fd-dcdab73b14b6")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "#PWR018")
 					(unit 1)
 				)
 			)
