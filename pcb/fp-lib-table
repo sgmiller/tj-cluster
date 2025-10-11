@@ -15,4 +15,5 @@
   (lib (name "Automotive Cap")(type "KiCad")(uri "${KIPRJMOD}/parts/FA24X7R1H105KRU06/KiCad")(options "")(descr ""))
   (lib (name "Oscillator")(type "KiCad")(uri "${KIPRJMOD}/parts/ECS-100AX-010/KiCad")(options "")(descr ""))
   (lib (name "enclosure")(type "KiCad")(uri "${KIPRJMOD}/parts/enclosure")(options "")(descr ""))
+  (lib (name "R2R Comp")(type "KiCad")(uri "${KIPRJMOD}/parts/TLV3704IN/KiCad")(options "")(descr ""))
 )
