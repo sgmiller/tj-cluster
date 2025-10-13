@@ -16611,8 +16611,8 @@
 			(justify mirror)
 		)
 	)
-	(gr_text "Extended I/O pins:\nIO/1 -> Pin 18\nIO/2 -> Pin 26 \nIO/3 -> Pin 4\n"
-		(at 159.5 87 0)
+	(gr_text "Extended I/O pins:\nIO/1 -> Pin 18\nIO/2 -> Pin 19\nIO/3 -> Pin 4\n"
+		(at 174 87 0)
 		(layer "B.SilkS")
 		(uuid "f1029cb6-5cca-4dec-91cb-fa021eaddeb7")
 		(effects
