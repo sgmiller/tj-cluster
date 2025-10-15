@@ -35,11 +35,14 @@
 #include "main.h"
 #include "instruments.h"
 #include <CCDLibrary.h>
-#include "FreqCountESP.h"
 #include <Watchdog.h>
 #include <elapsedMillis.h>
 #include <ESP32_CAN.h>
+#include <TinyPICO.h>
+#include "driver/pcnt.h"
+#include <DallasTemperature.h>
 
+TinyPICO tp = TinyPICO();
 Watchdog wdt(5);
 bool activity, speedoOn;
 
@@ -47,28 +50,24 @@ bool activity, speedoOn;
 #define Stdout Serial
 
 // CAN bus
-#define CAN1_TX 26
-#define CAN1_RX 27
-#define CAN2_TX 31
-#define CAN2_RX 30
-#define NUM_CAN_TX_MAILBOXES 1
-#define NUM_CAN_RX_MAILBOXES 2
+#define CAN1_TX GPIO_NUM_26
+#define CAN1_RX GPIO_NUM_27
 
 #define SELF_TEST_MODE false
 #define USING_SPEED_SENSOR false
 #define SPEEDO_SENSOR_IN 27
 #define SPEED_SENSOR_WINDOW 100 //ms
 #define SPEEDOMETER_RATIO 1.59
-#define DISABLE_AIRBAG_LAMP true
+#define SPEEDO_INTERVAL 200 // ms
+#define DISABLE_AIRBAG_LAMP true // Set false if you have a working airbag module on the CCD bus
 #define INSTRUMENT_COUNT 11
-#define ACTIVITY_ON_MS 25
+#define ACTIVITY_ON_MS 25 // ms
 #define SELF_TEST_STAGE_COUNT 10
 #define SELF_TEST_STAGE_DURATION 3000
-#define VBAT_RELAY_TURN_ON_MAX 2 // ms
-#define VBAT_VD_R1 100000.0 // VBAT voltage divider R1 value (ohms)
-#define VBAT_VD_R2 4700.0 // VBAT voltage divider R2 value (ohms)
+#define VBAT_VD_R1 50000.0 // VBAT voltage divider R1 value (ohms)
+#define VBAT_VD_R2 10000.0 // VBAT voltage divider R2 value (ohms)
 #define VBAT_C 0.000001 // Farads
-#define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) // Set voltage divider resistor values here
+#define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) 
 #define MCU_VOLTAGE 3.3
 #define PULSES_PER_AXLE_REVOLUTION 8
 #define GEAR_RATIO 3.07
@@ -77,6 +76,23 @@ bool activity, speedoOn;
 #define PULSES_PER_MILE (5280 / TIRE_CIRCUMFERENCE) * PULSES_PER_AXLE_REVOLUTION
 #define BATTERY_MEASURE_INTERVAL 2000*(VBAT_VD_R1*VBAT_C) // ms, allowing 2xtime for the capacitor to charge between reads, T=RC
 #define AIRBAG_OK_INTERVAL 1000      // ms
+#define LOOP_DELAY 25 //ms
+
+// Temperature management
+#define THERMAL_LIMIT 100 // degC
+#define THERMAL_SLEEP_TIME 300 // seconds
+#define TEMP_CHECK_INTERVAL 1000 // ms
+
+// Internal temp
+// Data wire is plugged into port 2 on the Arduino
+#define ONE_WIRE_BUS 23
+// Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
+OneWire oneWire(ONE_WIRE_BUS);
+// Pass our oneWire reference to Dallas Temperature. 
+DallasTemperature sensors(&oneWire);
+// arrays to hold device address
+DeviceAddress internalTemp;
+bool thermoPresent;
 
 // Bluetooth
 #define SERVICE_UUID "3ea24ab1-256b-4baf-ab04-a98f32993856"
@@ -99,25 +115,27 @@ Instrument *instruments[INSTRUMENT_COUNT] = {
     &airbagBad};
 InstrumentWriter _writer(instruments, INSTRUMENT_COUNT);
 
-IntervalTimer selfTestTimer;
 int selfTestPhaseStart;
 int selfTestStage = 0;
 
 uint8_t speedoSignal;
 double speedoFreqSum;
-int speedoFreqCount;
+//mutex for hardware pulse counters
+portMUX_TYPE pcntMux0 = portMUX_INITIALIZER_UNLOCKED;
+hw_timer_t *speedoTimer;
 
 int loopCount;
 float speedSensorFrequency;
 int speedSensorPulses;
+
 elapsedMillis lastActivity;
 elapsedMillis lastCCDLoop;
 elapsedMillis lastRefresh;
 elapsedMillis lastBattMeasure;
 elapsedMillis lastAirbagOkXmt;
+elapsedMillis lastTempCheck;
 
 ESP32_CAN<RX_SIZE_256, TX_SIZE_16> can1;
-ESP32_CAN<RX_SIZE_256, TX_SIZE_16> can2;
 
 void resetGauges()
 {
@@ -185,23 +203,17 @@ void selfTest()
   }
 }
 
-void handleSpeedSensor()
+void IRAM_ATTR handleSpeedSensor()
 {
-  if (FreqCountESP.available() > 0)
+      int16_t pulses = 0;
+    pcnt_get_counter_value(PCNT_UNIT_0, &pulses);
+  if (pulses > 0)
   {
-    int pulses = FreqCountESP.read();
     speedSensorPulses += pulses;
     speedoFreqSum = speedoFreqSum + pulses;
-    speedoFreqCount = speedoFreqCount + 1;
-    if (speedoFreqCount > SPEED_SENSOR_SAMPLES)
-    {
-      // average several readings together
-      speedSensorFrequency =
-          speedoMeasure.countToFrequency(speedoFreqSum / speedoFreqCount);
-      speedoFreqSum = 0;
-      speedoFreqCount = 0;
-      speedo.SetSpeedSensorFrequency(speedSensorFrequency);
-    }
+    speedoFreqSum = 0;
+    speedo.SetSpeedSensorFrequency(pulses / 0.200);
+  
     // Either way, actual pulses are accounted for, and can be used to update
     // the odometer
     if (speedSensorPulses >= PULSES_PER_UPDATE)
@@ -264,16 +276,10 @@ void watchdogReset() { Stdout.println("Resetting in 5s..."); }
 
 void canSniff(const CAN_message_t &msg)
 {
-  Stdout.print("MB ");
-  Stdout.print(msg.mb);
-  Stdout.print("  OVERRUN: ");
-  Stdout.print(msg.flags.overrun);
-  Stdout.print("  LEN: ");
+  Stdout.print(" LEN: ");
   Stdout.print(msg.len);
   Stdout.print(" EXT: ");
   Stdout.print(msg.flags.extended);
-  Stdout.print(" TS: ");
-  Stdout.print(msg.timestamp);
   Stdout.print(" ID: ");
   Stdout.print(msg.id, HEX);
   Stdout.print(" Buffer: ");
@@ -285,7 +291,7 @@ void canSniff(const CAN_message_t &msg)
   Stdout.println();
 }
 
-void onVCUVehicleInputs3(const CAN_message_t &msg)
+static void onVCUVehicleInputs3(const CAN_message_t &msg)
 {
   uint8_t mph = msg.buf[1];
   speedo.SetMPH(mph);
@@ -320,15 +326,78 @@ void setupCAN()
   can1.begin();
 
   can1.setBaudRate(500000);
-  can2.setBaudRate(500000);
 
-  can1.onReceive = onVCUVehicleInputs3
+  can1.onReceive(onVCUVehicleInputs3);
+}
+
+void setupSpeedo()
+{
+  pinMode(SPEEDO_SENSOR_IN, INPUT_PULLUP);
+  pcnt_config_t pcnt_config;
+
+  pcnt_config.pulse_gpio_num = SPEEDO_SENSOR_IN;
+  pcnt_config.ctrl_gpio_num = PCNT_PIN_NOT_USED;
+  pcnt_config.channel = PCNT_CHANNEL_0;
+  pcnt_config.unit = PCNT_UNIT_0;
+  pcnt_config.pos_mode = PCNT_COUNT_INC;
+  pcnt_config.neg_mode = PCNT_COUNT_DIS;
+  pcnt_config.lctrl_mode = PCNT_MODE_KEEP;
+  pcnt_config.hctrl_mode = PCNT_MODE_KEEP;
+  pcnt_config.counter_h_lim = 10000;
+  pcnt_config.counter_l_lim = 0;
+    
+  pcnt_unit_config(&pcnt_config);
+  pcnt_counter_pause(PCNT_UNIT_0);
+  pcnt_counter_clear(PCNT_UNIT_0);
+  pcnt_counter_resume(PCNT_UNIT_0);
+
+  speedoTimer = timerBegin(0,80,true);  
+
+  // Attach interrupt
+  timerAttachInterrupt(speedoTimer, handleSpeedSensor, true);
+
+  timerAlarmWrite(speedoTimer, SPEEDO_INTERVAL * 1000, true);  
+}
+
+// function to print a device address
+void printAddress(DeviceAddress deviceAddress)
+{
+  for (uint8_t i = 0; i < 8; i++)
+  {
+    if (deviceAddress[i] < 16) Serial.print("0");
+    Serial.print(deviceAddress[i], HEX);
+  }
 }
 
 void setup()
 {
   Stdout.begin(115200);
   
+
+  // locate temp devices on the bus
+  Serial.print("Locating temp devices...");
+  sensors.begin();
+  Serial.print("Found ");
+  Serial.print(sensors.getDeviceCount(), DEC);
+  Serial.println(" devices.");
+
+  // report parasite power requirements
+  Serial.print("Parasite power is: "); 
+  if (sensors.isParasitePowerMode()) Serial.println("ON");
+  else Serial.println("OFF");
+
+  oneWire.reset_search();
+  // assigns the first address found to insideThermometer
+  if (!oneWire.search(internalTemp)) {
+    Serial.println("Unable to find address for insideThermometer");
+  } else {
+  // show the addresses we found on the bus
+    Serial.print("Device 0 Address: ");
+    printAddress(internalTemp);
+    Serial.println();
+    thermoPresent=true;
+  }
+
   // Setup unused GPIOs as pulldowns to GND
   pinMode(19, INPUT_PULLDOWN);
   pinMode(23, INPUT_PULLDOWN);
@@ -339,16 +408,18 @@ void setup()
   while (!Stdout);  
   delay (1000);
     
+  /*
   // Watchdog
   WDT_timings_t config;
-  config.trigger = 5;  /* in seconds, 0->128 */
-  config.timeout = 10; /* in seconds, 0->128 */
+  config.trigger = 5;  // in seconds, 0->128 
+  config.timeout = 10; // in seconds, 0->128 
   config.callback = watchdogReset;
+*/
 
   // Give the cluster time to boot
   delay(3000);
   Stdout.println("Entered setup");
-  wdt.begin(config);
+  //wdt.begin(config);
 
   // Don't update certain instruments on start
   battOil.SetOilPressure(40);
@@ -358,6 +429,7 @@ void setup()
   airbagBad.Quiesce();
   airbagOk.Quiesce();
 
+  /*
   // Did we reset due to watchdog?  Alert on this.
   // Save copy of Reset Status Register
   int lastResetCause = SRC_SRSR;
@@ -369,30 +441,46 @@ void setup()
     Stdout.println("Lighting SKIM");
     skimLamp.SetLamp(true);
   }
+*/
 
   // Set pins
   pinMode(VBAT_MEASURE_SIG, INPUT);
-  pinMode(SPEEDO_SENSOR_IN, INPUT_PULLUP);
-  _
+  
   CCD.onError(CCDHandleError); // subscribe to the error event and call this
                                // function when an error occurs
   CCD.begin();                 // CDP68HC68S1
 
   if (USING_SPEED_SENSOR)
   {
-    FreqCountESP.begin(SPEEDO_SENSOR_IN, SPEED_SENSOR_WINDOW);
+    setupSpeedo();
   }
   lastActivity = millis();
-  if (SELF_TEST_MODE)
-  {
-    selfTestTimer.begin(selfTest, (1000 + SELF_TEST_STAGE_DURATION) * 1000);
-  }
 
-  pinMode(LED_BUILTIN, OUTPUT);
+  tp.DotStar_Clear();
   // Start the CCD writer
   _writer.Setup(&_writer);
-  // setupCAN();
+
+  setupCAN();
   Stdout.println("Setup complete");
+
+}
+
+void tempCheck() {
+  float tempC = sensors.getTempC(internalTemp);
+  if(tempC == DEVICE_DISCONNECTED_C) 
+  {
+    Serial.println("Error: Could not read temperature data");
+    return;
+  }
+  Serial.print("Temp C: ");
+  Serial.print(tempC);
+
+  if (tempC > THERMAL_LIMIT) {
+    // Go into deep sleep for a while and hope we cool off
+    Serial.println("Thermal limit reached, going to sleep.");
+    esp_deep_sleep_start();
+    esp_sleep_enable_timer_wakeup(THERMAL_SLEEP_TIME * 1000000);
+  }
 }
 
 CAN_message_t msg;
@@ -400,12 +488,6 @@ void loop()
 {
   loopCount++;
 
-  // This code expects to use a physical speed sensor to measure actual
-  // driveshaft revolutions, and as such keep the odometer up to date.  Tampering
-  // with the odometer is a federal crime, so if you don't have the speed sensor,
-  // it's up to you to derive distance from speed or other measurements to
-  // update the odometer.  Good luck.
-  handleSpeedSensor();
 
   if (SELF_TEST_MODE)
   {
@@ -439,19 +521,24 @@ void loop()
     activity = activity || newActivity;
   }
 
-  // DAS BLINKENLIGHTS! .. but seriously, blink the builtin LED on activity
+  if (lastTempCheck > TEMP_CHECK_INTERVAL) {
+    lastTempCheck = 0;
+    tempCheck();
+  }
+
+  // DAS BLINKEN LIGHTS! .. but seriously, blink the builtin LED on activity
   if (activity)
   {
     // Feed the watchdog on activity, since there should be some pretty
     // regularly or something is wrong.
-    wdt.feed();
-    digitalWrite(LED_BUILTIN, HIGH);
+    //wdt.feed();
+    //digitalWrite(LED_BUILTIN, HIGH);
     activity = false;
   }
   else if (lastActivity >= ACTIVITY_ON_MS)
   {
     lastActivity = 0;
     activity = false;
-    digitalWrite(LED_BUILTIN, LOW);
+    //digitalWrite(LED_BUILTIN, LOW);
   }
 }

@@ -17,8 +17,11 @@
  */
 
 #include <CCDLibrary.h>
+#include <esp32-hal-ledc.h>
 
 #define Stdout Serial
+
+hw_timer_t *Timer0_Cfg = NULL;
 
 CCDLibrary CCD;
 
@@ -37,11 +40,11 @@ static void isrCCDActiveByte()
     CCD.activeByteInterruptHandler();
 }
 
-static void globalTransmitDelayHandler() {
+static void IRAM_ATTR globalTransmitDelayHandler() {
     CCD.transmitDelayHandler();
 }
 
-static void globalBusIdleChange() {
+static void IRAM_ATTR globalBusIdleChange() {
     CCD.busIdleChange();
 }
 
@@ -119,8 +122,6 @@ void serialEvent() {
 
 void CCDLibrary::receiveByte()
 {
-    // Get error bits from status register.
-    uint8_t lastRxError = CCDSERIAL.getReadError();
 
     // Save byte in serial receive buffer.
     if (_serialRxBufferPos < 16)
@@ -128,53 +129,33 @@ void CCDLibrary::receiveByte()
         _serialRxBuffer[_serialRxBufferPos] = CCDSERIAL.read();
         _serialRxBufferPos++;
     }
-    else
-    {
-        lastRxError |= UART_BUFFER_OVERFLOW; // error: buffer overflow
-    }
-
-    // Save last serial error.
-    _lastSerialError = lastRxError;
-
     // Re-enable active byte interrupt.
  //   if (!_dedicatedTransceiver) attachInterrupt(digitalPinToInterrupt(CTRL_PIN), isrCCDActiveByte, FALLING);
 }
 
 void CCDLibrary::transmitDelayTimerStart()
 {
-    transmitDelayTimer.begin(globalTransmitDelayHandler, 256.0);
+    timerBegin(1,80,true);
+    timerAttachInterrupt(Timer0_Cfg, &globalTransmitDelayHandler, true);
+    timerAlarmEnable(Timer0_Cfg);
+    timerAlarmWrite(Timer0_Cfg, 256, false);
 }
 
 void CCDLibrary::transmitDelayHandler()
 {
     Stdout.println("Transmit now allowed");
-    transmitDelayTimer.end();
+
+    timerAlarmDisable(Timer0_Cfg);
     _transmitAllowed = true; // set flag
 }
 
 void CCDLibrary::clockGeneratorInit()
 {
-      // set LEDC timer
-  ledc_timer.speed_mode       = LEDC_HIGH_SPEED_MODE;
-  ledc_timer.duty_resolution  = LEDC_TIMER_1_BIT;
-  ledc_timer.timer_num        = LEDC_TIMER_0;           
-  ledc_timer.freq_hz          = CLOCK_SPEED;                   
-
-  // set LEDC channel
-  ledc_channel.channel    = CLOCK_PIN;
-  ledc_channel.duty       = 1;
-  ledc_channel.gpio_num   = 0;
-  ledc_channel.speed_mode = LEDC_HIGH_SPEED_MODE;
-  ledc_channel.timer_sel  = LEDC_TIMER_0;
-
-
-  // Set timer configuration
-  ledc_timer_config(&ledc_timer);
-  // Set channel configuration
-  ledc_channel_config(&ledc_channel);
+    ledcAttachPin(CLOCK_PIN,0);
+    ledcWriteTone(0, CLOCK_SPEED);
 }
 
-void CCDLibrary::activeByteInterruptHandler()
+void IRAM_ATTR CCDLibrary::activeByteInterruptHandler()
 {
     //busIdleTimer.begin(); // start bus-idle timer right after UART RX1 pin goes low (start bit)
     detachInterrupt(digitalPinToInterrupt(CTRL_PIN)); // disable interrupt until next byte's start bit
@@ -191,8 +172,8 @@ void CCDLibrary::timer1Handler()
     processMessage(); // process received message, if any
 }
 
-void CCDLibrary::busIdleChange() {
-    Stdout.println("bus idle change");
+void IRAM_ATTR CCDLibrary::busIdleChange() {
+    Stdout.println("bus idle change"); // Never have seen this
     if (digitalRead(IDLE_PIN) == 1) {
         _busIdle = false; // clear flag
         _transmitAllowed = false; // clear flag, interrupt controlled message transmission is not affected by this flag

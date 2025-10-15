@@ -31,11 +31,11 @@
     #define RX_PIN  PIND
     #define TX_PIN  PIND
 #elif defined (_ESP32_ESP32_HAL_BT_H_)
-    #define RX_P 22
-    #define TX_P 5
-    #define IDLE_PIN 21
-    #define CTRL_PIN 32
-    #define CLOCK_PIN 25
+    #define RX_P GPIO_NUM_22
+    #define TX_P GPIO_NUM_5
+    #define IDLE_PIN GPIO_NUM_32
+    #define CTRL_PIN GPIO_NUM_21
+    #define CLOCK_PIN GPIO_NUM_27
     #define CLOCK_SPEED 1000000
 #else
     #error "Arduino Mega / ATmega2560 microcontroller is required!"
@@ -63,7 +63,7 @@
 #define DISABLE_TX_CHECKSUM   0
 #define CDP68HC68S1           1    // CDP68HC68S1 has two dedicated pins to signal CCD-bus condition
 #define CUSTOM_TRANSCEIVER    0
-#define CCDSERIAL Serial4
+#define CCDSERIAL Serial2
 // Set (1), clear (0) and invert (1->0; 0->1) bit in a register or variable easily.
 #define sbi(reg, bit) reg |=  (1 << bit)
 #define cbi(reg, bit) reg &= ~(1 << bit)
@@ -126,8 +126,6 @@ class CCDLibrary
         uint16_t _calculatedOCR1AValue;
         uint16_t _calculatedOCR3AValue;
         uint8_t _ignoreList[32];
-        IntervalTimer transmitDelayTimer;
-        IntervalTimer busIdleDelayTimer;
         volatile onCCDMessageReceivedHandler _msgHandler;
         volatile onCCDErrorHandler _errHandler;
         bool winBus(uint8_t idByte);
