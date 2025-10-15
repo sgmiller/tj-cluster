@@ -5380,7 +5380,7 @@
 		(uuid "3a764624-0bed-4748-8556-47c380e8aea3")
 	)
 	(junction
-		(at 246.38 83.82)
+		(at 246.38 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3cd54112-0c37-4c45-b3fd-f76e9af9df43")
@@ -5656,7 +5656,7 @@
 		(uuid "f28fbea8-d1db-4d96-a908-f30eee8b173f")
 	)
 	(junction
-		(at 252.73 83.82)
+		(at 252.73 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f718c719-9d19-4796-b587-4ad464c103ea")
@@ -6567,7 +6567,7 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 83.82) (xy 252.73 90.17)
+			(xy 252.73 81.28) (xy 252.73 90.17)
 		)
 		(stroke
 			(width 0)
@@ -6717,7 +6717,7 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 83.82) (xy 252.73 83.82)
+			(xy 256.54 81.28) (xy 252.73 81.28)
 		)
 		(stroke
 			(width 0)
@@ -6917,7 +6917,7 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 83.82) (xy 246.38 83.82)
+			(xy 252.73 81.28) (xy 246.38 81.28)
 		)
 		(stroke
 			(width 0)
@@ -6947,7 +6947,7 @@
 	)
 	(wire
 		(pts
-			(xy 246.38 83.82) (xy 246.38 88.9)
+			(xy 246.38 81.28) (xy 246.38 88.9)
 		)
 		(stroke
 			(width 0)
@@ -7547,7 +7547,7 @@
 	)
 	(wire
 		(pts
-			(xy 243.84 83.82) (xy 246.38 83.82)
+			(xy 243.84 81.28) (xy 246.38 81.28)
 		)
 		(stroke
 			(width 0)
@@ -7815,7 +7815,7 @@
 	)
 	(global_label "12v_meter"
 		(shape input)
-		(at 256.54 83.82 0)
+		(at 256.54 81.28 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7825,7 +7825,7 @@
 		)
 		(uuid "22dd13a9-cd17-4416-8650-bb8840d68164")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 269.2618 83.82 0)
+			(at 269.2618 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8867,7 +8867,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 240.03 83.82 270)
+		(at 240.03 81.28 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8876,7 +8876,7 @@
 		(dnp no)
 		(uuid "0035f00a-2bdc-481a-9cf8-88a316d48735")
 		(property "Reference" "R8"
-			(at 240.8647 82.042 0)
+			(at 239.014 82.042 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8885,7 +8885,7 @@
 			)
 		)
 		(property "Value" "50kOhm"
-			(at 238.3278 82.042 0)
+			(at 238.3278 79.502 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8894,7 +8894,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 240.03 85.598 90)
+			(at 240.03 83.058 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8903,7 +8903,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.koaspeer.com/catimages/Products/MF-MFS-RK/MF-MFS-RK.pdf"
-			(at 240.03 83.82 0)
+			(at 240.03 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8912,7 +8912,7 @@
 			)
 		)
 		(property "Description" "1/4 watt resistor"
-			(at 240.03 83.82 0)
+			(at 240.03 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8921,7 +8921,7 @@
 			)
 		)
 		(property "MPN" " MFR-25FBF52-100K "
-			(at 240.03 83.82 0)
+			(at 240.03 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13972,7 +13972,7 @@
 		(dnp no)
 		(uuid "b757c005-4a53-4f78-876e-caca42b58057")
 		(property "Reference" "C8"
-			(at 84.455 148.59 0)
+			(at 86.106 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13981,7 +13981,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 84.455 143.51 0)
+			(at 87.376 144.018 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14632,7 +14632,7 @@
 		(dnp no)
 		(uuid "cb7c1e3e-a32d-43a8-bf93-cbb15668bf6c")
 		(property "Reference" "C10"
-			(at 79.375 143.51 0)
+			(at 76.454 148.844 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14641,7 +14641,7 @@
 			)
 		)
 		(property "Value" "100uF"
-			(at 79.375 153.035 0)
+			(at 76.2 141.986 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15430,7 +15430,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 236.22 83.82 90)
+		(at 236.22 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15439,7 +15439,7 @@
 		(fields_autoplaced yes)
 		(uuid "e8206eed-9cca-4236-976b-dd802ca92893")
 		(property "Reference" "#PWR018"
-			(at 240.03 83.82 0)
+			(at 240.03 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15448,7 +15448,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 233.045 83.82 90)
+			(at 233.045 81.28 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15457,7 +15457,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 236.22 83.82 0)
+			(at 236.22 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15466,7 +15466,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 236.22 83.82 0)
+			(at 236.22 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15475,7 +15475,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 236.22 83.82 0)
+			(at 236.22 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
