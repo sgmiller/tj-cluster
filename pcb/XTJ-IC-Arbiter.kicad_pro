@@ -61,7 +61,7 @@
       ],
       "drc_exclusions": [
         [
-          "courtyards_overlap|103545000|124587862|b5e1dcd8-a704-4add-95c1-39e4a3290076|cc1b928e-9ef1-41da-883d-c7ca579a4541",
+          "courtyards_overlap|103620000|124683476|5a271ee7-bf11-4f6f-8ed9-e0fab0f50e5c|cc1b928e-9ef1-41da-883d-c7ca579a4541",
           ""
         ],
         [
@@ -81,11 +81,11 @@
           ""
         ],
         [
-          "courtyards_overlap|178444479|120272222|b5e1dcd8-a704-4add-95c1-39e4a3290076|e8e05818-5a38-4a4c-bcd5-5463b45efe04",
+          "courtyards_overlap|178542219|120397797|5a271ee7-bf11-4f6f-8ed9-e0fab0f50e5c|e8e05818-5a38-4a4c-bcd5-5463b45efe04",
           ""
         ],
         [
-          "courtyards_overlap|178632881|115745000|308d50c3-cf99-449c-aa6c-cb459e179b84|b5e1dcd8-a704-4add-95c1-39e4a3290076",
+          "courtyards_overlap|178735847|115745000|308d50c3-cf99-449c-aa6c-cb459e179b84|5a271ee7-bf11-4f6f-8ed9-e0fab0f50e5c",
           ""
         ],
         [
@@ -109,23 +109,63 @@
           ""
         ],
         [
-          "items_not_allowed|99550000|119000000|b5e1dcd8-a704-4add-95c1-39e4a3290076|00000000-0000-0000-0000-000000000000",
+          "items_not_allowed|99625000|119000000|5a271ee7-bf11-4f6f-8ed9-e0fab0f50e5c|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "silk_edge_clearance|100584000|127450000|ad8f4819-ffd3-47b6-9c8e-6963a41788e8|139e3212-7dc7-43b7-bcc8-0f7f51451440",
+          "silk_edge_clearance|101175000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|506afb20-2d9f-46db-a6a5-83a9091170d0",
           ""
         ],
         [
-          "silk_edge_clearance|180831680|127450000|ad8f4819-ffd3-47b6-9c8e-6963a41788e8|2a850afa-4298-4ee1-bd45-9728f435d8ca",
+          "silk_edge_clearance|102245000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|20f399b4-5281-4cc8-80eb-ea55b280f26f",
           ""
         ],
         [
-          "silk_overlap|182100000|127450000|2a850afa-4298-4ee1-bd45-9728f435d8ca|58329a8e-0d7d-41c3-9b22-e07aeb5e01d2",
+          "silk_edge_clearance|109605000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|0362bd99-a7e8-406f-bfec-46be2428fb4b",
           ""
         ],
         [
-          "silk_overlap|99550000|127450000|139e3212-7dc7-43b7-bcc8-0f7f51451440|d42ee41d-06e8-42ea-8fe6-9f81a3ff8a4e",
+          "silk_edge_clearance|110675000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|0f9cd229-bc79-4c4c-ae20-e7561a7f37b3",
+          ""
+        ],
+        [
+          "silk_edge_clearance|127825000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|6eb15767-719d-4059-be05-4b8a9b097259",
+          ""
+        ],
+        [
+          "silk_edge_clearance|152630000|59500000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|78a6ace6-b4a7-4d8c-9e79-1f90ce4d7757",
+          ""
+        ],
+        [
+          "silk_edge_clearance|153825000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|f6056393-6c8d-4898-b411-ee3a24e260e2",
+          ""
+        ],
+        [
+          "silk_edge_clearance|170410000|59500000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|a65c82d6-b387-49ec-89a4-de8d7420bb2c",
+          ""
+        ],
+        [
+          "silk_edge_clearance|171175000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|01fc25ec-c9cb-4ef8-aeec-edec2dc3871c",
+          ""
+        ],
+        [
+          "silk_edge_clearance|172245000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|9a2e7495-9151-4338-9eba-b9f505202f07",
+          ""
+        ],
+        [
+          "silk_edge_clearance|179605000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|3537f849-a0f1-4409-8b93-0e31a86332cc",
+          ""
+        ],
+        [
+          "silk_edge_clearance|180675000|127300000|69360e96-fba9-4f2f-8ff2-8ba6822f900b|63086a5f-d6a1-445d-aeaa-e16439d643df",
+          ""
+        ],
+        [
+          "silk_overlap|182175000|127450000|2a850afa-4298-4ee1-bd45-9728f435d8ca|bb4db68a-0a85-47f4-9319-e2f43834d368",
+          ""
+        ],
+        [
+          "silk_overlap|99625000|127450000|139e3212-7dc7-43b7-bcc8-0f7f51451440|59c20a95-cef6-4650-80db-dba5ff4730a8",
           ""
         ]
       ],

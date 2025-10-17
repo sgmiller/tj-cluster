@@ -41,6 +41,7 @@
 #include <TinyPICO.h>
 #include "driver/pcnt.h"
 #include <DallasTemperature.h>
+#include <BleSerial.h>
 
 TinyPICO tp = TinyPICO();
 Watchdog wdt(5);
@@ -95,6 +96,7 @@ bool thermoPresent;
 
 // Bluetooth
 #define SERVICE_UUID "3ea24ab1-256b-4baf-ab04-a98f32993856"
+  BleSerial SerialBT;
   
 // All instruments
 BatteryAndOil battOil;
@@ -136,6 +138,7 @@ elapsedMillis lastTempCheck;
 
 ESP32_CAN<RX_SIZE_256, TX_SIZE_16> can1;
 
+
 void resetGauges()
 {
   speedo.SetMPH(0);
@@ -161,7 +164,7 @@ void selfTest()
   resetGauges();
   Stdout.print("Self test stage ");
   Stdout.println(selfTestStage);
-
+SerialBT
   if (selfTestStage == 3)
   {
     featureStatus.SetCruiseEnabled(true);
