@@ -26,7 +26,7 @@
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    AUTHORS OR COPYRIGHTC;        HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
    IN THE SOFTWARE.
@@ -41,7 +41,6 @@
 #include <TinyPICO.h>
 #include "driver/pcnt.h"
 #include <DallasTemperature.h>
-#include <BleSerial.h>
 
 TinyPICO tp = TinyPICO();
 Watchdog wdt(5);
@@ -54,7 +53,7 @@ bool activity, speedoOn;
 #define CAN1_TX GPIO_NUM_26
 #define CAN1_RX GPIO_NUM_27
 
-#define SELF_TEST_MODE false
+#define SELF_TEST_MODE true
 #define USING_SPEED_SENSOR false
 #define SPEEDO_SENSOR_IN 27
 #define SPEED_SENSOR_WINDOW 100 //ms
@@ -96,8 +95,8 @@ bool thermoPresent;
 
 // Bluetooth
 #define SERVICE_UUID "3ea24ab1-256b-4baf-ab04-a98f32993856"
-  BleSerial SerialBT;
-  
+ // BleSerial SerialBT;
+
 // All instruments
 BatteryAndOil battOil;
 SingleLamp skimLamp(messageSkim, 3, 10000);
@@ -135,6 +134,7 @@ elapsedMillis lastRefresh;
 elapsedMillis lastBattMeasure;
 elapsedMillis lastAirbagOkXmt;
 elapsedMillis lastTempCheck;
+elapsedMillis sinceLastStage;
 
 ESP32_CAN<RX_SIZE_256, TX_SIZE_16> can1;
 
@@ -164,7 +164,6 @@ void selfTest()
   resetGauges();
   Stdout.print("Self test stage ");
   Stdout.println(selfTestStage);
-SerialBT
   if (selfTestStage == 3)
   {
     featureStatus.SetCruiseEnabled(true);
@@ -175,6 +174,7 @@ SerialBT
   }
   else if (selfTestStage == 5)
   {
+    fuel.SetFuelPercentage(0.75);
     checkGaugesLamp.SetLamp(true);
   }
   else if (selfTestStage == 6)
@@ -188,7 +188,6 @@ SerialBT
   else if (selfTestStage == 8)
   {
     battOil.SetBatteryVoltage(12);
-    fuel.SetFuelPercentage(0.75);
   }
   else if (selfTestStage == 9)
   {
@@ -376,6 +375,18 @@ void setup()
   Stdout.begin(115200);
   
 
+  while (!Stdout);  
+  delay (1000);
+    
+  /*
+  // Watchdog
+  WDT_timings_t config;
+  config.trigger = 5;  // in seconds, 0->128 
+  config.timeout = 10; // in seconds, 0->128 
+  config.callback = watchdogReset;
+*/
+  Stdout.println("Entered setup");
+
   // locate temp devices on the bus
   Serial.print("Locating temp devices...");
   sensors.begin();
@@ -405,24 +416,12 @@ void setup()
   pinMode(23, INPUT_PULLDOWN);
   
   // Go slow, save power
-  setCpuFrequencyMhz(20); 
-
-  while (!Stdout);  
-  delay (1000);
-    
-  /*
-  // Watchdog
-  WDT_timings_t config;
-  config.trigger = 5;  // in seconds, 0->128 
-  config.timeout = 10; // in seconds, 0->128 
-  config.callback = watchdogReset;
-*/
+  //setCpuFrequencyMhz(20); 
 
   // Give the cluster time to boot
   delay(3000);
-  Stdout.println("Entered setup");
   //wdt.begin(config);
-
+  Serial.println("A");
   // Don't update certain instruments on start
   battOil.SetOilPressure(40);
   battOil.SetBatteryVoltage(14);
@@ -447,22 +446,31 @@ void setup()
 
   // Set pins
   pinMode(VBAT_MEASURE_SIG, INPUT);
+  Serial.println("B");
   
   CCD.onError(CCDHandleError); // subscribe to the error event and call this
+  Serial.println("B2");
                                // function when an error occurs
-  CCD.begin();                 // CDP68HC68S1
+  CCD.begin();      
+           // CDP68HC68S1
+  Serial.println("C");
+
+
 
   if (USING_SPEED_SENSOR)
   {
     setupSpeedo();
   }
+    Serial.println("D");
+
   lastActivity = millis();
 
   tp.DotStar_Clear();
   // Start the CCD writer
   _writer.Setup(&_writer);
+  Serial.println("E");
 
-  setupCAN();
+  //setupCAN();
   Stdout.println("Setup complete");
 
 }
@@ -496,6 +504,8 @@ void loop()
     float t = constrain(float(millis() - selfTestPhaseStart) /
                             SELF_TEST_STAGE_DURATION,
                         0.0, 1.0);
+    Serial.print("Self test stage ");
+    Serial.println(selfTestStage);
     if (selfTestStage == 1)
     {
       speedo.SetKPH(160 * t);
@@ -503,6 +513,10 @@ void loop()
     else if (selfTestStage == 2)
     {
       tach.SetRPM(6000 * t);
+    }
+    if (sinceLastStage > SELF_TEST_STAGE_DURATION) {
+      sinceLastStage = 0;
+      selfTest();
     }
   }
   if (!SELF_TEST_MODE && lastBattMeasure > BATTERY_MEASURE_INTERVAL)

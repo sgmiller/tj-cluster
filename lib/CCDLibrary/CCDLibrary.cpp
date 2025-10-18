@@ -17,7 +17,7 @@
  */
 
 #include <CCDLibrary.h>
-#include <esp32-hal-ledc.h>
+#include "driver/ledc.h"
 
 #define Stdout Serial
 
@@ -78,8 +78,10 @@ void CCDLibrary::begin(float baudrate, bool dedicatedTransceiver, uint8_t busIdl
     _transmitAllowed = true;
     transmitting = false;
 
+    Serial.println("CA");
     serialInit();
     //transmitDelayTimerInit();
+    Serial.println("CB");
     listenAll();
 
     if (_dedicatedTransceiver)
@@ -92,6 +94,8 @@ void CCDLibrary::begin(float baudrate, bool dedicatedTransceiver, uint8_t busIdl
         //detachInterrupt(digitalPinToInterrupt(CTRL_PIN));
 
         // Enable 1 MHz clock generator on Timer 1 and disable bus-idle timer at the same time.
+            Serial.println("CC");
+
         clockGeneratorInit();
     }
     else
@@ -110,7 +114,7 @@ void CCDLibrary::begin(float baudrate, bool dedicatedTransceiver, uint8_t busIdl
 
 void CCDLibrary::serialInit()
 {
-   CCDSERIAL.begin(CLOCK_SPEED/128);
+   CCDSERIAL.begin(CLOCK_SPEED/128, SERIAL_8N1, RX_P, TX_P);
 }
 
 void serialEvent() {
@@ -151,8 +155,26 @@ void CCDLibrary::transmitDelayHandler()
 
 void CCDLibrary::clockGeneratorInit()
 {
-    ledcAttachPin(CLOCK_PIN,0);
-    ledcWriteTone(0, CLOCK_SPEED);
+  ledc_timer_config_t ledc_timer;
+  ledc_timer.speed_mode = LEDC_HIGH_SPEED_MODE;           // timer mode
+  ledc_timer.duty_resolution = LEDC_TIMER_3_BIT; // resolution of PWM duty
+  ledc_timer.timer_num = LEDC_TIMER_0;            // timer index
+  ledc_timer.freq_hz = CLOCK_SPEED;                      // frequency of PWM signal
+  // Set configuration of timer0 for high speed channels
+  esp_err_t result = ledc_timer_config(&ledc_timer);
+  if (result == ESP_OK)
+     Serial.printf("frequency: %d", ledc_get_freq(LEDC_HIGH_SPEED_MODE, LEDC_TIMER_0));
+  ledc_channel_config_t ledc_channel = {
+          .gpio_num   = CLOCK_PIN,
+          .speed_mode = LEDC_HIGH_SPEED_MODE,
+          .channel    = LEDC_CHANNEL_0,
+          .intr_type  = LEDC_INTR_DISABLE,
+          .timer_sel  = LEDC_TIMER_0,
+          .duty       = 4,
+          .hpoint     = 0
+  };
+  // Set LED Controller with previously prepared configuration
+  ledc_channel_config(&ledc_channel);
 }
 
 void IRAM_ATTR CCDLibrary::activeByteInterruptHandler()
