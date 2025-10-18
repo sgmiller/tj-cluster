@@ -94,8 +94,6 @@ void CCDLibrary::begin(float baudrate, bool dedicatedTransceiver, uint8_t busIdl
         //detachInterrupt(digitalPinToInterrupt(CTRL_PIN));
 
         // Enable 1 MHz clock generator on Timer 1 and disable bus-idle timer at the same time.
-            Serial.println("CC");
-
         clockGeneratorInit();
     }
     else
