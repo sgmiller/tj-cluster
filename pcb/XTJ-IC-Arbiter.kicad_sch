@@ -12283,7 +12283,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10kOhm"
+		(property "Value" "4.7kOhm"
 			(at 188.722 27.178 90)
 			(effects
 				(font
@@ -15571,7 +15571,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "50kOhm"
+		(property "Value" "68kOhm"
 			(at 202.3622 30.988 90)
 			(effects
 				(font
