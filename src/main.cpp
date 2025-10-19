@@ -38,6 +38,7 @@
 #include <Watchdog.h>
 #include <elapsedMillis.h>
 #include <ESP32_CAN.h>
+#include <Arduino.h>
 #include <TinyPICO.h>
 #include "driver/pcnt.h"
 #include <DallasTemperature.h>
@@ -59,6 +60,11 @@ bool activity, speedoOn;
 #define SPEED_SENSOR_WINDOW 100 //ms
 #define SPEEDOMETER_RATIO 1.59
 #define SPEEDO_INTERVAL 200 // ms
+#define SPEEDO_VREF_PIN GPIO_NUM_25
+#define SPEEDO_VREF 0.1 // V
+#define COMPARATOR_VREF 0.5 // V
+#define COMPARATOR_VREF_PIN GPIO_NUM_26
+
 #define DISABLE_AIRBAG_LAMP true // Set false if you have a working airbag module on the CCD bus
 #define INSTRUMENT_COUNT 11
 #define ACTIVITY_ON_MS 25 // ms
@@ -334,6 +340,8 @@ void setupCAN()
 void setupSpeedo()
 {
   pinMode(SPEEDO_SENSOR_IN, INPUT_PULLUP);
+  pinMode(SPEEDO_VREF_PIN, OUTPUT);
+  dacWrite(SPEEDO_VREF_PIN, 255*(SPEEDO_VREF/MCU_VOLTAGE));
   pcnt_config_t pcnt_config;
 
   pcnt_config.pulse_gpio_num = SPEEDO_SENSOR_IN;
@@ -415,8 +423,9 @@ void setup()
   pinMode(19, INPUT_PULLDOWN);
   pinMode(23, INPUT_PULLDOWN);
   
-  // Go slow, save power
-  //setCpuFrequencyMhz(20); 
+  // Set comparator VREF
+  pinMode(COMPARATOR_VREF_PIN, OUTPUT);
+  dacWrite(COMPARATOR_VREF_PIN, 255*(COMPARATOR_VREF/MCU_VOLTAGE));
 
   // Give the cluster time to boot
   delay(3000);

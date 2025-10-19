@@ -5345,12 +5345,6 @@
 		(uuid "fb47090d-43b7-492a-95ca-d35f400f0a26")
 	)
 	(junction
-		(at 196.85 29.21)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "02f289b5-52ab-42c0-8e8c-a01254d39c21")
-	)
-	(junction
 		(at 157.48 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5397,12 +5391,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3d524a70-7895-4308-af98-ca7480dd0b3d")
-	)
-	(junction
-		(at 204.47 29.21)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4596008c-6664-4416-bd3b-3159008b1184")
 	)
 	(junction
 		(at 162.56 147.32)
@@ -5753,10 +5741,6 @@
 		(uuid "82a1bd43-a1ef-4604-90da-fc72e2aa0cd2")
 	)
 	(no_connect
-		(at 110.49 87.63)
-		(uuid "c7ca79e9-a805-4d9f-845b-e25ebb500097")
-	)
-	(no_connect
 		(at 110.49 97.79)
 		(uuid "f82f6656-3c46-48c9-88ec-6be58014d4ea")
 	)
@@ -5952,16 +5936,6 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 29.21) (xy 196.85 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0ffc8c5b-fe0d-4a69-8a84-29b23435b083")
-	)
-	(wire
-		(pts
 			(xy 146.05 49.53) (xy 146.05 46.99)
 		)
 		(stroke
@@ -6082,7 +6056,7 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 34.29) (xy 205.74 34.29)
+			(xy 199.39 31.75) (xy 205.74 31.75)
 		)
 		(stroke
 			(width 0)
@@ -6792,16 +6766,6 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 29.21) (xy 189.23 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8c636996-32d5-4cb5-8f05-3d923a7874d4")
-	)
-	(wire
-		(pts
 			(xy 240.03 41.91) (xy 236.22 41.91)
 		)
 		(stroke
@@ -6892,7 +6856,7 @@
 	)
 	(wire
 		(pts
-			(xy 205.74 34.29) (xy 205.74 39.37)
+			(xy 205.74 31.75) (xy 205.74 39.37)
 		)
 		(stroke
 			(width 0)
@@ -7770,16 +7734,6 @@
 		)
 		(uuid "a8298868-7f23-43e5-902c-92927151b96e")
 	)
-	(label "c_vref"
-		(at 196.85 34.29 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c849b305-168b-4a9d-aa61-7e1c3c3e22b1")
-	)
 	(global_label "speedo_in"
 		(shape input)
 		(at 257.81 31.75 0)
@@ -8395,6 +8349,28 @@
 			)
 		)
 	)
+	(global_label "comp_ref"
+		(shape input)
+		(at 110.49 85.09 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "81cf7ab7-afc1-4b00-9d4c-d74511a78a16")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 98.8568 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "can-"
 		(shape input)
 		(at 74.93 46.99 0)
@@ -8479,6 +8455,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "comp_ref"
+		(shape input)
+		(at 199.39 31.75 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "96dc17bd-7a16-4689-b7a0-d531b8505e9a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.7568 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -8682,7 +8680,7 @@
 	)
 	(global_label "idle"
 		(shape input)
-		(at 110.49 85.09 180)
+		(at 110.49 87.63 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8692,7 +8690,7 @@
 		)
 		(uuid "c0608b52-802b-45eb-9932-68e172aba343")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 102.9894 85.09 0)
+			(at 102.9894 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12266,84 +12264,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 193.04 29.21 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "74632c45-f6e1-4fb3-a675-83332a5ea525")
-		(property "Reference" "R12"
-			(at 189.23 27.432 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "4.7kOhm"
-			(at 188.722 27.178 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 193.04 30.988 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.koaspeer.com/catimages/Products/MF-MFS-RK/MF-MFS-RK.pdf"
-			(at 193.04 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "1/4 watt resistor"
-			(at 193.04 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" " MF1/4DC4701F "
-			(at 193.04 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1963d785-5419-4bec-817d-fb7c2011ef3b")
-		)
-		(pin "2"
-			(uuid "55561e82-deea-4deb-91fa-7ab3771592aa")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "R12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:D_Schottky")
 		(at 119.38 151.13 270)
 		(unit 1)
@@ -15547,85 +15467,6 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "C2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 200.66 29.21 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f2fbbb83-def7-480c-889f-f68d3b5c1759")
-		(property "Reference" "R10"
-			(at 201.676 28.448 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "68kOhm"
-			(at 202.3622 30.988 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 200.66 27.432 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.koaspeer.com/catimages/Products/MF-MFS-RK/MF-MFS-RK.pdf"
-			(at 200.66 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "1/4 watt resistor"
-			(at 200.66 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" " MFR-25FBF52-100K "
-			(at 200.66 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "86f851c6-096a-44e0-be3f-90ea2b0de01e")
-		)
-		(pin "2"
-			(uuid "df170863-ee42-4a8f-b91e-f8b2246e7411")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "R10")
 					(unit 1)
 				)
 			)
