@@ -125,14 +125,13 @@ int selfTestPhaseStart;
 int selfTestStage = 0;
 
 uint8_t speedoSignal;
-double speedoFreqSum;
 //mutex for hardware pulse counters
 portMUX_TYPE pcntMux0 = portMUX_INITIALIZER_UNLOCKED;
 hw_timer_t *speedoTimer;
 
 int loopCount;
 float speedSensorFrequency;
-int speedSensorPulses;
+volatile int speedSensorPulses;
 
 elapsedMillis lastActivity;
 elapsedMillis lastCCDLoop;
@@ -212,13 +211,11 @@ void selfTest()
 
 void IRAM_ATTR handleSpeedSensor()
 {
-      int16_t pulses = 0;
-    pcnt_get_counter_value(PCNT_UNIT_0, &pulses);
+  int16_t pulses = 0;
+  pcnt_get_counter_value(PCNT_UNIT_0, &pulses);
   if (pulses > 0)
   {
     speedSensorPulses += pulses;
-    speedoFreqSum = speedoFreqSum + pulses;
-    speedoFreqSum = 0;
     speedo.SetSpeedSensorFrequency(pulses / 0.200);
   
     // Either way, actual pulses are accounted for, and can be used to update
@@ -340,8 +337,6 @@ void setupCAN()
 void setupSpeedo()
 {
   pinMode(SPEEDO_SENSOR_IN, INPUT_PULLUP);
-  pinMode(SPEEDO_VREF_PIN, OUTPUT);
-  dacWrite(SPEEDO_VREF_PIN, 255*(SPEEDO_VREF/MCU_VOLTAGE));
   pcnt_config_t pcnt_config;
 
   pcnt_config.pulse_gpio_num = SPEEDO_SENSOR_IN;
@@ -425,7 +420,7 @@ void setup()
   
   // Set comparator VREF
   pinMode(COMPARATOR_VREF_PIN, OUTPUT);
-  dacWrite(COMPARATOR_VREF_PIN, 255*(COMPARATOR_VREF/MCU_VOLTAGE));
+  //dacWrite(COMPARATOR_VREF_PIN, 255*(COMPARATOR_VREF/MCU_VOLTAGE));
 
   // Give the cluster time to boot
   delay(3000);
@@ -470,7 +465,7 @@ void setup()
   {
     setupSpeedo();
   }
-    Serial.println("D");
+  Serial.println("D");
 
   lastActivity = millis();
 
@@ -513,8 +508,6 @@ void loop()
     float t = constrain(float(millis() - selfTestPhaseStart) /
                             SELF_TEST_STAGE_DURATION,
                         0.0, 1.0);
-    Serial.print("Self test stage ");
-    Serial.println(selfTestStage);
     if (selfTestStage == 1)
     {
       speedo.SetKPH(160 * t);
