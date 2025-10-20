@@ -9928,7 +9928,7 @@
 	)
 	(symbol
 		(lib_id "Device:D_TVS")
-		(at 196.85 102.87 90)
+		(at 196.85 102.87 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9936,7 +9936,7 @@
 		(dnp no)
 		(uuid "2561b8e8-4c48-444f-8f52-ae2ceee7b54f")
 		(property "Reference" "D5"
-			(at 198.882 101.6578 90)
+			(at 194.818 104.0822 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9945,7 +9945,7 @@
 			)
 		)
 		(property "Value" "D_TVS"
-			(at 198.882 104.0821 0)
+			(at 194.818 101.6579 0)
 			(effects
 				(font
 					(size 1.27 1.27)
