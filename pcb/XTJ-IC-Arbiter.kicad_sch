@@ -12824,7 +12824,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SA26CA"
+		(property "Value" "SA26A"
 			(at 68.072 141.732 0)
 			(effects
 				(font
