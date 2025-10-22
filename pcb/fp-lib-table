@@ -16,4 +16,5 @@
   (lib (name "Oscillator")(type "KiCad")(uri "${KIPRJMOD}/parts/ECS-100AX-010/KiCad")(options "")(descr ""))
   (lib (name "enclosure")(type "KiCad")(uri "${KIPRJMOD}/parts/enclosure")(options "")(descr ""))
   (lib (name "R2R Comp")(type "KiCad")(uri "${KIPRJMOD}/parts/TLV3704IN/KiCad")(options "")(descr ""))
+  (lib (name "TVS")(type "KiCad")(uri "${KIPRJMOD}/parts/SA26A/KiCad")(options "")(descr ""))
 )

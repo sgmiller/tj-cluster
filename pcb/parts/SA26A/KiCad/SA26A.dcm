@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SA26A
+D 42.1V Clamp 12.1A Ipp Tvs Diode Through Hole DO-204AC (DO-15)
+K
+F https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diodes/littelfuse_tvs_diode_sa_datasheet.pdf.pdf
+$ENDCMP
+#
+#End Doc Library
