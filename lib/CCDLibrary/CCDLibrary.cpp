@@ -153,6 +153,7 @@ void CCDLibrary::transmitDelayHandler()
 
 void CCDLibrary::clockGeneratorInit()
 {
+  // Use of the ESP32's LEDC unit is efficient and immune to sleep states
   ledc_timer_config_t ledc_timer;
   ledc_timer.speed_mode = LEDC_HIGH_SPEED_MODE;           // timer mode
   ledc_timer.duty_resolution = LEDC_TIMER_3_BIT; // resolution of PWM duty
