@@ -7975,7 +7975,7 @@
 	)
 	(global_label "IO{slash}3"
 		(shape input)
-		(at 33.02 101.6 0)
+		(at 33.02 104.14 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7985,7 +7985,7 @@
 		)
 		(uuid "504154db-ef63-4fc5-92b3-077af84c570a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 39.9083 101.5206 0)
+			(at 45.3789 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8393,7 +8393,7 @@
 	)
 	(global_label "speedo_in"
 		(shape input)
-		(at 33.02 104.14 0)
+		(at 33.02 101.6 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8403,7 +8403,7 @@
 		)
 		(uuid "b3f6827b-ae35-4312-a8de-fd50e699b034")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 45.3789 104.14 0)
+			(at 39.9083 101.5206 0)
 			(effects
 				(font
 					(size 1.27 1.27)
