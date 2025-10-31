@@ -42,13 +42,14 @@
 #include <TinyPICO.h>
 #include "driver/pcnt.h"
 #include <DallasTemperature.h>
+#include <BleSerial.h>
 
 TinyPICO tp = TinyPICO();
 Watchdog wdt(5);
 bool activity, speedoOn;
 
 // Serial port, swap to external pins when not debugging
-#define Stdout Serial
+//#define Stdout Serial
 
 // CAN bus
 #define CAN1_TX GPIO_NUM_26
@@ -101,7 +102,7 @@ bool thermoPresent;
 
 // Bluetooth
 #define SERVICE_UUID "3ea24ab1-256b-4baf-ab04-a98f32993856"
- // BleSerial SerialBT;
+BleSerial Stdout;
 
 // All instruments
 BatteryAndOil battOil;
@@ -375,10 +376,11 @@ void printAddress(DeviceAddress deviceAddress)
 
 void setup()
 {
-  Stdout.begin(115200);
+  Stdout.begin("CCD-MCU");
+  //Stdout.begin(115200);
   
 
-  while (!Stdout);  
+  //while (!Stdout);  
   delay (1000);
     
   /*
