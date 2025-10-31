@@ -743,15 +743,7 @@
       },
       {
         "netclass": "Signal",
-        "pattern": "/sp*"
-      },
-      {
-        "netclass": "Signal",
         "pattern": "clk"
-      },
-      {
-        "netclass": "Signal",
-        "pattern": "sp*"
       }
     ]
   },

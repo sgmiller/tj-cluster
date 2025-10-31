@@ -9427,6 +9427,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 189.23 43.18 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1d0f189d-85c1-48f1-87cc-79c2831e437d")
+		(property "Reference" "#PWR025"
+			(at 189.23 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 189.23 47.3131 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 189.23 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 189.23 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 189.23 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ad63dd1c-0a0d-4249-b97f-d19e87e83b3d")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "#PWR025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 27.94 54.61 180)
 		(unit 1)
@@ -9820,7 +9886,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "680Ohm"
+		(property "Value" "180kOhm"
 			(at 198.12 43.434 90)
 			(effects
 				(font
@@ -9856,7 +9922,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "MF1/4DC1302F"
+		(property "MPN" " MF1/4DCT52R1803F "
 			(at 195.58 40.64 90)
 			(effects
 				(font
@@ -10712,72 +10778,6 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "TP3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 189.23 43.18 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3fd33a5e-9341-4019-b07f-5f6f46025012")
-		(property "Reference" "#PWR025"
-			(at 189.23 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 191.135 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 189.23 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 189.23 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 189.23 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7b589c4d-718d-4e07-97e4-ae8c9fa654f3")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -13937,7 +13937,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "13kOhm"
+		(property "Value" "2.2MOhm"
 			(at 191.0079 36.8879 0)
 			(effects
 				(font
@@ -13973,7 +13973,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "MF1/4DC1302F"
+		(property "MPN" " MF1/4LCT52R225J "
 			(at 189.23 38.1 90)
 			(effects
 				(font
