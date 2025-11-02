@@ -1349,6 +1349,176 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:D_Small"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at -1.27 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "D_Small"
+				(at -3.81 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Diode, small symbol"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_Small_0_1"
+				(polyline
+					(pts
+						(xy -0.762 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.762 -1.016) (xy -0.762 1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.016) (xy -0.762 0) (xy 0.762 1.016) (xy 0.762 -1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Small_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 1.778)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 1.778)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:D_Zener"
 			(pin_numbers
 				(hide yes)
@@ -5195,16 +5365,16 @@
 		(uuid "fb47090d-43b7-492a-95ca-d35f400f0a26")
 	)
 	(junction
+		(at 44.45 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0354fd7f-4984-49e2-a7af-a11296d89690")
+	)
+	(junction
 		(at 157.48 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0532b202-858d-4d8b-a286-150f316bf011")
-	)
-	(junction
-		(at 40.64 96.52)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "08b51437-8dfb-44e4-9c85-0d07eb4e9d3e")
 	)
 	(junction
 		(at 146.05 49.53)
@@ -5931,6 +6101,16 @@
 			(type default)
 		)
 		(uuid "1fbf5207-4066-4487-a4d8-4c8ffcc5f160")
+	)
+	(wire
+		(pts
+			(xy 44.45 86.36) (xy 38.1 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2561f3de-c6f1-4cd5-9edc-9d3cf6e56cc4")
 	)
 	(wire
 		(pts
@@ -7562,8 +7742,28 @@
 		)
 		(uuid "ffa1b78e-423d-4e22-a362-33cc9b7377fd")
 	)
+	(label "can_term+"
+		(at 72.39 53.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "227ae106-e339-4a2f-b180-f59cb41c8662")
+	)
+	(label "can_term-"
+		(at 63.5 53.34 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "251918f6-76d5-4ace-ae16-92732c16ad91")
+	)
 	(label "+5VO"
-		(at 33.02 99.06 0)
+		(at 33.02 101.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7592,6 +7792,36 @@
 		)
 		(uuid "57b7f1cf-e1b4-4285-ba8f-a2c3f3a5c472")
 	)
+	(label "ccd_term+"
+		(at 165.1 46.99 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5e69cb98-88fd-4e0f-9b08-5a6ea572c369")
+	)
+	(label "ccd_term"
+		(at 172.72 44.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "61aaa73e-5721-42b1-aeb9-7252d1739e2b")
+	)
+	(label "ccd_term-"
+		(at 165.1 44.45 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "690c8e64-38e3-4930-901a-d5096989b438")
+	)
 	(label "spd_lpass"
 		(at 257.81 44.45 0)
 		(effects
@@ -7601,6 +7831,16 @@
 			(justify left bottom)
 		)
 		(uuid "6bf9e15a-021d-4dd0-b5ff-0be30fd7527f")
+	)
+	(label "can_term"
+		(at 72.39 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "788dbfba-326f-43e5-ba9b-02fbc6f39f5e")
 	)
 	(label "Vsw"
 		(at 114.3 147.32 0)
@@ -7613,7 +7853,7 @@
 		(uuid "9ba2fe14-aad1-4604-a155-ef6f4f430328")
 	)
 	(label "VIN"
-		(at 35.56 96.52 0)
+		(at 33.02 86.36 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8195,7 +8435,7 @@
 	)
 	(global_label "IO{slash}2"
 		(shape input)
-		(at 33.02 101.6 0)
+		(at 33.02 99.06 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8205,7 +8445,7 @@
 		)
 		(uuid "8830097d-cad9-4676-a81e-4878e22c4f3e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 39.9083 101.5206 0)
+			(at 39.9083 98.9806 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8393,7 +8633,7 @@
 	)
 	(global_label "speedo_in"
 		(shape input)
-		(at 33.02 86.36 0)
+		(at 35.56 96.52 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8403,7 +8643,7 @@
 		)
 		(uuid "b3f6827b-ae35-4312-a8de-fd50e699b034")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 255.27 191.77 0)
+			(at 257.81 201.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9296,7 +9536,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 40.64 96.52 180)
+		(at 44.45 86.36 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9304,7 +9544,7 @@
 		(dnp no)
 		(uuid "1486e0a8-55d8-41a0-a755-205a3fddfa28")
 		(property "Reference" "#FLG03"
-			(at 40.64 98.425 0)
+			(at 44.45 88.265 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9313,7 +9553,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 42.291 97.79 0)
+			(at 46.101 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9322,7 +9562,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 40.64 96.52 0)
+			(at 44.45 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9331,7 +9571,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 40.64 96.52 0)
+			(at 44.45 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9340,7 +9580,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 40.64 96.52 0)
+			(at 44.45 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10199,7 +10439,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse_Small")
-		(at 38.1 96.52 180)
+		(at 35.56 86.36 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10208,7 +10448,7 @@
 		(fields_autoplaced yes)
 		(uuid "3425db70-f513-452b-9a75-a3a0050a9aac")
 		(property "Reference" "F2"
-			(at 38.1 91.9945 0)
+			(at 35.56 81.8345 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10216,7 +10456,7 @@
 			)
 		)
 		(property "Value" "1a"
-			(at 38.1 94.4188 0)
+			(at 35.56 84.2588 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10225,7 +10465,7 @@
 			)
 		)
 		(property "Footprint" "parts:FUSE_36911000000"
-			(at 38.1 96.52 0)
+			(at 35.56 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10234,7 +10474,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_392_datasheet?assetguid=3d41d6b7-af0b-41bc-bce0-d5b1432b6058"
-			(at 38.1 96.52 0)
+			(at 35.56 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10243,7 +10483,7 @@
 			)
 		)
 		(property "Description" "Fuse, small symbol"
-			(at 38.1 96.52 0)
+			(at 35.56 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10252,7 +10492,7 @@
 			)
 		)
 		(property "MPN" "39211000440"
-			(at 38.1 96.52 0)
+			(at 35.56 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10261,7 +10501,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 38.1 96.52 0)
+			(at 35.56 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10270,7 +10510,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 38.1 96.52 0)
+			(at 35.56 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10279,7 +10519,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 38.1 96.52 0)
+			(at 35.56 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10957,16 +11197,15 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 40.64 96.52 270)
+		(at 44.45 86.36 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "47d3c4e7-7931-476c-8aae-b13b56caaeab")
 		(property "Reference" "#PWR010"
-			(at 36.83 96.52 0)
+			(at 40.64 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10975,7 +11214,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 43.815 96.52 90)
+			(at 43.942 84.582 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10984,7 +11223,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 40.64 96.52 0)
+			(at 44.45 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10993,7 +11232,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 40.64 96.52 0)
+			(at 44.45 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11002,7 +11241,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 40.64 96.52 0)
+			(at 44.45 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11885,6 +12124,102 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Small")
+		(at 40.64 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "62c88483-8220-4e22-820e-e3699f945cbd")
+		(property "Reference" "D2"
+			(at 40.64 98.8639 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D_Small"
+			(at 40.64 98.8638 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal"
+			(at 40.64 101.6 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.panjit.com.tw/upload/datasheet/PG4001_SERIES.pdf"
+			(at 40.64 101.6 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "General purpose diode"
+			(at 40.64 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 40.64 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 40.64 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "PG4007_R2_00001"
+			(at 40.64 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "062f72ed-7727-44fb-b4bd-8ae147cc3da4")
+		)
+		(pin "1"
+			(uuid "4cb6661f-14b4-4676-86c9-ef89c54f1c11")
+		)
+		(instances
+			(project ""
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "D2")
 					(unit 1)
 				)
 			)
@@ -13394,7 +13729,7 @@
 	)
 	(symbol
 		(lib_id "Device:Fuse_Small")
-		(at 35.56 99.06 180)
+		(at 35.56 101.6 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13403,7 +13738,7 @@
 		(fields_autoplaced yes)
 		(uuid "803f0feb-98a9-472f-be01-d90d4972129f")
 		(property "Reference" "F1"
-			(at 35.56 94.5345 0)
+			(at 35.56 97.0745 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13411,7 +13746,7 @@
 			)
 		)
 		(property "Value" "0.5a"
-			(at 35.56 96.9588 0)
+			(at 35.56 99.4988 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13420,7 +13755,7 @@
 			)
 		)
 		(property "Footprint" "parts:FUSE_36911000000"
-			(at 35.56 99.06 0)
+			(at 35.56 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13429,7 +13764,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_392_datasheet?assetguid=3d41d6b7-af0b-41bc-bce0-d5b1432b6058"
-			(at 35.56 99.06 0)
+			(at 35.56 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13438,7 +13773,7 @@
 			)
 		)
 		(property "Description" "Fuse, small symbol"
-			(at 35.56 99.06 0)
+			(at 35.56 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13447,7 +13782,7 @@
 			)
 		)
 		(property "MPN" "39905000000"
-			(at 35.56 99.06 0)
+			(at 35.56 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13456,7 +13791,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 35.56 99.06 0)
+			(at 35.56 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13465,7 +13800,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 35.56 99.06 0)
+			(at 35.56 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13474,7 +13809,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 35.56 99.06 0)
+			(at 35.56 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15185,16 +15520,15 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 38.1 99.06 270)
+		(at 43.18 101.6 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "be349a17-8819-4ef2-b47a-d5bed9894816")
 		(property "Reference" "#PWR012"
-			(at 34.29 99.06 0)
+			(at 39.37 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15203,7 +15537,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 41.275 99.06 90)
+			(at 42.672 103.378 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15212,7 +15546,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 38.1 99.06 0)
+			(at 43.18 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15221,7 +15555,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 38.1 99.06 0)
+			(at 43.18 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15230,7 +15564,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 38.1 99.06 0)
+			(at 43.18 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
