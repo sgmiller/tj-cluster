@@ -1,0 +1,5 @@
+(version 1)
+
+(rule power_isolation 
+  (constraint clearance (min 0.5mm))
+  (condition "A.hasNetclass('PWR') && (B.hasNetclass('PWR') || B.hasNetclass('GND')) && A.Layer==B.Layer"))
