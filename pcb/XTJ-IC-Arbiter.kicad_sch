@@ -10012,7 +10012,7 @@
 	)
 	(symbol
 		(lib_id "Jumper:Jumper_2_Small_Open")
-		(at 72.39 50.8 270)
+		(at 72.39 50.8 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10021,16 +10021,16 @@
 		(fields_autoplaced yes)
 		(uuid "254c99b3-f30e-4c7e-b09b-095aea752394")
 		(property "Reference" "JP1"
-			(at 74.2979 50.8 90)
+			(at 73.279 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "Jumper_2_Small_Open"
-			(at 75.2561 50.8 0)
+			(at 69.5239 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10751,7 +10751,7 @@
 	(symbol
 		(lib_id "Jumper:Jumper_2_Small_Open")
 		(at 161.29 46.99 0)
-		(mirror x)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10759,7 +10759,7 @@
 		(dnp no)
 		(uuid "3ad37646-da8a-4d26-8c8e-964d65e078b6")
 		(property "Reference" "JP4"
-			(at 163.068 50.292 0)
+			(at 159.512 43.688 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10768,7 +10768,7 @@
 			)
 		)
 		(property "Value" "Jumper_2_Small_Open"
-			(at 161.29 49.8561 0)
+			(at 161.29 44.1239 0)
 			(effects
 				(font
 					(size 1.27 1.27)
