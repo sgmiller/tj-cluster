@@ -20,6 +20,7 @@
 #define CCDLibrary_H
 
 #include <Arduino.h>
+#include <Stream.h>
 
 #if defined (__AVR_ATmega1280__) || defined (__AVR_ATmega2560__) // Arduino Mega / ATmega2560, UART1 channel
     #define RX_DDR  DDRD
@@ -93,7 +94,7 @@ class CCDLibrary
         CCDLibrary();
         ~CCDLibrary();
         bool transmitting;
-        void begin(float baudrate = 7812.5, bool dedicatedTransceiver = 1, uint8_t busIdleBits = 10, bool verifyRxChecksum = 1, bool calculateTxChecksum = 1);
+        virtual void begin(Stream* ser = &Serial, float baudrate = 7812.5, bool dedicatedTransceiver = 1, uint8_t busIdleBits = 10, bool verifyRxChecksum = 1, bool calculateTxChecksum = 1);
         uint8_t write(uint8_t *buffer, uint8_t bufferLength);
         void listenAll();
         void listen(uint8_t* ids);
@@ -112,6 +113,7 @@ class CCDLibrary
         volatile bool _transmitAllowed;
 
     private:
+        Stream *Stdout;
         uint8_t _message[16];
         uint8_t _messageLength;
         volatile uint8_t _serialRxBuffer[16];

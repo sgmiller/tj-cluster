@@ -19,15 +19,14 @@
 #include <CCDLibrary.h>
 #include "driver/ledc.h"
 
-#define Stdout Serial
+//#define Stdout Serial
 
 hw_timer_t *Timer0_Cfg = NULL;
 
 CCDLibrary CCD;
 
-CCDLibrary::CCDLibrary()
-{
-    // Empty class constructor.
+CCDLibrary::CCDLibrary() {
+
 }
 
 CCDLibrary::~CCDLibrary()
@@ -48,8 +47,9 @@ static void IRAM_ATTR globalBusIdleChange() {
     CCD.busIdleChange();
 }
 
-void CCDLibrary::begin(float baudrate, bool dedicatedTransceiver, uint8_t busIdleBits, bool verifyRxChecksum, bool calculateTxChecksum)
+void CCDLibrary::begin(Stream* ser, float baudrate, bool dedicatedTransceiver, uint8_t busIdleBits, bool verifyRxChecksum, bool calculateTxChecksum)
 {
+    Stdout = ser;
     // baudrate:
     //   CCD_DEFAULT_SPEED: one and only speed for CCD-bus is 7812.5 baud
     // dedicatedTransceiver:
@@ -145,7 +145,7 @@ void CCDLibrary::transmitDelayTimerStart()
 
 void CCDLibrary::transmitDelayHandler()
 {
-    Stdout.println("Transmit now allowed");
+    Stdout->println("Transmit now allowed");
 
     timerAlarmDisable(Timer0_Cfg);
     _transmitAllowed = true; // set flag
@@ -158,7 +158,8 @@ void CCDLibrary::clockGeneratorInit()
   ledc_timer.speed_mode = LEDC_HIGH_SPEED_MODE;           // timer mode
   ledc_timer.duty_resolution = LEDC_TIMER_3_BIT; // resolution of PWM duty
   ledc_timer.timer_num = LEDC_TIMER_0;            // timer index
-  ledc_timer.freq_hz = CLOCK_SPEED;                      // frequency of PWM signal
+  ledc_timer.freq_hz = CLOCK_SPEED;    // frequency of PWM signal
+  ledc_timer.clk_cfg = LEDC_AUTO_CLK;                  
   // Set configuration of timer0 for high speed channels
   esp_err_t result = ledc_timer_config(&ledc_timer);
   if (result == ESP_OK)
@@ -194,7 +195,7 @@ void CCDLibrary::timer1Handler()
 }
 
 void IRAM_ATTR CCDLibrary::busIdleChange() {
-    Stdout.println("bus idle change"); // Never have seen this
+    Stdout->println("bus idle change"); // Never have seen this
     if (digitalRead(IDLE_PIN) == 1) {
         _busIdle = false; // clear flag
         _transmitAllowed = false; // clear flag, interrupt controlled message transmission is not affected by this flag
@@ -225,12 +226,12 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
 
     transmitting = true;
 
-    Stdout.print("CCD <- ");
+    Stdout->print("CCD <- ");
     for (int i=0; i<bufferLength; i++) {
-        Stdout.print(buffer[i], HEX);
-        Stdout.print(" ");
+        Stdout->print(buffer[i], HEX);
+        Stdout->print(" ");
     }
-    Stdout.println();
+    Stdout->println();
     CCDSERIAL.write(buffer, bufferLength);
     return 0;
 }

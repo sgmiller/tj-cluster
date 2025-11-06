@@ -42,15 +42,8 @@
 #include <TinyPICO.h>
 #include "driver/pcnt.h"
 #include <DallasTemperature.h>
-#include <BleSerial.h>
 
-TinyPICO tp = TinyPICO();
-Watchdog wdt(5);
-bool activity, speedoOn;
-
-// Serial port, swap to external pins when not debugging
-//#define Stdout Serial
-
+#define BLUETOOTH_CONSOLE true
 // CAN bus
 #define CAN1_TX GPIO_NUM_26
 #define CAN1_RX GPIO_NUM_27
@@ -100,9 +93,23 @@ DallasTemperature sensors(&oneWire);
 DeviceAddress internalTemp;
 bool thermoPresent;
 
+TinyPICO tp = TinyPICO();
+Watchdog wdt(5);
+bool activity, speedoOn;
+
+
+#ifdef BLUETOOTH_CONSOLE
+#include <BluetoothSerial.h>
 // Bluetooth
 #define SERVICE_UUID "3ea24ab1-256b-4baf-ab04-a98f32993856"
-BleSerial Stdout;
+elapsedMillis lastBluetooth;
+BluetoothSerial Stdout;
+uint8_t unitMACAddress[6];  // Use MAC address in BT broadcast and display
+char deviceName[20];        // The serial string that is broadcast.
+#else 
+// Serial port, swap to external pins when not debugging
+#define Stdout Serial
+#endif
 
 // All instruments
 BatteryAndOil battOil;
@@ -170,6 +177,7 @@ void selfTest()
   resetGauges();
   Stdout.print("Self test stage ");
   Stdout.println(selfTestStage);
+  Stdout.flush();
   if (selfTestStage == 3)
   {
     featureStatus.SetCruiseEnabled(true);
@@ -374,14 +382,36 @@ void printAddress(DeviceAddress deviceAddress)
   }
 }
 
+#ifdef BLUETOOTH_CONSOLE
+void setupBluetooth() {
+  // Get unit MAC address
+  esp_read_mac(unitMACAddress, ESP_MAC_WIFI_STA);
+  
+  // Convert MAC address to Bluetooth MAC (add 2): https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/system.html#mac-address
+  unitMACAddress[5] += 2;                                                          
+  
+  //Create device name
+  sprintf(deviceName, "BleBridge-%02X%02X", unitMACAddress[4], unitMACAddress[5]); 
+  
+  Stdout.setPin("1234567");
+  Stdout.begin(deviceName);
+  //Stdout.setTimeout(10);
+}
+#endif
+
 void setup()
 {
-  Stdout.begin("CCD-MCU");
-  //Stdout.begin(115200);
-  
+  //setCpuFrequencyMhz(10);
+  tp.DotStar_SetPixelColor(255,255,0);
 
-  //while (!Stdout);  
+  #ifdef BLUETOOTH_CONSOLE
+  setupBluetooth();
+  #else
+  Stdout.begin(115200);
+  while (!Stdout);  
+  #endif
   delay (1000);
+  tp.DotStar_SetPixelColor(255,128,0);
     
   /*
   // Watchdog
@@ -457,7 +487,7 @@ void setup()
   CCD.onError(CCDHandleError); // subscribe to the error event and call this
   Serial.println("B2");
                                // function when an error occurs
-  CCD.begin();      
+  CCD.begin(&Stdout);      
            // CDP68HC68S1
   Serial.println("C");
 
@@ -470,14 +500,18 @@ void setup()
   Serial.println("D");
 
   lastActivity = millis();
+  tp.DotStar_SetPixelColor(0,128,128);
 
-  tp.DotStar_Clear();
   // Start the CCD writer
   _writer.Setup(&_writer);
   Serial.println("E");
 
   //setupCAN();
   Stdout.println("Setup complete");
+  tp.DotStar_SetPixelColor(0,128,0);
+  tp.DotStar_Clear();
+  pinMode(DOTSTAR_PWR, OUTPUT);
+  digitalWrite(DOTSTAR_PWR, 0);
 
 }
 
@@ -561,4 +595,15 @@ void loop()
     activity = false;
     //digitalWrite(LED_BUILTIN, LOW);
   }
+
+  #ifdef BLUETOOTH_CONSOLE
+  // Disable bluetooth after 2 minutes disconnected to save power
+  if (lastBluetooth > 120000) {
+    if (Stdout.connected()) {
+      lastBluetooth = 0;
+    } else {
+      Stdout.end();
+    }
+  }
+  #endif
 }
