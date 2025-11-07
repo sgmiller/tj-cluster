@@ -46,27 +46,26 @@
 
 //#define BLUETOOTH_CONSOLE
 // CAN bus
-#define CAN1_TX GPIO_NUM_26
-#define CAN1_RX GPIO_NUM_27
+#define CAN1_TX GPIO_NUM_19
+#define CAN1_RX GPIO_NUM_23
 
-#define SELF_TEST_MODE true
-#define USING_SPEED_SENSOR false
+#define POST_BOOT_CPU_MHZ 10
+
+#define SELF_TEST_MODE
+
+//#define USING_SPEED_SENSOR
 #define SPEEDO_SENSOR_IN 27
 #define SPEED_SENSOR_WINDOW 100 //ms
 #define SPEEDOMETER_RATIO 1.59
 #define SPEEDO_INTERVAL 200 // ms
-#define SPEEDO_VREF_PIN GPIO_NUM_25
-#define SPEEDO_VREF 0.1 // V
-#define COMPARATOR_VREF 0.5 // V
-#define COMPARATOR_VREF_PIN GPIO_NUM_26
 
-#define DISABLE_AIRBAG_LAMP true // Set false if you have a working airbag module on the CCD bus
+#define DISABLE_AIRBAG_LAMP // Define if you don't have a working airbag module on the CCD bus
 #define INSTRUMENT_COUNT 11
 #define ACTIVITY_ON_MS 25 // ms
 #define SELF_TEST_STAGE_COUNT 10
 #define SELF_TEST_STAGE_DURATION 3000
-#define VBAT_VD_R1 50000.0 // VBAT voltage divider R1 value (ohms)
-#define VBAT_VD_R2 10000.0 // VBAT voltage divider R2 value (ohms)
+#define VBAT_VD_R1 4300000.0 // VBAT voltage divider R1 value (ohms)
+#define VBAT_VD_R2 820000.0 // VBAT voltage divider R2 value (ohms)
 #define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) 
 #define MCU_VOLTAGE 3.3
 #define PULSES_PER_AXLE_REVOLUTION 8
@@ -75,6 +74,7 @@
 #define TIRE_CIRCUMFERENCE 3.14159 * TIRE_DIAMETER
 #define PULSES_PER_MILE (5280 / TIRE_CIRCUMFERENCE) * PULSES_PER_AXLE_REVOLUTION
 #define BATTERY_MEASURE_INTERVAL 200 // ms
+#define VBAT_MEASURE_SIG GPIO_NUM_33
 #define AIRBAG_OK_INTERVAL 1000      // ms
 #define LOOP_DELAY 25 //ms
 
@@ -85,7 +85,7 @@
 
 // Internal temp
 // Data wire is plugged into port 2 on the Arduino
-#define ONE_WIRE_BUS 23
+#define ONE_WIRE_BUS GPIO_NUM_5
 // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
 OneWire oneWire(ONE_WIRE_BUS);
 // Pass our oneWire reference to Dallas Temperature. 
@@ -161,10 +161,9 @@ void resetGauges()
   battOil.SetBatteryVoltage(14);
   battOil.SetOilPressure(20);
   battOil.SetOilTemperature(155);
-  if (!SELF_TEST_MODE)
-  {
-    fuel.SetPercentage(1, 0.0, 1, 254);
-  }
+  #ifndef SELF_TEST_MODE
+  fuel.SetPercentage(1, 0.0, 1, 254);
+  #endif
 
   featureStatus.SetCruiseEnabled(false);
   featureStatus.SetUpShift(false);
@@ -172,6 +171,7 @@ void resetGauges()
   checkGaugesLamp.SetLamp(false);
 }
 
+#ifdef SELF_TEST_MODE
 void selfTest()
 {
   selfTestPhaseStart = millis();
@@ -219,7 +219,9 @@ void selfTest()
     selfTestStage = 0;
   }
 }
+#endif
 
+#ifdef USING_SPEED_SENSOR
 void IRAM_ATTR handleSpeedSensor()
 {
   int16_t pulses = 0;
@@ -239,6 +241,7 @@ void IRAM_ATTR handleSpeedSensor()
     }
   }
 }
+#endif
 
 void CCDHandleError(CCD_Operations op, CCD_Errors err)
 {
@@ -347,6 +350,7 @@ void setupCAN()
 
 void setupSpeedo()
 {
+  #ifdef USING_SPEED_SENSOR
   pinMode(SPEEDO_SENSOR_IN, INPUT_PULLUP);
   pcnt_config_t pcnt_config;
 
@@ -372,6 +376,7 @@ void setupSpeedo()
   timerAttachInterrupt(speedoTimer, handleSpeedSensor, true);
 
   timerAlarmWrite(speedoTimer, SPEEDO_INTERVAL * 1000, true);  
+  #endif
 }
 
 // function to print a device address
@@ -403,7 +408,6 @@ void setupBluetooth() {
 
 void setup()
 {
-  //setCpuFrequencyMhz(10);
   tp.DotStar_SetPixelColor(255,255,0);
 
   //#ifdef BLUETOOTH_CONSOLE
@@ -452,10 +456,6 @@ void setup()
   pinMode(19, INPUT_PULLDOWN);
   pinMode(23, INPUT_PULLDOWN);
   
-  // Set comparator VREF
-  pinMode(COMPARATOR_VREF_PIN, OUTPUT);
-  //dacWrite(COMPARATOR_VREF_PIN, 255*(COMPARATOR_VREF/MCU_VOLTAGE));
-
   // Give the cluster time to boot
   delay(3000);
   //wdt.begin(config);
@@ -493,12 +493,7 @@ void setup()
            // CDP68HC68S1
   Serial.println("C");
 
-
-
-  if (USING_SPEED_SENSOR)
-  {
-    setupSpeedo();
-  }
+  setupSpeedo();
   Serial.println("D");
 
   lastActivity = millis();
@@ -514,7 +509,7 @@ void setup()
   tp.DotStar_Clear();
   pinMode(DOTSTAR_PWR, OUTPUT);
   digitalWrite(DOTSTAR_PWR, 0);
-
+  setCpuFrequencyMhz(POST_BOOT_CPU_MHZ);
 }
 
 void tempCheck() {
@@ -541,8 +536,7 @@ void loop()
   loopCount++;
 
 
-  if (SELF_TEST_MODE)
-  {
+  #ifdef SELF_TEST_MODE
     float t = constrain(float(millis() - selfTestPhaseStart) /
                             SELF_TEST_STAGE_DURATION,
                         0.0, 1.0);
@@ -557,46 +551,49 @@ void loop()
     if (sinceLastStage > SELF_TEST_STAGE_DURATION) {
       sinceLastStage = 0;
       selfTest();
+    } 
+  #else
+    if (lastBattMeasure > BATTERY_MEASURE_INTERVAL)
+    {
+      battOil.SetBatteryVoltage(measureBattery());
+      lastBattMeasure = 0;
     }
-  }
-  if (!SELF_TEST_MODE && lastBattMeasure > BATTERY_MEASURE_INTERVAL)
-  {
-    battOil.SetBatteryVoltage(measureBattery());
-    lastBattMeasure = 0;
-  }
-  if (DISABLE_AIRBAG_LAMP && lastAirbagOkXmt > AIRBAG_OK_INTERVAL)
-  {
-    airbagOk.Refresh();
-    lastAirbagOkXmt = 0;
-  }
+    #ifdef DISABLE_AIRBAG_LAMP
+      if (lastAirbagOkXmt > AIRBAG_OK_INTERVAL)
+      {
+        airbagOk.Refresh();
+        lastAirbagOkXmt = 0;
+      }
+    #endif
 
-  if (lastCCDLoop > INTERWRITE_DELAY)
-  {
-    lastCCDLoop = 0;
-    bool newActivity = _writer.Loop();
-    activity = activity || newActivity;
-  }
+    if (lastCCDLoop > INTERWRITE_DELAY)
+    {
+      lastCCDLoop = 0;
+      bool newActivity = _writer.Loop();
+      activity = activity || newActivity;
+    }
 
-  if (lastTempCheck > TEMP_CHECK_INTERVAL) {
-    lastTempCheck = 0;
-    tempCheck();
-  }
+    if (lastTempCheck > TEMP_CHECK_INTERVAL) {
+      lastTempCheck = 0;
+      tempCheck();
+    }
 
-  // DAS BLINKEN LIGHTS! .. but seriously, blink the builtin LED on activity
-  if (activity)
-  {
-    // Feed the watchdog on activity, since there should be some pretty
-    // regularly or something is wrong.
-    //wdt.feed();
-    //digitalWrite(LED_BUILTIN, HIGH);
-    activity = false;
-  }
-  else if (lastActivity >= ACTIVITY_ON_MS)
-  {
-    lastActivity = 0;
-    activity = false;
-    //digitalWrite(LED_BUILTIN, LOW);
-  }
+    // DAS BLINKEN LIGHTS! .. but seriously, blink the builtin LED on activity
+    if (activity)
+    {
+      // Feed the watchdog on activity, since there should be some pretty
+      // regularly or something is wrong.
+      //wdt.feed();
+      //digitalWrite(LED_BUILTIN, HIGH);
+      activity = false;
+    }
+    else if (lastActivity >= ACTIVITY_ON_MS)
+    {
+      lastActivity = 0;
+      activity = false;
+      //digitalWrite(LED_BUILTIN, LOW);
+    }
+  #endif
 
   //#ifdef BLUETOOTH_CONSOLE
   // Disable bluetooth after 2 minutes disconnected to save power
