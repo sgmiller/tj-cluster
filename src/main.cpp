@@ -43,7 +43,8 @@
 #include "driver/pcnt.h"
 #include <DallasTemperature.h>
 
-#define BLUETOOTH_CONSOLE true
+
+//#define BLUETOOTH_CONSOLE
 // CAN bus
 #define CAN1_TX GPIO_NUM_26
 #define CAN1_RX GPIO_NUM_27
@@ -98,18 +99,19 @@ Watchdog wdt(5);
 bool activity, speedoOn;
 
 
-#ifdef BLUETOOTH_CONSOLE
+//#ifdef BLUETOOTH_CONSOLE
 #include <BluetoothSerial.h>
 // Bluetooth
 #define SERVICE_UUID "3ea24ab1-256b-4baf-ab04-a98f32993856"
-elapsedMillis lastBluetooth;
-BluetoothSerial Stdout;
+volatile bool bluetoothBegan;
+elapsedSeconds lastBluetooth;
+BluetoothSerial bt;
 uint8_t unitMACAddress[6];  // Use MAC address in BT broadcast and display
 char deviceName[20];        // The serial string that is broadcast.
-#else 
+//#else 
 // Serial port, swap to external pins when not debugging
 #define Stdout Serial
-#endif
+//#endif
 
 // All instruments
 BatteryAndOil battOil;
@@ -382,7 +384,7 @@ void printAddress(DeviceAddress deviceAddress)
   }
 }
 
-#ifdef BLUETOOTH_CONSOLE
+//#ifdef BLUETOOTH_CONSOLE
 void setupBluetooth() {
   // Get unit MAC address
   esp_read_mac(unitMACAddress, ESP_MAC_WIFI_STA);
@@ -393,23 +395,23 @@ void setupBluetooth() {
   //Create device name
   sprintf(deviceName, "BleBridge-%02X%02X", unitMACAddress[4], unitMACAddress[5]); 
   
-  Stdout.setPin("1234567");
-  Stdout.begin(deviceName);
+  bt.begin(deviceName);
+  bluetoothBegan=true;
   //Stdout.setTimeout(10);
 }
-#endif
+//#endif
 
 void setup()
 {
   //setCpuFrequencyMhz(10);
   tp.DotStar_SetPixelColor(255,255,0);
 
-  #ifdef BLUETOOTH_CONSOLE
+  //#ifdef BLUETOOTH_CONSOLE
   setupBluetooth();
-  #else
+  //#else
   Stdout.begin(115200);
   while (!Stdout);  
-  #endif
+  //#endif
   delay (1000);
   tp.DotStar_SetPixelColor(255,128,0);
     
@@ -596,14 +598,16 @@ void loop()
     //digitalWrite(LED_BUILTIN, LOW);
   }
 
-  #ifdef BLUETOOTH_CONSOLE
+  //#ifdef BLUETOOTH_CONSOLE
   // Disable bluetooth after 2 minutes disconnected to save power
-  if (lastBluetooth > 120000) {
-    if (Stdout.connected()) {
+  if (bluetoothBegan && lastBluetooth > 60) {
+    if (bt.connected()) {
       lastBluetooth = 0;
     } else {
-      Stdout.end();
+      Stdout.println("No connection since boot, disabling Bluetooth");
+      bt.end();
+      bluetoothBegan=false;
     }
   }
-  #endif
+  //#endif
 }

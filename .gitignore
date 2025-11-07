@@ -6,4 +6,4 @@
 *~
 pcb/~*.lck
 *BOM.zip
-*.kicad_dru
+fab/*
