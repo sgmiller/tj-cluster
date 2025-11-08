@@ -11818,11 +11818,12 @@
 		(fields_autoplaced yes)
 		(uuid "57edc2f6-200e-47a8-a1c3-a5c914d09868")
 		(property "Reference" "TP6"
-			(at 70.0349 89.662 90)
+			(at 73.787 89.662 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Value" "TestPoint"
@@ -11835,7 +11836,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
 			(at 67.31 86.36 0)
 			(effects
 				(font
@@ -13640,7 +13641,7 @@
 				)
 			)
 		)
-		(property "Value" "0.5a"
+		(property "Value" "1a"
 			(at 35.56 99.4988 0)
 			(effects
 				(font
@@ -13658,7 +13659,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_392_datasheet?assetguid=3d41d6b7-af0b-41bc-bce0-d5b1432b6058"
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_391_datasheet.pdf?assetguid=7b78c5ae-2ca3-4f78-b8e1-4516f259fbc7"
 			(at 35.56 101.6 0)
 			(effects
 				(font
@@ -13676,7 +13677,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "39905000000"
+		(property "MPN" " 39111000000 "
 			(at 35.56 101.6 0)
 			(effects
 				(font
@@ -13745,7 +13746,7 @@
 				)
 			)
 		)
-		(property "Value" "0.5a"
+		(property "Value" "1a"
 			(at 35.56 84.2588 0)
 			(effects
 				(font
@@ -13763,7 +13764,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_392_datasheet?assetguid=3d41d6b7-af0b-41bc-bce0-d5b1432b6058"
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse_fuse_391_datasheet.pdf?assetguid=7b78c5ae-2ca3-4f78-b8e1-4516f259fbc7"
 			(at 35.56 86.36 0)
 			(effects
 				(font
@@ -13781,7 +13782,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "39905000000"
+		(property "MPN" " 39111000000 "
 			(at 35.56 86.36 0)
 			(effects
 				(font
