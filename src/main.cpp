@@ -46,14 +46,14 @@
 #include <DallasTemperature.h>
 
 
-#define BLUETOOTH_CONSOLE
+//#define BLUETOOTH_CONSOLE
 // CAN bus
 #define CAN1_TX GPIO_NUM_19
 #define CAN1_RX GPIO_NUM_23
 
 #define POST_BOOT_CPU_MHZ 20
 
-#define SELF_TEST_MODE
+//#define SELF_TEST_MODE
 
 //#define USING_SPEED_SENSOR
 #define SPEEDO_SENSOR_IN 27
@@ -197,6 +197,7 @@ void selfTest()
   }
   else if (selfTestStage == 4)
   {
+    featureStatus.SetCruiseEnabled(false);
     featureStatus.SetUpShift(true);
   }
   else if (selfTestStage == 5)
@@ -312,7 +313,7 @@ float measureBattery() {
       float battV = VBAT_MEASUREMENT_RATIO * windowAvg / 1000.0;
       Stdout.print("Measured battery = ");
       Stdout.println(battV);
-      return battV*3;
+      return battV;
     }
 
     return -1;
@@ -604,23 +605,9 @@ void loop()
     {
       float battery = measureBattery();
       if (battery > -1) {
-        battOil.SetBatteryVoltage(measureBattery());
+        battOil.SetBatteryVoltage(battery);
       }
       lastBattMeasure = 0;
-    }
-    #ifdef DISABLE_AIRBAG_LAMP
-      if (lastAirbagOkXmt > AIRBAG_OK_INTERVAL)
-      {
-        airbagOk.Refresh();
-        lastAirbagOkXmt = 0;
-      }
-    #endif
-
-    if (lastCCDLoop > INTERWRITE_DELAY)
-    {
-      lastCCDLoop = 0;
-      bool newActivity = _writer.Loop();
-      activity = activity || newActivity;
     }
 
     if (lastTempCheck > TEMP_CHECK_INTERVAL) {
@@ -644,6 +631,22 @@ void loop()
       //digitalWrite(LED_BUILTIN, LOW);
     }
   #endif
+  #ifdef DISABLE_AIRBAG_LAMP
+    if (lastAirbagOkXmt > AIRBAG_OK_INTERVAL)
+    {
+      airbagOk.Refresh();
+      lastAirbagOkXmt = 0;
+    }
+  #endif
+
+    if (lastCCDLoop > INTERWRITE_DELAY)
+  {
+    lastCCDLoop = 0;
+    bool newActivity = _writer.Loop();
+    activity = activity || newActivity;
+  }
+
+
 
   #ifdef BLUETOOTH_CONSOLE
   // Disable bluetooth after 2 minutes disconnected to save power

@@ -31,6 +31,7 @@ bool Instrument::MaybeWrite(CCDLibrary ccd)
   if (_needsUpdate ||
       (_refreshInterval > 0 && _sinceLastWrite >= _refreshInterval))
   {
+    Serial.println("Writing");
     ccd.write(_message, _messageLen);
     // May need to delay even if something went wrong
     _needsUpdate = false;

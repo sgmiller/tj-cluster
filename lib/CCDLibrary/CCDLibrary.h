@@ -21,6 +21,7 @@
 
 #include <Arduino.h>
 #include <Stream.h>
+#define CCD_DEBUG
 
 #if defined (__AVR_ATmega1280__) || defined (__AVR_ATmega2560__) // Arduino Mega / ATmega2560, UART1 channel
     #define RX_DDR  DDRD
