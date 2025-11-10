@@ -41,15 +41,17 @@
 #include <Arduino.h>
 #include <TinyPICO.h>
 #include "driver/pcnt.h"
+#include "driver/adc.h"
+#include "esp_adc_cal.h"
 #include <DallasTemperature.h>
 
 
-//#define BLUETOOTH_CONSOLE
+#define BLUETOOTH_CONSOLE
 // CAN bus
 #define CAN1_TX GPIO_NUM_19
 #define CAN1_RX GPIO_NUM_23
 
-#define POST_BOOT_CPU_MHZ 10
+#define POST_BOOT_CPU_MHZ 20
 
 #define SELF_TEST_MODE
 
@@ -64,8 +66,8 @@
 #define ACTIVITY_ON_MS 25 // ms
 #define SELF_TEST_STAGE_COUNT 10
 #define SELF_TEST_STAGE_DURATION 3000
-#define VBAT_VD_R1 4300000.0 // VBAT voltage divider R1 value (ohms)
-#define VBAT_VD_R2 820000.0 // VBAT voltage divider R2 value (ohms)
+#define VBAT_VD_R1 10040000.0 // VBAT voltage divider R1 value (ohms)
+#define VBAT_VD_R2 1492000.0 // VBAT voltage divider R2 value (ohms)
 #define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) 
 #define MCU_VOLTAGE 3.3
 #define PULSES_PER_AXLE_REVOLUTION 8
@@ -73,8 +75,12 @@
 #define TIRE_DIAMETER 28.86
 #define TIRE_CIRCUMFERENCE 3.14159 * TIRE_DIAMETER
 #define PULSES_PER_MILE (5280 / TIRE_CIRCUMFERENCE) * PULSES_PER_AXLE_REVOLUTION
-#define BATTERY_MEASURE_INTERVAL 200 // ms
-#define VBAT_MEASURE_SIG GPIO_NUM_33
+#define BATTERY_WINDOW_LENGTH 10
+#define BATTERY_SAMPLE_COUNT 20
+#define VBAT_MEASURE_SIG ADC1_CHANNEL_5  
+#define BATTERY_MEASURE_INTERVAL 1000 / (BATTERY_WINDOW_LENGTH * BATTERY_SAMPLE_COUNT) // ms
+esp_adc_cal_characteristics_t adc1_chars;
+
 #define AIRBAG_OK_INTERVAL 1000      // ms
 #define LOOP_DELAY 25 //ms
 
@@ -99,19 +105,19 @@ Watchdog wdt(5);
 bool activity, speedoOn;
 
 
-//#ifdef BLUETOOTH_CONSOLE
+#ifdef BLUETOOTH_CONSOLE
 #include <BluetoothSerial.h>
 // Bluetooth
 #define SERVICE_UUID "3ea24ab1-256b-4baf-ab04-a98f32993856"
 volatile bool bluetoothBegan;
 elapsedSeconds lastBluetooth;
-BluetoothSerial bt;
+BluetoothSerial Stdout;
 uint8_t unitMACAddress[6];  // Use MAC address in BT broadcast and display
 char deviceName[20];        // The serial string that is broadcast.
-//#else 
+#else 
 // Serial port, swap to external pins when not debugging
 #define Stdout Serial
-//#endif
+#endif
 
 // All instruments
 BatteryAndOil battOil;
@@ -142,6 +148,11 @@ hw_timer_t *speedoTimer;
 int loopCount;
 float speedSensorFrequency;
 volatile int speedSensorPulses;
+
+u_int16_t batteryWindow[BATTERY_WINDOW_LENGTH];
+u_int16_t batterySamples[BATTERY_SAMPLE_COUNT];
+u_int8_t batterySamplePtr;
+u_int8_t batteryWindowPtr;
 
 elapsedMillis lastActivity;
 elapsedMillis lastCCDLoop;
@@ -281,15 +292,32 @@ void CCDHandleError(CCD_Operations op, CCD_Errors err)
 }
 
 float measureBattery() {
-    // TODO: Use ADC
-    int battery=analogRead(VBAT_MEASURE_SIG);
-    float analogVoltage = battery * (MCU_VOLTAGE/1023.0);
-    float batVoltage = analogVoltage * VBAT_MEASUREMENT_RATIO;
-    Stdout.print("Calculated VBAT=");
-    Stdout.println(batVoltage);
-    return batVoltage;
-}
+    u_int32_t bat_mv = esp_adc_cal_raw_to_voltage(adc1_get_raw(VBAT_MEASURE_SIG), &adc1_chars);
+    batterySamples[batterySamplePtr] = bat_mv;
+    batterySamplePtr = (batterySamplePtr + 1) % BATTERY_SAMPLE_COUNT;
 
+    if (batterySamplePtr == 0) {
+      float batTot = 0;
+      for (int i = 0; i< BATTERY_SAMPLE_COUNT; i++) {
+        batTot += batterySamples[i];
+      }
+      batteryWindow[batteryWindowPtr] = batTot / BATTERY_SAMPLE_COUNT;
+
+      batTot = 0;
+      for (int i=0; i< BATTERY_WINDOW_LENGTH; i++) {
+        batTot += batteryWindow[i];
+      }
+      batteryWindowPtr = (batteryWindowPtr + 1) % BATTERY_WINDOW_LENGTH;
+      float windowAvg = batTot / BATTERY_WINDOW_LENGTH;
+      float battV = VBAT_MEASUREMENT_RATIO * windowAvg / 1000.0;
+      Stdout.print("Measured battery = ");
+      Stdout.println(battV);
+      return battV*3;
+    }
+
+    return -1;
+  }
+  
 void watchdogReset() { Stdout.println("Resetting in 5s..."); }
 
 void canSniff(const CAN_message_t &msg)
@@ -389,8 +417,8 @@ void printAddress(DeviceAddress deviceAddress)
   }
 }
 
-//#ifdef BLUETOOTH_CONSOLE
 void setupBluetooth() {
+#ifdef BLUETOOTH_CONSOLE
   // Get unit MAC address
   esp_read_mac(unitMACAddress, ESP_MAC_WIFI_STA);
   
@@ -400,23 +428,35 @@ void setupBluetooth() {
   //Create device name
   sprintf(deviceName, "BleBridge-%02X%02X", unitMACAddress[4], unitMACAddress[5]); 
   
-  bt.begin(deviceName);
+  Serial.print("Starting Bluetooth on device ");
+  Serial.println(deviceName);
+  Stdout.begin(deviceName);
   bluetoothBegan=true;
   //Stdout.setTimeout(10);
+#endif
 }
-//#endif
+
+void setupADC() {
+  adc1_config_width(adc_bits_width_t(ADC_WIDTH_BIT_DEFAULT));
+  adc1_config_channel_atten(ADC1_CHANNEL_5,ADC_ATTEN_0db);
+  esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_0db, adc_bits_width_t(ADC_WIDTH_BIT_DEFAULT), 0, &adc1_chars);
+}
 
 void setup()
 {
-  tp.DotStar_SetPixelColor(255,255,0);
+  tp.DotStar_SetPixelColor(255,165,0);
+  tp.DotStar_SetBrightness(96);
+  setCpuFrequencyMhz(80);
+  Serial.begin(115200);
 
-  //#ifdef BLUETOOTH_CONSOLE
+  setupADC();
+ 
+  #ifdef BLUETOOTH_CONSOLE
   setupBluetooth();
-  //#else
+  #else
   Stdout.begin(115200);
   while (!Stdout);  
-  //#endif
-  delay (1000);
+  #endif
   tp.DotStar_SetPixelColor(255,128,0);
     
   /*
@@ -489,8 +529,6 @@ void setup()
   CCD.onError(CCDHandleError); // subscribe to the error event and call this
   Serial.println("B2");
                                // function when an error occurs
-  CCD.begin(&Stdout);      
-           // CDP68HC68S1
   Serial.println("C");
 
   setupSpeedo();
@@ -499,20 +537,28 @@ void setup()
   lastActivity = millis();
   tp.DotStar_SetPixelColor(0,128,128);
 
-  // Start the CCD writer
-  _writer.Setup(&_writer);
   Serial.println("E");
 
   //setupCAN();
-  Stdout.println("Setup complete");
+  
+  #ifndef BLUETOOTH_CONSOLE
+  // Reset serial to accommodate new CPU speed
+  Serial.end();
+  Serial.begin(115200);
+  #endif
+  // Start the CCD writer
+  CCD.begin(&Stdout);    
+  Serial.println("F");
+  _writer.Setup(&_writer);
+  Serial.println("Setup complete");
   tp.DotStar_SetPixelColor(0,128,0);
   tp.DotStar_Clear();
   pinMode(DOTSTAR_PWR, OUTPUT);
   digitalWrite(DOTSTAR_PWR, 0);
-  setCpuFrequencyMhz(POST_BOOT_CPU_MHZ);
 }
 
 void tempCheck() {
+  #ifdef INTERNAL_THERMOMETER
   float tempC = sensors.getTempC(internalTemp);
   if(tempC == DEVICE_DISCONNECTED_C) 
   {
@@ -528,6 +574,7 @@ void tempCheck() {
     esp_deep_sleep_start();
     esp_sleep_enable_timer_wakeup(THERMAL_SLEEP_TIME * 1000000);
   }
+  #endif
 }
 
 CAN_message_t msg;
@@ -555,7 +602,10 @@ void loop()
   #else
     if (lastBattMeasure > BATTERY_MEASURE_INTERVAL)
     {
-      battOil.SetBatteryVoltage(measureBattery());
+      float battery = measureBattery();
+      if (battery > -1) {
+        battOil.SetBatteryVoltage(measureBattery());
+      }
       lastBattMeasure = 0;
     }
     #ifdef DISABLE_AIRBAG_LAMP
@@ -595,16 +645,19 @@ void loop()
     }
   #endif
 
-  //#ifdef BLUETOOTH_CONSOLE
+  #ifdef BLUETOOTH_CONSOLE
   // Disable bluetooth after 2 minutes disconnected to save power
-  if (bluetoothBegan && lastBluetooth > 60) {
-    if (bt.connected()) {
+  if (false && bluetoothBegan && lastBluetooth > 60) {
+    if (Stdout.connected()) {
       lastBluetooth = 0;
+      while (Stdout.available()) {
+        Stdout.read();
+      }
     } else {
       Stdout.println("No connection since boot, disabling Bluetooth");
-      bt.end();
+      Stdout.end();
       bluetoothBegan=false;
     }
   }
-  //#endif
+  #endif
 }

@@ -226,12 +226,14 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
 
     transmitting = true;
 
+    #ifdef CCD_DEBUG
     Stdout->print("CCD <- ");
     for (int i=0; i<bufferLength; i++) {
         Stdout->print(buffer[i], HEX);
         Stdout->print(" ");
     }
     Stdout->println();
+    #endif
     CCDSERIAL.write(buffer, bufferLength);
     return 0;
 }

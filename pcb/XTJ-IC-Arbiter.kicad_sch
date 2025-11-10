@@ -5519,6 +5519,12 @@
 		(uuid "7da7b6c8-856b-4172-8200-0b279308d2d6")
 	)
 	(junction
+		(at 252.73 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "862fe77a-62ab-4836-ad98-0db0c4cf9365")
+	)
+	(junction
 		(at 140.97 27.94)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5535,6 +5541,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "914b6551-b79f-4262-830b-2a244388510e")
+	)
+	(junction
+		(at 261.62 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "96026718-3bf0-42f2-bc3c-44ce3049d444")
 	)
 	(junction
 		(at 100.33 100.33)
@@ -6166,6 +6178,16 @@
 	)
 	(wire
 		(pts
+			(xy 261.62 81.28) (xy 267.97 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a0d5811-c6b9-4e74-889b-74e8e3b26a53")
+	)
+	(wire
+		(pts
 			(xy 46.99 60.96) (xy 52.07 60.96)
 		)
 		(stroke
@@ -6293,6 +6315,16 @@
 			(type default)
 		)
 		(uuid "3d217775-3952-4695-ba48-9967d1e84dc2")
+	)
+	(wire
+		(pts
+			(xy 261.62 81.28) (xy 261.62 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e3af575-9534-4cc7-8933-660e920f4a65")
 	)
 	(wire
 		(pts
@@ -6513,6 +6545,16 @@
 			(type default)
 		)
 		(uuid "5f476f97-2542-4ef2-a501-d2127c5cf673")
+	)
+	(wire
+		(pts
+			(xy 261.62 106.68) (xy 252.73 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fb5bde0-14a2-4a25-b3f3-5def4fbdb844")
 	)
 	(wire
 		(pts
@@ -6786,7 +6828,7 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 81.28) (xy 252.73 81.28)
+			(xy 252.73 81.28) (xy 261.62 81.28)
 		)
 		(stroke
 			(width 0)
@@ -7213,6 +7255,16 @@
 			(type default)
 		)
 		(uuid "be1e43b4-bf90-4483-a43b-0df35c2916c2")
+	)
+	(wire
+		(pts
+			(xy 261.62 97.79) (xy 261.62 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be325c96-a08e-423a-84b0-a447c88868ff")
 	)
 	(wire
 		(pts
@@ -7960,22 +8012,22 @@
 	)
 	(global_label "12v_meter"
 		(shape input)
-		(at 256.54 81.28 0)
+		(at 267.97 81.28 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "22dd13a9-cd17-4416-8650-bb8840d68164")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 269.2618 81.28 0)
+			(at 267.97 94.0018 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -11330,6 +11382,111 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "#PWR024")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 261.62 93.98 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4e2692d8-b1a9-43d3-a7bf-e791666cbdf7")
+		(property "Reference" "C7"
+			(at 260.985 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF"
+			(at 260.985 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm"
+			(at 260.6548 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/doc?45171"
+			(at 261.62 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 261.62 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "K103K10X7RF53L2"
+			(at 261.62 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 261.62 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 261.62 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 261.62 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5134dcd5-ccb3-42d8-a6ae-6dd68458455e")
+		)
+		(pin "2"
+			(uuid "ebdbe0a2-48a8-4d8d-a723-5c8c36b2512f")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "C7")
 					(unit 1)
 				)
 			)
