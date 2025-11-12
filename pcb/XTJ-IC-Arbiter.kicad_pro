@@ -774,6 +774,18 @@
       {
         "netclass": "PWR",
         "pattern": "Net-(D2-K)"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "Net-(D5-K)"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "/5Vbuck"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "/12vp"
       }
     ]
   },
@@ -1010,6 +1022,12 @@
           "group_by": false,
           "label": "MANUFACTURER",
           "name": "MANUFACTURER",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Note",
+          "name": "Note",
           "show": false
         }
       ],

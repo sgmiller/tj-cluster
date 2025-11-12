@@ -53,7 +53,7 @@
 
 #define POST_BOOT_CPU_MHZ 20
 
-//#define SELF_TEST_MODE
+#define SELF_TEST_MODE
 
 //#define USING_SPEED_SENSOR
 #define SPEEDO_SENSOR_IN 27
@@ -66,8 +66,8 @@
 #define ACTIVITY_ON_MS 25 // ms
 #define SELF_TEST_STAGE_COUNT 10
 #define SELF_TEST_STAGE_DURATION 3000
-#define VBAT_VD_R1 10040000.0 // VBAT voltage divider R1 value (ohms)
-#define VBAT_VD_R2 1492000.0 // VBAT voltage divider R2 value (ohms)
+#define VBAT_VD_R1 10040000.0 // VBAT voltage divider R1 value (ohms), ideally measured
+#define VBAT_VD_R2 1492000.0 // VBAT voltage divider R2 value (ohms), ideally measured
 #define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) 
 #define MCU_VOLTAGE 3.3
 #define PULSES_PER_AXLE_REVOLUTION 8
