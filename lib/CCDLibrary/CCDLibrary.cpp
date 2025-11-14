@@ -95,6 +95,7 @@ void CCDLibrary::begin(Stream* ser, float baudrate, bool dedicatedTransceiver, u
 
         // Enable 1 MHz clock generator on Timer 1 and disable bus-idle timer at the same time.
         clockGeneratorInit();
+        Serial.println("CC");
     }
     else
     {

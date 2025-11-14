@@ -35,8 +35,8 @@
 #elif defined (_ESP32_ESP32_HAL_BT_H_)
     #define RX_P GPIO_NUM_15
     #define TX_P GPIO_NUM_14
-    #define IDLE_PIN GPIO_NUM_26
-    #define CTRL_PIN GPIO_NUM_27
+    #define IDLE_PIN GPIO_NUM_27
+    #define CTRL_PIN GPIO_NUM_25
     #define CLOCK_PIN GPIO_NUM_4
     #define CLOCK_SPEED 1000000
 #else
