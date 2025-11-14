@@ -4,15 +4,18 @@
 #include <CCDLibrary.h>
 #include <elapsedMillis.h>
 
-#define REVS_PER_MILE 2737
-#define PULSES_PER_REV 8
+#define GEAR_RATIO 3.07
+#define TIRE_DIAMETER 28.86
+#define TIRE_CIRCUMFERENCE 3.14159 * TIRE_DIAMETER
+#define PULSES_PER_AXLE_REVOLUTION 8
+#define PULSES_PER_MILE 17142.88 // PULSES_PER_AXLE_REVOLUTION * GEAR_RATIO * ((5280 * 12) / TIRE_CIRCUMFERENCE)
 #define PULSES_PER_UPDATE 800
 #define ODOMETER_INCREMENT_UNITS_PER_MILE 8000
-#define INTERWRITE_DELAY 50 // 50ms
+#define INTERWRITE_DELAY 5 // ms
 #define EOM_DELAY 1280      // 1.28 ms
 #define UPSHIFT 144
 #define CRUISE_ENABLED 132
-#define DEFAULT_REFRESH_INTERVAL 2000
+#define DEFAULT_REFRESH_INTERVAL 2000 // ms
 #define TRIP_SAVE_INTERVAL 60 // once per minute
 
 #define LOOP_SLEEP INTERWRITE_DELAY // ms
@@ -54,7 +57,7 @@ protected:
     elapsedMillis _sinceLastWrite;
     uint _refreshInterval;
     int _messageLen;
-    bool _needsUpdate;
+    volatile bool _needsUpdate;
 };
 
 class InstrumentWriter
@@ -121,7 +124,7 @@ public:
     int mph;
     int kph;
     Speedometer() : Instrument(messageVehicleSpeed, 4, 0, 160, 0) {}
-    void SetSpeedSensorFrequency(int pulseHz);
+    void SetSpeedSensorFrequency(float pulseHz);
     void SetMPH(int mph);
     void SetKPH(int kph);
 };

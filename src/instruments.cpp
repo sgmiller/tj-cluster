@@ -31,11 +31,11 @@ bool Instrument::MaybeWrite(CCDLibrary ccd)
   if (_needsUpdate ||
       (_refreshInterval > 0 && _sinceLastWrite >= _refreshInterval))
   {
-    Serial.println("Writing");
     ccd.write(_message, _messageLen);
     // May need to delay even if something went wrong
     _needsUpdate = false;
     _sinceLastWrite = 0;
+    delay(50);
     return true;
   }
   return false;
@@ -77,6 +77,8 @@ InstrumentWriter::InstrumentWriter(Instrument **instruments,
 
 void InstrumentWriter::Setup(InstrumentWriter *self)
 {
+  Serial.print("PPM ");
+  Serial.println(PULSES_PER_MILE);
   for (int i = 0; i < _instrumentCount; i++)
   {
     Serial.print("Initial write of ");
@@ -87,6 +89,7 @@ void InstrumentWriter::Setup(InstrumentWriter *self)
       delay(INTERWRITE_DELAY);
     }
   }
+
 }
 
 bool InstrumentWriter::Loop()
@@ -214,14 +217,21 @@ void FeatureStatus::SetUpShift(bool enabled)
   }
 }
 
-void Speedometer::SetSpeedSensorFrequency(int pulseHz)
+void Speedometer::SetSpeedSensorFrequency(float pulseHz)
 {
-  int spv = pulseHz * 3600 / (8 * REVS_PER_MILE);
-  SetMPH(spv);
+  Serial.println(pulseHz);
+  float pph = pulseHz * 3600;
+  Serial.println(pph);
+  float ppm = pph / 17142.88;
+  Serial.print("Calculated spv ");
+  Serial.println(ppm);
+  SetMPH(int(ppm));
 }
 
 void Speedometer::SetMPH(int newMph)
 {
+  Serial.print("New mph ");
+  Serial.println(newMph);
   mph = newMph;
   SetKPH(round(newMph * 1.609344));
   SetByte(2, newMph);

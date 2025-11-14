@@ -40,7 +40,6 @@
 #include <ESP32_CAN.h>
 #include <Arduino.h>
 #include <TinyPICO.h>
-#include "driver/pcnt.h"
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
 #include <DallasTemperature.h>
@@ -53,16 +52,19 @@
 
 #define POST_BOOT_CPU_MHZ 20
 
-#define SELF_TEST_MODE
+//#define SELF_TEST_MODE
 
-//#define USING_SPEED_SENSOR
-#define SPEEDO_SENSOR_IN 27
+//#define BATT_DEBUG
+#define SPEEDO_DEBUG
+#define USING_SPEED_SENSOR
+#define SPEEDO_SENSOR_IN 26
 #define SPEED_SENSOR_WINDOW 100 //ms
 #define SPEEDOMETER_RATIO 1.59
 #define SPEEDO_INTERVAL 200 // ms
+#define SPEEDO_SAMPLE_COUNT 5
 
 #define DISABLE_AIRBAG_LAMP // Define if you don't have a working airbag module on the CCD bus
-#define INSTRUMENT_COUNT 11
+#define INSTRUMENT_COUNT 10
 #define ACTIVITY_ON_MS 25 // ms
 #define SELF_TEST_STAGE_COUNT 10
 #define SELF_TEST_STAGE_DURATION 3000
@@ -71,10 +73,6 @@
 #define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) 
 #define MCU_VOLTAGE 3.3
 #define PULSES_PER_AXLE_REVOLUTION 8
-#define GEAR_RATIO 3.07
-#define TIRE_DIAMETER 28.86
-#define TIRE_CIRCUMFERENCE 3.14159 * TIRE_DIAMETER
-#define PULSES_PER_MILE (5280 / TIRE_CIRCUMFERENCE) * PULSES_PER_AXLE_REVOLUTION
 #define BATTERY_WINDOW_LENGTH 10
 #define BATTERY_SAMPLE_COUNT 20
 #define VBAT_MEASURE_SIG ADC1_CHANNEL_5  
@@ -103,7 +101,8 @@ bool thermoPresent;
 TinyPICO tp = TinyPICO();
 Watchdog wdt(5);
 bool activity, speedoOn;
-
+volatile float speedoFreq;
+float lastSpeedo;
 
 #ifdef BLUETOOTH_CONSOLE
 #include <BluetoothSerial.h>
@@ -131,21 +130,16 @@ FeatureStatus featureStatus;
 Odometer odometer;
 Instrument airbagOk(messageAirbagOk, 3, 0, 255, -1);
 Instrument airbagBad(messageAirbagBad, 3, 0, 255, -1);
+// In priority order
 Instrument *instruments[INSTRUMENT_COUNT] = {
-    &fuel, &speedo, &tach, &checkEngineLamp, &checkGaugesLamp,
-    &skimLamp, &featureStatus, &battOil, &odometer, &airbagOk,
-    &airbagBad};
+    &checkGaugesLamp, &skimLamp, &battOil, &fuel, &speedo, &tach, 
+    &featureStatus, &odometer, &airbagOk, &airbagBad};
 InstrumentWriter _writer(instruments, INSTRUMENT_COUNT);
 
 int selfTestPhaseStart;
 int selfTestStage = 0;
 
-uint8_t speedoSignal;
-//mutex for hardware pulse counters
-portMUX_TYPE pcntMux0 = portMUX_INITIALIZER_UNLOCKED;
-hw_timer_t *speedoTimer;
-
-int loopCount;
+uint32_t loopCount;
 float speedSensorFrequency;
 volatile int speedSensorPulses;
 
@@ -161,6 +155,10 @@ elapsedMillis lastBattMeasure;
 elapsedMillis lastAirbagOkXmt;
 elapsedMillis lastTempCheck;
 elapsedMillis sinceLastStage;
+elapsedMicros sinceLastSpeedoPulse;
+
+float speedoSamples[SPEEDO_SAMPLE_COUNT];
+int speedoSamplePtr;
 
 ESP32_CAN<RX_SIZE_256, TX_SIZE_16> can1;
 
@@ -234,24 +232,11 @@ void selfTest()
 #endif
 
 #ifdef USING_SPEED_SENSOR
-void IRAM_ATTR handleSpeedSensor()
+void ICACHE_RAM_ATTR handleSpeedSensor()
 {
-  int16_t pulses = 0;
-  pcnt_get_counter_value(PCNT_UNIT_0, &pulses);
-  if (pulses > 0)
-  {
-    speedSensorPulses += pulses;
-    speedo.SetSpeedSensorFrequency(pulses / 0.200);
-  
-    // Either way, actual pulses are accounted for, and can be used to update
-    // the odometer
-    if (speedSensorPulses >= PULSES_PER_UPDATE)
-    {
-      // send an odometer increment
-      odometer.AddMiles(speedSensorPulses / PULSES_PER_MILE);
-      speedSensorPulses = 0;
-    }
-  }
+    speedSensorPulses ++;
+    speedoFreq=1000000.0 / sinceLastSpeedoPulse;
+    sinceLastSpeedoPulse = 0;
 }
 #endif
 
@@ -311,8 +296,10 @@ float measureBattery() {
       batteryWindowPtr = (batteryWindowPtr + 1) % BATTERY_WINDOW_LENGTH;
       float windowAvg = batTot / BATTERY_WINDOW_LENGTH;
       float battV = VBAT_MEASUREMENT_RATIO * windowAvg / 1000.0;
+      #ifdef BATT_DEBUG
       Stdout.print("Measured battery = ");
       Stdout.println(battV);
+      #endif
       return battV;
     }
 
@@ -380,31 +367,8 @@ void setupCAN()
 void setupSpeedo()
 {
   #ifdef USING_SPEED_SENSOR
-  pinMode(SPEEDO_SENSOR_IN, INPUT_PULLUP);
-  pcnt_config_t pcnt_config;
-
-  pcnt_config.pulse_gpio_num = SPEEDO_SENSOR_IN;
-  pcnt_config.ctrl_gpio_num = PCNT_PIN_NOT_USED;
-  pcnt_config.channel = PCNT_CHANNEL_0;
-  pcnt_config.unit = PCNT_UNIT_0;
-  pcnt_config.pos_mode = PCNT_COUNT_INC;
-  pcnt_config.neg_mode = PCNT_COUNT_DIS;
-  pcnt_config.lctrl_mode = PCNT_MODE_KEEP;
-  pcnt_config.hctrl_mode = PCNT_MODE_KEEP;
-  pcnt_config.counter_h_lim = 10000;
-  pcnt_config.counter_l_lim = 0;
-    
-  pcnt_unit_config(&pcnt_config);
-  pcnt_counter_pause(PCNT_UNIT_0);
-  pcnt_counter_clear(PCNT_UNIT_0);
-  pcnt_counter_resume(PCNT_UNIT_0);
-
-  speedoTimer = timerBegin(0,80,true);  
-
-  // Attach interrupt
-  timerAttachInterrupt(speedoTimer, handleSpeedSensor, true);
-
-  timerAlarmWrite(speedoTimer, SPEEDO_INTERVAL * 1000, true);  
+  pinMode(SPEEDO_SENSOR_IN, INPUT);
+  attachInterrupt(digitalPinToInterrupt(SPEEDO_SENSOR_IN), handleSpeedSensor, FALLING);
   #endif
 }
 
@@ -493,10 +457,6 @@ void setup()
     thermoPresent=true;
   }
 
-  // Setup unused GPIOs as pulldowns to GND
-  pinMode(19, INPUT_PULLDOWN);
-  pinMode(23, INPUT_PULLDOWN);
-  
   // Give the cluster time to boot
   delay(3000);
   //wdt.begin(config);
@@ -544,8 +504,8 @@ void setup()
   
   #ifndef BLUETOOTH_CONSOLE
   // Reset serial to accommodate new CPU speed
-  Serial.end();
-  Serial.begin(115200);
+//  Serial.end();
+  //Serial.begin(115200);
   #endif
   // Start the CCD writer
   CCD.begin(&Stdout);    
@@ -556,6 +516,7 @@ void setup()
   tp.DotStar_Clear();
   pinMode(DOTSTAR_PWR, OUTPUT);
   digitalWrite(DOTSTAR_PWR, 0);
+  Serial.flush();
 }
 
 void tempCheck() {
@@ -582,7 +543,6 @@ CAN_message_t msg;
 void loop()
 {
   loopCount++;
-
 
   #ifdef SELF_TEST_MODE
     float t = constrain(float(millis() - selfTestPhaseStart) /
@@ -644,6 +604,33 @@ void loop()
     lastCCDLoop = 0;
     bool newActivity = _writer.Loop();
     activity = activity || newActivity;
+    if (sinceLastSpeedoPulse > 1000000 && speedSensorPulses == 0) {
+      speedoFreq = 0;
+      if (speedoFreq > 0) {
+        speedo.SetSpeedSensorFrequency(0);
+      }
+    } else if (speedSensorPulses > 0) {
+      speedoSamples[speedoSamplePtr] = speedoFreq;
+      float speedoSum = 0;
+      for (int i=0; i<SPEEDO_SAMPLE_COUNT; i++) {
+        speedoSum += speedoSamples[i];
+      }
+      float speedoAvg = speedoSum / SPEEDO_SAMPLE_COUNT;
+      speedo.SetSpeedSensorFrequency(speedoAvg);
+    
+      // Either way, actual pulses are accounted for, and can be used to update
+      // the odometer
+      if (speedSensorPulses >= PULSES_PER_UPDATE)
+      {
+        // send an odometer increment
+        //odometer.AddMiles(speedSensorPulses / PULSES_PER_MILE);
+        speedSensorPulses = 0;
+      }
+  #ifdef SPEEDO_DEBUG
+      Serial.print("Speedo freq now ");
+      Serial.println(speedoFreq);
+  #endif
+    }
   }
 
 
