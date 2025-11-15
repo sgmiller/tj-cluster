@@ -7562,6 +7562,16 @@
 		)
 		(uuid "ffa1b78e-423d-4e22-a362-33cc9b7377fd")
 	)
+	(label "can+"
+		(at 33.02 78.74 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "01214a88-e204-4a0d-bdde-33263d5201b8")
+	)
 	(label "can_term+"
 		(at 72.39 53.34 0)
 		(effects
@@ -7672,6 +7682,16 @@
 		)
 		(uuid "9ba2fe14-aad1-4604-a155-ef6f4f430328")
 	)
+	(label "can+"
+		(at 74.93 41.91 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left bottom)
+		)
+		(uuid "9e8ddfb6-9421-4d18-af06-f4cd306bb432")
+	)
 	(label "VIN"
 		(at 33.02 86.36 0)
 		(effects
@@ -7732,28 +7752,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "can+"
-		(shape input)
-		(at 33.02 78.74 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left)
-		)
-		(uuid "03e57076-faf8-4fdb-b5c8-4a2ad1e77e31")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 41.8665 78.6448 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -8543,28 +8541,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "can+"
-		(shape input)
-		(at 74.93 41.91 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left)
-		)
-		(uuid "c08db16e-bbb7-4f02-9681-9df69e1be7d2")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 83.7765 41.8148 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
