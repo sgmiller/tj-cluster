@@ -8811,6 +8811,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 245.11 80.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5178ee2e-6e2a-47b9-92f7-e30189791284")
 		)
@@ -8909,6 +8918,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 254 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 254 55.88 0)
 			(effects
 				(font
@@ -9129,6 +9147,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 220.98 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "12"
 			(uuid "9e862aff-29d4-47c6-b3c9-4efdfbc2e36b")
 		)
@@ -9260,6 +9287,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 125.73 147.32 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 125.73 147.32 90)
 			(effects
 				(font
@@ -9423,6 +9459,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 63.5 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 63.5 50.8 90)
 			(effects
 				(font
@@ -9668,6 +9713,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 27.94 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "63f85b4a-9bc5-4bd6-b54f-d6be46e8fe56")
 		)
@@ -9766,6 +9820,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 165.1 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 165.1 152.4 0)
 			(effects
 				(font
@@ -9938,6 +10001,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 72.39 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "1a86d0c0-363c-425f-8611-dbb34db861e1")
 		)
@@ -10044,6 +10116,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 199.39 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "50482663-90ca-436f-bfa1-9ac14491189a")
 		)
@@ -10139,6 +10220,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 72.898 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 72.898 137.16 0)
 			(effects
 				(font
@@ -10318,6 +10408,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 110.49 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "9"
 			(uuid "04a3727d-a53b-487b-b9fe-eff2397d6167")
 		)
@@ -10469,6 +10568,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 226.06 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "9d7b06b2-d76b-4021-8814-8b51b1a0a105")
 		)
@@ -10482,112 +10590,6 @@
 			(project ""
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "U7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 267.97 57.15 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "39ac2a37-0054-4338-8b56-c6e3da2e5c9e")
-		(property "Reference" "C1"
-			(at 268.605 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "4700pF"
-			(at 266.7 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm"
-			(at 268.9352 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.vishay.com/docs/45171/kseries.pdf"
-			(at 267.97 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Capacitor"
-			(at 267.97 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "K101J15C0GF5TH5"
-			(at 267.97 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 267.97 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 267.97 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 267.97 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "352a6857-0fa8-4c87-8252-79d84fe950a5")
-		)
-		(pin "2"
-			(uuid "1124f821-5463-4e0d-980f-18880eaba225")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "C1")
 					(unit 1)
 				)
 			)
@@ -10667,6 +10669,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 161.29 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 161.29 46.99 0)
 			(effects
 				(font
@@ -10856,6 +10867,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 81.28 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "10dfe08f-8cca-4932-9227-030f4bedca1d")
 		)
@@ -11017,6 +11037,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 251.46 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 251.46 93.98 0)
 			(effects
 				(font
@@ -11189,6 +11218,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 72.39 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 72.39 55.88 90)
 			(effects
 				(font
@@ -11497,6 +11535,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 41.91 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a17139c2-8526-4f25-b53a-fbd45db7e763")
 		)
@@ -11667,6 +11714,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 55.88 60.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e622279e-f207-452b-b8fc-37bd6332b0df")
 		)
@@ -11774,6 +11830,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 72.39 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 72.39 100.33 0)
 			(effects
 				(font
@@ -11950,6 +12015,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 167.64 46.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "196452c6-58b5-4417-bf64-2dc921b42ee4")
 		)
@@ -12066,6 +12140,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 76.2 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9f197439-193e-4f62-b998-4c3af8388e53")
 		)
@@ -12162,6 +12245,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 46.99 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 46.99 44.45 0)
 			(effects
 				(font
@@ -12291,6 +12383,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 116.84 142.24 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "39154015-0570-47dc-8748-eba9711240b2")
 		)
@@ -12388,6 +12489,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 167.64 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 167.64 44.45 90)
 			(effects
 				(font
@@ -12502,6 +12612,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 215.9 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "02f50df0-482a-4b2d-b109-d0ae8fd6061a")
 		)
@@ -12599,6 +12718,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 100.33 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 100.33 104.14 0)
 			(effects
 				(font
@@ -12713,6 +12841,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 146.05 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e1d1fb47-3db7-40f5-a75c-9a7be6c628ae")
 		)
@@ -12808,6 +12945,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 119.38 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 119.38 151.13 0)
 			(effects
 				(font
@@ -12979,6 +13125,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 22.86 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
@@ -13081,6 +13236,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 22.86 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 22.86 91.44 0)
 			(effects
 				(font
@@ -13225,6 +13389,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 157.48 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "99217acf-4083-485c-8458-bf2b682c11ae")
 		)
@@ -13342,6 +13515,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 67.056 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "781e44c9-9a05-4c1d-b993-0d4354dbe218")
 		)
@@ -13438,6 +13620,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 38.1 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 38.1 106.68 0)
 			(effects
 				(font
@@ -13551,6 +13742,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 35.56 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "125def05-2b3e-44e3-bf99-7763a7c2c81f")
 		)
@@ -13561,6 +13761,121 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "F2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 267.97 57.15 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "841dd238-d3fc-4d8d-8cab-08595bf1a32a")
+		(property "Reference" "C7"
+			(at 270.891 55.9378 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "4.7nF"
+			(at 270.891 58.3621 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D3.8mm_W2.6mm_P2.50mm"
+			(at 267.0048 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://datasheets.kyocera-avx.com/AR-Series.pdf"
+			(at 267.97 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Capacitor"
+			(at 267.97 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" " AR151C472K4R "
+			(at 267.97 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 267.97 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 267.97 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 267.97 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
+			(at 267.97 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e0fb9148-9550-4ce4-916b-3f395b23ca88")
+		)
+		(pin "2"
+			(uuid "a4e611e6-8187-44b0-a6c9-13f777c08c61")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "C7")
 					(unit 1)
 				)
 			)
@@ -13649,6 +13964,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 63.5 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 63.5 55.88 90)
 			(effects
 				(font
@@ -13762,6 +14086,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 257.81 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f970119c-949a-47d4-b3d9-002d0b4d6c3a")
 		)
@@ -13859,6 +14192,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 236.22 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 236.22 95.25 0)
 			(effects
 				(font
@@ -13972,6 +14314,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 132.08 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "afd13c3d-40e9-4f3f-80ae-02394e22bc77")
 		)
@@ -14071,6 +14422,15 @@
 		)
 		(property "Sim.Type" ""
 			(at 195.58 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
+			(at 195.58 40.64 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14193,6 +14553,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 68.58 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5b4e5dca-ba92-486d-b49e-cca68acd872b")
 		)
@@ -14287,6 +14656,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 22.86 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
@@ -14370,6 +14748,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 161.29 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 161.29 44.45 0)
 			(effects
 				(font
@@ -14475,6 +14862,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 101.6 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 101.6 142.24 0)
 			(effects
 				(font
@@ -14596,6 +14992,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 121.92 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 121.92 49.53 0)
 			(effects
 				(font
@@ -14879,6 +15284,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 102.87 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "95b0368c-ffe2-45ca-8e2e-2c4a98d70600")
 		)
@@ -15007,6 +15421,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 40.64 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
@@ -15098,6 +15521,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 86.106 146.304 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 86.106 146.304 0)
 			(effects
 				(font
@@ -15466,6 +15898,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 173.99 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "6"
 			(uuid "c7b6fc8b-c493-4065-9fc1-8f7745dc4552")
 		)
@@ -15592,6 +16033,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 87.63 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 87.63 77.47 90)
 			(effects
 				(font
@@ -15768,6 +16218,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 31.75 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ea1e218d-2e04-46f2-909d-1c45668f27d8")
 		)
@@ -15865,6 +16324,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 79.756 146.304 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 79.756 146.304 0)
 			(effects
 				(font
@@ -16178,6 +16646,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 146.05 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "8b46460d-d704-4018-b563-dc78ec7e344f")
 		)
@@ -16276,6 +16753,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 267.97 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 267.97 36.83 0)
 			(effects
 				(font
@@ -16392,6 +16878,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 60.96 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 60.96 100.33 0)
 			(effects
 				(font
@@ -16703,6 +17198,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 172.72 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "fbbeb585-318a-4208-8f80-21a5d5079f00")
 		)
@@ -16808,6 +17312,15 @@
 				(hide yes)
 			)
 		)
+		(property "Note" ""
+			(at 157.48 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c1037418-aaaa-4cde-9233-abf7e80e616e")
 		)
@@ -16899,7 +17412,7 @@
 		(dnp no)
 		(uuid "ffc94af8-f667-4948-abd7-e6ace9aba8d1")
 		(property "Reference" "C16"
-			(at 191.135 54.61 0)
+			(at 191.77 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16908,7 +17421,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 186.055 49.53 0)
+			(at 193.04 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16971,6 +17484,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 191.77 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Note" ""
 			(at 191.77 52.07 0)
 			(effects
 				(font
