@@ -57,6 +57,7 @@
 //#define BATT_DEBUG
 #define SPEEDO_DEBUG
 #define USING_SPEED_SENSOR
+#define INTERNAL_THERMOMETER
 #define SPEEDO_SENSOR_IN 26
 #define SPEED_SENSOR_WINDOW 100 //ms
 #define SPEEDOMETER_RATIO 1.59
@@ -87,16 +88,19 @@ esp_adc_cal_characteristics_t adc1_chars;
 #define THERMAL_SLEEP_TIME 300 // seconds
 #define TEMP_CHECK_INTERVAL 1000 // ms
 
+#ifdef INTERNAL_THERMOMETER
 // Internal temp
 // Data wire is plugged into port 2 on the Arduino
 #define ONE_WIRE_BUS GPIO_NUM_5
 // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
 OneWire oneWire(ONE_WIRE_BUS);
 // Pass our oneWire reference to Dallas Temperature. 
-DallasTemperature sensors(&oneWire);
+DallasTemperature thermometer(&oneWire);
+
 // arrays to hold device address
 DeviceAddress internalTemp;
 bool thermoPresent;
+#endif
 
 TinyPICO tp = TinyPICO();
 Watchdog wdt(5);
@@ -433,16 +437,17 @@ void setup()
 */
   Stdout.println("Entered setup");
 
+  #ifdef INTERNAL_THERMOMETER
   // locate temp devices on the bus
   Serial.print("Locating temp devices...");
-  sensors.begin();
+  thermometer.begin();
   Serial.print("Found ");
-  Serial.print(sensors.getDeviceCount(), DEC);
+  Serial.print(thermometer.getDeviceCount(), DEC);
   Serial.println(" devices.");
 
   // report parasite power requirements
   Serial.print("Parasite power is: "); 
-  if (sensors.isParasitePowerMode()) Serial.println("ON");
+  if (thermometer.isParasitePowerMode()) Serial.println("ON");
   else Serial.println("OFF");
 
   oneWire.reset_search();
@@ -456,6 +461,7 @@ void setup()
     Serial.println();
     thermoPresent=true;
   }
+  #endif
 
   // Give the cluster time to boot
   delay(3000);
@@ -521,20 +527,23 @@ void setup()
 
 void tempCheck() {
   #ifdef INTERNAL_THERMOMETER
-  float tempC = sensors.getTempC(internalTemp);
-  if(tempC == DEVICE_DISCONNECTED_C) 
-  {
-    Serial.println("Error: Could not read temperature data");
-    return;
-  }
-  Serial.print("Temp C: ");
-  Serial.print(tempC);
+  if (thermoPresent) {
+    thermometer.requestTemperatures();
+    float tempC = thermometer.getTempC(internalTemp);
+    if(tempC == DEVICE_DISCONNECTED_C) 
+    {
+      Serial.println("Error: Could not read temperature data");
+      return;
+    }
+    Serial.print("Temp C: ");
+    Serial.println(tempC);
 
-  if (tempC > THERMAL_LIMIT) {
-    // Go into deep sleep for a while and hope we cool off
-    Serial.println("Thermal limit reached, going to sleep.");
-    esp_deep_sleep_start();
-    esp_sleep_enable_timer_wakeup(THERMAL_SLEEP_TIME * 1000000);
+    if (tempC > THERMAL_LIMIT) {
+      // Go into deep sleep for a while and hope we cool off
+      Serial.println("Thermal limit reached, going to sleep.");
+      esp_sleep_enable_timer_wakeup(THERMAL_SLEEP_TIME * 1000000);
+      esp_deep_sleep_start();
+    }
   }
   #endif
 }

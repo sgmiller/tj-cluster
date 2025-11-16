@@ -4925,6 +4925,19 @@
 		)
 		(uuid 8b74baa8-444f-4e1d-bbaa-2f710a74a980)
 	)
+	(circle
+		(center 217.17 77.47)
+		(radius 1.27)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type color)
+			(color 5 255 41 1)
+		)
+		(uuid cd74e17b-0f52-474c-9af5-495dd95d7659)
+	)
 	(rectangle
 		(start 57.15 73.66)
 		(end 90.17 115.57)
