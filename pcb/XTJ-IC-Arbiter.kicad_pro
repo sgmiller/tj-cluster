@@ -699,7 +699,7 @@
         "via_drill": 0.4
       },
       {
-        "clearance": 0.5,
+        "clearance": 0.25,
         "diff_pair_gap": 0.12975,
         "diff_pair_width": 0.25,
         "microvia_diameter": 0.3,
@@ -1073,7 +1073,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "fab/",
     "space_save_all_events": true,
     "spice_adjust_passive_values": false,
     "spice_current_sheet_as_root": false,

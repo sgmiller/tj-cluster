@@ -5015,7 +5015,7 @@
 		)
 		(uuid "4a8a077d-d3ec-4d33-9ee1-f09d4b3aca96")
 	)
-	(text "CCD Transciever and 3.3v Comparator"
+	(text "CCD Transciever"
 		(exclude_from_sim no)
 		(at 88.9 24.638 0)
 		(effects
@@ -13776,7 +13776,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
+		(property "Footprint" "TestPoint:TestPoint_Plated_Hole_D2.0mm"
 			(at 73.66 100.33 0)
 			(effects
 				(font
