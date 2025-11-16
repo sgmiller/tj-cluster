@@ -381,8 +381,8 @@ void printAddress(DeviceAddress deviceAddress)
 {
   for (uint8_t i = 0; i < 8; i++)
   {
-    if (deviceAddress[i] < 16) Serial.print("0");
-    Serial.print(deviceAddress[i], HEX);
+    if (deviceAddress[i] < 16) Stdout.print("0");
+    Stdout.print(deviceAddress[i], HEX);
   }
 }
 
@@ -439,26 +439,26 @@ void setup()
 
   #ifdef INTERNAL_THERMOMETER
   // locate temp devices on the bus
-  Serial.print("Locating temp devices...");
+  Stdout.print("Locating temp devices...");
   thermometer.begin();
-  Serial.print("Found ");
-  Serial.print(thermometer.getDeviceCount(), DEC);
-  Serial.println(" devices.");
+  Stdout.print("Found ");
+  Stdout.print(thermometer.getDeviceCount(), DEC);
+  Stdout.println(" devices.");
 
   // report parasite power requirements
-  Serial.print("Parasite power is: "); 
-  if (thermometer.isParasitePowerMode()) Serial.println("ON");
-  else Serial.println("OFF");
+  Stdout.print("Parasitic power is: "); 
+  if (thermometer.isParasitePowerMode()) Stdout.println("ON");
+  else Stdout.println("OFF");
 
   oneWire.reset_search();
   // assigns the first address found to insideThermometer
   if (!oneWire.search(internalTemp)) {
-    Serial.println("Unable to find address for insideThermometer");
+    Stdout.println("Unable to find address for insideThermometer");
   } else {
   // show the addresses we found on the bus
-    Serial.print("Device 0 Address: ");
+    Stdout.print("Device 0 Address: ");
     printAddress(internalTemp);
-    Serial.println();
+    Stdout.println();
     thermoPresent=true;
   }
   #endif
@@ -532,15 +532,17 @@ void tempCheck() {
     float tempC = thermometer.getTempC(internalTemp);
     if(tempC == DEVICE_DISCONNECTED_C) 
     {
-      Serial.println("Error: Could not read temperature data");
+      Stdout.println("Error: Could not read temperature data");
       return;
     }
-    Serial.print("Temp C: ");
-    Serial.println(tempC);
+    #ifdef THERMO_DEBUG
+    Stdout.print("Temp C: ");
+    Stdout.println(tempC);
+    #endif
 
     if (tempC > THERMAL_LIMIT) {
       // Go into deep sleep for a while and hope we cool off
-      Serial.println("Thermal limit reached, going to sleep.");
+      Stdout.println("Thermal limit reached, going to sleep.");
       esp_sleep_enable_timer_wakeup(THERMAL_SLEEP_TIME * 1000000);
       esp_deep_sleep_start();
     }
@@ -636,8 +638,8 @@ void loop()
         speedSensorPulses = 0;
       }
   #ifdef SPEEDO_DEBUG
-      Serial.print("Speedo freq now ");
-      Serial.println(speedoFreq);
+      Stdout.print("Speedo freq now ");
+      Stdout.println(speedoFreq);
   #endif
     }
   }
