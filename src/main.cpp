@@ -1,6 +1,6 @@
 /*
     XJ/TJ CCD/CAN bus arbiter
-    (C) 2022 N9 Works/ Scott Miller
+    (C) 2025 N9 Works/ Scott Miller
 
     This code is rather specific to driving a Jeep XJ or TJ cluster dash
     with values from onboard sensors and/or the CAN bus to convert to CCD
@@ -11,7 +11,7 @@
     carries extra requirements, including publication of the source code if
     used in a commercial project.
 
-    Copyright (c) 2022 Scott G Miller
+    Copyright (c) 2025 Scott G Miller
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to
@@ -47,14 +47,15 @@
 
 //#define BLUETOOTH_CONSOLE
 // CAN bus
-#define CAN1_TX GPIO_NUM_19
-#define CAN1_RX GPIO_NUM_23
+#define CAN1_TX GPIO_NUM_23
+#define CAN1_RX GPIO_NUM_19
 
 #define POST_BOOT_CPU_MHZ 20
 
 //#define SELF_TEST_MODE
 
-//#define BATT_DEBUG
+#define BATT_DEBUG
+#define BENCH_BATT
 #define SPEEDO_DEBUG
 #define USING_SPEED_SENSOR
 #define INTERNAL_THERMOMETER
@@ -304,6 +305,9 @@ float measureBattery() {
       Stdout.print("Measured battery = ");
       Stdout.println(battV);
       #endif
+      #ifdef BENCH_BATT
+      battV = battV + 9;
+      #endif
       return battV;
     }
 
@@ -416,15 +420,14 @@ void setup()
   tp.DotStar_SetPixelColor(255,165,0);
   tp.DotStar_SetBrightness(96);
   setCpuFrequencyMhz(80);
-  Serial.begin(115200);
-
   setupADC();
  
   #ifdef BLUETOOTH_CONSOLE
   setupBluetooth();
   #else
   Stdout.begin(115200);
-  while (!Stdout);  
+  while (!Stdout);
+  delay(1000);
   #endif
   tp.DotStar_SetPixelColor(255,128,0);
     
@@ -491,20 +494,20 @@ void setup()
 
   // Set pins
   pinMode(VBAT_MEASURE_SIG, INPUT);
-  Serial.println("B");
+  Stdout.println("B");
   
   CCD.onError(CCDHandleError); // subscribe to the error event and call this
-  Serial.println("B2");
+  Stdout.println("B2");
                                // function when an error occurs
   Serial.println("C");
 
   setupSpeedo();
-  Serial.println("D");
+  Stdout.println("D");
 
   lastActivity = millis();
   tp.DotStar_SetPixelColor(0,128,128);
 
-  Serial.println("E");
+  Stdout.println("E");
 
   //setupCAN();
   
@@ -539,6 +542,7 @@ void tempCheck() {
     Stdout.print("Temp C: ");
     Stdout.println(tempC);
     #endif
+    battOil.SetOilPressure(int(tempC));
 
     if (tempC > THERMAL_LIMIT) {
       // Go into deep sleep for a while and hope we cool off
