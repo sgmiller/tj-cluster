@@ -52,7 +52,7 @@
 
 #define POST_BOOT_CPU_MHZ 20
 
-//#define SELF_TEST_MODE
+#define SELF_TEST_MODE
 
 #define BATT_DEBUG
 #define BENCH_BATT
@@ -189,6 +189,11 @@ void resetGauges()
 void selfTest()
 {
   selfTestPhaseStart = millis();
+  CAN_message_t msg;
+  msg.id = random(0x1, 0x7fe);
+  msg.buf[7] = selfTestStage;
+  can1.write(msg);
+
   selfTestStage++;
   resetGauges();
   Stdout.print("Self test stage ");
@@ -361,15 +366,11 @@ void onVCUFaultStates(const CAN_message_t &msg)
 
 void setupCAN()
 {
-  pinMode(6, OUTPUT);
-  digitalWrite(6, LOW);
   can1.setTX(CAN1_TX);
   can1.setRX(CAN1_RX);
+  can1.onReceive(canSniff);
   can1.begin();
-
-  can1.setBaudRate(500000);
-
-  can1.onReceive(onVCUVehicleInputs3);
+  can1.setBaudRate(1000000);
 }
 
 void setupSpeedo()
@@ -509,7 +510,7 @@ void setup()
 
   Stdout.println("E");
 
-  //setupCAN();
+  setupCAN();
   
   #ifndef BLUETOOTH_CONSOLE
   // Reset serial to accommodate new CPU speed

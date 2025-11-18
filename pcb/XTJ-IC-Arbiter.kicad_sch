@@ -4939,6 +4939,19 @@
 		(uuid 9af46fde-6148-48a2-b71b-e71f6878fdff)
 	)
 	(circle
+		(center 80.645 30.48)
+		(radius 1.27)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type color)
+			(color 5 255 41 1)
+		)
+		(uuid ba1b1ab4-f0f9-44e3-b4eb-46a9d2916fb2)
+	)
+	(circle
 		(center 217.17 77.47)
 		(radius 1.27)
 		(stroke
@@ -4974,6 +4987,19 @@
 			(type none)
 		)
 		(uuid e755c098-3b72-457a-8dd1-362440b44ab6)
+	)
+	(circle
+		(center 96.52 77.47)
+		(radius 1.27)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type color)
+			(color 5 255 41 1)
+		)
+		(uuid f7d57b0d-e0d4-4cdc-9ebe-65b71ff92af5)
 	)
 	(rectangle
 		(start 88.9 25.4)
