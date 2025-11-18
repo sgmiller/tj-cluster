@@ -17,4 +17,5 @@
   (lib (name "enclosure")(type "KiCad")(uri "${KIPRJMOD}/parts/enclosure")(options "")(descr ""))
   (lib (name "R2R Comp")(type "KiCad")(uri "${KIPRJMOD}/parts/TLV3704IN/KiCad")(options "")(descr ""))
   (lib (name "TVS")(type "KiCad")(uri "${KIPRJMOD}/parts/SA26A/KiCad")(options "")(descr ""))
+  (lib (name "RXEF050S")(type "KiCad")(uri "${KIPRJMOD}/parts/RXEF050S")(options "")(descr ""))
 )
