@@ -7,3 +7,4 @@
 pcb/~*.lck
 *BOM.zip
 fab/*
+pcb/fab/*
