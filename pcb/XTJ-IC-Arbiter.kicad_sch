@@ -10025,7 +10025,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.littelfuse.com/-/media/electronics/datasheets/resettable_ptcs/littelfuse_ptc_rline_catalog_datasheet.pdf.pdf"
+		(property "Datasheet" "https://www.mouser.com/datasheet/3/40/1/mf_msmf.pdf"
 			(at 38.1 106.68 0)
 			(effects
 				(font
@@ -10043,7 +10043,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "RXEF050S"
+		(property "MPN" " MF-MSMF050/30X-2 "
 			(at 38.1 106.68 90)
 			(effects
 				(font
@@ -11486,7 +11486,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.littelfuse.com/-/media/electronics/datasheets/resettable_ptcs/littelfuse_ptc_rline_catalog_datasheet.pdf.pdf"
+		(property "Datasheet" "https://www.mouser.com/datasheet/3/40/1/mf_msmf.pdf"
 			(at 40.005 86.36 0)
 			(effects
 				(font
@@ -11504,7 +11504,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "RXEF050S"
+		(property "MPN" " MF-MSMF050/30X-2 "
 			(at 40.005 86.36 90)
 			(effects
 				(font
