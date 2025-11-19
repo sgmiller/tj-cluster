@@ -52,9 +52,9 @@
 
 #define POST_BOOT_CPU_MHZ 20
 
-#define SELF_TEST_MODE
+//#define SELF_TEST_MODE
 
-#define BATT_DEBUG
+//#define BATT_DEBUG
 #define BENCH_BATT
 #define SPEEDO_DEBUG
 #define USING_SPEED_SENSOR
@@ -83,6 +83,7 @@ esp_adc_cal_characteristics_t adc1_chars;
 
 #define AIRBAG_OK_INTERVAL 1000      // ms
 #define LOOP_DELAY 25 //ms
+#define STATUS_INTERVAL 5000 // ms
 
 // Temperature management
 #define THERMAL_LIMIT 100 // degC
@@ -99,7 +100,7 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature thermometer(&oneWire);
 
 // arrays to hold device address
-DeviceAddress internalTemp;
+DeviceAddress thermoAddr;
 bool thermoPresent;
 #endif
 
@@ -108,6 +109,8 @@ Watchdog wdt(5);
 bool activity, speedoOn;
 volatile float speedoFreq;
 float lastSpeedo;
+float batteryVoltage;
+float internalTemp;
 
 #ifdef BLUETOOTH_CONSOLE
 #include <BluetoothSerial.h>
@@ -161,6 +164,7 @@ elapsedMillis lastAirbagOkXmt;
 elapsedMillis lastTempCheck;
 elapsedMillis sinceLastStage;
 elapsedMicros sinceLastSpeedoPulse;
+elapsedMillis lastStatus;
 
 float speedoSamples[SPEEDO_SAMPLE_COUNT];
 int speedoSamplePtr;
@@ -391,8 +395,14 @@ void printAddress(DeviceAddress deviceAddress)
   }
 }
 
-void setupBluetooth() {
 #ifdef BLUETOOTH_CONSOLE
+void callback_ESP_BT_data(const uint8_t *buffer, size_t size)
+{
+  // Discard
+}
+
+
+void setupBluetooth() {
   // Get unit MAC address
   esp_read_mac(unitMACAddress, ESP_MAC_WIFI_STA);
   
@@ -406,9 +416,10 @@ void setupBluetooth() {
   Serial.println(deviceName);
   Stdout.begin(deviceName);
   bluetoothBegan=true;
+  Stdout.onData(callback_ESP_BT_data);
   //Stdout.setTimeout(10);
-#endif
 }
+#endif
 
 void setupADC() {
   adc1_config_width(adc_bits_width_t(ADC_WIDTH_BIT_DEFAULT));
@@ -420,15 +431,14 @@ void setup()
 {
   tp.DotStar_SetPixelColor(255,165,0);
   tp.DotStar_SetBrightness(96);
-  setCpuFrequencyMhz(80);
+  Serial.begin(115200);
+  while (!Serial);
+  delay(1000);
+  //setCpuFrequencyMhz(80);
   setupADC();
  
   #ifdef BLUETOOTH_CONSOLE
   setupBluetooth();
-  #else
-  Stdout.begin(115200);
-  while (!Stdout);
-  delay(1000);
   #endif
   tp.DotStar_SetPixelColor(255,128,0);
     
@@ -456,12 +466,12 @@ void setup()
 
   oneWire.reset_search();
   // assigns the first address found to insideThermometer
-  if (!oneWire.search(internalTemp)) {
+  if (!oneWire.search(thermoAddr)) {
     Stdout.println("Unable to find address for insideThermometer");
   } else {
   // show the addresses we found on the bus
     Stdout.print("Device 0 Address: ");
-    printAddress(internalTemp);
+    printAddress(thermoAddr);
     Stdout.println();
     thermoPresent=true;
   }
@@ -533,8 +543,8 @@ void tempCheck() {
   #ifdef INTERNAL_THERMOMETER
   if (thermoPresent) {
     thermometer.requestTemperatures();
-    float tempC = thermometer.getTempC(internalTemp);
-    if(tempC == DEVICE_DISCONNECTED_C) 
+    internalTemp = thermometer.getTempC(thermoAddr);
+    if(internalTemp == DEVICE_DISCONNECTED_C) 
     {
       Stdout.println("Error: Could not read temperature data");
       return;
@@ -543,9 +553,8 @@ void tempCheck() {
     Stdout.print("Temp C: ");
     Stdout.println(tempC);
     #endif
-    battOil.SetOilPressure(int(tempC));
 
-    if (tempC > THERMAL_LIMIT) {
+    if (internalTemp > THERMAL_LIMIT) {
       // Go into deep sleep for a while and hope we cool off
       Stdout.println("Thermal limit reached, going to sleep.");
       esp_sleep_enable_timer_wakeup(THERMAL_SLEEP_TIME * 1000000);
@@ -579,9 +588,9 @@ void loop()
   #else
     if (lastBattMeasure > BATTERY_MEASURE_INTERVAL)
     {
-      float battery = measureBattery();
-      if (battery > -1) {
-        battOil.SetBatteryVoltage(battery);
+      batteryVoltage = measureBattery();
+      if (batteryVoltage > -1) {
+        battOil.SetBatteryVoltage(batteryVoltage);
       }
       lastBattMeasure = 0;
     }
@@ -615,7 +624,7 @@ void loop()
     }
   #endif
 
-    if (lastCCDLoop > INTERWRITE_DELAY)
+  if (lastCCDLoop > INTERWRITE_DELAY)
   {
     lastCCDLoop = 0;
     bool newActivity = _writer.Loop();
@@ -647,20 +656,24 @@ void loop()
       Stdout.println(speedoFreq);
   #endif
     }
+    if (lastStatus > STATUS_INTERVAL) {
+      Stdout.printf("[%7d] VBAT=%f ITEMP=%f\n", millis()/1000, batteryVoltage, internalTemp);
+      lastStatus = 0;
+    }
   }
 
 
 
   #ifdef BLUETOOTH_CONSOLE
   // Disable bluetooth after 2 minutes disconnected to save power
-  if (false && bluetoothBegan && lastBluetooth > 60) {
+  if (bluetoothBegan && lastBluetooth > 120) {
     if (Stdout.connected()) {
       lastBluetooth = 0;
       while (Stdout.available()) {
         Stdout.read();
       }
     } else {
-      Stdout.println("No connection since boot, disabling Bluetooth");
+      Serial.println("No connection since boot, disabling Bluetooth");
       Stdout.end();
       bluetoothBegan=false;
     }

@@ -163,8 +163,6 @@ void CCDLibrary::clockGeneratorInit()
   ledc_timer.clk_cfg = LEDC_AUTO_CLK;                  
   // Set configuration of timer0 for high speed channels
   esp_err_t result = ledc_timer_config(&ledc_timer);
-  if (result == ESP_OK)
-     Serial.printf("frequency: %d", ledc_get_freq(LEDC_HIGH_SPEED_MODE, LEDC_TIMER_0));
   ledc_channel_config_t ledc_channel = {
           .gpio_num   = CLOCK_PIN,
           .speed_mode = LEDC_HIGH_SPEED_MODE,

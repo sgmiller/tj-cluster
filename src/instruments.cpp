@@ -77,12 +77,9 @@ InstrumentWriter::InstrumentWriter(Instrument **instruments,
 
 void InstrumentWriter::Setup(InstrumentWriter *self)
 {
-  Serial.print("PPM ");
-  Serial.println(PULSES_PER_MILE);
+  // Write the initial values to each instrument
   for (int i = 0; i < _instrumentCount; i++)
   {
-    Serial.print("Initial write of ");
-    Serial.println(i);
     _instruments[i]->setWriter(self);
     if (_instruments[i]->MaybeWrite(CCD))
     {
@@ -219,19 +216,13 @@ void FeatureStatus::SetUpShift(bool enabled)
 
 void Speedometer::SetSpeedSensorFrequency(float pulseHz)
 {
-  Serial.println(pulseHz);
   float pph = pulseHz * 3600;
-  Serial.println(pph);
-  float ppm = pph / 17142.88;
-  Serial.print("Calculated spv ");
-  Serial.println(ppm);
+  float ppm = pph / PULSES_PER_MILE;
   SetMPH(int(ppm));
 }
 
 void Speedometer::SetMPH(int newMph)
 {
-  Serial.print("New mph ");
-  Serial.println(newMph);
   mph = newMph;
   SetKPH(round(newMph * 1.609344));
   SetByte(2, newMph);
