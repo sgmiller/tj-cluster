@@ -1,0 +1,20 @@
+Power usage estimate, worst case
+
+Non MCU power: 120mA, mostly 5v, so 0.6W
+MCU fully driven, about 100mA at 3.3v, so 0.33W
+MCU BLE adds 130mA transmitting, so 0.429W
+Total 5v current: 350mA ?  Leaving 650, or conservatively 0.5a 5v
+Observed current with 10mhz CPU speed: 0.155W
+Observed current with full CPU speed + Bluetooth serial transmitting: 0.85W
+Worst case: ~1W
+
+Comparator: 4uA
+ESD: 0.2uA
+Thermo: 1.5mA
+CAN: 500uA
+
+Total 3.3v current: 2mA
+Power: 6.8mW
+
+Total power (heat): 1.1W
+
