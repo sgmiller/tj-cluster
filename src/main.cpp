@@ -43,14 +43,14 @@
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
 #include <DallasTemperature.h>
+#include "imxxx-binutil.h"
 
-
-//#define BLUETOOTH_CONSOLE
+#define BLUETOOTH_CONSOLE
 // CAN bus
 #define CAN1_TX GPIO_NUM_23
 #define CAN1_RX GPIO_NUM_19
 
-#define POST_BOOT_CPU_MHZ 20
+#define POST_BOOT_CPU_MHZ 80 // 80 min for bluetooth
 
 //#define SELF_TEST_MODE
 
@@ -64,6 +64,7 @@
 #define SPEEDOMETER_RATIO 1.59
 #define SPEEDO_INTERVAL 200 // ms
 #define SPEEDO_SAMPLE_COUNT 5
+#define RPM_SAMPLE_INTERVAL 20 // ms
 
 #define DISABLE_AIRBAG_LAMP // Define if you don't have a working airbag module on the CCD bus
 #define INSTRUMENT_COUNT 10
@@ -155,6 +156,7 @@ u_int16_t batteryWindow[BATTERY_WINDOW_LENGTH];
 u_int16_t batterySamples[BATTERY_SAMPLE_COUNT];
 u_int8_t batterySamplePtr;
 u_int8_t batteryWindowPtr;
+int16_t inverterRpm;
 
 elapsedMillis lastActivity;
 elapsedMillis lastCCDLoop;
@@ -165,6 +167,7 @@ elapsedMillis lastTempCheck;
 elapsedMillis sinceLastStage;
 elapsedMicros sinceLastSpeedoPulse;
 elapsedMillis lastStatus;
+elapsedMillis lastRPM;
 
 float speedoSamples[SPEEDO_SAMPLE_COUNT];
 int speedoSamplePtr;
@@ -340,6 +343,9 @@ void canSniff(const CAN_message_t &msg)
     Stdout.print(" ");
   }
   Stdout.println();
+  imxxx_rx_t inverterMsg;
+  imxxx_Receive(&inverterMsg, msg.buf, msg.id, msg.len);
+  inverterRpm = inverterMsg.M165_Motor_Position_Info.INV_Motor_Speed;
 }
 
 static void onVCUVehicleInputs3(const CAN_message_t &msg)
@@ -655,6 +661,10 @@ void loop()
       Stdout.print("Speedo freq now ");
       Stdout.println(speedoFreq);
   #endif
+    }
+    if (lastRPM > RPM_SAMPLE_INTERVAL) {
+      tach.SetRPM(abs(inverterRpm));
+
     }
     if (lastStatus > STATUS_INTERVAL) {
       Stdout.printf("[%7d] VBAT=%f ITEMP=%f\n", millis()/1000, batteryVoltage, internalTemp);
