@@ -45,14 +45,14 @@
 #include <DallasTemperature.h>
 #include "imxxx-binutil.h"
 
-#define BLUETOOTH_CONSOLE
+//#define BLUETOOTH_CONSOLE
 // CAN bus
 #define CAN1_TX GPIO_NUM_23
 #define CAN1_RX GPIO_NUM_19
 
 #define POST_BOOT_CPU_MHZ 80 // 80 min for bluetooth
 
-//#define SELF_TEST_MODE
+#define SELF_TEST_MODE
 
 //#define BATT_DEBUG
 #define BENCH_BATT
@@ -70,7 +70,7 @@
 #define INSTRUMENT_COUNT 10
 #define ACTIVITY_ON_MS 25 // ms
 #define SELF_TEST_STAGE_COUNT 10
-#define SELF_TEST_STAGE_DURATION 3000
+#define SELF_TEST_STAGE_DURATION 6000
 #define VBAT_VD_R1 10040000.0 // VBAT voltage divider R1 value (ohms), ideally measured
 #define VBAT_VD_R2 1492000.0 // VBAT voltage divider R2 value (ohms), ideally measured
 #define VBAT_MEASUREMENT_RATIO 1.0/(VBAT_VD_R2/(VBAT_VD_R1+VBAT_VD_R2)) 
@@ -159,7 +159,6 @@ u_int8_t batteryWindowPtr;
 int16_t inverterRpm;
 
 elapsedMillis lastActivity;
-elapsedMillis lastCCDLoop;
 elapsedMillis lastRefresh;
 elapsedMillis lastBattMeasure;
 elapsedMillis lastAirbagOkXmt;
@@ -251,9 +250,11 @@ void selfTest()
 #ifdef USING_SPEED_SENSOR
 void ICACHE_RAM_ATTR handleSpeedSensor()
 {
-    speedSensorPulses ++;
-    speedoFreq=1000000.0 / sinceLastSpeedoPulse;
-    sinceLastSpeedoPulse = 0;
+  // Capture early and reset the timer
+  unsigned long sinceLastPulse = sinceLastSpeedoPulse;
+  sinceLastSpeedoPulse = 0;
+  speedSensorPulses ++;
+  speedoFreq=1000000.0 / sinceLastPulse;
 }
 #endif
 
@@ -577,16 +578,25 @@ void loop()
 
   #ifdef SELF_TEST_MODE
     float t = constrain(float(millis() - selfTestPhaseStart) /
-                            SELF_TEST_STAGE_DURATION,
-                        0.0, 1.0);
+                            SELF_TEST_STAGE_DURATION*2,
+                        0.0, 2.0);
     if (selfTestStage == 1)
     {
-      speedo.SetKPH(160 * t);
+      if (t > 1.0) {
+        speedo.SetKPH(160 * (2 - t));
+      } else {
+        speedo.SetKPH(160 * t);
+      }
     }
     else if (selfTestStage == 2)
     {
-      tach.SetRPM(6000 * t);
-    }
+      if (t > 1.0) {
+        tach.SetRPM(6000 * (2 - t));
+      } else {
+        tach.SetRPM(6000 * t);
+      }
+    } 
+
     if (sinceLastStage > SELF_TEST_STAGE_DURATION) {
       sinceLastStage = 0;
       selfTest();
@@ -630,38 +640,42 @@ void loop()
     }
   #endif
 
-  if (lastCCDLoop > INTERWRITE_DELAY)
-  {
-    lastCCDLoop = 0;
+  if (_writer.IsDirty() && CCD.canWrite()) {
     bool newActivity = _writer.Loop();
     activity = activity || newActivity;
-    if (sinceLastSpeedoPulse > 1000000 && speedSensorPulses == 0) {
-      speedoFreq = 0;
-      if (speedoFreq > 0) {
-        speedo.SetSpeedSensorFrequency(0);
-      }
-    } else if (speedSensorPulses > 0) {
-      speedoSamples[speedoSamplePtr] = speedoFreq;
-      float speedoSum = 0;
-      for (int i=0; i<SPEEDO_SAMPLE_COUNT; i++) {
-        speedoSum += speedoSamples[i];
-      }
-      float speedoAvg = speedoSum / SPEEDO_SAMPLE_COUNT;
-      speedo.SetSpeedSensorFrequency(speedoAvg);
-    
-      // Either way, actual pulses are accounted for, and can be used to update
-      // the odometer
-      if (speedSensorPulses >= PULSES_PER_UPDATE)
-      {
-        // send an odometer increment
-        //odometer.AddMiles(speedSensorPulses / PULSES_PER_MILE);
-        speedSensorPulses = 0;
-      }
-  #ifdef SPEEDO_DEBUG
-      Stdout.print("Speedo freq now ");
-      Stdout.println(speedoFreq);
-  #endif
+  }
+  
+  #ifdef USING_SPEED_SENSOR
+  // Make sure if we haven't read any pulses we eventually drop to 0
+  if (sinceLastSpeedoPulse > 1000000 && speedSensorPulses == 0) {
+    speedoFreq = 0;
+    if (speedoFreq > 0) {
+      speedo.SetSpeedSensorFrequency(0);
     }
+  } else if (speedSensorPulses > 0) {
+    speedoSamples[speedoSamplePtr] = speedoFreq;
+    float speedoSum = 0;
+    for (int i=0; i<SPEEDO_SAMPLE_COUNT; i++) {
+      speedoSum += speedoSamples[i];
+    }
+    float speedoAvg = speedoSum / SPEEDO_SAMPLE_COUNT;
+    speedo.SetSpeedSensorFrequency(speedoAvg);
+  
+    // Either way, actual pulses are accounted for, and can be used to update
+    // the odometer
+    if (speedSensorPulses >= PULSES_PER_UPDATE)
+    {
+      // send an odometer increment
+      odometer.AddMiles(speedSensorPulses / PULSES_PER_MILE);
+      speedSensorPulses = 0;
+    }
+#ifdef SPEEDO_DEBUG
+    Stdout.print("Speedo freq now ");
+    Stdout.println(speedoFreq);
+#endif
+  
+  #endif
+
     if (lastRPM > RPM_SAMPLE_INTERVAL) {
       tach.SetRPM(abs(inverterRpm));
 

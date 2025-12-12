@@ -58,7 +58,12 @@ void Instrument::SetByte(int bpos, uint8_t val)
   }
 }
 
-void Instrument::Refresh() { _needsUpdate = true; }
+void Instrument::Refresh() { 
+  _needsUpdate = true; 
+  if (_writer != NULL) {
+    _writer->markDirty();
+  }
+}
 
 void Instrument::Quiesce()
 {
@@ -87,6 +92,14 @@ void InstrumentWriter::Setup(InstrumentWriter *self)
     }
   }
 
+}
+
+void InstrumentWriter::markDirty() {
+  _dirty = true;
+}
+
+bool InstrumentWriter::IsDirty() {
+  return _dirty;
 }
 
 bool InstrumentWriter::Loop()

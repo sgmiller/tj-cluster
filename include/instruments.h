@@ -66,9 +66,12 @@ public:
     InstrumentWriter(Instrument **instruments, int instrumentCount);
     bool Loop();
     void Setup(InstrumentWriter *writer);
+    void markDirty();
+    bool IsDirty();
 
 private:
-    bool _writing;
+    volatile bool _writing;
+    volatile bool _dirty;
     int _instrumentCount;
     Instrument **_instruments;
     int _currentInstrument;

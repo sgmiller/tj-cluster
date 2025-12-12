@@ -112,6 +112,7 @@ class CCDLibrary
         void onMessageReceived(onCCDMessageReceivedHandler msgHandler);
         void onError(onCCDErrorHandler errHandler);
         volatile bool _transmitAllowed;
+        bool canWrite();
 
     private:
         Stream *Stdout;

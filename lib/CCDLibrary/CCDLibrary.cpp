@@ -237,6 +237,11 @@ uint8_t CCDLibrary::write(uint8_t* buffer, uint8_t bufferLength)
     return 0;
 }
 
+// Returns true if a write will not block
+bool CCDLibrary::canWrite() {
+    return CCDSERIAL.availableForWrite();
+}
+
 bool CCDLibrary::shouldIgnore(uint8_t idByte) {
     uint8_t *pByte, bit;
 
