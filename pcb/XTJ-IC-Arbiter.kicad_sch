@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "XJ/TJ CCD/CAN bus arbiter")
-		(date "2025-09-18")
-		(rev "3.0")
+		(date "2025-12-16")
+		(rev "3.1")
 		(company "N9 Works")
 	)
 	(lib_symbols
@@ -2286,7 +2286,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Jumper:Jumper_2_Small_Open"
+		(symbol "Jumper:SolderJumper_2_Open"
 			(pin_numbers
 				(hide yes)
 			)
@@ -2295,18 +2295,18 @@
 				(hide yes)
 			)
 			(exclude_from_sim no)
-			(in_bom yes)
+			(in_bom no)
 			(on_board yes)
 			(property "Reference" "JP"
-				(at 0 2.794 0)
+				(at 0 2.032 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "Jumper_2_Small_Open"
-				(at 0 -2.286 0)
+			(property "Value" "SolderJumper_2_Open"
+				(at 0 -2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2331,7 +2331,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Jumper, 2-pole, small symbol, open"
+			(property "Description" "Solder Jumper, 2-pole, open"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2340,7 +2340,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "Jumper SPST"
+			(property "ki_keywords" "solder jumper SPST"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2349,7 +2349,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "Jumper* TestPoint*2Pads* TestPoint*Bridge*"
+			(property "ki_fp_filters" "SolderJumper*Open*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2358,10 +2358,11 @@
 					(hide yes)
 				)
 			)
-			(symbol "Jumper_2_Small_Open_0_0"
-				(circle
-					(center -1.016 0)
-					(radius 0.254)
+			(symbol "SolderJumper_2_Open_0_1"
+				(polyline
+					(pts
+						(xy -0.254 1.016) (xy -0.254 -1.016)
+					)
 					(stroke
 						(width 0)
 						(type default)
@@ -2370,23 +2371,58 @@
 						(type none)
 					)
 				)
-				(circle
-					(center 1.016 0)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Jumper_2_Small_Open_0_1"
 				(arc
-					(start -0.762 1.0196)
-					(mid 0 1.2729)
-					(end 0.762 1.0196)
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.016) (xy 0.254 -1.016)
+					)
 					(stroke
 						(width 0)
 						(type default)
@@ -2396,10 +2432,10 @@
 					)
 				)
 			)
-			(symbol "Jumper_2_Small_Open_1_1"
+			(symbol "SolderJumper_2_Open_1_1"
 				(pin passive line
-					(at -2.54 0 0)
-					(length 1.27)
+					(at -3.81 0 0)
+					(length 2.54)
 					(name "A"
 						(effects
 							(font
@@ -2416,8 +2452,8 @@
 					)
 				)
 				(pin passive line
-					(at 2.54 0 180)
-					(length 1.27)
+					(at 3.81 0 180)
+					(length 2.54)
 					(name "B"
 						(effects
 							(font
@@ -5228,6 +5264,12 @@
 		(uuid "502d0001-b23d-43b3-b1b8-86b161e83f83")
 	)
 	(junction
+		(at 63.5 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "529fc556-9095-42c3-a3c1-23e5f5d51dd7")
+	)
+	(junction
 		(at 41.91 103.505)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5324,6 +5366,12 @@
 		(uuid "7da7b6c8-856b-4172-8200-0b279308d2d6")
 	)
 	(junction
+		(at 63.5 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7e4f763b-fad8-4615-8d21-99a6668a6dac")
+	)
+	(junction
 		(at 67.056 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5334,12 +5382,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "861aa999-b994-4c2a-a237-3dd345250edb")
-	)
-	(junction
-		(at 63.5 60.96)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "88283ae6-bee9-4849-8a56-1777583118df")
 	)
 	(junction
 		(at 267.97 41.91)
@@ -5504,6 +5546,12 @@
 		(uuid "e760eb0c-c4be-4e55-9fb3-ec933449c0bb")
 	)
 	(junction
+		(at 72.39 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e80c95dc-95ed-42ed-b007-7dcb313d0665")
+	)
+	(junction
 		(at 142.24 52.07)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5550,7 +5598,7 @@
 		(uuid "82a1bd43-a1ef-4604-90da-fc72e2aa0cd2")
 	)
 	(no_connect
-		(at 110.49 82.55)
+		(at 125.73 97.79)
 		(uuid "94217bd4-7fac-4c61-a79d-50b7ad1bac06")
 	)
 	(no_connect
@@ -5606,6 +5654,16 @@
 			(type default)
 		)
 		(uuid "034c8b8a-0ccd-4023-abd0-a0bb90353fc8")
+	)
+	(wire
+		(pts
+			(xy 63.5 55.88) (xy 63.5 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03b3f0d3-a710-4ad2-96d0-1fb7d4fbfd16")
 	)
 	(wire
 		(pts
@@ -5899,6 +5957,16 @@
 	)
 	(wire
 		(pts
+			(xy 72.39 55.88) (xy 72.39 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "209548e5-45c0-4a49-aebd-db338836e3c1")
+	)
+	(wire
+		(pts
 			(xy 165.1 46.99) (xy 163.83 46.99)
 		)
 		(stroke
@@ -5999,16 +6067,6 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 60.96) (xy 63.5 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "305c5f7a-afb7-4a77-b81f-a92c1984b24a")
-	)
-	(wire
-		(pts
 			(xy 138.43 52.07) (xy 142.24 52.07)
 		)
 		(stroke
@@ -6056,16 +6114,6 @@
 			(type default)
 		)
 		(uuid "38690f12-9b00-4796-ac69-a258775d87f4")
-	)
-	(wire
-		(pts
-			(xy 158.75 44.45) (xy 146.05 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d217775-3952-4695-ba48-9967d1e84dc2")
 	)
 	(wire
 		(pts
@@ -6379,6 +6427,16 @@
 	)
 	(wire
 		(pts
+			(xy 63.5 63.5) (xy 59.69 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b638c50-e585-4d66-b19c-d5306398345f")
+	)
+	(wire
+		(pts
 			(xy 67.056 149.86) (xy 67.056 156.21)
 		)
 		(stroke
@@ -6539,6 +6597,16 @@
 	)
 	(wire
 		(pts
+			(xy 59.69 63.5) (xy 59.69 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "824f32b5-2ac2-4662-bc7f-9afbbbe8a694")
+	)
+	(wire
+		(pts
 			(xy 157.48 81.28) (xy 161.29 81.28)
 		)
 		(stroke
@@ -6549,7 +6617,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 46.99) (xy 158.75 46.99)
+			(xy 146.05 46.99) (xy 156.21 46.99)
 		)
 		(stroke
 			(width 0)
@@ -7189,6 +7257,16 @@
 	)
 	(wire
 		(pts
+			(xy 156.21 44.45) (xy 146.05 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d83fac50-5e30-47ca-91ae-fcc5e0aa2750")
+	)
+	(wire
+		(pts
 			(xy 83.82 137.16) (xy 86.106 137.16)
 		)
 		(stroke
@@ -7226,6 +7304,16 @@
 			(type default)
 		)
 		(uuid "ddb95ae5-c5c5-4343-906d-40b184ca2215")
+	)
+	(wire
+		(pts
+			(xy 63.5 63.5) (xy 72.39 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dde0d801-6f6a-44a5-85ef-5277716f1926")
 	)
 	(wire
 		(pts
@@ -7389,16 +7477,6 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 60.96) (xy 72.39 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f13b8d68-8a71-491e-affd-0172b8352340")
-	)
-	(wire
-		(pts
 			(xy 138.43 46.99) (xy 146.05 46.99)
 		)
 		(stroke
@@ -7548,7 +7626,7 @@
 		(uuid "ffa1b78e-423d-4e22-a362-33cc9b7377fd")
 	)
 	(label "can+"
-		(at 33.02 78.74 0)
+		(at 33.02 81.28 0)
 		(effects
 			(font
 				(size 1.524 1.524)
@@ -7828,12 +7906,12 @@
 		(uuid "6f0484e1-453a-463b-b240-cffdd588d6dc")
 	)
 	(label "temp"
-		(at 125.73 97.79 0)
+		(at 110.49 82.55 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "712d674a-9144-42d8-bb6f-72be7f38b6cb")
 	)
@@ -8068,7 +8146,7 @@
 		(uuid "c5eded28-5d85-4948-8f91-8e430122cfca")
 	)
 	(label "can-"
-		(at 33.02 81.28 0)
+		(at 33.02 78.74 0)
 		(effects
 			(font
 				(size 1.524 1.524)
@@ -8888,112 +8966,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:Jumper_2_Small_Open")
-		(at 63.5 50.8 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0f4dc543-a419-46ff-994b-cac29ce6a418")
-		(property "Reference" "JP2"
-			(at 64.389 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "Jumper_2_Small_Open"
-			(at 60.6339 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 63.5 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 63.5 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Jumper, 2-pole, small symbol, open"
-			(at 63.5 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 63.5 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 63.5 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 63.5 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Note" ""
-			(at 63.5 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "444ef333-3020-458a-99f6-d4eb68c9416c")
-		)
-		(pin "1"
-			(uuid "4b9356cd-4888-452b-8b7e-03051a1fcfeb")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "JP2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 44.45 86.36 180)
 		(unit 1)
@@ -9120,6 +9092,76 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 63.5 52.07 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1e95ba56-e762-48e2-b9c8-392732cedad8")
+		(property "Reference" "JP2"
+			(at 65.151 50.8578 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 65.151 53.2821 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
+			(at 63.5 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 63.5 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 63.5 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e1d50b28-2c9b-4405-8e96-568587ac1cab")
+		)
+		(pin "2"
+			(uuid "800abf2a-7897-4916-89de-e35d8d35707e")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "JP2")
 					(unit 1)
 				)
 			)
@@ -9416,112 +9458,6 @@
 			(project ""
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "#PWR017")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:Jumper_2_Small_Open")
-		(at 72.39 50.8 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "254c99b3-f30e-4c7e-b09b-095aea752394")
-		(property "Reference" "JP1"
-			(at 73.279 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "Jumper_2_Small_Open"
-			(at 69.5239 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 72.39 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 72.39 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Jumper, 2-pole, small symbol, open"
-			(at 72.39 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 72.39 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 72.39 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 72.39 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Note" ""
-			(at 72.39 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "1a86d0c0-363c-425f-8611-dbb34db861e1")
-		)
-		(pin "1"
-			(uuid "4022c746-2ed8-43bc-ae4d-0aa9ffb1afb9")
-		)
-		(instances
-			(project ""
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "JP1")
 					(unit 1)
 				)
 			)
@@ -10177,112 +10113,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:Jumper_2_Small_Open")
-		(at 161.29 46.99 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3ad37646-da8a-4d26-8c8e-964d65e078b6")
-		(property "Reference" "JP4"
-			(at 159.385 48.895 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "Jumper_2_Small_Open"
-			(at 161.29 44.1239 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 161.29 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 161.29 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Jumper, 2-pole, small symbol, open"
-			(at 161.29 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 161.29 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 161.29 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 161.29 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Note" ""
-			(at 161.29 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "4cd9c98f-bbfc-400a-92be-a024589fc9bb")
-		)
-		(pin "1"
-			(uuid "5f881531-4b42-4666-be41-909e51353c29")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "JP4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 41.91 100.33 90)
 		(unit 1)
@@ -10718,7 +10548,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 72.39 57.15 0)
+		(at 72.39 59.69 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10727,7 +10557,7 @@
 		(dnp no)
 		(uuid "47d3e83a-02d5-4e90-801c-f03b1c364e3d")
 		(property "Reference" "R5"
-			(at 70.358 58.42 90)
+			(at 70.358 60.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10736,7 +10566,7 @@
 			)
 		)
 		(property "Value" "60R4"
-			(at 72.39 59.69 90)
+			(at 72.39 62.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10745,7 +10575,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 70.612 57.15 90)
+			(at 70.612 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10754,7 +10584,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 72.39 57.15 0)
+			(at 72.39 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10763,7 +10593,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 72.39 57.15 0)
+			(at 72.39 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10772,7 +10602,7 @@
 			)
 		)
 		(property "MPN" "CMF5560R400FHEK"
-			(at 72.39 57.15 90)
+			(at 72.39 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10781,7 +10611,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 72.39 57.15 90)
+			(at 72.39 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10790,7 +10620,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 72.39 57.15 90)
+			(at 72.39 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10799,7 +10629,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 72.39 57.15 90)
+			(at 72.39 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10808,7 +10638,7 @@
 			)
 		)
 		(property "Note" ""
-			(at 72.39 57.15 90)
+			(at 72.39 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13259,7 +13089,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 63.5 57.15 0)
+		(at 63.5 59.69 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13268,7 +13098,7 @@
 		(dnp no)
 		(uuid "8d1ac031-3e67-4e7b-8e5c-6b675b8f2a5b")
 		(property "Reference" "R11"
-			(at 65.532 58.928 90)
+			(at 65.532 61.468 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13277,7 +13107,7 @@
 			)
 		)
 		(property "Value" "60R4"
-			(at 63.5 59.69 90)
+			(at 63.5 62.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13286,7 +13116,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 61.722 57.15 90)
+			(at 61.722 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13295,7 +13125,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 63.5 57.15 0)
+			(at 63.5 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13304,7 +13134,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 63.5 57.15 0)
+			(at 63.5 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13313,7 +13143,7 @@
 			)
 		)
 		(property "MPN" "CMF5560R400FHEK"
-			(at 63.5 57.15 90)
+			(at 63.5 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13322,7 +13152,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 63.5 57.15 90)
+			(at 63.5 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13331,7 +13161,7 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 63.5 57.15 90)
+			(at 63.5 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13340,7 +13170,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 63.5 57.15 90)
+			(at 63.5 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13349,7 +13179,7 @@
 			)
 		)
 		(property "Note" ""
-			(at 63.5 57.15 90)
+			(at 63.5 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14051,35 +13881,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:Jumper_2_Small_Open")
-		(at 161.29 44.45 0)
-		(mirror y)
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 160.02 46.99 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "a652d36b-40c1-44d4-a3c4-97a29ce10a4e")
-		(property "Reference" "JP3"
-			(at 159.385 41.275 0)
+		(fields_autoplaced yes)
+		(uuid "a9240f9a-b175-40a6-bbbe-48af409afa5e")
+		(property "Reference" "JP4"
+			(at 160.02 41.9565 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
-		(property "Value" "Jumper_2_Small_Open"
-			(at 161.29 41.5839 0)
+		(property "Value" "SolderJumper_2_Open"
+			(at 160.02 44.3808 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 161.29 44.45 0)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
+			(at 160.02 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14088,7 +13916,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 161.29 44.45 0)
+			(at 160.02 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14096,61 +13924,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Jumper, 2-pole, small symbol, open"
-			(at 161.29 44.45 0)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 160.02 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(property "Sim.Device" ""
-			(at 161.29 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" ""
-			(at 161.29 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Type" ""
-			(at 161.29 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Note" ""
-			(at 161.29 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "f9224817-2d55-442a-8853-805671f01df4")
 		)
 		(pin "1"
-			(uuid "c82e58dd-e3b0-43f1-b3e4-2a771d6d5d79")
+			(uuid "850a72d8-7ca3-4391-9d5c-19a792326a37")
+		)
+		(pin "2"
+			(uuid "474090c6-3c6a-4f38-9799-97c4756a8d07")
 		)
 		(instances
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "JP3")
+					(reference "JP4")
 					(unit 1)
 				)
 			)
@@ -16850,6 +16642,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 72.39 52.07 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ede8fa2c-84de-411f-93d9-2bc4222302a6")
+		(property "Reference" "JP1"
+			(at 74.041 50.8578 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 74.041 53.2821 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
+			(at 72.39 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 72.39 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 72.39 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a0cf6619-040e-4b4b-b896-29f2fb7ac51d")
+		)
+		(pin "2"
+			(uuid "45bcc329-0606-4984-8e25-e9c66cd3a34a")
+		)
+		(instances
+			(project ""
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "JP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 157.48 105.41 180)
 		(unit 1)
@@ -16958,6 +16820,74 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 160.02 44.45 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f9e7e600-5046-4ac4-88fb-daa2ba10a07c")
+		(property "Reference" "JP3"
+			(at 160.02 39.4165 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 160.02 41.8408 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
+			(at 160.02 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 160.02 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 160.02 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7ccbe344-c4c4-4965-9714-16f907856ca7")
+		)
+		(pin "2"
+			(uuid "32d1c007-5343-4e63-a185-377401d62b5f")
+		)
+		(instances
+			(project "XTJ-IC-Arbiter"
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "JP3")
 					(unit 1)
 				)
 			)
