@@ -5180,7 +5180,7 @@
 		(uuid "fb47090d-43b7-492a-95ca-d35f400f0a26")
 	)
 	(junction
-		(at 44.45 86.36)
+		(at 44.45 91.44)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0354fd7f-4984-49e2-a7af-a11296d89690")
@@ -5977,7 +5977,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 86.36) (xy 42.545 86.36)
+			(xy 44.45 91.44) (xy 42.545 91.44)
 		)
 		(stroke
 			(width 0)
@@ -7297,7 +7297,7 @@
 	)
 	(wire
 		(pts
-			(xy 37.465 86.36) (xy 33.02 86.36)
+			(xy 37.465 91.44) (xy 33.02 91.44)
 		)
 		(stroke
 			(width 0)
@@ -7706,7 +7706,7 @@
 		(uuid "1911edae-0435-4fd6-aa77-67cebfb83ffd")
 	)
 	(label "can_term+"
-		(at 72.39 53.34 0)
+		(at 72.39 55.88 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7716,7 +7716,7 @@
 		(uuid "227ae106-e339-4a2f-b180-f59cb41c8662")
 	)
 	(label "can_term-"
-		(at 63.5 53.34 180)
+		(at 63.5 55.88 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7936,7 +7936,7 @@
 		(uuid "75ad0fd9-6f62-4688-a97a-8ab2b83ab527")
 	)
 	(label "can_term"
-		(at 72.39 60.96 0)
+		(at 72.39 63.5 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8076,7 +8076,7 @@
 		(uuid "a7a13636-da76-4ca6-a5b3-9a34648ea16a")
 	)
 	(label "VIN"
-		(at 33.02 86.36 0)
+		(at 33.02 91.44 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8126,7 +8126,7 @@
 		(uuid "be9863a6-8977-4f18-b10b-9464cdd6b01c")
 	)
 	(label "ccd-"
-		(at 33.02 88.9 0)
+		(at 33.02 86.36 0)
 		(effects
 			(font
 				(size 1.524 1.524)
@@ -8166,7 +8166,7 @@
 		(uuid "d5774fe7-6da3-46ce-8476-0b9d79be7624")
 	)
 	(label "ccd+"
-		(at 33.02 91.44 0)
+		(at 33.02 88.9 0)
 		(effects
 			(font
 				(size 1.524 1.524)
@@ -8967,7 +8967,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 44.45 86.36 180)
+		(at 44.45 91.44 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8975,7 +8975,7 @@
 		(dnp no)
 		(uuid "1486e0a8-55d8-41a0-a755-205a3fddfa28")
 		(property "Reference" "#FLG03"
-			(at 44.45 88.265 0)
+			(at 44.45 93.345 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8984,7 +8984,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 46.101 87.63 0)
+			(at 46.101 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8993,7 +8993,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 44.45 86.36 0)
+			(at 44.45 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9002,7 +9002,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 44.45 86.36 0)
+			(at 44.45 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9011,7 +9011,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 44.45 86.36 0)
+			(at 44.45 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9105,10 +9105,9 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "1e95ba56-e762-48e2-b9c8-392732cedad8")
 		(property "Reference" "JP2"
-			(at 65.151 50.8578 90)
+			(at 61.595 50.165 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9123,6 +9122,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
@@ -10482,7 +10482,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 44.45 86.36 270)
+		(at 44.45 91.44 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10490,7 +10490,7 @@
 		(dnp no)
 		(uuid "47d3c4e7-7931-476c-8aae-b13b56caaeab")
 		(property "Reference" "#PWR010"
-			(at 40.64 86.36 0)
+			(at 40.64 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10499,7 +10499,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 43.942 84.582 90)
+			(at 43.942 89.662 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10508,7 +10508,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 44.45 86.36 0)
+			(at 44.45 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10517,7 +10517,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 44.45 86.36 0)
+			(at 44.45 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10526,7 +10526,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 44.45 86.36 0)
+			(at 44.45 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11281,7 +11281,7 @@
 	)
 	(symbol
 		(lib_id "Device:Polyfuse_Small")
-		(at 40.005 86.36 90)
+		(at 40.005 91.44 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11290,7 +11290,7 @@
 		(fields_autoplaced yes)
 		(uuid "612c3360-43df-4657-ace7-d382ab2546a2")
 		(property "Reference" "F3"
-			(at 40.005 83.7509 90)
+			(at 40.005 88.8309 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11298,7 +11298,7 @@
 			)
 		)
 		(property "Value" "Polyfuse_Small"
-			(at 40.005 83.7508 90)
+			(at 40.005 88.8308 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11307,7 +11307,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuse_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
-			(at 45.085 85.09 0)
+			(at 45.085 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11317,7 +11317,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/40/1/mf_msmf.pdf"
-			(at 40.005 86.36 0)
+			(at 40.005 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11326,7 +11326,7 @@
 			)
 		)
 		(property "Description" "Resettable fuse, polymeric positive temperature coefficient, small symbol"
-			(at 40.005 86.36 0)
+			(at 40.005 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11335,7 +11335,7 @@
 			)
 		)
 		(property "MPN" " MF-MSMF050/30X-2 "
-			(at 40.005 86.36 90)
+			(at 40.005 91.44 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13888,10 +13888,9 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "a9240f9a-b175-40a6-bbbe-48af409afa5e")
 		(property "Reference" "JP4"
-			(at 160.02 41.9565 0)
+			(at 160.02 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13904,6 +13903,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
@@ -16649,10 +16649,9 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "ede8fa2c-84de-411f-93d9-2bc4222302a6")
 		(property "Reference" "JP1"
-			(at 74.041 50.8578 90)
+			(at 71.12 50.165 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16667,6 +16666,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
@@ -16836,7 +16836,7 @@
 		(fields_autoplaced yes)
 		(uuid "f9e7e600-5046-4ac4-88fb-daa2ba10a07c")
 		(property "Reference" "JP3"
-			(at 160.02 39.4165 0)
+			(at 160.02 41.8409 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16849,6 +16849,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
