@@ -7705,6 +7705,16 @@
 		)
 		(uuid "1911edae-0435-4fd6-aa77-67cebfb83ffd")
 	)
+	(label "12vp"
+		(at 240.03 80.01 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1a78088d-6b52-43ef-8108-c7e41a5655b8")
+	)
 	(label "can_term+"
 		(at 72.39 55.88 0)
 		(effects
@@ -16454,73 +16464,6 @@
 			(project "XTJ-IC-Arbiter"
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "#PWR011")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 240.03 80.01 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e8206eed-9cca-4236-976b-dd802ca92893")
-		(property "Reference" "#PWR018"
-			(at 243.84 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 236.855 80.01 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 240.03 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 240.03 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 240.03 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7006c758-c3ac-43a5-a5fd-dcdab73b14b6")
-		)
-		(instances
-			(project "XTJ-IC-Arbiter"
-				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
-					(reference "#PWR018")
 					(unit 1)
 				)
 			)
