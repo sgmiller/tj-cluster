@@ -5150,7 +5150,7 @@
 	)
 	(text "Keep short,\ncap shared"
 		(exclude_from_sim no)
-		(at 143.002 150.368 0)
+		(at 148.082 150.368 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5226,6 +5226,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2c9b9464-6d7f-495f-8c72-2583cb05a98a")
+	)
+	(junction
+		(at 137.668 156.21)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2d2a9ae9-2415-4c34-ac63-2edb4bad99a5")
 	)
 	(junction
 		(at 219.71 33.02)
@@ -6015,7 +6021,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 156.21) (xy 157.48 156.21)
+			(xy 132.08 156.21) (xy 137.668 156.21)
 		)
 		(stroke
 			(width 0)
@@ -6595,6 +6601,16 @@
 	)
 	(wire
 		(pts
+			(xy 137.668 156.21) (xy 157.48 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c0c37ab-8dfe-4ffe-b816-43ec4d5b62e8")
+	)
+	(wire
+		(pts
 			(xy 248.92 41.91) (xy 267.97 41.91)
 		)
 		(stroke
@@ -7162,6 +7178,16 @@
 			(type default)
 		)
 		(uuid "cfae5160-7b5e-4c14-9aaf-bd0e8ab0c612")
+	)
+	(wire
+		(pts
+			(xy 137.668 154.94) (xy 137.668 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1be44ac-ee47-4bfa-ac21-ab4a1e01a22d")
 	)
 	(wire
 		(pts

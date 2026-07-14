@@ -38,8 +38,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.8,
-          "height": 1.5,
-          "width": 1.5
+          "height": 1.6,
+          "width": 1.6
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -713,7 +713,7 @@
         "pattern": "/+5VO"
       },
       {
-        "netclass": "GND",
+        "netclass": "PWR",
         "pattern": "GND"
       },
       {
