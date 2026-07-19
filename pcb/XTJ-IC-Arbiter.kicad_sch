@@ -5084,7 +5084,7 @@
 		)
 		(uuid "0285722c-8369-4455-bd99-2f81c14fddfd")
 	)
-	(text "ESP32"
+	(text "MCU"
 		(exclude_from_sim no)
 		(at 97.536 72.39 0)
 		(effects
