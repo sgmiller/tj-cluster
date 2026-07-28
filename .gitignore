@@ -4,11 +4,8 @@
 .vscode/launch.json
 .vscode/ipch
 *~
-<<<<<<< Updated upstream
 pcb/~*.lck
 *BOM.zip
 fab/*
 pcb/fab/*
-=======
 tools/
->>>>>>> Stashed changes
