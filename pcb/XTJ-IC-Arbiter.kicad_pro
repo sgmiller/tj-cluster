@@ -723,6 +723,10 @@
       {
         "netclass": "PWR",
         "pattern": "/12vp"
+      },
+      {
+        "netclass": "GND",
+        "pattern": "GND"
       }
     ]
   },

@@ -7620,7 +7620,7 @@
 		(uuid "01214a88-e204-4a0d-bdde-33263d5201b8")
 	)
 	(label "IO{slash}2"
-		(at 33.02 99.06 0)
+		(at 33.02 101.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8110,7 +8110,7 @@
 		(uuid "b05e684c-58fd-4031-b718-468d1bc50358")
 	)
 	(label "IO{slash}1"
-		(at 33.02 101.6 0)
+		(at 33.02 99.06 0)
 		(effects
 			(font
 				(size 1.27 1.27)
