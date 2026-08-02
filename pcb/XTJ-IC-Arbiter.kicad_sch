@@ -5672,12 +5672,6 @@
 		(uuid "d6aed0aa-6089-4702-915b-5e6e92ddbd9a")
 	)
 	(junction
-		(at 34.29 106.68)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d9ab9d2e-d760-4d3f-a878-5391932ada9e")
-	)
-	(junction
 		(at 146.05 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7115,16 +7109,6 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 106.68) (xy 34.29 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b24b23f5-7118-497f-8d0d-e429fb8396ab")
-	)
-	(wire
-		(pts
 			(xy 267.97 31.75) (xy 267.97 33.02)
 		)
 		(stroke
@@ -7342,16 +7326,6 @@
 			(type default)
 		)
 		(uuid "cfae5160-7b5e-4c14-9aaf-bd0e8ab0c612")
-	)
-	(wire
-		(pts
-			(xy 34.29 106.68) (xy 33.02 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d144c887-ce19-4d58-adca-e6d1bfc28c59")
 	)
 	(wire
 		(pts
@@ -7695,16 +7669,6 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 106.68) (xy 40.64 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f6fa4a5f-a965-4cde-be39-35b082fbf1c5")
-	)
-	(wire
-		(pts
 			(xy 102.87 32.385) (xy 121.92 32.385)
 		)
 		(stroke
@@ -7944,7 +7908,7 @@
 		(uuid "43313049-1307-4bf3-8ace-51ffb304e0e4")
 	)
 	(label "+5VO"
-		(at 35.56 106.68 270)
+		(at 33.02 106.68 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10104,7 +10068,7 @@
 	)
 	(symbol
 		(lib_id "Device:Polyfuse_Small")
-		(at 36.83 106.68 90)
+		(at 35.56 106.68 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10113,7 +10077,7 @@
 		(fields_autoplaced yes)
 		(uuid "391e4582-9b35-428c-bcd7-dea5bf9ff4a2")
 		(property "Reference" "F1"
-			(at 36.83 104.0709 90)
+			(at 35.56 104.0709 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10121,7 +10085,7 @@
 			)
 		)
 		(property "Value" "Polyfuse_Small"
-			(at 36.83 104.0708 90)
+			(at 35.56 104.0708 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10130,7 +10094,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuse_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
-			(at 41.91 105.41 0)
+			(at 40.64 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10140,7 +10104,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/40/1/mf_msmf.pdf"
-			(at 36.83 106.68 0)
+			(at 35.56 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10149,7 +10113,7 @@
 			)
 		)
 		(property "Description" "Resettable fuse, polymeric positive temperature coefficient, small symbol"
-			(at 36.83 106.68 0)
+			(at 35.56 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10158,7 +10122,7 @@
 			)
 		)
 		(property "MPN" " MF-MSMF050/30X-2 "
-			(at 36.83 106.68 90)
+			(at 35.56 106.68 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10292,16 +10256,15 @@
 	)
 	(symbol
 		(lib_id "Device:D")
-		(at 44.45 106.68 0)
+		(at 41.91 106.68 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "3b0fc465-719f-488b-9d11-0548840311f0")
 		(property "Reference" "D2"
-			(at 44.45 101.2655 0)
+			(at 41.91 109.8437 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10309,7 +10272,7 @@
 			)
 		)
 		(property "Value" "D"
-			(at 44.45 103.6898 0)
+			(at 41.91 112.268 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10317,7 +10280,7 @@
 			)
 		)
 		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal"
-			(at 44.45 106.68 0)
+			(at 41.91 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10326,7 +10289,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.taiwansemi.com/assets/datasheet/pdf.php?pn=1N4001G"
-			(at 44.45 106.68 0)
+			(at 41.91 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10335,7 +10298,7 @@
 			)
 		)
 		(property "Description" "Diode"
-			(at 44.45 106.68 0)
+			(at 41.91 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10344,7 +10307,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 44.45 106.68 0)
+			(at 41.91 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10353,7 +10316,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 44.45 106.68 0)
+			(at 41.91 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10362,7 +10325,7 @@
 			)
 		)
 		(property "MPN" "1N40001GH"
-			(at 44.45 106.68 0)
+			(at 41.91 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15060,7 +15023,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 48.26 106.68 270)
+		(at 45.72 106.68 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15068,7 +15031,7 @@
 		(dnp no)
 		(uuid "be349a17-8819-4ef2-b47a-d5bed9894816")
 		(property "Reference" "#PWR012"
-			(at 44.45 106.68 0)
+			(at 41.91 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15077,7 +15040,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 47.752 108.458 90)
+			(at 45.212 108.458 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15086,7 +15049,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 48.26 106.68 0)
+			(at 45.72 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15095,7 +15058,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 48.26 106.68 0)
+			(at 45.72 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15104,7 +15067,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 48.26 106.68 0)
+			(at 45.72 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
