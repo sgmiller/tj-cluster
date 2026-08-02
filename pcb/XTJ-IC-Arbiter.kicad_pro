@@ -727,6 +727,10 @@
       {
         "netclass": "GND",
         "pattern": "GND"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "Net-(D2-K)"
       }
     ]
   },

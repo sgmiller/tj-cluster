@@ -1199,6 +1199,174 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:D"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=K 2=A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_0_1"
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:D_Schottky"
 			(pin_numbers
 				(hide yes)
@@ -5504,6 +5672,12 @@
 		(uuid "d6aed0aa-6089-4702-915b-5e6e92ddbd9a")
 	)
 	(junction
+		(at 34.29 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d9ab9d2e-d760-4d3f-a878-5391932ada9e")
+	)
+	(junction
 		(at 146.05 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5688,16 +5862,6 @@
 			(type default)
 		)
 		(uuid "07b6e6c9-7440-4de0-a72c-5efb65923085")
-	)
-	(wire
-		(pts
-			(xy 40.64 106.68) (xy 41.91 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "087c457d-7cf4-4c59-b984-d7b2f17fee50")
 	)
 	(wire
 		(pts
@@ -6951,7 +7115,7 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 106.68) (xy 33.02 106.68)
+			(xy 35.56 106.68) (xy 34.29 106.68)
 		)
 		(stroke
 			(width 0)
@@ -7178,6 +7342,16 @@
 			(type default)
 		)
 		(uuid "cfae5160-7b5e-4c14-9aaf-bd0e8ab0c612")
+	)
+	(wire
+		(pts
+			(xy 34.29 106.68) (xy 33.02 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d144c887-ce19-4d58-adca-e6d1bfc28c59")
 	)
 	(wire
 		(pts
@@ -7518,6 +7692,16 @@
 			(type default)
 		)
 		(uuid "f690a796-b0a0-4cee-ac8a-81cbd504e2ce")
+	)
+	(wire
+		(pts
+			(xy 39.37 106.68) (xy 40.64 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6fa4a5f-a965-4cde-be39-35b082fbf1c5")
 	)
 	(wire
 		(pts
@@ -9920,7 +10104,7 @@
 	)
 	(symbol
 		(lib_id "Device:Polyfuse_Small")
-		(at 38.1 106.68 90)
+		(at 36.83 106.68 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9929,7 +10113,7 @@
 		(fields_autoplaced yes)
 		(uuid "391e4582-9b35-428c-bcd7-dea5bf9ff4a2")
 		(property "Reference" "F1"
-			(at 38.1 104.0709 90)
+			(at 36.83 104.0709 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9937,7 +10121,7 @@
 			)
 		)
 		(property "Value" "Polyfuse_Small"
-			(at 38.1 104.0708 90)
+			(at 36.83 104.0708 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9946,7 +10130,7 @@
 			)
 		)
 		(property "Footprint" "Fuse:Fuse_1812_4532Metric_Pad1.30x3.40mm_HandSolder"
-			(at 43.18 105.41 0)
+			(at 41.91 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9956,7 +10140,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.com/datasheet/3/40/1/mf_msmf.pdf"
-			(at 38.1 106.68 0)
+			(at 36.83 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9965,7 +10149,7 @@
 			)
 		)
 		(property "Description" "Resettable fuse, polymeric positive temperature coefficient, small symbol"
-			(at 38.1 106.68 0)
+			(at 36.83 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9974,7 +10158,7 @@
 			)
 		)
 		(property "MPN" " MF-MSMF050/30X-2 "
-			(at 38.1 106.68 90)
+			(at 36.83 106.68 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10101,6 +10285,101 @@
 			(project ""
 				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
 					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D")
+		(at 44.45 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3b0fc465-719f-488b-9d11-0548840311f0")
+		(property "Reference" "D2"
+			(at 44.45 101.2655 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "D"
+			(at 44.45 103.6898 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal"
+			(at 44.45 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.taiwansemi.com/assets/datasheet/pdf.php?pn=1N4001G"
+			(at 44.45 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diode"
+			(at 44.45 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "D"
+			(at 44.45 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 44.45 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1N40001GH"
+			(at 44.45 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "abe4767d-7598-41be-9c98-f81b6dfa79b3")
+		)
+		(pin "1"
+			(uuid "156de3e6-85ba-4966-a9b3-3774633399df")
+		)
+		(instances
+			(project ""
+				(path "/30a59342-dbf1-42d2-913c-7e79095896d9"
+					(reference "D2")
 					(unit 1)
 				)
 			)
@@ -14781,7 +15060,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 41.91 106.68 270)
+		(at 48.26 106.68 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14789,7 +15068,7 @@
 		(dnp no)
 		(uuid "be349a17-8819-4ef2-b47a-d5bed9894816")
 		(property "Reference" "#PWR012"
-			(at 38.1 106.68 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14798,7 +15077,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 41.402 108.458 90)
+			(at 47.752 108.458 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14807,7 +15086,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 41.91 106.68 0)
+			(at 48.26 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14816,7 +15095,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 41.91 106.68 0)
+			(at 48.26 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14825,7 +15104,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 41.91 106.68 0)
+			(at 48.26 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
